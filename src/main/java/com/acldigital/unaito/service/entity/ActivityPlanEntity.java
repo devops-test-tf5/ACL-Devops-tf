@@ -37,9 +37,9 @@ public class ActivityPlanEntity implements Serializable {
 
 	}
 
-	public ActivityPlanEntity(Long activityId, ProjectsEntity projectEntity, String activities, String week) {
+	public ActivityPlanEntity(ProjectsEntity projectEntity, String activities, 
+			String week) {
 		super();
-		this.activityId = activityId;
 		this.projectEntity = projectEntity;
 		this.activities = activities;
 		this.week = week;
@@ -83,5 +83,4 @@ public class ActivityPlanEntity implements Serializable {
 				+ activities + ", week=" + week + "]";
 	}
 
-	
 }

@@ -9,7 +9,7 @@ import com.acldigital.unaito.service.user.exception.UserException;
 
 public class PreConditions {
 
-	public ResponseEntity<ErrorResponse>  checkPreConditions(UserRequest request) throws UserException {
+	public ResponseEntity<ErrorResponse> checkPreConditions(UserRequest request) throws UserException {
 		if (request == null) {
 			throw new UserException("This is a bad request", HttpStatus.BAD_REQUEST.value());
 		}

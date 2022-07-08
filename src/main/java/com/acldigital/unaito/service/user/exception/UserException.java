@@ -11,7 +11,6 @@ public class UserException extends RuntimeException {
 		this.httpStatus = httpStatus;
 	}
 
-	
 	public String getMessage() {
 		return message;
 	}

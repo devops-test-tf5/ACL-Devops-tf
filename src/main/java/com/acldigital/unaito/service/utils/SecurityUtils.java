@@ -2,6 +2,7 @@ package com.acldigital.unaito.service.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import com.acldigital.unaito.service.user.constants.ConfigProperties;
@@ -19,4 +20,17 @@ public class SecurityUtils {
 			throw new UnaitoSecurityException(UserConstants.INVALID_API_KEY, HttpStatus.BAD_REQUEST.value());
 		}
 	}
+
+	public void validateCustomerApiKey(String apiKey) {
+		if (!apiKey.equals(configProperties.getCustomerApiKey())) {
+			throw new UnaitoSecurityException(UserConstants.INVALID_API_KEY, HttpStatus.BAD_REQUEST.value());
+		}
+	}
+
+	public void validateProjectApiKey(String apiKey) {
+		if (!apiKey.equals(configProperties.getProjectApiKey())) {
+			throw new UnaitoSecurityException(UserConstants.INVALID_API_KEY, HttpStatus.BAD_REQUEST.value());
+		}
+	}
+
 }

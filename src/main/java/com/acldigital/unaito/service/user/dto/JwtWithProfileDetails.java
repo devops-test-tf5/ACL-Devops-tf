@@ -3,13 +3,13 @@ package com.acldigital.unaito.service.user.dto;
 public class JwtWithProfileDetails {
 
 	private String jwt;
-	private User userProfileDetails;
+	private UserDto userProfileDetails;
 
 	public JwtWithProfileDetails() {
 
 	}
 
-	public JwtWithProfileDetails(String jwt, User userProfileDetails) {
+	public JwtWithProfileDetails(String jwt, UserDto userProfileDetails) {
 		super();
 		this.jwt = jwt;
 		this.userProfileDetails = userProfileDetails;
@@ -23,11 +23,11 @@ public class JwtWithProfileDetails {
 		this.jwt = jwt;
 	}
 
-	public User getUserProfileDetails() {
+	public UserDto getUserProfileDetails() {
 		return userProfileDetails;
 	}
 
-	public void setUserProfileDetails(User userProfileDetails) {
+	public void setUserProfileDetails(UserDto userProfileDetails) {
 		this.userProfileDetails = userProfileDetails;
 	}
 

@@ -2,10 +2,7 @@
 package com.acldigital.unaito.service.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -65,23 +61,28 @@ public class ApplicationOverviewEntity implements Serializable {
 	@Column(name = "contact_number")
 	private Integer contactNumber;
 
-	@OneToMany(mappedBy = "recommendationId", cascade = CascadeType.ALL)
-	private List<RecommendationsEntity> recommendationEntities = new ArrayList<>();
-
-	@OneToMany(mappedBy = "integrationLayerId", cascade = CascadeType.ALL)
-	private List<IntegrationLayerEntity> integrationLayerEntities = new ArrayList<>();
-
-	@OneToMany(mappedBy = "applicationLayerId", cascade = CascadeType.ALL)
-	private List<ApplicationLayerEntity> applicationLayerEntities = new ArrayList<>();
-
-	@OneToMany(mappedBy = "storageId", cascade = CascadeType.ALL)
-	private List<StorageDetailsEntity> storageEntities = new ArrayList<>();
-
-	@OneToMany(mappedBy = "serverDetailsId", cascade = CascadeType.ALL)
-	private List<ServerDetailsEntity> serverDetailEntities = new ArrayList<>();
-
-	@OneToMany(mappedBy = "securityComplianceId", cascade = CascadeType.ALL)
-	private List<SecurityComplianceEntity> securityComplianceEntities = new ArrayList<>();
+	/*
+	 * @OneToMany(mappedBy = "recommendationId", cascade = CascadeType.ALL) private
+	 * List<RecommendationsEntity> recommendationEntities = new ArrayList<>();
+	 * 
+	 * @OneToMany(mappedBy = "integrationLayerId", cascade = CascadeType.ALL)
+	 * private List<IntegrationLayerEntity> integrationLayerEntities = new
+	 * ArrayList<>();
+	 * 
+	 * @OneToMany(mappedBy = "applicationLayerId", cascade = CascadeType.ALL)
+	 * private List<ApplicationLayerEntity> applicationLayerEntities = new
+	 * ArrayList<>();
+	 * 
+	 * @OneToMany(mappedBy = "storageId", cascade = CascadeType.ALL) private
+	 * List<StorageDetailsEntity> storageEntities = new ArrayList<>();
+	 * 
+	 * @OneToMany(mappedBy = "serverDetailsId", cascade = CascadeType.ALL) private
+	 * List<ServerDetailsEntity> serverDetailEntities = new ArrayList<>();
+	 * 
+	 * @OneToMany(mappedBy = "securityComplianceId", cascade = CascadeType.ALL)
+	 * private List<SecurityComplianceEntity> securityComplianceEntities = new
+	 * ArrayList<>();
+	 */
 
 	public ApplicationOverviewEntity() {
 
@@ -90,10 +91,14 @@ public class ApplicationOverviewEntity implements Serializable {
 	public ApplicationOverviewEntity(Long applicationId, String applicationName, ProjectsEntity projectEntity,
 			String description, String businessUnit, String businessCritical, String highAvailability,
 			String responseTime, Integer noOfInteractions, String contactFirstName, String contactLastName,
-			String email, Integer contactNumber, List<RecommendationsEntity> recommendationEntities,
-			List<IntegrationLayerEntity> integrationLayerEntities,
-			List<ApplicationLayerEntity> applicationLayerEntities, List<StorageDetailsEntity> storageEntities,
-			List<ServerDetailsEntity> serverDetailEntities, List<SecurityComplianceEntity> securityComplianceEntities) {
+			String email, Integer contactNumber 
+			//List<RecommendationsEntity> recommendationEntities,
+			//List<IntegrationLayerEntity> integrationLayerEntities,
+			//List<ApplicationLayerEntity> applicationLayerEntities, 
+			//List<StorageDetailsEntity> storageEntities,
+			//List<ServerDetailsEntity> serverDetailEntities, 
+			//List<SecurityComplianceEntity> securityComplianceEntities
+			) {
 		super();
 		this.applicationId = applicationId;
 		this.applicationName = applicationName;
@@ -108,12 +113,12 @@ public class ApplicationOverviewEntity implements Serializable {
 		this.contactLastName = contactLastName;
 		this.email = email;
 		this.contactNumber = contactNumber;
-		this.recommendationEntities = recommendationEntities;
-		this.integrationLayerEntities = integrationLayerEntities;
-		this.applicationLayerEntities = applicationLayerEntities;
-		this.storageEntities = storageEntities;
-		this.serverDetailEntities = serverDetailEntities;
-		this.securityComplianceEntities = securityComplianceEntities;
+		//this.recommendationEntities = recommendationEntities;
+		//this.integrationLayerEntities = integrationLayerEntities;
+		//this.applicationLayerEntities = applicationLayerEntities;
+		//this.storageEntities = storageEntities;
+		//this.serverDetailEntities = serverDetailEntities;
+		//this.securityComplianceEntities = securityComplianceEntities;
 	}
 
 	public Long getApplicationId() {
@@ -220,52 +225,58 @@ public class ApplicationOverviewEntity implements Serializable {
 		this.contactNumber = contactNumber;
 	}
 
-	public List<RecommendationsEntity> getRecommendationEntities() {
-		return recommendationEntities;
+	@Override
+	public String toString() {
+		return "ApplicationOverviewEntity [applicationId=" + applicationId + ", applicationName=" + applicationName
+				+ ", projectEntity=" + projectEntity + ", description=" + description + ", businessUnit=" + businessUnit
+				+ ", businessCritical=" + businessCritical + ", highAvailability=" + highAvailability
+				+ ", responseTime=" + responseTime + ", noOfInteractions=" + noOfInteractions + ", contactFirstName="
+				+ contactFirstName + ", contactLastName=" + contactLastName + ", email=" + email + ", contactNumber="
+				+ contactNumber + "]";
 	}
 
-	public void setRecommendationEntities(List<RecommendationsEntity> recommendationEntities) {
-		this.recommendationEntities = recommendationEntities;
-	}
-
-	public List<IntegrationLayerEntity> getIntegrationLayerEntities() {
-		return integrationLayerEntities;
-	}
-
-	public void setIntegrationLayerEntities(List<IntegrationLayerEntity> integrationLayerEntities) {
-		this.integrationLayerEntities = integrationLayerEntities;
-	}
-
-	public List<ApplicationLayerEntity> getApplicationLayerEntities() {
-		return applicationLayerEntities;
-	}
-
-	public void setApplicationLayerEntities(List<ApplicationLayerEntity> applicationLayerEntities) {
-		this.applicationLayerEntities = applicationLayerEntities;
-	}
-
-	public List<StorageDetailsEntity> getStorageEntities() {
-		return storageEntities;
-	}
-
-	public void setStorageEntities(List<StorageDetailsEntity> storageEntities) {
-		this.storageEntities = storageEntities;
-	}
-
-	public List<ServerDetailsEntity> getServerDetailEntities() {
-		return serverDetailEntities;
-	}
-
-	public void setServerDetailEntities(List<ServerDetailsEntity> serverDetailEntities) {
-		this.serverDetailEntities = serverDetailEntities;
-	}
-
-	public List<SecurityComplianceEntity> getSecurityComplianceEntities() {
-		return securityComplianceEntities;
-	}
-
-	public void setSecurityComplianceEntities(List<SecurityComplianceEntity> securityComplianceEntities) {
-		this.securityComplianceEntities = securityComplianceEntities;
-	}
+	/*
+	 * public List<RecommendationsEntity> getRecommendationEntities() { return
+	 * recommendationEntities; }
+	 * 
+	 * public void setRecommendationEntities(List<RecommendationsEntity>
+	 * recommendationEntities) { this.recommendationEntities =
+	 * recommendationEntities; }
+	 * 
+	 * public List<IntegrationLayerEntity> getIntegrationLayerEntities() { return
+	 * integrationLayerEntities; }
+	 * 
+	 * public void setIntegrationLayerEntities(List<IntegrationLayerEntity>
+	 * integrationLayerEntities) { this.integrationLayerEntities =
+	 * integrationLayerEntities; }
+	 * 
+	 * public List<ApplicationLayerEntity> getApplicationLayerEntities() { return
+	 * applicationLayerEntities; }
+	 * 
+	 * public void setApplicationLayerEntities(List<ApplicationLayerEntity>
+	 * applicationLayerEntities) { this.applicationLayerEntities =
+	 * applicationLayerEntities; }
+	 * 
+	 * public List<StorageDetailsEntity> getStorageEntities() { return
+	 * storageEntities; }
+	 * 
+	 * public void setStorageEntities(List<StorageDetailsEntity> storageEntities) {
+	 * this.storageEntities = storageEntities; }
+	 * 
+	 * public List<ServerDetailsEntity> getServerDetailEntities() { return
+	 * serverDetailEntities; }
+	 * 
+	 * public void setServerDetailEntities(List<ServerDetailsEntity>
+	 * serverDetailEntities) { this.serverDetailEntities = serverDetailEntities; }
+	 * 
+	 * public List<SecurityComplianceEntity> getSecurityComplianceEntities() {
+	 * return securityComplianceEntities; }
+	 * 
+	 * public void setSecurityComplianceEntities(List<SecurityComplianceEntity>
+	 * securityComplianceEntities) { this.securityComplianceEntities =
+	 * securityComplianceEntities; }
+	 */
+	
+	
 
 }

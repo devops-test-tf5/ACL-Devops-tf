@@ -26,7 +26,7 @@ public class CustomersEntity implements Serializable {
 	private Long customerId;
 
 	@Column(name = "customer_name")
-	private Long customerName;
+	private String customerName;
 
 	@Column(name = "user_id")
 	private Long userId;
@@ -43,18 +43,32 @@ public class CustomersEntity implements Serializable {
 	@Column(name = "email")
 	private String emailId;
 
+	@Column(name = "contact_number")
+	private Long contactNumber;
+
 	@Column(name = "is_active")
 	private int isActive;
 
-	@OneToMany(mappedBy = "projectId",cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "projectId", cascade = CascadeType.ALL)
 	private List<ProjectsEntity> projectEntities = new ArrayList<>();
 
 	public CustomersEntity() {
 
 	}
 
-	public CustomersEntity(Long customerId, Long customerName, Long userId, String location, String spocFirstName,
-			String spocLastName, String emailId, int isActive, List<ProjectsEntity> projectEntities) {
+	/*
+	 * public CustomersEntity(String customerName, Long userId, String location,
+	 * String spocFirstName, String spocLastName, String emailId, int isActive,Long
+	 * contactNumber) { super(); this.customerName = customerName; this.userId =
+	 * userId; this.location = location; this.spocFirstName = spocFirstName;
+	 * this.spocLastName = spocLastName; this.emailId = emailId; this.isActive =
+	 * isActive; this.contactNumber=contactNumber; }
+	 */
+	
+
+	public CustomersEntity(Long customerId, String customerName, Long userId, String location, String spocFirstName,
+			String spocLastName, String emailId, Long contactNumber, int isActive,
+			List<ProjectsEntity> projectEntities) {
 		super();
 		this.customerId = customerId;
 		this.customerName = customerName;
@@ -63,6 +77,7 @@ public class CustomersEntity implements Serializable {
 		this.spocFirstName = spocFirstName;
 		this.spocLastName = spocLastName;
 		this.emailId = emailId;
+		this.contactNumber = contactNumber;
 		this.isActive = isActive;
 		this.projectEntities = projectEntities;
 	}
@@ -71,15 +86,11 @@ public class CustomersEntity implements Serializable {
 		return customerId;
 	}
 
-	public void setCustomerId(Long customerId) {
-		this.customerId = customerId;
-	}
-
-	public Long getCustomerName() {
+	public String getCustomerName() {
 		return customerName;
 	}
 
-	public void setCustomerName(Long customerName) {
+	public void setCustomerName(String customerName) {
 		this.customerName = customerName;
 	}
 
@@ -139,12 +150,20 @@ public class CustomersEntity implements Serializable {
 		this.projectEntities = projectEntities;
 	}
 
+	public Long getContactNumber() {
+		return contactNumber;
+	}
+
+	public void setContactNumber(Long contactNumber) {
+		this.contactNumber = contactNumber;
+	}
+
 	@Override
 	public String toString() {
 		return "CustomersEntity [customerId=" + customerId + ", customerName=" + customerName + ", userId=" + userId
 				+ ", location=" + location + ", spocFirstName=" + spocFirstName + ", spocLastName=" + spocLastName
-				+ ", emailId=" + emailId + ", isActive=" + isActive + ", projectEntities=" + projectEntities + "]";
+				+ ", emailId=" + emailId + ", contactNumber=" + contactNumber + ", isActive=" + isActive
+				+ ", projectEntities=" + projectEntities + "]";
 	}
 
-	
 }

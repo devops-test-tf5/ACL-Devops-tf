@@ -2,7 +2,7 @@ package com.acldigital.unaito.service.user.constants;
 
 public enum JwtConstantsEnum {
 
-	BEARER("Bearer");
+	BEARER("Bearer"), KEY_AUTH("auth"), KEY_SESSION_ID("sessionId");
 
 	private String value;
 

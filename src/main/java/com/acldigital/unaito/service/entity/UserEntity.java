@@ -3,15 +3,14 @@ package com.acldigital.unaito.service.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -51,6 +50,15 @@ public class UserEntity implements Serializable {
 	@Column(name = "location")
 	private String location;
 
+	@OneToOne(mappedBy = "userEntity", cascade = CascadeType.ALL)
+	private UserCryptoEntity userCryptoEntity;
+
+	@Column(name = "max_wrong_password_count")
+	private Integer maxWrongPasswordCount;
+
+	@Column(name = "wrong_password_count")
+	private Integer wrongPasswordCount;
+
 	@Column(name = "created_by")
 	private String createdBy;
 
@@ -67,6 +75,35 @@ public class UserEntity implements Serializable {
 			Integer isActive, Long contactNumber, String location) {
 		super();
 		this.roleId = roleId;
+		this.userName = userName;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.password = password;
+		this.email = email;
+		this.isActive = isActive;
+		this.contactNumber = contactNumber;
+		this.location = location;
+	}
+
+	public UserEntity(String userName, String firstName, String lastName, String password, String email,
+			Integer isActive, Long contactNumber, String location, Integer maxWrongPasswordCount,
+			Integer wrongPasswordCount) {
+		super();
+		this.userName = userName;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.password = password;
+		this.email = email;
+		this.isActive = isActive;
+		this.contactNumber = contactNumber;
+		this.location = location;
+		this.maxWrongPasswordCount = maxWrongPasswordCount;
+		this.wrongPasswordCount = wrongPasswordCount;
+	}
+	
+	public UserEntity(String userName, String firstName, String lastName, String password, String email,
+			Integer isActive, Long contactNumber, String location) {
+		super();
 		this.userName = userName;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -213,12 +250,38 @@ public class UserEntity implements Serializable {
 		this.location = location;
 	}
 
+	public UserCryptoEntity getUserCryptoEntity() {
+		return userCryptoEntity;
+	}
+
+	public void setUserCryptoEntity(UserCryptoEntity userCryptoEntity) {
+		this.userCryptoEntity = userCryptoEntity;
+	}
+
+	public Integer getMaxWrongPasswordCount() {
+		return maxWrongPasswordCount;
+	}
+
+	public void setMaxWrongPasswordCount(Integer maxWrongPasswordCount) {
+		this.maxWrongPasswordCount = maxWrongPasswordCount;
+	}
+
+	public Integer getWrongPasswordCount() {
+		return wrongPasswordCount;
+	}
+
+	public void setWrongPasswordCount(Integer wrongPasswordCount) {
+		this.wrongPasswordCount = wrongPasswordCount;
+	}
+
 	@Override
 	public String toString() {
 		return "UserEntity [userId=" + userId + ", roleId=" + roleId + ", userName=" + userName + ", firstName="
 				+ firstName + ", lastName=" + lastName + ", password=" + password + ", email=" + email + ", isActive="
-				+ isActive + ", contactNumber=" + contactNumber + ", location=" + location + ", createdBy=" + createdBy
-				+ ", createdDate=" + createdDate + ", updatedBy=" + updatedBy + ", updatedDate=" + updatedDate + "]";
+				+ isActive + ", contactNumber=" + contactNumber + ", location=" + location + ", userCryptoEntity="
+				+ userCryptoEntity + ", maxWrongPasswordCount=" + maxWrongPasswordCount + ", wrongPasswordCount="
+				+ wrongPasswordCount + ", createdBy=" + createdBy + ", createdDate=" + createdDate + ", updatedBy="
+				+ updatedBy + ", updatedDate=" + updatedDate + "]";
 	}
 
 }

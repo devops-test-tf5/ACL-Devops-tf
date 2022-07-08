@@ -9,6 +9,7 @@ public class JwtLoggedInDetails {
 	private String jwt;
 	private Instant jwtCreatedTime;
 	private Instant jwtExpiryTime;
+	private boolean isFirstTimeLogin;
 
 	public JwtLoggedInDetails(String sessionId, String jwtType, String jwt, Instant jwtCreatedTime,
 			Instant jwtExpiryTime) {
@@ -42,6 +43,21 @@ public class JwtLoggedInDetails {
 
 	public Instant getJwtExpiryTime() {
 		return jwtExpiryTime;
+	}
+
+	public boolean isFirstTimeLogin() {
+		return isFirstTimeLogin;
+	}
+
+	public void setFirstTimeLogin(boolean isFirstTimeLogin) {
+		this.isFirstTimeLogin = isFirstTimeLogin;
+	}
+
+	@Override
+	public String toString() {
+		return "JwtLoggedInDetails [sessionId=" + sessionId + ", jwtType=" + jwtType + ", jwt=" + jwt
+				+ ", jwtCreatedTime=" + jwtCreatedTime + ", jwtExpiryTime=" + jwtExpiryTime + ", isFirstTimeLogin="
+				+ isFirstTimeLogin + "]";
 	}
 
 }

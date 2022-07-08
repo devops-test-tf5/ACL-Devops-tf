@@ -18,6 +18,12 @@ public class ConfigProperties {
 	@Value("${user.service.api-key}")
 	private String userApiKey;
 
+	@Value("${customer.service.api-key}")
+	private String customerApiKey;
+	
+	@Value("${project.service.api-key}")
+	private String projectApiKey;
+
 	public String getUserServiceSecretKey() {
 		return userServiceSecretKey;
 	}
@@ -34,4 +40,11 @@ public class ConfigProperties {
 		return userApiKey;
 	}
 
+	public String getCustomerApiKey() {
+		return customerApiKey;
+	}
+
+	public String getProjectApiKey() {
+		return projectApiKey;
+	}
 }

@@ -1,5 +1,6 @@
 package com.acldigital.unaito.service.user.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -20,8 +21,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.acldigital.unaito.service.service.IUserService;
+import com.acldigital.unaito.service.user.constants.HttpConstantsEnum;
 import com.acldigital.unaito.service.user.dto.AuthorizationRequest;
+import com.acldigital.unaito.service.user.dto.UserDto;
+import com.acldigital.unaito.service.user.dto.UserRegistrationDetails;
 import com.acldigital.unaito.service.user.dto.UserRequest;
+import com.acldigital.unaito.service.user.dto.UserResponse;
+import com.acldigital.unaito.service.user.exception.UnaitoSecurityException;
 import com.acldigital.unaito.service.user.exception.UserConstraintValidationException;
 import com.acldigital.unaito.service.utils.JwtUtils;
 import com.acldigital.unaito.service.utils.UserUtils;
@@ -38,7 +44,7 @@ public class UserController {
 
 	@Autowired
 	private UserUtils userUtils;
-	
+
 	@Autowired
 	private JwtUtils jwtUtils;
 
@@ -48,36 +54,76 @@ public class UserController {
 		return "Welcome to unaito";
 	}
 
-	@PostMapping("/register")
+	@PostMapping("/create")
 	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<Object> registerUser(@Valid @RequestBody @NotNull UserRequest request)
-			throws UserConstraintValidationException {
-		return userService.createUser(request);
-
+	public ResponseEntity<Object> registerUser(@RequestHeader("API-KEY") String apiKey,
+			@Valid @RequestBody @NotNull UserRegistrationDetails userRegistrationRequest,
+			HttpServletRequest servRequest) throws UserConstraintValidationException {
+		ResponseEntity<Object> registeredUser = userService.createUser(apiKey, userRegistrationRequest);
+		UserResponse response = (UserResponse) registeredUser.getBody();
+		UserDto user = (UserDto) response.getResponseObject();
+		return registeredUser;
 	}
 
 	@PostMapping("/sign-in")
 	@ResponseStatus(HttpStatus.OK)
-	public ResponseEntity<Object> userSignIn(
-			@RequestHeader("API-KEY") String apiKey, 
+	public ResponseEntity<Object> userSignIn(@RequestHeader("API-KEY") String apiKey,
 			@RequestBody AuthorizationRequest request) {
-		
-		return userService.userSignIn(apiKey,request);
+		return userService.userSignIn(apiKey, request);
 	}
 
 	@PutMapping("/edit")
 	@ResponseStatus(HttpStatus.OK)
-	public ResponseEntity<Object> edit(@RequestBody UserRequest request) {
-		return userService.editUser(request);
+	public ResponseEntity<Object> edit(@RequestHeader("API-KEY") String apiKey,
+			@RequestHeader("Authorization") String jwtToken, @RequestBody UserRequest request) {
+		String token = resolveToken(jwtToken);
+		return userService.editUser(apiKey, token, request);
 	}
 
 	@DeleteMapping("/delete/{userName}")
 	@ResponseStatus(HttpStatus.OK)
-	public ResponseEntity<Object> deleteUser(@PathVariable String userName) {
-		return userService.deleteUser(userName);
-
+	public ResponseEntity<Object> deleteUser(@RequestHeader("API-KEY") String apiKey,
+			@RequestHeader("Authorization") String jwtToken, @PathVariable String userName) {
+		String token = resolveToken(jwtToken);
+		return userService.deleteUser(apiKey, token, userName);
 	}
-	//Forgot password
-	// logout api
+
+	private String resolveToken(String jwtToken) throws UnaitoSecurityException {
+		if (jwtToken != null && jwtToken.startsWith(HttpConstantsEnum.HEADER_BEARER.getValue() + " ")) {
+			return jwtToken.substring(7);
+		} else {
+			throw new UnaitoSecurityException("Invalid JWT Token", HttpStatus.FORBIDDEN.value());
+		}
+	}
+
+	@PutMapping("/forgot-password/email/{email}")
+	public ResponseEntity<Object> forgotPassword(@RequestHeader("API-KEY") String apiKey, @PathVariable String email) {
+		return userService.forgotPassword(apiKey, email);
+	}
+
+	@GetMapping("/email-verify/userId/{userId}/verifyId/{verifyId}")
+	public ResponseEntity<Object> verifyCodeAndActivateUser(@PathVariable("userId") Long userId,
+			@PathVariable("verifyId") String verifyId) {
+		userService.verifyCode(userId, verifyId);
+		return null;
+	}
+
+	@GetMapping("/all-users")
+	public ResponseEntity<Object> getAllUsers(@RequestHeader("API-KEY") String apiKey) {
+		return userService.getAllUsers(apiKey);
+	}
+
+	@GetMapping("/get-user/{userName}")
+	public ResponseEntity<Object> getUserDetailsByUserName(@RequestHeader("API-KEY") String apiKey,
+			@PathVariable String userName) {
+		return userService.getUserDetails(apiKey, userName);
+	}
+
+	@GetMapping("/logout/{userName}")
+	public ResponseEntity<Object> userLogout(@RequestHeader("API-KEY") String apiKey,
+			@RequestHeader("Authorization") String jwtToken, @PathVariable String userName) {
+
+		return userService.logout(apiKey, jwtToken, userName);
+	}
 
 }

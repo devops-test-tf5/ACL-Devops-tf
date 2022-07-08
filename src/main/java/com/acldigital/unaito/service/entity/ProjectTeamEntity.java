@@ -1,7 +1,10 @@
 package com.acldigital.unaito.service.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,33 +29,29 @@ public class ProjectTeamEntity implements Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "project_id", referencedColumnName = "project_id")
-	private ProjectsEntity projectEntity;
+	private ProjectsEntity projectsEntity;
 
-	@Column(name = "team_member_name")
-	private String teamMemberName;
+	@OneToMany(mappedBy = "projectTeamEntity", cascade = CascadeType.ALL)
+	private List<TeamMemberEntity> teamMembersList = new ArrayList<TeamMemberEntity>();
 
-	@Column(name = "user_id")
-	private Long userId;
+	public void addTeamMember(TeamMemberEntity teamMembers) {
+		teamMembersList.add(teamMembers);
+		teamMembers.setProjectTeamEntity(this);
+	}
 
-	@Column(name = "role_id")
-	private Long roleId;
-
-	@Column(name = "email")
-	private String email;
+	public void removeTeamMember(TeamMemberEntity teamMemberEntity) {
+		teamMembersList.remove(teamMemberEntity);
+		teamMemberEntity.setProjectTeamEntity(null);
+	}
 
 	public ProjectTeamEntity() {
 
 	}
 
-	public ProjectTeamEntity(Long onboardingId, ProjectsEntity projectEntity, String teamMemberName, Long userId,
-			Long roleId, String email) {
+	public ProjectTeamEntity(ProjectsEntity projectsEntity, List<TeamMemberEntity> teamMembersList) {
 		super();
-		this.onboardingId = onboardingId;
-		this.projectEntity = projectEntity;
-		this.teamMemberName = teamMemberName;
-		this.userId = userId;
-		this.roleId = roleId;
-		this.email = email;
+		this.projectsEntity = projectsEntity;
+		this.teamMembersList = teamMembersList;
 	}
 
 	public Long getOnboardingId() {
@@ -62,51 +62,26 @@ public class ProjectTeamEntity implements Serializable {
 		this.onboardingId = onboardingId;
 	}
 
-	public ProjectsEntity getProjectEntity() {
-		return projectEntity;
+	public ProjectsEntity getProjectsEntity() {
+		return projectsEntity;
 	}
 
-	public void setProjectEntity(ProjectsEntity projectEntity) {
-		this.projectEntity = projectEntity;
+	public void setProjectsEntity(ProjectsEntity projectsEntity) {
+		this.projectsEntity = projectsEntity;
 	}
 
-	public String getTeamMemberName() {
-		return teamMemberName;
+	public List<TeamMemberEntity> getTeamMembersList() {
+		return teamMembersList;
 	}
 
-	public void setTeamMemberName(String teamMemberName) {
-		this.teamMemberName = teamMemberName;
-	}
-
-	public Long getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
-
-	public Long getRoleId() {
-		return roleId;
-	}
-
-	public void setRoleId(Long roleId) {
-		this.roleId = roleId;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
+	public void setTeamMembersList(List<TeamMemberEntity> teamMembersList) {
+		this.teamMembersList = teamMembersList;
 	}
 
 	@Override
 	public String toString() {
-		return "ProjectTeamEntity [onboardingId=" + onboardingId + ", projectEntity=" + projectEntity
-				+ ", teamMemberName=" + teamMemberName + ", userId=" + userId + ", roleId=" + roleId + ", email="
-				+ email + "]";
+		return "ProjectTeamEntity [onboardingId=" + onboardingId + ", projectsEntity=" + projectsEntity
+				+ ", teamMembersList=" + teamMembersList + "]";
 	}
 
 }

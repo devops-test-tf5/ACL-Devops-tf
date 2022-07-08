@@ -1,5 +1,9590 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["vendor"],{
 
+/***/ "./node_modules/@angular/animations/__ivy_ngcc__/fesm2015/animations.js":
+/*!******************************************************************************!*\
+  !*** ./node_modules/@angular/animations/__ivy_ngcc__/fesm2015/animations.js ***!
+  \******************************************************************************/
+/*! exports provided: AUTO_STYLE, AnimationBuilder, AnimationFactory, NoopAnimationPlayer, animate, animateChild, animation, group, keyframes, query, sequence, stagger, state, style, transition, trigger, useAnimation, ɵAnimationGroupPlayer, ɵPRE_STYLE */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AUTO_STYLE", function() { return AUTO_STYLE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AnimationBuilder", function() { return AnimationBuilder; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AnimationFactory", function() { return AnimationFactory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NoopAnimationPlayer", function() { return NoopAnimationPlayer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "animate", function() { return animate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "animateChild", function() { return animateChild; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "animation", function() { return animation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "group", function() { return group; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "keyframes", function() { return keyframes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "query", function() { return query; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sequence", function() { return sequence; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "stagger", function() { return stagger; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "state", function() { return state; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "style", function() { return style; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "transition", function() { return transition; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "trigger", function() { return trigger; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useAnimation", function() { return useAnimation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵAnimationGroupPlayer", function() { return AnimationGroupPlayer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵPRE_STYLE", function() { return ɵPRE_STYLE; });
+/**
+ * @license Angular v9.0.7
+ * (c) 2010-2020 Google LLC. https://angular.io/
+ * License: MIT
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/src/animation_builder.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * An injectable service that produces an animation sequence programmatically within an
+ * Angular component or directive.
+ * Provided by the `BrowserAnimationsModule` or `NoopAnimationsModule`.
+ *
+ * \@usageNotes
+ *
+ * To use this service, add it to your component or directive as a dependency.
+ * The service is instantiated along with your component.
+ *
+ * Apps do not typically need to create their own animation players, but if you
+ * do need to, follow these steps:
+ *
+ * 1. Use the `build()` method to create a programmatic animation using the
+ * `animate()` function. The method returns an `AnimationFactory` instance.
+ *
+ * 2. Use the factory object to create an `AnimationPlayer` and attach it to a DOM element.
+ *
+ * 3. Use the player object to control the animation programmatically.
+ *
+ * For example:
+ *
+ * ```ts
+ * // import the service from BrowserAnimationsModule
+ * import {AnimationBuilder} from '\@angular/animations';
+ * // require the service as a dependency
+ * class MyCmp {
+ *   constructor(private _builder: AnimationBuilder) {}
+ *
+ *   makeAnimation(element: any) {
+ *     // first define a reusable animation
+ *     const myAnimation = this._builder.build([
+ *       style({ width: 0 }),
+ *       animate(1000, style({ width: '100px' }))
+ *     ]);
+ *
+ *     // use the returned factory object to create a player
+ *     const player = myAnimation.create(element);
+ *
+ *     player.play();
+ *   }
+ * }
+ * ```
+ *
+ * \@publicApi
+ * @abstract
+ */
+class AnimationBuilder {
+}
+if (false) {}
+/**
+ * A factory object returned from the `AnimationBuilder`.`build()` method.
+ *
+ * \@publicApi
+ * @abstract
+ */
+class AnimationFactory {
+}
+if (false) {}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/src/animation_metadata.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * Represents a set of CSS styles for use in an animation style.
+ * @record
+ */
+function ɵStyleData() { }
+/** @enum {number} */
+const AnimationMetadataType = {
+    /**
+     * Associates a named animation state with a set of CSS styles.
+     * See `state()`
+     */
+    State: 0,
+    /**
+     * Data for a transition from one animation state to another.
+     * See `transition()`
+     */
+    Transition: 1,
+    /**
+     * Contains a set of animation steps.
+     * See `sequence()`
+     */
+    Sequence: 2,
+    /**
+     * Contains a set of animation steps.
+     * See `{@link animations/group group()}`
+     */
+    Group: 3,
+    /**
+     * Contains an animation step.
+     * See `animate()`
+     */
+    Animate: 4,
+    /**
+     * Contains a set of animation steps.
+     * See `keyframes()`
+     */
+    Keyframes: 5,
+    /**
+     * Contains a set of CSS property-value pairs into a named style.
+     * See `style()`
+     */
+    Style: 6,
+    /**
+     * Associates an animation with an entry trigger that can be attached to an element.
+     * See `trigger()`
+     */
+    Trigger: 7,
+    /**
+     * Contains a re-usable animation.
+     * See `animation()`
+     */
+    Reference: 8,
+    /**
+     * Contains data to use in executing child animations returned by a query.
+     * See `animateChild()`
+     */
+    AnimateChild: 9,
+    /**
+     * Contains animation parameters for a re-usable animation.
+     * See `useAnimation()`
+     */
+    AnimateRef: 10,
+    /**
+     * Contains child-animation query data.
+     * See `query()`
+     */
+    Query: 11,
+    /**
+     * Contains data for staggering an animation sequence.
+     * See `stagger()`
+     */
+    Stagger: 12,
+};
+/**
+ * Specifies automatic styling.
+ *
+ * \@publicApi
+ * @type {?}
+ */
+const AUTO_STYLE = '*';
+/**
+ * Base for animation data structures.
+ *
+ * \@publicApi
+ * @record
+ */
+function AnimationMetadata() { }
+if (false) {}
+/**
+ * Contains an animation trigger. Instantiated and returned by the
+ * `trigger()` function.
+ *
+ * \@publicApi
+ * @record
+ */
+function AnimationTriggerMetadata() { }
+if (false) {}
+/**
+ * Encapsulates an animation state by associating a state name with a set of CSS styles.
+ * Instantiated and returned by the `state()` function.
+ *
+ * \@publicApi
+ * @record
+ */
+function AnimationStateMetadata() { }
+if (false) {}
+/**
+ * Encapsulates an animation transition. Instantiated and returned by the
+ * `transition()` function.
+ *
+ * \@publicApi
+ * @record
+ */
+function AnimationTransitionMetadata() { }
+if (false) {}
+/**
+ * Encapsulates a reusable animation, which is a collection of individual animation steps.
+ * Instantiated and returned by the `animation()` function, and
+ * passed to the `useAnimation()` function.
+ *
+ * \@publicApi
+ * @record
+ */
+function AnimationReferenceMetadata() { }
+if (false) {}
+/**
+ * Encapsulates an animation query. Instantiated and returned by
+ * the `query()` function.
+ *
+ * \@publicApi
+ * @record
+ */
+function AnimationQueryMetadata() { }
+if (false) {}
+/**
+ * Encapsulates a keyframes sequence. Instantiated and returned by
+ * the `keyframes()` function.
+ *
+ * \@publicApi
+ * @record
+ */
+function AnimationKeyframesSequenceMetadata() { }
+if (false) {}
+/**
+ * Encapsulates an animation style. Instantiated and returned by
+ * the `style()` function.
+ *
+ * \@publicApi
+ * @record
+ */
+function AnimationStyleMetadata() { }
+if (false) {}
+/**
+ * Encapsulates an animation step. Instantiated and returned by
+ * the `animate()` function.
+ *
+ * \@publicApi
+ * @record
+ */
+function AnimationAnimateMetadata() { }
+if (false) {}
+/**
+ * Encapsulates a child animation, that can be run explicitly when the parent is run.
+ * Instantiated and returned by the `animateChild` function.
+ *
+ * \@publicApi
+ * @record
+ */
+function AnimationAnimateChildMetadata() { }
+if (false) {}
+/**
+ * Encapsulates a reusable animation.
+ * Instantiated and returned by the `useAnimation()` function.
+ *
+ * \@publicApi
+ * @record
+ */
+function AnimationAnimateRefMetadata() { }
+if (false) {}
+/**
+ * Encapsulates an animation sequence.
+ * Instantiated and returned by the `sequence()` function.
+ *
+ * \@publicApi
+ * @record
+ */
+function AnimationSequenceMetadata() { }
+if (false) {}
+/**
+ * Encapsulates an animation group.
+ * Instantiated and returned by the `{\@link animations/group group()}` function.
+ *
+ * \@publicApi
+ * @record
+ */
+function AnimationGroupMetadata() { }
+if (false) {}
+/**
+ * Encapsulates parameters for staggering the start times of a set of animation steps.
+ * Instantiated and returned by the `stagger()` function.
+ *
+ * \@publicApi
+ *
+ * @record
+ */
+function AnimationStaggerMetadata() { }
+if (false) {}
+/**
+ * Creates a named animation trigger, containing a  list of `state()`
+ * and `transition()` entries to be evaluated when the expression
+ * bound to the trigger changes.
+ *
+ * \@usageNotes
+ * Define an animation trigger in the `animations` section of `\@Component` metadata.
+ * In the template, reference the trigger by name and bind it to a trigger expression that
+ * evaluates to a defined animation state, using the following format:
+ *
+ * `[\@triggerName]="expression"`
+ *
+ * Animation trigger bindings convert all values to strings, and then match the
+ * previous and current values against any linked transitions.
+ * Booleans can be specified as `1` or `true` and `0` or `false`.
+ *
+ * ### Usage Example
+ *
+ * The following example creates an animation trigger reference based on the provided
+ * name value.
+ * The provided animation value is expected to be an array consisting of state and
+ * transition declarations.
+ *
+ * ```typescript
+ * \@Component({
+ *   selector: "my-component",
+ *   templateUrl: "my-component-tpl.html",
+ *   animations: [
+ *     trigger("myAnimationTrigger", [
+ *       state(...),
+ *       state(...),
+ *       transition(...),
+ *       transition(...)
+ *     ])
+ *   ]
+ * })
+ * class MyComponent {
+ *   myStatusExp = "something";
+ * }
+ * ```
+ *
+ * The template associated with this component makes use of the defined trigger
+ * by binding to an element within its template code.
+ *
+ * ```html
+ * <!-- somewhere inside of my-component-tpl.html -->
+ * <div [\@myAnimationTrigger]="myStatusExp">...</div>
+ * ```
+ *
+ * ### Using an inline function
+ * The `transition` animation method also supports reading an inline function which can decide
+ * if its associated animation should be run.
+ *
+ * ```typescript
+ * // this method is run each time the `myAnimationTrigger` trigger value changes.
+ * function myInlineMatcherFn(fromState: string, toState: string, element: any, params: {[key:
+ * string]: any}): boolean {
+ *   // notice that `element` and `params` are also available here
+ *   return toState == 'yes-please-animate';
+ * }
+ *  /
+ *   selector: 'my-component',
+ *   templateUrl: 'my-component-tpl.html',
+ *   animations: [
+ *     trigger('myAnimationTrigger', [
+ *       transition(myInlineMatcherFn, [
+ *         // the animation sequence code
+ *       ]),
+ *     ])
+ *   ]
+ * })
+ * class MyComponent {
+ *   myStatusExp = "yes-please-animate";
+ * }
+ * ```
+ *
+ * ### Disabling Animations
+ * When true, the special animation control binding `\@.disabled` binding prevents
+ * all animations from rendering.
+ * Place the  `\@.disabled` binding on an element to disable
+ * animations on the element itself, as well as any inner animation triggers
+ * within the element.
+ *
+ * The following example shows how to use this feature:
+ *
+ * ```typescript /
+ *   selector: 'my-component',
+ *   template: `
+ *     <div [\@.disabled]="isDisabled">
+ *       <div [\@childAnimation]="exp"></div>
+ *     </div>
+ *   `,
+ *   animations: [
+ *     trigger("childAnimation", [
+ *       // ...
+ *     ])
+ *   ]
+ * })
+ * class MyComponent {
+ *   isDisabled = true;
+ *   exp = '...';
+ * }
+ * ```
+ *
+ * When `\@.disabled` is true, it prevents the `\@childAnimation` trigger from animating,
+ * along with any inner animations.
+ *
+ * ### Disable animations application-wide
+ * When an area of the template is set to have animations disabled,
+ * **all** inner components have their animations disabled as well.
+ * This means that you can disable all animations for an app
+ * by placing a host binding set on `\@.disabled` on the topmost Angular component.
+ *
+ * ```typescript
+ * import {Component, HostBinding} from '\@angular/core';
+ *  /
+ *   selector: 'app-component',
+ *   templateUrl: 'app.component.html',
+ * })
+ * class AppComponent {
+ * \@HostBinding('@.disabled')
+ *   public animationsDisabled = true;
+ * }
+ * ```
+ *
+ * ### Overriding disablement of inner animations
+ * Despite inner animations being disabled, a parent animation can `query()`
+ * for inner elements located in disabled areas of the template and still animate
+ * them if needed. This is also the case for when a sub animation is
+ * queried by a parent and then later animated using `animateChild()`.
+ *
+ * ### Detecting when an animation is disabled
+ * If a region of the DOM (or the entire application) has its animations disabled, the animation
+ * trigger callbacks still fire, but for zero seconds. When the callback fires, it provides
+ * an instance of an `AnimationEvent`. If animations are disabled,
+ * the `.disabled` flag on the event is true.
+ *
+ * \@publicApi
+ * @param {?} name An identifying string.
+ * @param {?} definitions  An animation definition object, containing an array of `state()`
+ * and `transition()` declarations.
+ *
+ * @return {?} An object that encapsulates the trigger data.
+ *
+ */
+function trigger(name, definitions) {
+    return { type: 7 /* Trigger */, name, definitions, options: {} };
+}
+/**
+ * Defines an animation step that combines styling information with timing information.
+ *
+ * \@usageNotes
+ * Call within an animation `sequence()`, `{\@link animations/group group()}`, or
+ * `transition()` call to specify an animation step
+ * that applies given style data to the parent animation for a given amount of time.
+ *
+ * ### Syntax Examples
+ * **Timing examples**
+ *
+ * The following examples show various `timings` specifications.
+ * - `animate(500)` : Duration is 500 milliseconds.
+ * - `animate("1s")` : Duration is 1000 milliseconds.
+ * - `animate("100ms 0.5s")` : Duration is 100 milliseconds, delay is 500 milliseconds.
+ * - `animate("5s ease-in")` : Duration is 5000 milliseconds, easing in.
+ * - `animate("5s 10ms cubic-bezier(.17,.67,.88,.1)")` : Duration is 5000 milliseconds, delay is 10
+ * milliseconds, easing according to a bezier curve.
+ *
+ * **Style examples**
+ *
+ * The following example calls `style()` to set a single CSS style.
+ * ```typescript
+ * animate(500, style({ background: "red" }))
+ * ```
+ * The following example calls `keyframes()` to set a CSS style
+ * to different values for successive keyframes.
+ * ```typescript
+ * animate(500, keyframes(
+ *  [
+ *   style({ background: "blue" })),
+ *   style({ background: "red" }))
+ *  ])
+ * ```
+ *
+ * \@publicApi
+ * @param {?} timings Sets `AnimateTimings` for the parent animation.
+ * A string in the format "duration [delay] [easing]".
+ *  - Duration and delay are expressed as a number and optional time unit,
+ * such as "1s" or "10ms" for one second and 10 milliseconds, respectively.
+ * The default unit is milliseconds.
+ *  - The easing value controls how the animation accelerates and decelerates
+ * during its runtime. Value is one of  `ease`, `ease-in`, `ease-out`,
+ * `ease-in-out`, or a `cubic-bezier()` function call.
+ * If not supplied, no easing is applied.
+ *
+ * For example, the string "1s 100ms ease-out" specifies a duration of
+ * 1000 milliseconds, and delay of 100 ms, and the "ease-out" easing style,
+ * which decelerates near the end of the duration.
+ * @param {?=} styles Sets AnimationStyles for the parent animation.
+ * A function call to either `style()` or `keyframes()`
+ * that returns a collection of CSS style entries to be applied to the parent animation.
+ * When null, uses the styles from the destination state.
+ * This is useful when describing an animation step that will complete an animation;
+ * see "Animating to the final state" in `transitions()`.
+ * @return {?} An object that encapsulates the animation step.
+ *
+ */
+function animate(timings, styles = null) {
+    return { type: 4 /* Animate */, styles, timings };
+}
+/**
+ * \@description Defines a list of animation steps to be run in parallel.
+ *
+ * \@usageNotes
+ * Grouped animations are useful when a series of styles must be
+ * animated at different starting times and closed off at different ending times.
+ *
+ * When called within a `sequence()` or a
+ * `transition()` call, does not continue to the next
+ * instruction until all of the inner animation steps have completed.
+ *
+ * \@publicApi
+ * @param {?} steps An array of animation step objects.
+ * - When steps are defined by `style()` or `animate()`
+ * function calls, each call within the group is executed instantly.
+ * - To specify offset styles to be applied at a later time, define steps with
+ * `keyframes()`, or use `animate()` calls with a delay value.
+ * For example:
+ *
+ * ```typescript
+ * group([
+ *   animate("1s", style({ background: "black" })),
+ *   animate("2s", style({ color: "white" }))
+ * ])
+ * ```
+ *
+ * @param {?=} options An options object containing a delay and
+ * developer-defined parameters that provide styling defaults and
+ * can be overridden on invocation.
+ *
+ * @return {?} An object that encapsulates the group data.
+ *
+ */
+function group(steps, options = null) {
+    return { type: 3 /* Group */, steps, options };
+}
+/**
+ * Defines a list of animation steps to be run sequentially, one by one.
+ *
+ * \@usageNotes
+ * When you pass an array of steps to a
+ * `transition()` call, the steps run sequentially by default.
+ * Compare this to the `{\@link animations/group group()}` call, which runs animation steps in parallel.
+ *
+ * When a sequence is used within a `{\@link animations/group group()}` or a `transition()` call,
+ * execution continues to the next instruction only after each of the inner animation
+ * steps have completed.
+ *
+ * \@publicApi
+ *
+ * @param {?} steps An array of animation step objects.
+ * - Steps defined by `style()` calls apply the styling data immediately.
+ * - Steps defined by `animate()` calls apply the styling data over time
+ *   as specified by the timing data.
+ *
+ * ```typescript
+ * sequence([
+ *   style({ opacity: 0 }),
+ *   animate("1s", style({ opacity: 1 }))
+ * ])
+ * ```
+ *
+ * @param {?=} options An options object containing a delay and
+ * developer-defined parameters that provide styling defaults and
+ * can be overridden on invocation.
+ *
+ * @return {?} An object that encapsulates the sequence data.
+ *
+ */
+function sequence(steps, options = null) {
+    return { type: 2 /* Sequence */, steps, options };
+}
+/**
+ * Declares a key/value object containing CSS properties/styles that
+ * can then be used for an animation `state`, within an animation `sequence`,
+ * or as styling data for calls to `animate()` and `keyframes()`.
+ *
+ * \@usageNotes
+ * The following examples create animation styles that collect a set of
+ * CSS property values:
+ *
+ * ```typescript
+ * // string values for CSS properties
+ * style({ background: "red", color: "blue" })
+ *
+ * // numerical pixel values
+ * style({ width: 100, height: 0 })
+ * ```
+ *
+ * The following example uses auto-styling to allow a component to animate from
+ * a height of 0 up to the height of the parent element:
+ *
+ * ```
+ * style({ height: 0 }),
+ * animate("1s", style({ height: "*" }))
+ * ```
+ *
+ * \@publicApi
+ *
+ * @param {?} tokens A set of CSS styles or HTML styles associated with an animation state.
+ * The value can be any of the following:
+ * - A key-value style pair associating a CSS property with a value.
+ * - An array of key-value style pairs.
+ * - An asterisk (*), to use auto-styling, where styles are derived from the element
+ * being animated and applied to the animation when it starts.
+ *
+ * Auto-styling can be used to define a state that depends on layout or other
+ * environmental factors.
+ *
+ * @return {?} An object that encapsulates the style data.
+ *
+ */
+function style(tokens) {
+    return { type: 6 /* Style */, styles: tokens, offset: null };
+}
+/**
+ * Declares an animation state within a trigger attached to an element.
+ *
+ * \@usageNotes
+ * Use the `trigger()` function to register states to an animation trigger.
+ * Use the `transition()` function to animate between states.
+ * When a state is active within a component, its associated styles persist on the element,
+ * even when the animation ends.
+ *
+ * \@publicApi
+ *
+ * @param {?} name One or more names for the defined state in a comma-separated string.
+ * The following reserved state names can be supplied to define a style for specific use
+ * cases:
+ *
+ * - `void` You can associate styles with this name to be used when
+ * the element is detached from the application. For example, when an `ngIf` evaluates
+ * to false, the state of the associated element is void.
+ *  - `*` (asterisk) Indicates the default state. You can associate styles with this name
+ * to be used as the fallback when the state that is being animated is not declared
+ * within the trigger.
+ *
+ * @param {?} styles A set of CSS styles associated with this state, created using the
+ * `style()` function.
+ * This set of styles persists on the element once the state has been reached.
+ * @param {?=} options Parameters that can be passed to the state when it is invoked.
+ * 0 or more key-value pairs.
+ * @return {?} An object that encapsulates the new state data.
+ *
+ */
+function state(name, styles, options) {
+    return { type: 0 /* State */, name, styles, options };
+}
+/**
+ * Defines a set of animation styles, associating each style with an optional `offset` value.
+ *
+ * \@usageNotes
+ * Use with the `animate()` call. Instead of applying animations
+ * from the current state
+ * to the destination state, keyframes describe how each style entry is applied and at what point
+ * within the animation arc.
+ * Compare [CSS Keyframe Animations](https://www.w3schools.com/css/css3_animations.asp).
+ *
+ * ### Usage
+ *
+ * In the following example, the offset values describe
+ * when each `backgroundColor` value is applied. The color is red at the start, and changes to
+ * blue when 20% of the total time has elapsed.
+ *
+ * ```typescript
+ * // the provided offset values
+ * animate("5s", keyframes([
+ *   style({ backgroundColor: "red", offset: 0 }),
+ *   style({ backgroundColor: "blue", offset: 0.2 }),
+ *   style({ backgroundColor: "orange", offset: 0.3 }),
+ *   style({ backgroundColor: "black", offset: 1 })
+ * ]))
+ * ```
+ *
+ * If there are no `offset` values specified in the style entries, the offsets
+ * are calculated automatically.
+ *
+ * ```typescript
+ * animate("5s", keyframes([
+ *   style({ backgroundColor: "red" }) // offset = 0
+ *   style({ backgroundColor: "blue" }) // offset = 0.33
+ *   style({ backgroundColor: "orange" }) // offset = 0.66
+ *   style({ backgroundColor: "black" }) // offset = 1
+ * ]))
+ * ```
+ * \@publicApi
+ * @param {?} steps A set of animation styles with optional offset data.
+ * The optional `offset` value for a style specifies a percentage of the total animation
+ * time at which that style is applied.
+ * @return {?} An object that encapsulates the keyframes data.
+ *
+ */
+function keyframes(steps) {
+    return { type: 5 /* Keyframes */, steps };
+}
+/**
+ * Declares an animation transition as a sequence of animation steps to run when a given
+ * condition is satisfied. The condition is a Boolean expression or function that compares
+ * the previous and current animation states, and returns true if this transition should occur.
+ * When the state criteria of a defined transition are met, the associated animation is
+ * triggered.
+ *
+ * \@usageNotes
+ * The template associated with a component binds an animation trigger to an element.
+ *
+ * ```HTML
+ * <!-- somewhere inside of my-component-tpl.html -->
+ * <div [\@myAnimationTrigger]="myStatusExp">...</div>
+ * ```
+ *
+ * All transitions are defined within an animation trigger,
+ * along with named states that the transitions change to and from.
+ *
+ * ```typescript
+ * trigger("myAnimationTrigger", [
+ *  // define states
+ *  state("on", style({ background: "green" })),
+ *  state("off", style({ background: "grey" })),
+ *  ...]
+ * ```
+ *
+ * Note that when you call the `sequence()` function within a `{\@link animations/group group()}`
+ * or a `transition()` call, execution does not continue to the next instruction
+ * until each of the inner animation steps have completed.
+ *
+ * ### Syntax examples
+ *
+ * The following examples define transitions between the two defined states (and default states),
+ * using various options:
+ *
+ * ```typescript
+ * // Transition occurs when the state value
+ * // bound to "myAnimationTrigger" changes from "on" to "off"
+ * transition("on => off", animate(500))
+ * // Run the same animation for both directions
+ * transition("on <=> off", animate(500))
+ * // Define multiple state-change pairs separated by commas
+ * transition("on => off, off => void", animate(500))
+ * ```
+ *
+ * ### Special values for state-change expressions
+ *
+ * - Catch-all state change for when an element is inserted into the page and the
+ * destination state is unknown:
+ *
+ * ```typescript
+ * transition("void => *", [
+ *  style({ opacity: 0 }),
+ *  animate(500)
+ *  ])
+ * ```
+ *
+ * - Capture a state change between any states:
+ *
+ *  `transition("* => *", animate("1s 0s"))`
+ *
+ * - Entry and exit transitions:
+ *
+ * ```typescript
+ * transition(":enter", [
+ *   style({ opacity: 0 }),
+ *   animate(500, style({ opacity: 1 }))
+ *   ]),
+ * transition(":leave", [
+ *   animate(500, style({ opacity: 0 }))
+ *   ])
+ * ```
+ *
+ * - Use `:increment` and `:decrement` to initiate transitions:
+ *
+ * ```typescript
+ * transition(":increment", group([
+ *  query(':enter', [
+ *     style({ left: '100%' }),
+ *     animate('0.5s ease-out', style('*'))
+ *   ]),
+ *  query(':leave', [
+ *     animate('0.5s ease-out', style({ left: '-100%' }))
+ *  ])
+ * ]))
+ *
+ * transition(":decrement", group([
+ *  query(':enter', [
+ *     style({ left: '100%' }),
+ *     animate('0.5s ease-out', style('*'))
+ *   ]),
+ *  query(':leave', [
+ *     animate('0.5s ease-out', style({ left: '-100%' }))
+ *  ])
+ * ]))
+ * ```
+ *
+ * ### State-change functions
+ *
+ * Here is an example of a `fromState` specified as a state-change function that invokes an
+ * animation when true:
+ *
+ * ```typescript
+ * transition((fromState, toState) =>
+ *  {
+ *   return fromState == "off" && toState == "on";
+ *  },
+ *  animate("1s 0s"))
+ * ```
+ *
+ * ### Animating to the final state
+ *
+ * If the final step in a transition is a call to `animate()` that uses a timing value
+ * with no style data, that step is automatically considered the final animation arc,
+ * for the element to reach the final state. Angular automatically adds or removes
+ * CSS styles to ensure that the element is in the correct final state.
+ *
+ * The following example defines a transition that starts by hiding the element,
+ * then makes sure that it animates properly to whatever state is currently active for trigger:
+ *
+ * ```typescript
+ * transition("void => *", [
+ *   style({ opacity: 0 }),
+ *   animate(500)
+ *  ])
+ * ```
+ * ### Boolean value matching
+ * If a trigger binding value is a Boolean, it can be matched using a transition expression
+ * that compares true and false or 1 and 0. For example:
+ *
+ * ```
+ * // in the template
+ * <div [\@openClose]="open ? true : false">...</div>
+ * // in the component metadata
+ * trigger('openClose', [
+ *   state('true', style({ height: '*' })),
+ *   state('false', style({ height: '0px' })),
+ *   transition('false <=> true', animate(500))
+ * ])
+ * ```
+ *
+ * \@publicApi
+ *
+ * @param {?} stateChangeExpr A Boolean expression or function that compares the previous and current
+ * animation states, and returns true if this transition should occur. Note that  "true" and "false"
+ * match 1 and 0, respectively. An expression is evaluated each time a state change occurs in the
+ * animation trigger element.
+ * The animation steps run when the expression evaluates to true.
+ *
+ * - A state-change string takes the form "state1 => state2", where each side is a defined animation
+ * state, or an asterix (*) to refer to a dynamic start or end state.
+ *   - The expression string can contain multiple comma-separated statements;
+ * for example "state1 => state2, state3 => state4".
+ *   - Special values `:enter` and `:leave` initiate a transition on the entry and exit states,
+ * equivalent to  "void => *"  and "* => void".
+ *   - Special values `:increment` and `:decrement` initiate a transition when a numeric value has
+ * increased or decreased in value.
+ * - A function is executed each time a state change occurs in the animation trigger element.
+ * The animation steps run when the function returns true.
+ *
+ * @param {?} steps One or more animation objects, as returned by the `animate()` or
+ * `sequence()` function, that form a transformation from one state to another.
+ * A sequence is used by default when you pass an array.
+ * @param {?=} options An options object that can contain a delay value for the start of the animation,
+ * and additional developer-defined parameters. Provided values for additional parameters are used
+ * as defaults, and override values can be passed to the caller on invocation.
+ * @return {?} An object that encapsulates the transition data.
+ *
+ */
+function transition(stateChangeExpr, steps, options = null) {
+    return { type: 1 /* Transition */, expr: stateChangeExpr, animation: steps, options };
+}
+/**
+ * Produces a reusable animation that can be invoked in another animation or sequence,
+ * by calling the `useAnimation()` function.
+ *
+ * \@usageNotes
+ * The following example defines a reusable animation, providing some default parameter
+ * values.
+ *
+ * ```typescript
+ * var fadeAnimation = animation([
+ *   style({ opacity: '{{ start }}' }),
+ *   animate('{{ time }}',
+ *   style({ opacity: '{{ end }}'}))
+ *   ],
+ *   { params: { time: '1000ms', start: 0, end: 1 }});
+ * ```
+ *
+ * The following invokes the defined animation with a call to `useAnimation()`,
+ * passing in override parameter values.
+ *
+ * ```js
+ * useAnimation(fadeAnimation, {
+ *   params: {
+ *     time: '2s',
+ *     start: 1,
+ *     end: 0
+ *   }
+ * })
+ * ```
+ *
+ * If any of the passed-in parameter values are missing from this call,
+ * the default values are used. If one or more parameter values are missing before a step is
+ * animated, `useAnimation()` throws an error.
+ *
+ * \@publicApi
+ * @param {?} steps One or more animation objects, as returned by the `animate()`
+ * or `sequence()` function, that form a transformation from one state to another.
+ * A sequence is used by default when you pass an array.
+ * @param {?=} options An options object that can contain a delay value for the start of the
+ * animation, and additional developer-defined parameters.
+ * Provided values for additional parameters are used as defaults,
+ * and override values can be passed to the caller on invocation.
+ * @return {?} An object that encapsulates the animation data.
+ *
+ */
+function animation(steps, options = null) {
+    return { type: 8 /* Reference */, animation: steps, options };
+}
+/**
+ * Executes a queried inner animation element within an animation sequence.
+ *
+ * \@usageNotes
+ * Each time an animation is triggered in Angular, the parent animation
+ * has priority and any child animations are blocked. In order
+ * for a child animation to run, the parent animation must query each of the elements
+ * containing child animations, and run them using this function.
+ *
+ * Note that this feature is designed to be used with `query()` and it will only work
+ * with animations that are assigned using the Angular animation library. CSS keyframes
+ * and transitions are not handled by this API.
+ *
+ * \@publicApi
+ * @param {?=} options An options object that can contain a delay value for the start of the
+ * animation, and additional override values for developer-defined parameters.
+ * @return {?} An object that encapsulates the child animation data.
+ *
+ */
+function animateChild(options = null) {
+    return { type: 9 /* AnimateChild */, options };
+}
+/**
+ * Starts a reusable animation that is created using the `animation()` function.
+ *
+ * \@publicApi
+ * @param {?} animation The reusable animation to start.
+ * @param {?=} options An options object that can contain a delay value for the start of
+ * the animation, and additional override values for developer-defined parameters.
+ * @return {?} An object that contains the animation parameters.
+ *
+ */
+function useAnimation(animation, options = null) {
+    return { type: 10 /* AnimateRef */, animation, options };
+}
+/**
+ * Finds one or more inner elements within the current element that is
+ * being animated within a sequence. Use with `animate()`.
+ *
+ * \@usageNotes
+ * Tokens can be merged into a combined query selector string. For example:
+ *
+ * ```typescript
+ *  query(':self, .record:enter, .record:leave, \@subTrigger', [...])
+ * ```
+ *
+ * The `query()` function collects multiple elements and works internally by using
+ * `element.querySelectorAll`. Use the `limit` field of an options object to limit
+ * the total number of items to be collected. For example:
+ *
+ * ```js
+ * query('div', [
+ *   animate(...),
+ *   animate(...)
+ * ], { limit: 1 })
+ * ```
+ *
+ * By default, throws an error when zero items are found. Set the
+ * `optional` flag to ignore this error. For example:
+ *
+ * ```js
+ * query('.some-element-that-may-not-be-there', [
+ *   animate(...),
+ *   animate(...)
+ * ], { optional: true })
+ * ```
+ *
+ * ### Usage Example
+ *
+ * The following example queries for inner elements and animates them
+ * individually using `animate()`.
+ *
+ * ```typescript
+ * \@Component({
+ *   selector: 'inner',
+ *   template: `
+ *     <div [\@queryAnimation]="exp">
+ *       <h1>Title</h1>
+ *       <div class="content">
+ *         Blah blah blah
+ *       </div>
+ *     </div>
+ *   `,
+ *   animations: [
+ *    trigger('queryAnimation', [
+ *      transition('* => goAnimate', [
+ *        // hide the inner elements
+ *        query('h1', style({ opacity: 0 })),
+ *        query('.content', style({ opacity: 0 })),
+ *
+ *        // animate the inner elements in, one by one
+ *        query('h1', animate(1000, style({ opacity: 1 }))),
+ *        query('.content', animate(1000, style({ opacity: 1 }))),
+ *      ])
+ *    ])
+ *  ]
+ * })
+ * class Cmp {
+ *   exp = '';
+ *
+ *   goAnimate() {
+ *     this.exp = 'goAnimate';
+ *   }
+ * }
+ * ```
+ *
+ * \@publicApi
+ * @param {?} selector The element to query, or a set of elements that contain Angular-specific
+ * characteristics, specified with one or more of the following tokens.
+ *  - `query(":enter")` or `query(":leave")` : Query for newly inserted/removed elements.
+ *  - `query(":animating")` : Query all currently animating elements.
+ *  - `query("\@triggerName")` : Query elements that contain an animation trigger.
+ *  - `query("\@*")` : Query all elements that contain an animation triggers.
+ *  - `query(":self")` : Include the current element into the animation sequence.
+ *
+ * @param {?} animation One or more animation steps to apply to the queried element or elements.
+ * An array is treated as an animation sequence.
+ * @param {?=} options An options object. Use the 'limit' field to limit the total number of
+ * items to collect.
+ * @return {?} An object that encapsulates the query data.
+ *
+ */
+function query(selector, animation, options = null) {
+    return { type: 11 /* Query */, selector, animation, options };
+}
+/**
+ * Use within an animation `query()` call to issue a timing gap after
+ * each queried item is animated.
+ *
+ * \@usageNotes
+ * In the following example, a container element wraps a list of items stamped out
+ * by an `ngFor`. The container element contains an animation trigger that will later be set
+ * to query for each of the inner items.
+ *
+ * Each time items are added, the opacity fade-in animation runs,
+ * and each removed item is faded out.
+ * When either of these animations occur, the stagger effect is
+ * applied after each item's animation is started.
+ *
+ * ```html
+ * <!-- list.component.html -->
+ * <button (click)="toggle()">Show / Hide Items</button>
+ * <hr />
+ * <div [\@listAnimation]="items.length">
+ *   <div *ngFor="let item of items">
+ *     {{ item }}
+ *   </div>
+ * </div>
+ * ```
+ *
+ * Here is the component code:
+ *
+ * ```typescript
+ * import {trigger, transition, style, animate, query, stagger} from '\@angular/animations';
+ * \@Component({
+ *   templateUrl: 'list.component.html',
+ *   animations: [
+ *     trigger('listAnimation', [
+ *     ...
+ *     ])
+ *   ]
+ * })
+ * class ListComponent {
+ *   items = [];
+ *
+ *   showItems() {
+ *     this.items = [0,1,2,3,4];
+ *   }
+ *
+ *   hideItems() {
+ *     this.items = [];
+ *   }
+ *
+ *   toggle() {
+ *     this.items.length ? this.hideItems() : this.showItems();
+ *    }
+ *  }
+ * ```
+ *
+ * Here is the animation trigger code:
+ *
+ * ```typescript
+ * trigger('listAnimation', [
+ *   transition('* => *', [ // each time the binding value changes
+ *     query(':leave', [
+ *       stagger(100, [
+ *         animate('0.5s', style({ opacity: 0 }))
+ *       ])
+ *     ]),
+ *     query(':enter', [
+ *       style({ opacity: 0 }),
+ *       stagger(100, [
+ *         animate('0.5s', style({ opacity: 1 }))
+ *       ])
+ *     ])
+ *   ])
+ * ])
+ * ```
+ *
+ * \@publicApi
+ * @param {?} timings A delay value.
+ * @param {?} animation One ore more animation steps.
+ * @return {?} An object that encapsulates the stagger data.
+ *
+ */
+function stagger(timings, animation) {
+    return { type: 12 /* Stagger */, timings, animation };
+}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/src/util.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ * @param {?} cb
+ * @return {?}
+ */
+function scheduleMicroTask(cb) {
+    Promise.resolve(null).then(cb);
+}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/src/players/animation_player.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * Provides programmatic control of a reusable animation sequence,
+ * built using the `build()` method of `AnimationBuilder`. The `build()` method
+ * returns a factory, whose `create()` method instantiates and initializes this interface.
+ *
+ * @see `AnimationBuilder`
+ * @see `AnimationFactory`
+ * @see `animate()`
+ *
+ * \@publicApi
+ * @record
+ */
+function AnimationPlayer() { }
+if (false) {}
+/**
+ * An empty programmatic controller for reusable animations.
+ * Used internally when animations are disabled, to avoid
+ * checking for the null case when an animation player is expected.
+ *
+ * @see `animate()`
+ * @see `AnimationPlayer`
+ * @see `GroupPlayer`
+ *
+ * \@publicApi
+ */
+class NoopAnimationPlayer {
+    /**
+     * @param {?=} duration
+     * @param {?=} delay
+     */
+    constructor(duration = 0, delay = 0) {
+        this._onDoneFns = [];
+        this._onStartFns = [];
+        this._onDestroyFns = [];
+        this._started = false;
+        this._destroyed = false;
+        this._finished = false;
+        this.parentPlayer = null;
+        this.totalTime = duration + delay;
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    _onFinish() {
+        if (!this._finished) {
+            this._finished = true;
+            this._onDoneFns.forEach((/**
+             * @param {?} fn
+             * @return {?}
+             */
+            fn => fn()));
+            this._onDoneFns = [];
+        }
+    }
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    onStart(fn) { this._onStartFns.push(fn); }
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    onDone(fn) { this._onDoneFns.push(fn); }
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    onDestroy(fn) { this._onDestroyFns.push(fn); }
+    /**
+     * @return {?}
+     */
+    hasStarted() { return this._started; }
+    /**
+     * @return {?}
+     */
+    init() { }
+    /**
+     * @return {?}
+     */
+    play() {
+        if (!this.hasStarted()) {
+            this._onStart();
+            this.triggerMicrotask();
+        }
+        this._started = true;
+    }
+    /**
+     * \@internal
+     * @return {?}
+     */
+    triggerMicrotask() { scheduleMicroTask((/**
+     * @return {?}
+     */
+    () => this._onFinish())); }
+    /**
+     * @private
+     * @return {?}
+     */
+    _onStart() {
+        this._onStartFns.forEach((/**
+         * @param {?} fn
+         * @return {?}
+         */
+        fn => fn()));
+        this._onStartFns = [];
+    }
+    /**
+     * @return {?}
+     */
+    pause() { }
+    /**
+     * @return {?}
+     */
+    restart() { }
+    /**
+     * @return {?}
+     */
+    finish() { this._onFinish(); }
+    /**
+     * @return {?}
+     */
+    destroy() {
+        if (!this._destroyed) {
+            this._destroyed = true;
+            if (!this.hasStarted()) {
+                this._onStart();
+            }
+            this.finish();
+            this._onDestroyFns.forEach((/**
+             * @param {?} fn
+             * @return {?}
+             */
+            fn => fn()));
+            this._onDestroyFns = [];
+        }
+    }
+    /**
+     * @return {?}
+     */
+    reset() { }
+    /**
+     * @param {?} position
+     * @return {?}
+     */
+    setPosition(position) { }
+    /**
+     * @return {?}
+     */
+    getPosition() { return 0; }
+    /**
+     * \@internal
+     * @param {?} phaseName
+     * @return {?}
+     */
+    triggerCallback(phaseName) {
+        /** @type {?} */
+        const methods = phaseName == 'start' ? this._onStartFns : this._onDoneFns;
+        methods.forEach((/**
+         * @param {?} fn
+         * @return {?}
+         */
+        fn => fn()));
+        methods.length = 0;
+    }
+}
+if (false) {}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/src/players/animation_group_player.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * A programmatic controller for a group of reusable animations.
+ * Used internally to control animations.
+ *
+ * @see `AnimationPlayer`
+ * @see `{\@link animations/group group()}`
+ *
+ */
+class AnimationGroupPlayer {
+    /**
+     * @param {?} _players
+     */
+    constructor(_players) {
+        this._onDoneFns = [];
+        this._onStartFns = [];
+        this._finished = false;
+        this._started = false;
+        this._destroyed = false;
+        this._onDestroyFns = [];
+        this.parentPlayer = null;
+        this.totalTime = 0;
+        this.players = _players;
+        /** @type {?} */
+        let doneCount = 0;
+        /** @type {?} */
+        let destroyCount = 0;
+        /** @type {?} */
+        let startCount = 0;
+        /** @type {?} */
+        const total = this.players.length;
+        if (total == 0) {
+            scheduleMicroTask((/**
+             * @return {?}
+             */
+            () => this._onFinish()));
+        }
+        else {
+            this.players.forEach((/**
+             * @param {?} player
+             * @return {?}
+             */
+            player => {
+                player.onDone((/**
+                 * @return {?}
+                 */
+                () => {
+                    if (++doneCount == total) {
+                        this._onFinish();
+                    }
+                }));
+                player.onDestroy((/**
+                 * @return {?}
+                 */
+                () => {
+                    if (++destroyCount == total) {
+                        this._onDestroy();
+                    }
+                }));
+                player.onStart((/**
+                 * @return {?}
+                 */
+                () => {
+                    if (++startCount == total) {
+                        this._onStart();
+                    }
+                }));
+            }));
+        }
+        this.totalTime = this.players.reduce((/**
+         * @param {?} time
+         * @param {?} player
+         * @return {?}
+         */
+        (time, player) => Math.max(time, player.totalTime)), 0);
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    _onFinish() {
+        if (!this._finished) {
+            this._finished = true;
+            this._onDoneFns.forEach((/**
+             * @param {?} fn
+             * @return {?}
+             */
+            fn => fn()));
+            this._onDoneFns = [];
+        }
+    }
+    /**
+     * @return {?}
+     */
+    init() { this.players.forEach((/**
+     * @param {?} player
+     * @return {?}
+     */
+    player => player.init())); }
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    onStart(fn) { this._onStartFns.push(fn); }
+    /**
+     * @private
+     * @return {?}
+     */
+    _onStart() {
+        if (!this.hasStarted()) {
+            this._started = true;
+            this._onStartFns.forEach((/**
+             * @param {?} fn
+             * @return {?}
+             */
+            fn => fn()));
+            this._onStartFns = [];
+        }
+    }
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    onDone(fn) { this._onDoneFns.push(fn); }
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    onDestroy(fn) { this._onDestroyFns.push(fn); }
+    /**
+     * @return {?}
+     */
+    hasStarted() { return this._started; }
+    /**
+     * @return {?}
+     */
+    play() {
+        if (!this.parentPlayer) {
+            this.init();
+        }
+        this._onStart();
+        this.players.forEach((/**
+         * @param {?} player
+         * @return {?}
+         */
+        player => player.play()));
+    }
+    /**
+     * @return {?}
+     */
+    pause() { this.players.forEach((/**
+     * @param {?} player
+     * @return {?}
+     */
+    player => player.pause())); }
+    /**
+     * @return {?}
+     */
+    restart() { this.players.forEach((/**
+     * @param {?} player
+     * @return {?}
+     */
+    player => player.restart())); }
+    /**
+     * @return {?}
+     */
+    finish() {
+        this._onFinish();
+        this.players.forEach((/**
+         * @param {?} player
+         * @return {?}
+         */
+        player => player.finish()));
+    }
+    /**
+     * @return {?}
+     */
+    destroy() { this._onDestroy(); }
+    /**
+     * @private
+     * @return {?}
+     */
+    _onDestroy() {
+        if (!this._destroyed) {
+            this._destroyed = true;
+            this._onFinish();
+            this.players.forEach((/**
+             * @param {?} player
+             * @return {?}
+             */
+            player => player.destroy()));
+            this._onDestroyFns.forEach((/**
+             * @param {?} fn
+             * @return {?}
+             */
+            fn => fn()));
+            this._onDestroyFns = [];
+        }
+    }
+    /**
+     * @return {?}
+     */
+    reset() {
+        this.players.forEach((/**
+         * @param {?} player
+         * @return {?}
+         */
+        player => player.reset()));
+        this._destroyed = false;
+        this._finished = false;
+        this._started = false;
+    }
+    /**
+     * @param {?} p
+     * @return {?}
+     */
+    setPosition(p) {
+        /** @type {?} */
+        const timeAtPosition = p * this.totalTime;
+        this.players.forEach((/**
+         * @param {?} player
+         * @return {?}
+         */
+        player => {
+            /** @type {?} */
+            const position = player.totalTime ? Math.min(1, timeAtPosition / player.totalTime) : 1;
+            player.setPosition(position);
+        }));
+    }
+    /**
+     * @return {?}
+     */
+    getPosition() {
+        /** @type {?} */
+        let min = 0;
+        this.players.forEach((/**
+         * @param {?} player
+         * @return {?}
+         */
+        player => {
+            /** @type {?} */
+            const p = player.getPosition();
+            min = Math.min(p, min);
+        }));
+        return min;
+    }
+    /**
+     * @return {?}
+     */
+    beforeDestroy() {
+        this.players.forEach((/**
+         * @param {?} player
+         * @return {?}
+         */
+        player => {
+            if (player.beforeDestroy) {
+                player.beforeDestroy();
+            }
+        }));
+    }
+    /**
+     * \@internal
+     * @param {?} phaseName
+     * @return {?}
+     */
+    triggerCallback(phaseName) {
+        /** @type {?} */
+        const methods = phaseName == 'start' ? this._onStartFns : this._onDoneFns;
+        methods.forEach((/**
+         * @param {?} fn
+         * @return {?}
+         */
+        fn => fn()));
+        methods.length = 0;
+    }
+}
+if (false) {}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/src/private_export.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/** @type {?} */
+const ɵPRE_STYLE = '!';
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/src/animations.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/public_api.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/index.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * Generated bundle index. Do not edit.
+ */
+
+
+
+//# sourceMappingURL=animations.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@angular/animations/__ivy_ngcc__/fesm2015/browser.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/@angular/animations/__ivy_ngcc__/fesm2015/browser.js ***!
+  \***************************************************************************/
+/*! exports provided: AnimationDriver, ɵAnimation, ɵAnimationEngine, ɵAnimationStyleNormalizer, ɵCssKeyframesDriver, ɵCssKeyframesPlayer, ɵNoopAnimationDriver, ɵNoopAnimationStyleNormalizer, ɵWebAnimationsDriver, ɵWebAnimationsPlayer, ɵWebAnimationsStyleNormalizer, ɵallowPreviousPlayerStylesMerge, ɵangular_packages_animations_browser_browser_a, ɵcontainsElement, ɵinvokeQuery, ɵmatchesElement, ɵsupportsWebAnimations, ɵvalidateStyleProperty */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AnimationDriver", function() { return AnimationDriver; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵAnimation", function() { return Animation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵAnimationEngine", function() { return AnimationEngine; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵAnimationStyleNormalizer", function() { return AnimationStyleNormalizer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵCssKeyframesDriver", function() { return CssKeyframesDriver; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵCssKeyframesPlayer", function() { return CssKeyframesPlayer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵNoopAnimationDriver", function() { return NoopAnimationDriver; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵNoopAnimationStyleNormalizer", function() { return NoopAnimationStyleNormalizer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵWebAnimationsDriver", function() { return WebAnimationsDriver; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵWebAnimationsPlayer", function() { return WebAnimationsPlayer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵWebAnimationsStyleNormalizer", function() { return WebAnimationsStyleNormalizer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵallowPreviousPlayerStylesMerge", function() { return allowPreviousPlayerStylesMerge; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_animations_browser_browser_a", function() { return SpecialCasedStyles; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵcontainsElement", function() { return containsElement; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵinvokeQuery", function() { return invokeQuery; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵmatchesElement", function() { return matchesElement; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵsupportsWebAnimations", function() { return supportsWebAnimations; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵvalidateStyleProperty", function() { return validateStyleProperty; });
+/* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/__ivy_ngcc__/fesm2015/animations.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/**
+ * @license Angular v9.0.7
+ * (c) 2010-2020 Google LLC. https://angular.io/
+ * License: MIT
+ */
+
+
+
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/browser/src/render/shared.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * @return {?}
+ */
+
+function isBrowser() {
+    return (typeof window !== 'undefined' && typeof window.document !== 'undefined');
+}
+/**
+ * @return {?}
+ */
+function isNode() {
+    // Checking only for `process` isn't enough to identify whether or not we're in a Node
+    // environment, because Webpack by default will polyfill the `process`. While we can discern
+    // that Webpack polyfilled it by looking at `process.browser`, it's very Webpack-specific and
+    // might not be future-proof. Instead we look at the stringified version of `process` which
+    // is `[object process]` in Node and `[object Object]` when polyfilled.
+    return typeof process !== 'undefined' && {}.toString.call(process) === '[object process]';
+}
+/**
+ * @param {?} players
+ * @return {?}
+ */
+function optimizeGroupPlayer(players) {
+    switch (players.length) {
+        case 0:
+            return new _angular_animations__WEBPACK_IMPORTED_MODULE_0__["NoopAnimationPlayer"]();
+        case 1:
+            return players[0];
+        default:
+            return new _angular_animations__WEBPACK_IMPORTED_MODULE_0__["ɵAnimationGroupPlayer"](players);
+    }
+}
+/**
+ * @param {?} driver
+ * @param {?} normalizer
+ * @param {?} element
+ * @param {?} keyframes
+ * @param {?=} preStyles
+ * @param {?=} postStyles
+ * @return {?}
+ */
+function normalizeKeyframes(driver, normalizer, element, keyframes, preStyles = {}, postStyles = {}) {
+    /** @type {?} */
+    const errors = [];
+    /** @type {?} */
+    const normalizedKeyframes = [];
+    /** @type {?} */
+    let previousOffset = -1;
+    /** @type {?} */
+    let previousKeyframe = null;
+    keyframes.forEach((/**
+     * @param {?} kf
+     * @return {?}
+     */
+    kf => {
+        /** @type {?} */
+        const offset = (/** @type {?} */ (kf['offset']));
+        /** @type {?} */
+        const isSameOffset = offset == previousOffset;
+        /** @type {?} */
+        const normalizedKeyframe = (isSameOffset && previousKeyframe) || {};
+        Object.keys(kf).forEach((/**
+         * @param {?} prop
+         * @return {?}
+         */
+        prop => {
+            /** @type {?} */
+            let normalizedProp = prop;
+            /** @type {?} */
+            let normalizedValue = kf[prop];
+            if (prop !== 'offset') {
+                normalizedProp = normalizer.normalizePropertyName(normalizedProp, errors);
+                switch (normalizedValue) {
+                    case _angular_animations__WEBPACK_IMPORTED_MODULE_0__["ɵPRE_STYLE"]:
+                        normalizedValue = preStyles[prop];
+                        break;
+                    case _angular_animations__WEBPACK_IMPORTED_MODULE_0__["AUTO_STYLE"]:
+                        normalizedValue = postStyles[prop];
+                        break;
+                    default:
+                        normalizedValue =
+                            normalizer.normalizeStyleValue(prop, normalizedProp, normalizedValue, errors);
+                        break;
+                }
+            }
+            normalizedKeyframe[normalizedProp] = normalizedValue;
+        }));
+        if (!isSameOffset) {
+            normalizedKeyframes.push(normalizedKeyframe);
+        }
+        previousKeyframe = normalizedKeyframe;
+        previousOffset = offset;
+    }));
+    if (errors.length) {
+        /** @type {?} */
+        const LINE_START = '\n - ';
+        throw new Error(`Unable to animate due to the following errors:${LINE_START}${errors.join(LINE_START)}`);
+    }
+    return normalizedKeyframes;
+}
+/**
+ * @param {?} player
+ * @param {?} eventName
+ * @param {?} event
+ * @param {?} callback
+ * @return {?}
+ */
+function listenOnPlayer(player, eventName, event, callback) {
+    switch (eventName) {
+        case 'start':
+            player.onStart((/**
+             * @return {?}
+             */
+            () => callback(event && copyAnimationEvent(event, 'start', player))));
+            break;
+        case 'done':
+            player.onDone((/**
+             * @return {?}
+             */
+            () => callback(event && copyAnimationEvent(event, 'done', player))));
+            break;
+        case 'destroy':
+            player.onDestroy((/**
+             * @return {?}
+             */
+            () => callback(event && copyAnimationEvent(event, 'destroy', player))));
+            break;
+    }
+}
+/**
+ * @param {?} e
+ * @param {?} phaseName
+ * @param {?} player
+ * @return {?}
+ */
+function copyAnimationEvent(e, phaseName, player) {
+    /** @type {?} */
+    const totalTime = player.totalTime;
+    /** @type {?} */
+    const disabled = ((/** @type {?} */ (player))).disabled ? true : false;
+    /** @type {?} */
+    const event = makeAnimationEvent(e.element, e.triggerName, e.fromState, e.toState, phaseName || e.phaseName, totalTime == undefined ? e.totalTime : totalTime, disabled);
+    /** @type {?} */
+    const data = ((/** @type {?} */ (e)))['_data'];
+    if (data != null) {
+        ((/** @type {?} */ (event)))['_data'] = data;
+    }
+    return event;
+}
+/**
+ * @param {?} element
+ * @param {?} triggerName
+ * @param {?} fromState
+ * @param {?} toState
+ * @param {?=} phaseName
+ * @param {?=} totalTime
+ * @param {?=} disabled
+ * @return {?}
+ */
+function makeAnimationEvent(element, triggerName, fromState, toState, phaseName = '', totalTime = 0, disabled) {
+    return { element, triggerName, fromState, toState, phaseName, totalTime, disabled: !!disabled };
+}
+/**
+ * @param {?} map
+ * @param {?} key
+ * @param {?} defaultValue
+ * @return {?}
+ */
+function getOrSetAsInMap(map, key, defaultValue) {
+    /** @type {?} */
+    let value;
+    if (map instanceof Map) {
+        value = map.get(key);
+        if (!value) {
+            map.set(key, value = defaultValue);
+        }
+    }
+    else {
+        value = map[key];
+        if (!value) {
+            value = map[key] = defaultValue;
+        }
+    }
+    return value;
+}
+/**
+ * @param {?} command
+ * @return {?}
+ */
+function parseTimelineCommand(command) {
+    /** @type {?} */
+    const separatorPos = command.indexOf(':');
+    /** @type {?} */
+    const id = command.substring(1, separatorPos);
+    /** @type {?} */
+    const action = command.substr(separatorPos + 1);
+    return [id, action];
+}
+/** @type {?} */
+let _contains = (/**
+ * @param {?} elm1
+ * @param {?} elm2
+ * @return {?}
+ */
+(elm1, elm2) => false);
+const ɵ0 = _contains;
+/** @type {?} */
+let _matches = (/**
+ * @param {?} element
+ * @param {?} selector
+ * @return {?}
+ */
+(element, selector) => false);
+const ɵ1 = _matches;
+/** @type {?} */
+let _query = (/**
+ * @param {?} element
+ * @param {?} selector
+ * @param {?} multi
+ * @return {?}
+ */
+(element, selector, multi) => {
+    return [];
+});
+const ɵ2 = _query;
+// Define utility methods for browsers and platform-server(domino) where Element
+// and utility methods exist.
+/** @type {?} */
+const _isNode = isNode();
+if (_isNode || typeof Element !== 'undefined') {
+    // this is well supported in all browsers
+    _contains = (/**
+     * @param {?} elm1
+     * @param {?} elm2
+     * @return {?}
+     */
+    (elm1, elm2) => { return (/** @type {?} */ (elm1.contains(elm2))); });
+    _matches = ((/**
+     * @return {?}
+     */
+    () => {
+        if (_isNode || Element.prototype.matches) {
+            return (/**
+             * @param {?} element
+             * @param {?} selector
+             * @return {?}
+             */
+            (element, selector) => element.matches(selector));
+        }
+        else {
+            /** @type {?} */
+            const proto = (/** @type {?} */ (Element.prototype));
+            /** @type {?} */
+            const fn = proto.matchesSelector || proto.mozMatchesSelector || proto.msMatchesSelector ||
+                proto.oMatchesSelector || proto.webkitMatchesSelector;
+            if (fn) {
+                return (/**
+                 * @param {?} element
+                 * @param {?} selector
+                 * @return {?}
+                 */
+                (element, selector) => fn.apply(element, [selector]));
+            }
+            else {
+                return _matches;
+            }
+        }
+    }))();
+    _query = (/**
+     * @param {?} element
+     * @param {?} selector
+     * @param {?} multi
+     * @return {?}
+     */
+    (element, selector, multi) => {
+        /** @type {?} */
+        let results = [];
+        if (multi) {
+            results.push(...element.querySelectorAll(selector));
+        }
+        else {
+            /** @type {?} */
+            const elm = element.querySelector(selector);
+            if (elm) {
+                results.push(elm);
+            }
+        }
+        return results;
+    });
+}
+/**
+ * @param {?} prop
+ * @return {?}
+ */
+function containsVendorPrefix(prop) {
+    // Webkit is the only real popular vendor prefix nowadays
+    // cc: http://shouldiprefix.com/
+    return prop.substring(1, 6) == 'ebkit'; // webkit or Webkit
+}
+/** @type {?} */
+let _CACHED_BODY = null;
+/** @type {?} */
+let _IS_WEBKIT = false;
+/**
+ * @param {?} prop
+ * @return {?}
+ */
+function validateStyleProperty(prop) {
+    if (!_CACHED_BODY) {
+        _CACHED_BODY = getBodyNode() || {};
+        _IS_WEBKIT = (/** @type {?} */ (_CACHED_BODY)).style ? ('WebkitAppearance' in (/** @type {?} */ (_CACHED_BODY)).style) : false;
+    }
+    /** @type {?} */
+    let result = true;
+    if ((/** @type {?} */ (_CACHED_BODY)).style && !containsVendorPrefix(prop)) {
+        result = prop in (/** @type {?} */ (_CACHED_BODY)).style;
+        if (!result && _IS_WEBKIT) {
+            /** @type {?} */
+            const camelProp = 'Webkit' + prop.charAt(0).toUpperCase() + prop.substr(1);
+            result = camelProp in (/** @type {?} */ (_CACHED_BODY)).style;
+        }
+    }
+    return result;
+}
+/**
+ * @return {?}
+ */
+function getBodyNode() {
+    if (typeof document != 'undefined') {
+        return document.body;
+    }
+    return null;
+}
+/** @type {?} */
+const matchesElement = _matches;
+/** @type {?} */
+const containsElement = _contains;
+/** @type {?} */
+const invokeQuery = _query;
+/**
+ * @param {?} object
+ * @return {?}
+ */
+function hypenatePropsObject(object) {
+    /** @type {?} */
+    const newObj = {};
+    Object.keys(object).forEach((/**
+     * @param {?} prop
+     * @return {?}
+     */
+    prop => {
+        /** @type {?} */
+        const newProp = prop.replace(/([a-z])([A-Z])/g, '$1-$2');
+        newObj[newProp] = object[prop];
+    }));
+    return newObj;
+}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/browser/src/render/animation_driver.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * \@publicApi
+ */
+class NoopAnimationDriver {
+    /**
+     * @param {?} prop
+     * @return {?}
+     */
+    validateStyleProperty(prop) { return validateStyleProperty(prop); }
+    /**
+     * @param {?} element
+     * @param {?} selector
+     * @return {?}
+     */
+    matchesElement(element, selector) {
+        return matchesElement(element, selector);
+    }
+    /**
+     * @param {?} elm1
+     * @param {?} elm2
+     * @return {?}
+     */
+    containsElement(elm1, elm2) { return containsElement(elm1, elm2); }
+    /**
+     * @param {?} element
+     * @param {?} selector
+     * @param {?} multi
+     * @return {?}
+     */
+    query(element, selector, multi) {
+        return invokeQuery(element, selector, multi);
+    }
+    /**
+     * @param {?} element
+     * @param {?} prop
+     * @param {?=} defaultValue
+     * @return {?}
+     */
+    computeStyle(element, prop, defaultValue) {
+        return defaultValue || '';
+    }
+    /**
+     * @param {?} element
+     * @param {?} keyframes
+     * @param {?} duration
+     * @param {?} delay
+     * @param {?} easing
+     * @param {?=} previousPlayers
+     * @param {?=} scrubberAccessRequested
+     * @return {?}
+     */
+    animate(element, keyframes, duration, delay, easing, previousPlayers = [], scrubberAccessRequested) {
+        return new _angular_animations__WEBPACK_IMPORTED_MODULE_0__["NoopAnimationPlayer"](duration, delay);
+    }
+}
+NoopAnimationDriver.ɵfac = function NoopAnimationDriver_Factory(t) { return new (t || NoopAnimationDriver)(); };
+NoopAnimationDriver.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({ token: NoopAnimationDriver, factory: NoopAnimationDriver.ɵfac });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](NoopAnimationDriver, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
+    }], null, null); })();
+/**
+ * \@publicApi
+ * @abstract
+ */
+class AnimationDriver {
+}
+AnimationDriver.NOOP = new NoopAnimationDriver();
+if (false) {}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/browser/src/util.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/** @type {?} */
+const ONE_SECOND = 1000;
+/** @type {?} */
+const SUBSTITUTION_EXPR_START = '{{';
+/** @type {?} */
+const SUBSTITUTION_EXPR_END = '}}';
+/** @type {?} */
+const ENTER_CLASSNAME = 'ng-enter';
+/** @type {?} */
+const LEAVE_CLASSNAME = 'ng-leave';
+/** @type {?} */
+const ENTER_SELECTOR = '.ng-enter';
+/** @type {?} */
+const LEAVE_SELECTOR = '.ng-leave';
+/** @type {?} */
+const NG_TRIGGER_CLASSNAME = 'ng-trigger';
+/** @type {?} */
+const NG_TRIGGER_SELECTOR = '.ng-trigger';
+/** @type {?} */
+const NG_ANIMATING_CLASSNAME = 'ng-animating';
+/** @type {?} */
+const NG_ANIMATING_SELECTOR = '.ng-animating';
+/**
+ * @param {?} value
+ * @return {?}
+ */
+function resolveTimingValue(value) {
+    if (typeof value == 'number')
+        return value;
+    /** @type {?} */
+    const matches = value.match(/^(-?[\.\d]+)(m?s)/);
+    if (!matches || matches.length < 2)
+        return 0;
+    return _convertTimeValueToMS(parseFloat(matches[1]), matches[2]);
+}
+/**
+ * @param {?} value
+ * @param {?} unit
+ * @return {?}
+ */
+function _convertTimeValueToMS(value, unit) {
+    switch (unit) {
+        case 's':
+            return value * ONE_SECOND;
+        default: // ms or something else
+            return value;
+    }
+}
+/**
+ * @param {?} timings
+ * @param {?} errors
+ * @param {?=} allowNegativeValues
+ * @return {?}
+ */
+function resolveTiming(timings, errors, allowNegativeValues) {
+    return timings.hasOwnProperty('duration') ?
+        (/** @type {?} */ (timings)) :
+        parseTimeExpression((/** @type {?} */ (timings)), errors, allowNegativeValues);
+}
+/**
+ * @param {?} exp
+ * @param {?} errors
+ * @param {?=} allowNegativeValues
+ * @return {?}
+ */
+function parseTimeExpression(exp, errors, allowNegativeValues) {
+    /** @type {?} */
+    const regex = /^(-?[\.\d]+)(m?s)(?:\s+(-?[\.\d]+)(m?s))?(?:\s+([-a-z]+(?:\(.+?\))?))?$/i;
+    /** @type {?} */
+    let duration;
+    /** @type {?} */
+    let delay = 0;
+    /** @type {?} */
+    let easing = '';
+    if (typeof exp === 'string') {
+        /** @type {?} */
+        const matches = exp.match(regex);
+        if (matches === null) {
+            errors.push(`The provided timing value "${exp}" is invalid.`);
+            return { duration: 0, delay: 0, easing: '' };
+        }
+        duration = _convertTimeValueToMS(parseFloat(matches[1]), matches[2]);
+        /** @type {?} */
+        const delayMatch = matches[3];
+        if (delayMatch != null) {
+            delay = _convertTimeValueToMS(parseFloat(delayMatch), matches[4]);
+        }
+        /** @type {?} */
+        const easingVal = matches[5];
+        if (easingVal) {
+            easing = easingVal;
+        }
+    }
+    else {
+        duration = exp;
+    }
+    if (!allowNegativeValues) {
+        /** @type {?} */
+        let containsErrors = false;
+        /** @type {?} */
+        let startIndex = errors.length;
+        if (duration < 0) {
+            errors.push(`Duration values below 0 are not allowed for this animation step.`);
+            containsErrors = true;
+        }
+        if (delay < 0) {
+            errors.push(`Delay values below 0 are not allowed for this animation step.`);
+            containsErrors = true;
+        }
+        if (containsErrors) {
+            errors.splice(startIndex, 0, `The provided timing value "${exp}" is invalid.`);
+        }
+    }
+    return { duration, delay, easing };
+}
+/**
+ * @param {?} obj
+ * @param {?=} destination
+ * @return {?}
+ */
+function copyObj(obj, destination = {}) {
+    Object.keys(obj).forEach((/**
+     * @param {?} prop
+     * @return {?}
+     */
+    prop => { destination[prop] = obj[prop]; }));
+    return destination;
+}
+/**
+ * @param {?} styles
+ * @return {?}
+ */
+function normalizeStyles(styles) {
+    /** @type {?} */
+    const normalizedStyles = {};
+    if (Array.isArray(styles)) {
+        styles.forEach((/**
+         * @param {?} data
+         * @return {?}
+         */
+        data => copyStyles(data, false, normalizedStyles)));
+    }
+    else {
+        copyStyles(styles, false, normalizedStyles);
+    }
+    return normalizedStyles;
+}
+/**
+ * @param {?} styles
+ * @param {?} readPrototype
+ * @param {?=} destination
+ * @return {?}
+ */
+function copyStyles(styles, readPrototype, destination = {}) {
+    if (readPrototype) {
+        // we make use of a for-in loop so that the
+        // prototypically inherited properties are
+        // revealed from the backFill map
+        for (let prop in styles) {
+            destination[prop] = styles[prop];
+        }
+    }
+    else {
+        copyObj(styles, destination);
+    }
+    return destination;
+}
+/**
+ * @param {?} element
+ * @param {?} key
+ * @param {?} value
+ * @return {?}
+ */
+function getStyleAttributeString(element, key, value) {
+    // Return the key-value pair string to be added to the style attribute for the
+    // given CSS style key.
+    if (value) {
+        return key + ':' + value + ';';
+    }
+    else {
+        return '';
+    }
+}
+/**
+ * @param {?} element
+ * @return {?}
+ */
+function writeStyleAttribute(element) {
+    // Read the style property of the element and manually reflect it to the
+    // style attribute. This is needed because Domino on platform-server doesn't
+    // understand the full set of allowed CSS properties and doesn't reflect some
+    // of them automatically.
+    /** @type {?} */
+    let styleAttrValue = '';
+    for (let i = 0; i < element.style.length; i++) {
+        /** @type {?} */
+        const key = element.style.item(i);
+        styleAttrValue += getStyleAttributeString(element, key, element.style.getPropertyValue(key));
+    }
+    for (const key in element.style) {
+        // Skip internal Domino properties that don't need to be reflected.
+        if (!element.style.hasOwnProperty(key) || key.startsWith('_')) {
+            continue;
+        }
+        /** @type {?} */
+        const dashKey = camelCaseToDashCase(key);
+        styleAttrValue += getStyleAttributeString(element, dashKey, element.style[key]);
+    }
+    element.setAttribute('style', styleAttrValue);
+}
+/**
+ * @param {?} element
+ * @param {?} styles
+ * @param {?=} formerStyles
+ * @return {?}
+ */
+function setStyles(element, styles, formerStyles) {
+    if (element['style']) {
+        Object.keys(styles).forEach((/**
+         * @param {?} prop
+         * @return {?}
+         */
+        prop => {
+            /** @type {?} */
+            const camelProp = dashCaseToCamelCase(prop);
+            if (formerStyles && !formerStyles.hasOwnProperty(prop)) {
+                formerStyles[prop] = element.style[camelProp];
+            }
+            element.style[camelProp] = styles[prop];
+        }));
+        // On the server set the 'style' attribute since it's not automatically reflected.
+        if (isNode()) {
+            writeStyleAttribute(element);
+        }
+    }
+}
+/**
+ * @param {?} element
+ * @param {?} styles
+ * @return {?}
+ */
+function eraseStyles(element, styles) {
+    if (element['style']) {
+        Object.keys(styles).forEach((/**
+         * @param {?} prop
+         * @return {?}
+         */
+        prop => {
+            /** @type {?} */
+            const camelProp = dashCaseToCamelCase(prop);
+            element.style[camelProp] = '';
+        }));
+        // On the server set the 'style' attribute since it's not automatically reflected.
+        if (isNode()) {
+            writeStyleAttribute(element);
+        }
+    }
+}
+/**
+ * @param {?} steps
+ * @return {?}
+ */
+function normalizeAnimationEntry(steps) {
+    if (Array.isArray(steps)) {
+        if (steps.length == 1)
+            return steps[0];
+        return Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["sequence"])(steps);
+    }
+    return (/** @type {?} */ (steps));
+}
+/**
+ * @param {?} value
+ * @param {?} options
+ * @param {?} errors
+ * @return {?}
+ */
+function validateStyleParams(value, options, errors) {
+    /** @type {?} */
+    const params = options.params || {};
+    /** @type {?} */
+    const matches = extractStyleParams(value);
+    if (matches.length) {
+        matches.forEach((/**
+         * @param {?} varName
+         * @return {?}
+         */
+        varName => {
+            if (!params.hasOwnProperty(varName)) {
+                errors.push(`Unable to resolve the local animation param ${varName} in the given list of values`);
+            }
+        }));
+    }
+}
+/** @type {?} */
+const PARAM_REGEX = new RegExp(`${SUBSTITUTION_EXPR_START}\\s*(.+?)\\s*${SUBSTITUTION_EXPR_END}`, 'g');
+/**
+ * @param {?} value
+ * @return {?}
+ */
+function extractStyleParams(value) {
+    /** @type {?} */
+    let params = [];
+    if (typeof value === 'string') {
+        /** @type {?} */
+        let match;
+        while (match = PARAM_REGEX.exec(value)) {
+            params.push((/** @type {?} */ (match[1])));
+        }
+        PARAM_REGEX.lastIndex = 0;
+    }
+    return params;
+}
+/**
+ * @param {?} value
+ * @param {?} params
+ * @param {?} errors
+ * @return {?}
+ */
+function interpolateParams(value, params, errors) {
+    /** @type {?} */
+    const original = value.toString();
+    /** @type {?} */
+    const str = original.replace(PARAM_REGEX, (/**
+     * @param {?} _
+     * @param {?} varName
+     * @return {?}
+     */
+    (_, varName) => {
+        /** @type {?} */
+        let localVal = params[varName];
+        // this means that the value was never overridden by the data passed in by the user
+        if (!params.hasOwnProperty(varName)) {
+            errors.push(`Please provide a value for the animation param ${varName}`);
+            localVal = '';
+        }
+        return localVal.toString();
+    }));
+    // we do this to assert that numeric values stay as they are
+    return str == original ? value : str;
+}
+/**
+ * @param {?} iterator
+ * @return {?}
+ */
+function iteratorToArray(iterator) {
+    /** @type {?} */
+    const arr = [];
+    /** @type {?} */
+    let item = iterator.next();
+    while (!item.done) {
+        arr.push(item.value);
+        item = iterator.next();
+    }
+    return arr;
+}
+/**
+ * @param {?} source
+ * @param {?} destination
+ * @return {?}
+ */
+function mergeAnimationOptions(source, destination) {
+    if (source.params) {
+        /** @type {?} */
+        const p0 = source.params;
+        if (!destination.params) {
+            destination.params = {};
+        }
+        /** @type {?} */
+        const p1 = destination.params;
+        Object.keys(p0).forEach((/**
+         * @param {?} param
+         * @return {?}
+         */
+        param => {
+            if (!p1.hasOwnProperty(param)) {
+                p1[param] = p0[param];
+            }
+        }));
+    }
+    return destination;
+}
+/** @type {?} */
+const DASH_CASE_REGEXP = /-+([a-z0-9])/g;
+/**
+ * @param {?} input
+ * @return {?}
+ */
+function dashCaseToCamelCase(input) {
+    return input.replace(DASH_CASE_REGEXP, (/**
+     * @param {...?} m
+     * @return {?}
+     */
+    (...m) => m[1].toUpperCase()));
+}
+/**
+ * @param {?} input
+ * @return {?}
+ */
+function camelCaseToDashCase(input) {
+    return input.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+}
+/**
+ * @param {?} duration
+ * @param {?} delay
+ * @return {?}
+ */
+function allowPreviousPlayerStylesMerge(duration, delay) {
+    return duration === 0 || delay === 0;
+}
+/**
+ * @param {?} element
+ * @param {?} keyframes
+ * @param {?} previousStyles
+ * @return {?}
+ */
+function balancePreviousStylesIntoKeyframes(element, keyframes, previousStyles) {
+    /** @type {?} */
+    const previousStyleProps = Object.keys(previousStyles);
+    if (previousStyleProps.length && keyframes.length) {
+        /** @type {?} */
+        let startingKeyframe = keyframes[0];
+        /** @type {?} */
+        let missingStyleProps = [];
+        previousStyleProps.forEach((/**
+         * @param {?} prop
+         * @return {?}
+         */
+        prop => {
+            if (!startingKeyframe.hasOwnProperty(prop)) {
+                missingStyleProps.push(prop);
+            }
+            startingKeyframe[prop] = previousStyles[prop];
+        }));
+        if (missingStyleProps.length) {
+            // tslint:disable-next-line
+            for (var i = 1; i < keyframes.length; i++) {
+                /** @type {?} */
+                let kf = keyframes[i];
+                missingStyleProps.forEach((/**
+                 * @param {?} prop
+                 * @return {?}
+                 */
+                function (prop) { kf[prop] = computeStyle(element, prop); }));
+            }
+        }
+    }
+    return keyframes;
+}
+/**
+ * @param {?} visitor
+ * @param {?} node
+ * @param {?} context
+ * @return {?}
+ */
+function visitDslNode(visitor, node, context) {
+    switch (node.type) {
+        case 7 /* Trigger */:
+            return visitor.visitTrigger(node, context);
+        case 0 /* State */:
+            return visitor.visitState(node, context);
+        case 1 /* Transition */:
+            return visitor.visitTransition(node, context);
+        case 2 /* Sequence */:
+            return visitor.visitSequence(node, context);
+        case 3 /* Group */:
+            return visitor.visitGroup(node, context);
+        case 4 /* Animate */:
+            return visitor.visitAnimate(node, context);
+        case 5 /* Keyframes */:
+            return visitor.visitKeyframes(node, context);
+        case 6 /* Style */:
+            return visitor.visitStyle(node, context);
+        case 8 /* Reference */:
+            return visitor.visitReference(node, context);
+        case 9 /* AnimateChild */:
+            return visitor.visitAnimateChild(node, context);
+        case 10 /* AnimateRef */:
+            return visitor.visitAnimateRef(node, context);
+        case 11 /* Query */:
+            return visitor.visitQuery(node, context);
+        case 12 /* Stagger */:
+            return visitor.visitStagger(node, context);
+        default:
+            throw new Error(`Unable to resolve animation metadata node #${node.type}`);
+    }
+}
+/**
+ * @param {?} element
+ * @param {?} prop
+ * @return {?}
+ */
+function computeStyle(element, prop) {
+    return ((/** @type {?} */ (window.getComputedStyle(element))))[prop];
+}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/browser/src/dsl/animation_transition_expr.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ * @type {?}
+ */
+const ANY_STATE = '*';
+/**
+ * @param {?} transitionValue
+ * @param {?} errors
+ * @return {?}
+ */
+function parseTransitionExpr(transitionValue, errors) {
+    /** @type {?} */
+    const expressions = [];
+    if (typeof transitionValue == 'string') {
+        transitionValue.split(/\s*,\s*/).forEach((/**
+         * @param {?} str
+         * @return {?}
+         */
+        str => parseInnerTransitionStr(str, expressions, errors)));
+    }
+    else {
+        expressions.push((/** @type {?} */ (transitionValue)));
+    }
+    return expressions;
+}
+/**
+ * @param {?} eventStr
+ * @param {?} expressions
+ * @param {?} errors
+ * @return {?}
+ */
+function parseInnerTransitionStr(eventStr, expressions, errors) {
+    if (eventStr[0] == ':') {
+        /** @type {?} */
+        const result = parseAnimationAlias(eventStr, errors);
+        if (typeof result == 'function') {
+            expressions.push(result);
+            return;
+        }
+        eventStr = result;
+    }
+    /** @type {?} */
+    const match = eventStr.match(/^(\*|[-\w]+)\s*(<?[=-]>)\s*(\*|[-\w]+)$/);
+    if (match == null || match.length < 4) {
+        errors.push(`The provided transition expression "${eventStr}" is not supported`);
+        return expressions;
+    }
+    /** @type {?} */
+    const fromState = match[1];
+    /** @type {?} */
+    const separator = match[2];
+    /** @type {?} */
+    const toState = match[3];
+    expressions.push(makeLambdaFromStates(fromState, toState));
+    /** @type {?} */
+    const isFullAnyStateExpr = fromState == ANY_STATE && toState == ANY_STATE;
+    if (separator[0] == '<' && !isFullAnyStateExpr) {
+        expressions.push(makeLambdaFromStates(toState, fromState));
+    }
+}
+/**
+ * @param {?} alias
+ * @param {?} errors
+ * @return {?}
+ */
+function parseAnimationAlias(alias, errors) {
+    switch (alias) {
+        case ':enter':
+            return 'void => *';
+        case ':leave':
+            return '* => void';
+        case ':increment':
+            return (/**
+             * @param {?} fromState
+             * @param {?} toState
+             * @return {?}
+             */
+            (fromState, toState) => parseFloat(toState) > parseFloat(fromState));
+        case ':decrement':
+            return (/**
+             * @param {?} fromState
+             * @param {?} toState
+             * @return {?}
+             */
+            (fromState, toState) => parseFloat(toState) < parseFloat(fromState));
+        default:
+            errors.push(`The transition alias value "${alias}" is not supported`);
+            return '* => *';
+    }
+}
+// DO NOT REFACTOR ... keep the follow set instantiations
+// with the values intact (closure compiler for some reason
+// removes follow-up lines that add the values outside of
+// the constructor...
+/** @type {?} */
+const TRUE_BOOLEAN_VALUES = new Set(['true', '1']);
+/** @type {?} */
+const FALSE_BOOLEAN_VALUES = new Set(['false', '0']);
+/**
+ * @param {?} lhs
+ * @param {?} rhs
+ * @return {?}
+ */
+function makeLambdaFromStates(lhs, rhs) {
+    /** @type {?} */
+    const LHS_MATCH_BOOLEAN = TRUE_BOOLEAN_VALUES.has(lhs) || FALSE_BOOLEAN_VALUES.has(lhs);
+    /** @type {?} */
+    const RHS_MATCH_BOOLEAN = TRUE_BOOLEAN_VALUES.has(rhs) || FALSE_BOOLEAN_VALUES.has(rhs);
+    return (/**
+     * @param {?} fromState
+     * @param {?} toState
+     * @return {?}
+     */
+    (fromState, toState) => {
+        /** @type {?} */
+        let lhsMatch = lhs == ANY_STATE || lhs == fromState;
+        /** @type {?} */
+        let rhsMatch = rhs == ANY_STATE || rhs == toState;
+        if (!lhsMatch && LHS_MATCH_BOOLEAN && typeof fromState === 'boolean') {
+            lhsMatch = fromState ? TRUE_BOOLEAN_VALUES.has(lhs) : FALSE_BOOLEAN_VALUES.has(lhs);
+        }
+        if (!rhsMatch && RHS_MATCH_BOOLEAN && typeof toState === 'boolean') {
+            rhsMatch = toState ? TRUE_BOOLEAN_VALUES.has(rhs) : FALSE_BOOLEAN_VALUES.has(rhs);
+        }
+        return lhsMatch && rhsMatch;
+    });
+}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/browser/src/dsl/animation_ast_builder.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/** @type {?} */
+const SELF_TOKEN = ':self';
+/** @type {?} */
+const SELF_TOKEN_REGEX = new RegExp(`\s*${SELF_TOKEN}\s*,?`, 'g');
+/*
+ * [Validation]
+ * The visitor code below will traverse the animation AST generated by the animation verb functions
+ * (the output is a tree of objects) and attempt to perform a series of validations on the data. The
+ * following corner-cases will be validated:
+ *
+ * 1. Overlap of animations
+ * Given that a CSS property cannot be animated in more than one place at the same time, it's
+ * important that this behavior is detected and validated. The way in which this occurs is that
+ * each time a style property is examined, a string-map containing the property will be updated with
+ * the start and end times for when the property is used within an animation step.
+ *
+ * If there are two or more parallel animations that are currently running (these are invoked by the
+ * group()) on the same element then the validator will throw an error. Since the start/end timing
+ * values are collected for each property then if the current animation step is animating the same
+ * property and its timing values fall anywhere into the window of time that the property is
+ * currently being animated within then this is what causes an error.
+ *
+ * 2. Timing values
+ * The validator will validate to see if a timing value of `duration delay easing` or
+ * `durationNumber` is valid or not.
+ *
+ * (note that upon validation the code below will replace the timing data with an object containing
+ * {duration,delay,easing}.
+ *
+ * 3. Offset Validation
+ * Each of the style() calls are allowed to have an offset value when placed inside of keyframes().
+ * Offsets within keyframes() are considered valid when:
+ *
+ *   - No offsets are used at all
+ *   - Each style() entry contains an offset value
+ *   - Each offset is between 0 and 1
+ *   - Each offset is greater to or equal than the previous one
+ *
+ * Otherwise an error will be thrown.
+ */
+/**
+ * @param {?} driver
+ * @param {?} metadata
+ * @param {?} errors
+ * @return {?}
+ */
+function buildAnimationAst(driver, metadata, errors) {
+    return new AnimationAstBuilderVisitor(driver).build(metadata, errors);
+}
+/** @type {?} */
+const ROOT_SELECTOR = '';
+class AnimationAstBuilderVisitor {
+    /**
+     * @param {?} _driver
+     */
+    constructor(_driver) {
+        this._driver = _driver;
+    }
+    /**
+     * @param {?} metadata
+     * @param {?} errors
+     * @return {?}
+     */
+    build(metadata, errors) {
+        /** @type {?} */
+        const context = new AnimationAstBuilderContext(errors);
+        this._resetContextStyleTimingState(context);
+        return (/** @type {?} */ (visitDslNode(this, normalizeAnimationEntry(metadata), context)));
+    }
+    /**
+     * @private
+     * @param {?} context
+     * @return {?}
+     */
+    _resetContextStyleTimingState(context) {
+        context.currentQuerySelector = ROOT_SELECTOR;
+        context.collectedStyles = {};
+        context.collectedStyles[ROOT_SELECTOR] = {};
+        context.currentTime = 0;
+    }
+    /**
+     * @param {?} metadata
+     * @param {?} context
+     * @return {?}
+     */
+    visitTrigger(metadata, context) {
+        /** @type {?} */
+        let queryCount = context.queryCount = 0;
+        /** @type {?} */
+        let depCount = context.depCount = 0;
+        /** @type {?} */
+        const states = [];
+        /** @type {?} */
+        const transitions = [];
+        if (metadata.name.charAt(0) == '@') {
+            context.errors.push('animation triggers cannot be prefixed with an `@` sign (e.g. trigger(\'@foo\', [...]))');
+        }
+        metadata.definitions.forEach((/**
+         * @param {?} def
+         * @return {?}
+         */
+        def => {
+            this._resetContextStyleTimingState(context);
+            if (def.type == 0 /* State */) {
+                /** @type {?} */
+                const stateDef = (/** @type {?} */ (def));
+                /** @type {?} */
+                const name = stateDef.name;
+                name.toString().split(/\s*,\s*/).forEach((/**
+                 * @param {?} n
+                 * @return {?}
+                 */
+                n => {
+                    stateDef.name = n;
+                    states.push(this.visitState(stateDef, context));
+                }));
+                stateDef.name = name;
+            }
+            else if (def.type == 1 /* Transition */) {
+                /** @type {?} */
+                const transition = this.visitTransition((/** @type {?} */ (def)), context);
+                queryCount += transition.queryCount;
+                depCount += transition.depCount;
+                transitions.push(transition);
+            }
+            else {
+                context.errors.push('only state() and transition() definitions can sit inside of a trigger()');
+            }
+        }));
+        return {
+            type: 7 /* Trigger */,
+            name: metadata.name, states, transitions, queryCount, depCount,
+            options: null
+        };
+    }
+    /**
+     * @param {?} metadata
+     * @param {?} context
+     * @return {?}
+     */
+    visitState(metadata, context) {
+        /** @type {?} */
+        const styleAst = this.visitStyle(metadata.styles, context);
+        /** @type {?} */
+        const astParams = (metadata.options && metadata.options.params) || null;
+        if (styleAst.containsDynamicStyles) {
+            /** @type {?} */
+            const missingSubs = new Set();
+            /** @type {?} */
+            const params = astParams || {};
+            styleAst.styles.forEach((/**
+             * @param {?} value
+             * @return {?}
+             */
+            value => {
+                if (isObject(value)) {
+                    /** @type {?} */
+                    const stylesObj = (/** @type {?} */ (value));
+                    Object.keys(stylesObj).forEach((/**
+                     * @param {?} prop
+                     * @return {?}
+                     */
+                    prop => {
+                        extractStyleParams(stylesObj[prop]).forEach((/**
+                         * @param {?} sub
+                         * @return {?}
+                         */
+                        sub => {
+                            if (!params.hasOwnProperty(sub)) {
+                                missingSubs.add(sub);
+                            }
+                        }));
+                    }));
+                }
+            }));
+            if (missingSubs.size) {
+                /** @type {?} */
+                const missingSubsArr = iteratorToArray(missingSubs.values());
+                context.errors.push(`state("${metadata.name}", ...) must define default values for all the following style substitutions: ${missingSubsArr.join(', ')}`);
+            }
+        }
+        return {
+            type: 0 /* State */,
+            name: metadata.name,
+            style: styleAst,
+            options: astParams ? { params: astParams } : null
+        };
+    }
+    /**
+     * @param {?} metadata
+     * @param {?} context
+     * @return {?}
+     */
+    visitTransition(metadata, context) {
+        context.queryCount = 0;
+        context.depCount = 0;
+        /** @type {?} */
+        const animation = visitDslNode(this, normalizeAnimationEntry(metadata.animation), context);
+        /** @type {?} */
+        const matchers = parseTransitionExpr(metadata.expr, context.errors);
+        return {
+            type: 1 /* Transition */,
+            matchers,
+            animation,
+            queryCount: context.queryCount,
+            depCount: context.depCount,
+            options: normalizeAnimationOptions(metadata.options)
+        };
+    }
+    /**
+     * @param {?} metadata
+     * @param {?} context
+     * @return {?}
+     */
+    visitSequence(metadata, context) {
+        return {
+            type: 2 /* Sequence */,
+            steps: metadata.steps.map((/**
+             * @param {?} s
+             * @return {?}
+             */
+            s => visitDslNode(this, s, context))),
+            options: normalizeAnimationOptions(metadata.options)
+        };
+    }
+    /**
+     * @param {?} metadata
+     * @param {?} context
+     * @return {?}
+     */
+    visitGroup(metadata, context) {
+        /** @type {?} */
+        const currentTime = context.currentTime;
+        /** @type {?} */
+        let furthestTime = 0;
+        /** @type {?} */
+        const steps = metadata.steps.map((/**
+         * @param {?} step
+         * @return {?}
+         */
+        step => {
+            context.currentTime = currentTime;
+            /** @type {?} */
+            const innerAst = visitDslNode(this, step, context);
+            furthestTime = Math.max(furthestTime, context.currentTime);
+            return innerAst;
+        }));
+        context.currentTime = furthestTime;
+        return {
+            type: 3 /* Group */,
+            steps,
+            options: normalizeAnimationOptions(metadata.options)
+        };
+    }
+    /**
+     * @param {?} metadata
+     * @param {?} context
+     * @return {?}
+     */
+    visitAnimate(metadata, context) {
+        /** @type {?} */
+        const timingAst = constructTimingAst(metadata.timings, context.errors);
+        context.currentAnimateTimings = timingAst;
+        /** @type {?} */
+        let styleAst;
+        /** @type {?} */
+        let styleMetadata = metadata.styles ? metadata.styles : Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({});
+        if (styleMetadata.type == 5 /* Keyframes */) {
+            styleAst = this.visitKeyframes((/** @type {?} */ (styleMetadata)), context);
+        }
+        else {
+            /** @type {?} */
+            let styleMetadata = (/** @type {?} */ (metadata.styles));
+            /** @type {?} */
+            let isEmpty = false;
+            if (!styleMetadata) {
+                isEmpty = true;
+                /** @type {?} */
+                const newStyleData = {};
+                if (timingAst.easing) {
+                    newStyleData['easing'] = timingAst.easing;
+                }
+                styleMetadata = Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])(newStyleData);
+            }
+            context.currentTime += timingAst.duration + timingAst.delay;
+            /** @type {?} */
+            const _styleAst = this.visitStyle(styleMetadata, context);
+            _styleAst.isEmptyStep = isEmpty;
+            styleAst = _styleAst;
+        }
+        context.currentAnimateTimings = null;
+        return {
+            type: 4 /* Animate */,
+            timings: timingAst,
+            style: styleAst,
+            options: null
+        };
+    }
+    /**
+     * @param {?} metadata
+     * @param {?} context
+     * @return {?}
+     */
+    visitStyle(metadata, context) {
+        /** @type {?} */
+        const ast = this._makeStyleAst(metadata, context);
+        this._validateStyleAst(ast, context);
+        return ast;
+    }
+    /**
+     * @private
+     * @param {?} metadata
+     * @param {?} context
+     * @return {?}
+     */
+    _makeStyleAst(metadata, context) {
+        /** @type {?} */
+        const styles = [];
+        if (Array.isArray(metadata.styles)) {
+            ((/** @type {?} */ (metadata.styles))).forEach((/**
+             * @param {?} styleTuple
+             * @return {?}
+             */
+            styleTuple => {
+                if (typeof styleTuple == 'string') {
+                    if (styleTuple == _angular_animations__WEBPACK_IMPORTED_MODULE_0__["AUTO_STYLE"]) {
+                        styles.push(styleTuple);
+                    }
+                    else {
+                        context.errors.push(`The provided style string value ${styleTuple} is not allowed.`);
+                    }
+                }
+                else {
+                    styles.push(styleTuple);
+                }
+            }));
+        }
+        else {
+            styles.push(metadata.styles);
+        }
+        /** @type {?} */
+        let containsDynamicStyles = false;
+        /** @type {?} */
+        let collectedEasing = null;
+        styles.forEach((/**
+         * @param {?} styleData
+         * @return {?}
+         */
+        styleData => {
+            if (isObject(styleData)) {
+                /** @type {?} */
+                const styleMap = (/** @type {?} */ (styleData));
+                /** @type {?} */
+                const easing = styleMap['easing'];
+                if (easing) {
+                    collectedEasing = (/** @type {?} */ (easing));
+                    delete styleMap['easing'];
+                }
+                if (!containsDynamicStyles) {
+                    for (let prop in styleMap) {
+                        /** @type {?} */
+                        const value = styleMap[prop];
+                        if (value.toString().indexOf(SUBSTITUTION_EXPR_START) >= 0) {
+                            containsDynamicStyles = true;
+                            break;
+                        }
+                    }
+                }
+            }
+        }));
+        return {
+            type: 6 /* Style */,
+            styles,
+            easing: collectedEasing,
+            offset: metadata.offset, containsDynamicStyles,
+            options: null
+        };
+    }
+    /**
+     * @private
+     * @param {?} ast
+     * @param {?} context
+     * @return {?}
+     */
+    _validateStyleAst(ast, context) {
+        /** @type {?} */
+        const timings = context.currentAnimateTimings;
+        /** @type {?} */
+        let endTime = context.currentTime;
+        /** @type {?} */
+        let startTime = context.currentTime;
+        if (timings && startTime > 0) {
+            startTime -= timings.duration + timings.delay;
+        }
+        ast.styles.forEach((/**
+         * @param {?} tuple
+         * @return {?}
+         */
+        tuple => {
+            if (typeof tuple == 'string')
+                return;
+            Object.keys(tuple).forEach((/**
+             * @param {?} prop
+             * @return {?}
+             */
+            prop => {
+                if (!this._driver.validateStyleProperty(prop)) {
+                    context.errors.push(`The provided animation property "${prop}" is not a supported CSS property for animations`);
+                    return;
+                }
+                /** @type {?} */
+                const collectedStyles = context.collectedStyles[(/** @type {?} */ (context.currentQuerySelector))];
+                /** @type {?} */
+                const collectedEntry = collectedStyles[prop];
+                /** @type {?} */
+                let updateCollectedStyle = true;
+                if (collectedEntry) {
+                    if (startTime != endTime && startTime >= collectedEntry.startTime &&
+                        endTime <= collectedEntry.endTime) {
+                        context.errors.push(`The CSS property "${prop}" that exists between the times of "${collectedEntry.startTime}ms" and "${collectedEntry.endTime}ms" is also being animated in a parallel animation between the times of "${startTime}ms" and "${endTime}ms"`);
+                        updateCollectedStyle = false;
+                    }
+                    // we always choose the smaller start time value since we
+                    // want to have a record of the entire animation window where
+                    // the style property is being animated in between
+                    startTime = collectedEntry.startTime;
+                }
+                if (updateCollectedStyle) {
+                    collectedStyles[prop] = { startTime, endTime };
+                }
+                if (context.options) {
+                    validateStyleParams(tuple[prop], context.options, context.errors);
+                }
+            }));
+        }));
+    }
+    /**
+     * @param {?} metadata
+     * @param {?} context
+     * @return {?}
+     */
+    visitKeyframes(metadata, context) {
+        /** @type {?} */
+        const ast = { type: 5 /* Keyframes */, styles: [], options: null };
+        if (!context.currentAnimateTimings) {
+            context.errors.push(`keyframes() must be placed inside of a call to animate()`);
+            return ast;
+        }
+        /** @type {?} */
+        const MAX_KEYFRAME_OFFSET = 1;
+        /** @type {?} */
+        let totalKeyframesWithOffsets = 0;
+        /** @type {?} */
+        const offsets = [];
+        /** @type {?} */
+        let offsetsOutOfOrder = false;
+        /** @type {?} */
+        let keyframesOutOfRange = false;
+        /** @type {?} */
+        let previousOffset = 0;
+        /** @type {?} */
+        const keyframes = metadata.steps.map((/**
+         * @param {?} styles
+         * @return {?}
+         */
+        styles => {
+            /** @type {?} */
+            const style = this._makeStyleAst(styles, context);
+            /** @type {?} */
+            let offsetVal = style.offset != null ? style.offset : consumeOffset(style.styles);
+            /** @type {?} */
+            let offset = 0;
+            if (offsetVal != null) {
+                totalKeyframesWithOffsets++;
+                offset = style.offset = offsetVal;
+            }
+            keyframesOutOfRange = keyframesOutOfRange || offset < 0 || offset > 1;
+            offsetsOutOfOrder = offsetsOutOfOrder || offset < previousOffset;
+            previousOffset = offset;
+            offsets.push(offset);
+            return style;
+        }));
+        if (keyframesOutOfRange) {
+            context.errors.push(`Please ensure that all keyframe offsets are between 0 and 1`);
+        }
+        if (offsetsOutOfOrder) {
+            context.errors.push(`Please ensure that all keyframe offsets are in order`);
+        }
+        /** @type {?} */
+        const length = metadata.steps.length;
+        /** @type {?} */
+        let generatedOffset = 0;
+        if (totalKeyframesWithOffsets > 0 && totalKeyframesWithOffsets < length) {
+            context.errors.push(`Not all style() steps within the declared keyframes() contain offsets`);
+        }
+        else if (totalKeyframesWithOffsets == 0) {
+            generatedOffset = MAX_KEYFRAME_OFFSET / (length - 1);
+        }
+        /** @type {?} */
+        const limit = length - 1;
+        /** @type {?} */
+        const currentTime = context.currentTime;
+        /** @type {?} */
+        const currentAnimateTimings = (/** @type {?} */ (context.currentAnimateTimings));
+        /** @type {?} */
+        const animateDuration = currentAnimateTimings.duration;
+        keyframes.forEach((/**
+         * @param {?} kf
+         * @param {?} i
+         * @return {?}
+         */
+        (kf, i) => {
+            /** @type {?} */
+            const offset = generatedOffset > 0 ? (i == limit ? 1 : (generatedOffset * i)) : offsets[i];
+            /** @type {?} */
+            const durationUpToThisFrame = offset * animateDuration;
+            context.currentTime = currentTime + currentAnimateTimings.delay + durationUpToThisFrame;
+            currentAnimateTimings.duration = durationUpToThisFrame;
+            this._validateStyleAst(kf, context);
+            kf.offset = offset;
+            ast.styles.push(kf);
+        }));
+        return ast;
+    }
+    /**
+     * @param {?} metadata
+     * @param {?} context
+     * @return {?}
+     */
+    visitReference(metadata, context) {
+        return {
+            type: 8 /* Reference */,
+            animation: visitDslNode(this, normalizeAnimationEntry(metadata.animation), context),
+            options: normalizeAnimationOptions(metadata.options)
+        };
+    }
+    /**
+     * @param {?} metadata
+     * @param {?} context
+     * @return {?}
+     */
+    visitAnimateChild(metadata, context) {
+        context.depCount++;
+        return {
+            type: 9 /* AnimateChild */,
+            options: normalizeAnimationOptions(metadata.options)
+        };
+    }
+    /**
+     * @param {?} metadata
+     * @param {?} context
+     * @return {?}
+     */
+    visitAnimateRef(metadata, context) {
+        return {
+            type: 10 /* AnimateRef */,
+            animation: this.visitReference(metadata.animation, context),
+            options: normalizeAnimationOptions(metadata.options)
+        };
+    }
+    /**
+     * @param {?} metadata
+     * @param {?} context
+     * @return {?}
+     */
+    visitQuery(metadata, context) {
+        /** @type {?} */
+        const parentSelector = (/** @type {?} */ (context.currentQuerySelector));
+        /** @type {?} */
+        const options = (/** @type {?} */ ((metadata.options || {})));
+        context.queryCount++;
+        context.currentQuery = metadata;
+        const [selector, includeSelf] = normalizeSelector(metadata.selector);
+        context.currentQuerySelector =
+            parentSelector.length ? (parentSelector + ' ' + selector) : selector;
+        getOrSetAsInMap(context.collectedStyles, context.currentQuerySelector, {});
+        /** @type {?} */
+        const animation = visitDslNode(this, normalizeAnimationEntry(metadata.animation), context);
+        context.currentQuery = null;
+        context.currentQuerySelector = parentSelector;
+        return {
+            type: 11 /* Query */,
+            selector,
+            limit: options.limit || 0,
+            optional: !!options.optional, includeSelf, animation,
+            originalSelector: metadata.selector,
+            options: normalizeAnimationOptions(metadata.options)
+        };
+    }
+    /**
+     * @param {?} metadata
+     * @param {?} context
+     * @return {?}
+     */
+    visitStagger(metadata, context) {
+        if (!context.currentQuery) {
+            context.errors.push(`stagger() can only be used inside of query()`);
+        }
+        /** @type {?} */
+        const timings = metadata.timings === 'full' ?
+            { duration: 0, delay: 0, easing: 'full' } :
+            resolveTiming(metadata.timings, context.errors, true);
+        return {
+            type: 12 /* Stagger */,
+            animation: visitDslNode(this, normalizeAnimationEntry(metadata.animation), context), timings,
+            options: null
+        };
+    }
+}
+if (false) {}
+/**
+ * @param {?} selector
+ * @return {?}
+ */
+function normalizeSelector(selector) {
+    /** @type {?} */
+    const hasAmpersand = selector.split(/\s*,\s*/).find((/**
+     * @param {?} token
+     * @return {?}
+     */
+    token => token == SELF_TOKEN)) ? true : false;
+    if (hasAmpersand) {
+        selector = selector.replace(SELF_TOKEN_REGEX, '');
+    }
+    // the :enter and :leave selectors are filled in at runtime during timeline building
+    selector = selector.replace(/@\*/g, NG_TRIGGER_SELECTOR)
+        .replace(/@\w+/g, (/**
+     * @param {?} match
+     * @return {?}
+     */
+    match => NG_TRIGGER_SELECTOR + '-' + match.substr(1)))
+        .replace(/:animating/g, NG_ANIMATING_SELECTOR);
+    return [selector, hasAmpersand];
+}
+/**
+ * @param {?} obj
+ * @return {?}
+ */
+function normalizeParams(obj) {
+    return obj ? copyObj(obj) : null;
+}
+class AnimationAstBuilderContext {
+    /**
+     * @param {?} errors
+     */
+    constructor(errors) {
+        this.errors = errors;
+        this.queryCount = 0;
+        this.depCount = 0;
+        this.currentTransition = null;
+        this.currentQuery = null;
+        this.currentQuerySelector = null;
+        this.currentAnimateTimings = null;
+        this.currentTime = 0;
+        this.collectedStyles = {};
+        this.options = null;
+    }
+}
+if (false) {}
+/**
+ * @param {?} styles
+ * @return {?}
+ */
+function consumeOffset(styles) {
+    if (typeof styles == 'string')
+        return null;
+    /** @type {?} */
+    let offset = null;
+    if (Array.isArray(styles)) {
+        styles.forEach((/**
+         * @param {?} styleTuple
+         * @return {?}
+         */
+        styleTuple => {
+            if (isObject(styleTuple) && styleTuple.hasOwnProperty('offset')) {
+                /** @type {?} */
+                const obj = (/** @type {?} */ (styleTuple));
+                offset = parseFloat((/** @type {?} */ (obj['offset'])));
+                delete obj['offset'];
+            }
+        }));
+    }
+    else if (isObject(styles) && styles.hasOwnProperty('offset')) {
+        /** @type {?} */
+        const obj = styles;
+        offset = parseFloat((/** @type {?} */ (obj['offset'])));
+        delete obj['offset'];
+    }
+    return offset;
+}
+/**
+ * @param {?} value
+ * @return {?}
+ */
+function isObject(value) {
+    return !Array.isArray(value) && typeof value == 'object';
+}
+/**
+ * @param {?} value
+ * @param {?} errors
+ * @return {?}
+ */
+function constructTimingAst(value, errors) {
+    /** @type {?} */
+    let timings = null;
+    if (value.hasOwnProperty('duration')) {
+        timings = (/** @type {?} */ (value));
+    }
+    else if (typeof value == 'number') {
+        /** @type {?} */
+        const duration = resolveTiming(value, errors).duration;
+        return makeTimingAst(duration, 0, '');
+    }
+    /** @type {?} */
+    const strValue = (/** @type {?} */ (value));
+    /** @type {?} */
+    const isDynamic = strValue.split(/\s+/).some((/**
+     * @param {?} v
+     * @return {?}
+     */
+    v => v.charAt(0) == '{' && v.charAt(1) == '{'));
+    if (isDynamic) {
+        /** @type {?} */
+        const ast = (/** @type {?} */ (makeTimingAst(0, 0, '')));
+        ast.dynamic = true;
+        ast.strValue = strValue;
+        return (/** @type {?} */ (ast));
+    }
+    timings = timings || resolveTiming(strValue, errors);
+    return makeTimingAst(timings.duration, timings.delay, timings.easing);
+}
+/**
+ * @param {?} options
+ * @return {?}
+ */
+function normalizeAnimationOptions(options) {
+    if (options) {
+        options = copyObj(options);
+        if (options['params']) {
+            options['params'] = (/** @type {?} */ (normalizeParams(options['params'])));
+        }
+    }
+    else {
+        options = {};
+    }
+    return options;
+}
+/**
+ * @param {?} duration
+ * @param {?} delay
+ * @param {?} easing
+ * @return {?}
+ */
+function makeTimingAst(duration, delay, easing) {
+    return { duration, delay, easing };
+}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/browser/src/dsl/animation_timeline_instruction.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * @record
+ */
+function AnimationTimelineInstruction() { }
+if (false) {}
+/**
+ * @param {?} element
+ * @param {?} keyframes
+ * @param {?} preStyleProps
+ * @param {?} postStyleProps
+ * @param {?} duration
+ * @param {?} delay
+ * @param {?=} easing
+ * @param {?=} subTimeline
+ * @return {?}
+ */
+function createTimelineInstruction(element, keyframes, preStyleProps, postStyleProps, duration, delay, easing = null, subTimeline = false) {
+    return {
+        type: 1 /* TimelineAnimation */,
+        element,
+        keyframes,
+        preStyleProps,
+        postStyleProps,
+        duration,
+        delay,
+        totalTime: duration + delay, easing, subTimeline
+    };
+}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/browser/src/dsl/element_instruction_map.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class ElementInstructionMap {
+    constructor() {
+        this._map = new Map();
+    }
+    /**
+     * @param {?} element
+     * @return {?}
+     */
+    consume(element) {
+        /** @type {?} */
+        let instructions = this._map.get(element);
+        if (instructions) {
+            this._map.delete(element);
+        }
+        else {
+            instructions = [];
+        }
+        return instructions;
+    }
+    /**
+     * @param {?} element
+     * @param {?} instructions
+     * @return {?}
+     */
+    append(element, instructions) {
+        /** @type {?} */
+        let existingInstructions = this._map.get(element);
+        if (!existingInstructions) {
+            this._map.set(element, existingInstructions = []);
+        }
+        existingInstructions.push(...instructions);
+    }
+    /**
+     * @param {?} element
+     * @return {?}
+     */
+    has(element) { return this._map.has(element); }
+    /**
+     * @return {?}
+     */
+    clear() { this._map.clear(); }
+}
+if (false) {}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/browser/src/dsl/animation_timeline_builder.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/** @type {?} */
+const ONE_FRAME_IN_MILLISECONDS = 1;
+/** @type {?} */
+const ENTER_TOKEN = ':enter';
+/** @type {?} */
+const ENTER_TOKEN_REGEX = new RegExp(ENTER_TOKEN, 'g');
+/** @type {?} */
+const LEAVE_TOKEN = ':leave';
+/** @type {?} */
+const LEAVE_TOKEN_REGEX = new RegExp(LEAVE_TOKEN, 'g');
+/*
+ * The code within this file aims to generate web-animations-compatible keyframes from Angular's
+ * animation DSL code.
+ *
+ * The code below will be converted from:
+ *
+ * ```
+ * sequence([
+ *   style({ opacity: 0 }),
+ *   animate(1000, style({ opacity: 0 }))
+ * ])
+ * ```
+ *
+ * To:
+ * ```
+ * keyframes = [{ opacity: 0, offset: 0 }, { opacity: 1, offset: 1 }]
+ * duration = 1000
+ * delay = 0
+ * easing = ''
+ * ```
+ *
+ * For this operation to cover the combination of animation verbs (style, animate, group, etc...) a
+ * combination of prototypical inheritance, AST traversal and merge-sort-like algorithms are used.
+ *
+ * [AST Traversal]
+ * Each of the animation verbs, when executed, will return an string-map object representing what
+ * type of action it is (style, animate, group, etc...) and the data associated with it. This means
+ * that when functional composition mix of these functions is evaluated (like in the example above)
+ * then it will end up producing a tree of objects representing the animation itself.
+ *
+ * When this animation object tree is processed by the visitor code below it will visit each of the
+ * verb statements within the visitor. And during each visit it will build the context of the
+ * animation keyframes by interacting with the `TimelineBuilder`.
+ *
+ * [TimelineBuilder]
+ * This class is responsible for tracking the styles and building a series of keyframe objects for a
+ * timeline between a start and end time. The builder starts off with an initial timeline and each
+ * time the AST comes across a `group()`, `keyframes()` or a combination of the two wihtin a
+ * `sequence()` then it will generate a sub timeline for each step as well as a new one after
+ * they are complete.
+ *
+ * As the AST is traversed, the timing state on each of the timelines will be incremented. If a sub
+ * timeline was created (based on one of the cases above) then the parent timeline will attempt to
+ * merge the styles used within the sub timelines into itself (only with group() this will happen).
+ * This happens with a merge operation (much like how the merge works in mergesort) and it will only
+ * copy the most recently used styles from the sub timelines into the parent timeline. This ensures
+ * that if the styles are used later on in another phase of the animation then they will be the most
+ * up-to-date values.
+ *
+ * [How Missing Styles Are Updated]
+ * Each timeline has a `backFill` property which is responsible for filling in new styles into
+ * already processed keyframes if a new style shows up later within the animation sequence.
+ *
+ * ```
+ * sequence([
+ *   style({ width: 0 }),
+ *   animate(1000, style({ width: 100 })),
+ *   animate(1000, style({ width: 200 })),
+ *   animate(1000, style({ width: 300 }))
+ *   animate(1000, style({ width: 400, height: 400 })) // notice how `height` doesn't exist anywhere
+ * else
+ * ])
+ * ```
+ *
+ * What is happening here is that the `height` value is added later in the sequence, but is missing
+ * from all previous animation steps. Therefore when a keyframe is created it would also be missing
+ * from all previous keyframes up until where it is first used. For the timeline keyframe generation
+ * to properly fill in the style it will place the previous value (the value from the parent
+ * timeline) or a default value of `*` into the backFill object. Given that each of the keyframe
+ * styles are objects that prototypically inhert from the backFill object, this means that if a
+ * value is added into the backFill then it will automatically propagate any missing values to all
+ * keyframes. Therefore the missing `height` value will be properly filled into the already
+ * processed keyframes.
+ *
+ * When a sub-timeline is created it will have its own backFill property. This is done so that
+ * styles present within the sub-timeline do not accidentally seep into the previous/future timeline
+ * keyframes
+ *
+ * (For prototypically-inherited contents to be detected a `for(i in obj)` loop must be used.)
+ *
+ * [Validation]
+ * The code in this file is not responsible for validation. That functionality happens with within
+ * the `AnimationValidatorVisitor` code.
+ */
+/**
+ * @param {?} driver
+ * @param {?} rootElement
+ * @param {?} ast
+ * @param {?} enterClassName
+ * @param {?} leaveClassName
+ * @param {?=} startingStyles
+ * @param {?=} finalStyles
+ * @param {?=} options
+ * @param {?=} subInstructions
+ * @param {?=} errors
+ * @return {?}
+ */
+function buildAnimationTimelines(driver, rootElement, ast, enterClassName, leaveClassName, startingStyles = {}, finalStyles = {}, options, subInstructions, errors = []) {
+    return new AnimationTimelineBuilderVisitor().buildKeyframes(driver, rootElement, ast, enterClassName, leaveClassName, startingStyles, finalStyles, options, subInstructions, errors);
+}
+class AnimationTimelineBuilderVisitor {
+    /**
+     * @param {?} driver
+     * @param {?} rootElement
+     * @param {?} ast
+     * @param {?} enterClassName
+     * @param {?} leaveClassName
+     * @param {?} startingStyles
+     * @param {?} finalStyles
+     * @param {?} options
+     * @param {?=} subInstructions
+     * @param {?=} errors
+     * @return {?}
+     */
+    buildKeyframes(driver, rootElement, ast, enterClassName, leaveClassName, startingStyles, finalStyles, options, subInstructions, errors = []) {
+        subInstructions = subInstructions || new ElementInstructionMap();
+        /** @type {?} */
+        const context = new AnimationTimelineContext(driver, rootElement, subInstructions, enterClassName, leaveClassName, errors, []);
+        context.options = options;
+        context.currentTimeline.setStyles([startingStyles], null, context.errors, options);
+        visitDslNode(this, ast, context);
+        // this checks to see if an actual animation happened
+        /** @type {?} */
+        const timelines = context.timelines.filter((/**
+         * @param {?} timeline
+         * @return {?}
+         */
+        timeline => timeline.containsAnimation()));
+        if (timelines.length && Object.keys(finalStyles).length) {
+            /** @type {?} */
+            const tl = timelines[timelines.length - 1];
+            if (!tl.allowOnlyTimelineStyles()) {
+                tl.setStyles([finalStyles], null, context.errors, options);
+            }
+        }
+        return timelines.length ? timelines.map((/**
+         * @param {?} timeline
+         * @return {?}
+         */
+        timeline => timeline.buildKeyframes())) :
+            [createTimelineInstruction(rootElement, [], [], [], 0, 0, '', false)];
+    }
+    /**
+     * @param {?} ast
+     * @param {?} context
+     * @return {?}
+     */
+    visitTrigger(ast, context) {
+        // these values are not visited in this AST
+    }
+    /**
+     * @param {?} ast
+     * @param {?} context
+     * @return {?}
+     */
+    visitState(ast, context) {
+        // these values are not visited in this AST
+    }
+    /**
+     * @param {?} ast
+     * @param {?} context
+     * @return {?}
+     */
+    visitTransition(ast, context) {
+        // these values are not visited in this AST
+    }
+    /**
+     * @param {?} ast
+     * @param {?} context
+     * @return {?}
+     */
+    visitAnimateChild(ast, context) {
+        /** @type {?} */
+        const elementInstructions = context.subInstructions.consume(context.element);
+        if (elementInstructions) {
+            /** @type {?} */
+            const innerContext = context.createSubContext(ast.options);
+            /** @type {?} */
+            const startTime = context.currentTimeline.currentTime;
+            /** @type {?} */
+            const endTime = this._visitSubInstructions(elementInstructions, innerContext, (/** @type {?} */ (innerContext.options)));
+            if (startTime != endTime) {
+                // we do this on the upper context because we created a sub context for
+                // the sub child animations
+                context.transformIntoNewTimeline(endTime);
+            }
+        }
+        context.previousNode = ast;
+    }
+    /**
+     * @param {?} ast
+     * @param {?} context
+     * @return {?}
+     */
+    visitAnimateRef(ast, context) {
+        /** @type {?} */
+        const innerContext = context.createSubContext(ast.options);
+        innerContext.transformIntoNewTimeline();
+        this.visitReference(ast.animation, innerContext);
+        context.transformIntoNewTimeline(innerContext.currentTimeline.currentTime);
+        context.previousNode = ast;
+    }
+    /**
+     * @private
+     * @param {?} instructions
+     * @param {?} context
+     * @param {?} options
+     * @return {?}
+     */
+    _visitSubInstructions(instructions, context, options) {
+        /** @type {?} */
+        const startTime = context.currentTimeline.currentTime;
+        /** @type {?} */
+        let furthestTime = startTime;
+        // this is a special-case for when a user wants to skip a sub
+        // animation from being fired entirely.
+        /** @type {?} */
+        const duration = options.duration != null ? resolveTimingValue(options.duration) : null;
+        /** @type {?} */
+        const delay = options.delay != null ? resolveTimingValue(options.delay) : null;
+        if (duration !== 0) {
+            instructions.forEach((/**
+             * @param {?} instruction
+             * @return {?}
+             */
+            instruction => {
+                /** @type {?} */
+                const instructionTimings = context.appendInstructionToTimeline(instruction, duration, delay);
+                furthestTime =
+                    Math.max(furthestTime, instructionTimings.duration + instructionTimings.delay);
+            }));
+        }
+        return furthestTime;
+    }
+    /**
+     * @param {?} ast
+     * @param {?} context
+     * @return {?}
+     */
+    visitReference(ast, context) {
+        context.updateOptions(ast.options, true);
+        visitDslNode(this, ast.animation, context);
+        context.previousNode = ast;
+    }
+    /**
+     * @param {?} ast
+     * @param {?} context
+     * @return {?}
+     */
+    visitSequence(ast, context) {
+        /** @type {?} */
+        const subContextCount = context.subContextCount;
+        /** @type {?} */
+        let ctx = context;
+        /** @type {?} */
+        const options = ast.options;
+        if (options && (options.params || options.delay)) {
+            ctx = context.createSubContext(options);
+            ctx.transformIntoNewTimeline();
+            if (options.delay != null) {
+                if (ctx.previousNode.type == 6 /* Style */) {
+                    ctx.currentTimeline.snapshotCurrentStyles();
+                    ctx.previousNode = DEFAULT_NOOP_PREVIOUS_NODE;
+                }
+                /** @type {?} */
+                const delay = resolveTimingValue(options.delay);
+                ctx.delayNextStep(delay);
+            }
+        }
+        if (ast.steps.length) {
+            ast.steps.forEach((/**
+             * @param {?} s
+             * @return {?}
+             */
+            s => visitDslNode(this, s, ctx)));
+            // this is here just incase the inner steps only contain or end with a style() call
+            ctx.currentTimeline.applyStylesToKeyframe();
+            // this means that some animation function within the sequence
+            // ended up creating a sub timeline (which means the current
+            // timeline cannot overlap with the contents of the sequence)
+            if (ctx.subContextCount > subContextCount) {
+                ctx.transformIntoNewTimeline();
+            }
+        }
+        context.previousNode = ast;
+    }
+    /**
+     * @param {?} ast
+     * @param {?} context
+     * @return {?}
+     */
+    visitGroup(ast, context) {
+        /** @type {?} */
+        const innerTimelines = [];
+        /** @type {?} */
+        let furthestTime = context.currentTimeline.currentTime;
+        /** @type {?} */
+        const delay = ast.options && ast.options.delay ? resolveTimingValue(ast.options.delay) : 0;
+        ast.steps.forEach((/**
+         * @param {?} s
+         * @return {?}
+         */
+        s => {
+            /** @type {?} */
+            const innerContext = context.createSubContext(ast.options);
+            if (delay) {
+                innerContext.delayNextStep(delay);
+            }
+            visitDslNode(this, s, innerContext);
+            furthestTime = Math.max(furthestTime, innerContext.currentTimeline.currentTime);
+            innerTimelines.push(innerContext.currentTimeline);
+        }));
+        // this operation is run after the AST loop because otherwise
+        // if the parent timeline's collected styles were updated then
+        // it would pass in invalid data into the new-to-be forked items
+        innerTimelines.forEach((/**
+         * @param {?} timeline
+         * @return {?}
+         */
+        timeline => context.currentTimeline.mergeTimelineCollectedStyles(timeline)));
+        context.transformIntoNewTimeline(furthestTime);
+        context.previousNode = ast;
+    }
+    /**
+     * @private
+     * @param {?} ast
+     * @param {?} context
+     * @return {?}
+     */
+    _visitTiming(ast, context) {
+        if (((/** @type {?} */ (ast))).dynamic) {
+            /** @type {?} */
+            const strValue = ((/** @type {?} */ (ast))).strValue;
+            /** @type {?} */
+            const timingValue = context.params ? interpolateParams(strValue, context.params, context.errors) : strValue;
+            return resolveTiming(timingValue, context.errors);
+        }
+        else {
+            return { duration: ast.duration, delay: ast.delay, easing: ast.easing };
+        }
+    }
+    /**
+     * @param {?} ast
+     * @param {?} context
+     * @return {?}
+     */
+    visitAnimate(ast, context) {
+        /** @type {?} */
+        const timings = context.currentAnimateTimings = this._visitTiming(ast.timings, context);
+        /** @type {?} */
+        const timeline = context.currentTimeline;
+        if (timings.delay) {
+            context.incrementTime(timings.delay);
+            timeline.snapshotCurrentStyles();
+        }
+        /** @type {?} */
+        const style = ast.style;
+        if (style.type == 5 /* Keyframes */) {
+            this.visitKeyframes(style, context);
+        }
+        else {
+            context.incrementTime(timings.duration);
+            this.visitStyle((/** @type {?} */ (style)), context);
+            timeline.applyStylesToKeyframe();
+        }
+        context.currentAnimateTimings = null;
+        context.previousNode = ast;
+    }
+    /**
+     * @param {?} ast
+     * @param {?} context
+     * @return {?}
+     */
+    visitStyle(ast, context) {
+        /** @type {?} */
+        const timeline = context.currentTimeline;
+        /** @type {?} */
+        const timings = (/** @type {?} */ (context.currentAnimateTimings));
+        // this is a special case for when a style() call
+        // directly follows  an animate() call (but not inside of an animate() call)
+        if (!timings && timeline.getCurrentStyleProperties().length) {
+            timeline.forwardFrame();
+        }
+        /** @type {?} */
+        const easing = (timings && timings.easing) || ast.easing;
+        if (ast.isEmptyStep) {
+            timeline.applyEmptyStep(easing);
+        }
+        else {
+            timeline.setStyles(ast.styles, easing, context.errors, context.options);
+        }
+        context.previousNode = ast;
+    }
+    /**
+     * @param {?} ast
+     * @param {?} context
+     * @return {?}
+     */
+    visitKeyframes(ast, context) {
+        /** @type {?} */
+        const currentAnimateTimings = (/** @type {?} */ (context.currentAnimateTimings));
+        /** @type {?} */
+        const startTime = ((/** @type {?} */ (context.currentTimeline))).duration;
+        /** @type {?} */
+        const duration = currentAnimateTimings.duration;
+        /** @type {?} */
+        const innerContext = context.createSubContext();
+        /** @type {?} */
+        const innerTimeline = innerContext.currentTimeline;
+        innerTimeline.easing = currentAnimateTimings.easing;
+        ast.styles.forEach((/**
+         * @param {?} step
+         * @return {?}
+         */
+        step => {
+            /** @type {?} */
+            const offset = step.offset || 0;
+            innerTimeline.forwardTime(offset * duration);
+            innerTimeline.setStyles(step.styles, step.easing, context.errors, context.options);
+            innerTimeline.applyStylesToKeyframe();
+        }));
+        // this will ensure that the parent timeline gets all the styles from
+        // the child even if the new timeline below is not used
+        context.currentTimeline.mergeTimelineCollectedStyles(innerTimeline);
+        // we do this because the window between this timeline and the sub timeline
+        // should ensure that the styles within are exactly the same as they were before
+        context.transformIntoNewTimeline(startTime + duration);
+        context.previousNode = ast;
+    }
+    /**
+     * @param {?} ast
+     * @param {?} context
+     * @return {?}
+     */
+    visitQuery(ast, context) {
+        // in the event that the first step before this is a style step we need
+        // to ensure the styles are applied before the children are animated
+        /** @type {?} */
+        const startTime = context.currentTimeline.currentTime;
+        /** @type {?} */
+        const options = (/** @type {?} */ ((ast.options || {})));
+        /** @type {?} */
+        const delay = options.delay ? resolveTimingValue(options.delay) : 0;
+        if (delay && (context.previousNode.type === 6 /* Style */ ||
+            (startTime == 0 && context.currentTimeline.getCurrentStyleProperties().length))) {
+            context.currentTimeline.snapshotCurrentStyles();
+            context.previousNode = DEFAULT_NOOP_PREVIOUS_NODE;
+        }
+        /** @type {?} */
+        let furthestTime = startTime;
+        /** @type {?} */
+        const elms = context.invokeQuery(ast.selector, ast.originalSelector, ast.limit, ast.includeSelf, options.optional ? true : false, context.errors);
+        context.currentQueryTotal = elms.length;
+        /** @type {?} */
+        let sameElementTimeline = null;
+        elms.forEach((/**
+         * @param {?} element
+         * @param {?} i
+         * @return {?}
+         */
+        (element, i) => {
+            context.currentQueryIndex = i;
+            /** @type {?} */
+            const innerContext = context.createSubContext(ast.options, element);
+            if (delay) {
+                innerContext.delayNextStep(delay);
+            }
+            if (element === context.element) {
+                sameElementTimeline = innerContext.currentTimeline;
+            }
+            visitDslNode(this, ast.animation, innerContext);
+            // this is here just incase the inner steps only contain or end
+            // with a style() call (which is here to signal that this is a preparatory
+            // call to style an element before it is animated again)
+            innerContext.currentTimeline.applyStylesToKeyframe();
+            /** @type {?} */
+            const endTime = innerContext.currentTimeline.currentTime;
+            furthestTime = Math.max(furthestTime, endTime);
+        }));
+        context.currentQueryIndex = 0;
+        context.currentQueryTotal = 0;
+        context.transformIntoNewTimeline(furthestTime);
+        if (sameElementTimeline) {
+            context.currentTimeline.mergeTimelineCollectedStyles(sameElementTimeline);
+            context.currentTimeline.snapshotCurrentStyles();
+        }
+        context.previousNode = ast;
+    }
+    /**
+     * @param {?} ast
+     * @param {?} context
+     * @return {?}
+     */
+    visitStagger(ast, context) {
+        /** @type {?} */
+        const parentContext = (/** @type {?} */ (context.parentContext));
+        /** @type {?} */
+        const tl = context.currentTimeline;
+        /** @type {?} */
+        const timings = ast.timings;
+        /** @type {?} */
+        const duration = Math.abs(timings.duration);
+        /** @type {?} */
+        const maxTime = duration * (context.currentQueryTotal - 1);
+        /** @type {?} */
+        let delay = duration * context.currentQueryIndex;
+        /** @type {?} */
+        let staggerTransformer = timings.duration < 0 ? 'reverse' : timings.easing;
+        switch (staggerTransformer) {
+            case 'reverse':
+                delay = maxTime - delay;
+                break;
+            case 'full':
+                delay = parentContext.currentStaggerTime;
+                break;
+        }
+        /** @type {?} */
+        const timeline = context.currentTimeline;
+        if (delay) {
+            timeline.delayNextStep(delay);
+        }
+        /** @type {?} */
+        const startingTime = timeline.currentTime;
+        visitDslNode(this, ast.animation, context);
+        context.previousNode = ast;
+        // time = duration + delay
+        // the reason why this computation is so complex is because
+        // the inner timeline may either have a delay value or a stretched
+        // keyframe depending on if a subtimeline is not used or is used.
+        parentContext.currentStaggerTime =
+            (tl.currentTime - startingTime) + (tl.startTime - parentContext.currentTimeline.startTime);
+    }
+}
+/** @type {?} */
+const DEFAULT_NOOP_PREVIOUS_NODE = (/** @type {?} */ ({}));
+class AnimationTimelineContext {
+    /**
+     * @param {?} _driver
+     * @param {?} element
+     * @param {?} subInstructions
+     * @param {?} _enterClassName
+     * @param {?} _leaveClassName
+     * @param {?} errors
+     * @param {?} timelines
+     * @param {?=} initialTimeline
+     */
+    constructor(_driver, element, subInstructions, _enterClassName, _leaveClassName, errors, timelines, initialTimeline) {
+        this._driver = _driver;
+        this.element = element;
+        this.subInstructions = subInstructions;
+        this._enterClassName = _enterClassName;
+        this._leaveClassName = _leaveClassName;
+        this.errors = errors;
+        this.timelines = timelines;
+        this.parentContext = null;
+        this.currentAnimateTimings = null;
+        this.previousNode = DEFAULT_NOOP_PREVIOUS_NODE;
+        this.subContextCount = 0;
+        this.options = {};
+        this.currentQueryIndex = 0;
+        this.currentQueryTotal = 0;
+        this.currentStaggerTime = 0;
+        this.currentTimeline = initialTimeline || new TimelineBuilder(this._driver, element, 0);
+        timelines.push(this.currentTimeline);
+    }
+    /**
+     * @return {?}
+     */
+    get params() { return this.options.params; }
+    /**
+     * @param {?} options
+     * @param {?=} skipIfExists
+     * @return {?}
+     */
+    updateOptions(options, skipIfExists) {
+        if (!options)
+            return;
+        /** @type {?} */
+        const newOptions = (/** @type {?} */ (options));
+        /** @type {?} */
+        let optionsToUpdate = this.options;
+        // NOTE: this will get patched up when other animation methods support duration overrides
+        if (newOptions.duration != null) {
+            ((/** @type {?} */ (optionsToUpdate))).duration = resolveTimingValue(newOptions.duration);
+        }
+        if (newOptions.delay != null) {
+            optionsToUpdate.delay = resolveTimingValue(newOptions.delay);
+        }
+        /** @type {?} */
+        const newParams = newOptions.params;
+        if (newParams) {
+            /** @type {?} */
+            let paramsToUpdate = (/** @type {?} */ (optionsToUpdate.params));
+            if (!paramsToUpdate) {
+                paramsToUpdate = this.options.params = {};
+            }
+            Object.keys(newParams).forEach((/**
+             * @param {?} name
+             * @return {?}
+             */
+            name => {
+                if (!skipIfExists || !paramsToUpdate.hasOwnProperty(name)) {
+                    paramsToUpdate[name] = interpolateParams(newParams[name], paramsToUpdate, this.errors);
+                }
+            }));
+        }
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    _copyOptions() {
+        /** @type {?} */
+        const options = {};
+        if (this.options) {
+            /** @type {?} */
+            const oldParams = this.options.params;
+            if (oldParams) {
+                /** @type {?} */
+                const params = options['params'] = {};
+                Object.keys(oldParams).forEach((/**
+                 * @param {?} name
+                 * @return {?}
+                 */
+                name => { params[name] = oldParams[name]; }));
+            }
+        }
+        return options;
+    }
+    /**
+     * @param {?=} options
+     * @param {?=} element
+     * @param {?=} newTime
+     * @return {?}
+     */
+    createSubContext(options = null, element, newTime) {
+        /** @type {?} */
+        const target = element || this.element;
+        /** @type {?} */
+        const context = new AnimationTimelineContext(this._driver, target, this.subInstructions, this._enterClassName, this._leaveClassName, this.errors, this.timelines, this.currentTimeline.fork(target, newTime || 0));
+        context.previousNode = this.previousNode;
+        context.currentAnimateTimings = this.currentAnimateTimings;
+        context.options = this._copyOptions();
+        context.updateOptions(options);
+        context.currentQueryIndex = this.currentQueryIndex;
+        context.currentQueryTotal = this.currentQueryTotal;
+        context.parentContext = this;
+        this.subContextCount++;
+        return context;
+    }
+    /**
+     * @param {?=} newTime
+     * @return {?}
+     */
+    transformIntoNewTimeline(newTime) {
+        this.previousNode = DEFAULT_NOOP_PREVIOUS_NODE;
+        this.currentTimeline = this.currentTimeline.fork(this.element, newTime);
+        this.timelines.push(this.currentTimeline);
+        return this.currentTimeline;
+    }
+    /**
+     * @param {?} instruction
+     * @param {?} duration
+     * @param {?} delay
+     * @return {?}
+     */
+    appendInstructionToTimeline(instruction, duration, delay) {
+        /** @type {?} */
+        const updatedTimings = {
+            duration: duration != null ? duration : instruction.duration,
+            delay: this.currentTimeline.currentTime + (delay != null ? delay : 0) + instruction.delay,
+            easing: ''
+        };
+        /** @type {?} */
+        const builder = new SubTimelineBuilder(this._driver, instruction.element, instruction.keyframes, instruction.preStyleProps, instruction.postStyleProps, updatedTimings, instruction.stretchStartingKeyframe);
+        this.timelines.push(builder);
+        return updatedTimings;
+    }
+    /**
+     * @param {?} time
+     * @return {?}
+     */
+    incrementTime(time) {
+        this.currentTimeline.forwardTime(this.currentTimeline.duration + time);
+    }
+    /**
+     * @param {?} delay
+     * @return {?}
+     */
+    delayNextStep(delay) {
+        // negative delays are not yet supported
+        if (delay > 0) {
+            this.currentTimeline.delayNextStep(delay);
+        }
+    }
+    /**
+     * @param {?} selector
+     * @param {?} originalSelector
+     * @param {?} limit
+     * @param {?} includeSelf
+     * @param {?} optional
+     * @param {?} errors
+     * @return {?}
+     */
+    invokeQuery(selector, originalSelector, limit, includeSelf, optional, errors) {
+        /** @type {?} */
+        let results = [];
+        if (includeSelf) {
+            results.push(this.element);
+        }
+        if (selector.length > 0) { // if :self is only used then the selector is empty
+            selector = selector.replace(ENTER_TOKEN_REGEX, '.' + this._enterClassName);
+            selector = selector.replace(LEAVE_TOKEN_REGEX, '.' + this._leaveClassName);
+            /** @type {?} */
+            const multi = limit != 1;
+            /** @type {?} */
+            let elements = this._driver.query(this.element, selector, multi);
+            if (limit !== 0) {
+                elements = limit < 0 ? elements.slice(elements.length + limit, elements.length) :
+                    elements.slice(0, limit);
+            }
+            results.push(...elements);
+        }
+        if (!optional && results.length == 0) {
+            errors.push(`\`query("${originalSelector}")\` returned zero elements. (Use \`query("${originalSelector}", { optional: true })\` if you wish to allow this.)`);
+        }
+        return results;
+    }
+}
+if (false) {}
+class TimelineBuilder {
+    /**
+     * @param {?} _driver
+     * @param {?} element
+     * @param {?} startTime
+     * @param {?=} _elementTimelineStylesLookup
+     */
+    constructor(_driver, element, startTime, _elementTimelineStylesLookup) {
+        this._driver = _driver;
+        this.element = element;
+        this.startTime = startTime;
+        this._elementTimelineStylesLookup = _elementTimelineStylesLookup;
+        this.duration = 0;
+        this._previousKeyframe = {};
+        this._currentKeyframe = {};
+        this._keyframes = new Map();
+        this._styleSummary = {};
+        this._pendingStyles = {};
+        this._backFill = {};
+        this._currentEmptyStepKeyframe = null;
+        if (!this._elementTimelineStylesLookup) {
+            this._elementTimelineStylesLookup = new Map();
+        }
+        this._localTimelineStyles = Object.create(this._backFill, {});
+        this._globalTimelineStyles = (/** @type {?} */ (this._elementTimelineStylesLookup.get(element)));
+        if (!this._globalTimelineStyles) {
+            this._globalTimelineStyles = this._localTimelineStyles;
+            this._elementTimelineStylesLookup.set(element, this._localTimelineStyles);
+        }
+        this._loadKeyframe();
+    }
+    /**
+     * @return {?}
+     */
+    containsAnimation() {
+        switch (this._keyframes.size) {
+            case 0:
+                return false;
+            case 1:
+                return this.getCurrentStyleProperties().length > 0;
+            default:
+                return true;
+        }
+    }
+    /**
+     * @return {?}
+     */
+    getCurrentStyleProperties() { return Object.keys(this._currentKeyframe); }
+    /**
+     * @return {?}
+     */
+    get currentTime() { return this.startTime + this.duration; }
+    /**
+     * @param {?} delay
+     * @return {?}
+     */
+    delayNextStep(delay) {
+        // in the event that a style() step is placed right before a stagger()
+        // and that style() step is the very first style() value in the animation
+        // then we need to make a copy of the keyframe [0, copy, 1] so that the delay
+        // properly applies the style() values to work with the stagger...
+        /** @type {?} */
+        const hasPreStyleStep = this._keyframes.size == 1 && Object.keys(this._pendingStyles).length;
+        if (this.duration || hasPreStyleStep) {
+            this.forwardTime(this.currentTime + delay);
+            if (hasPreStyleStep) {
+                this.snapshotCurrentStyles();
+            }
+        }
+        else {
+            this.startTime += delay;
+        }
+    }
+    /**
+     * @param {?} element
+     * @param {?=} currentTime
+     * @return {?}
+     */
+    fork(element, currentTime) {
+        this.applyStylesToKeyframe();
+        return new TimelineBuilder(this._driver, element, currentTime || this.currentTime, this._elementTimelineStylesLookup);
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    _loadKeyframe() {
+        if (this._currentKeyframe) {
+            this._previousKeyframe = this._currentKeyframe;
+        }
+        this._currentKeyframe = (/** @type {?} */ (this._keyframes.get(this.duration)));
+        if (!this._currentKeyframe) {
+            this._currentKeyframe = Object.create(this._backFill, {});
+            this._keyframes.set(this.duration, this._currentKeyframe);
+        }
+    }
+    /**
+     * @return {?}
+     */
+    forwardFrame() {
+        this.duration += ONE_FRAME_IN_MILLISECONDS;
+        this._loadKeyframe();
+    }
+    /**
+     * @param {?} time
+     * @return {?}
+     */
+    forwardTime(time) {
+        this.applyStylesToKeyframe();
+        this.duration = time;
+        this._loadKeyframe();
+    }
+    /**
+     * @private
+     * @param {?} prop
+     * @param {?} value
+     * @return {?}
+     */
+    _updateStyle(prop, value) {
+        this._localTimelineStyles[prop] = value;
+        this._globalTimelineStyles[prop] = value;
+        this._styleSummary[prop] = { time: this.currentTime, value };
+    }
+    /**
+     * @return {?}
+     */
+    allowOnlyTimelineStyles() { return this._currentEmptyStepKeyframe !== this._currentKeyframe; }
+    /**
+     * @param {?} easing
+     * @return {?}
+     */
+    applyEmptyStep(easing) {
+        if (easing) {
+            this._previousKeyframe['easing'] = easing;
+        }
+        // special case for animate(duration):
+        // all missing styles are filled with a `*` value then
+        // if any destination styles are filled in later on the same
+        // keyframe then they will override the overridden styles
+        // We use `_globalTimelineStyles` here because there may be
+        // styles in previous keyframes that are not present in this timeline
+        Object.keys(this._globalTimelineStyles).forEach((/**
+         * @param {?} prop
+         * @return {?}
+         */
+        prop => {
+            this._backFill[prop] = this._globalTimelineStyles[prop] || _angular_animations__WEBPACK_IMPORTED_MODULE_0__["AUTO_STYLE"];
+            this._currentKeyframe[prop] = _angular_animations__WEBPACK_IMPORTED_MODULE_0__["AUTO_STYLE"];
+        }));
+        this._currentEmptyStepKeyframe = this._currentKeyframe;
+    }
+    /**
+     * @param {?} input
+     * @param {?} easing
+     * @param {?} errors
+     * @param {?=} options
+     * @return {?}
+     */
+    setStyles(input, easing, errors, options) {
+        if (easing) {
+            this._previousKeyframe['easing'] = easing;
+        }
+        /** @type {?} */
+        const params = (options && options.params) || {};
+        /** @type {?} */
+        const styles = flattenStyles(input, this._globalTimelineStyles);
+        Object.keys(styles).forEach((/**
+         * @param {?} prop
+         * @return {?}
+         */
+        prop => {
+            /** @type {?} */
+            const val = interpolateParams(styles[prop], params, errors);
+            this._pendingStyles[prop] = val;
+            if (!this._localTimelineStyles.hasOwnProperty(prop)) {
+                this._backFill[prop] = this._globalTimelineStyles.hasOwnProperty(prop) ?
+                    this._globalTimelineStyles[prop] :
+                    _angular_animations__WEBPACK_IMPORTED_MODULE_0__["AUTO_STYLE"];
+            }
+            this._updateStyle(prop, val);
+        }));
+    }
+    /**
+     * @return {?}
+     */
+    applyStylesToKeyframe() {
+        /** @type {?} */
+        const styles = this._pendingStyles;
+        /** @type {?} */
+        const props = Object.keys(styles);
+        if (props.length == 0)
+            return;
+        this._pendingStyles = {};
+        props.forEach((/**
+         * @param {?} prop
+         * @return {?}
+         */
+        prop => {
+            /** @type {?} */
+            const val = styles[prop];
+            this._currentKeyframe[prop] = val;
+        }));
+        Object.keys(this._localTimelineStyles).forEach((/**
+         * @param {?} prop
+         * @return {?}
+         */
+        prop => {
+            if (!this._currentKeyframe.hasOwnProperty(prop)) {
+                this._currentKeyframe[prop] = this._localTimelineStyles[prop];
+            }
+        }));
+    }
+    /**
+     * @return {?}
+     */
+    snapshotCurrentStyles() {
+        Object.keys(this._localTimelineStyles).forEach((/**
+         * @param {?} prop
+         * @return {?}
+         */
+        prop => {
+            /** @type {?} */
+            const val = this._localTimelineStyles[prop];
+            this._pendingStyles[prop] = val;
+            this._updateStyle(prop, val);
+        }));
+    }
+    /**
+     * @return {?}
+     */
+    getFinalKeyframe() { return this._keyframes.get(this.duration); }
+    /**
+     * @return {?}
+     */
+    get properties() {
+        /** @type {?} */
+        const properties = [];
+        for (let prop in this._currentKeyframe) {
+            properties.push(prop);
+        }
+        return properties;
+    }
+    /**
+     * @param {?} timeline
+     * @return {?}
+     */
+    mergeTimelineCollectedStyles(timeline) {
+        Object.keys(timeline._styleSummary).forEach((/**
+         * @param {?} prop
+         * @return {?}
+         */
+        prop => {
+            /** @type {?} */
+            const details0 = this._styleSummary[prop];
+            /** @type {?} */
+            const details1 = timeline._styleSummary[prop];
+            if (!details0 || details1.time > details0.time) {
+                this._updateStyle(prop, details1.value);
+            }
+        }));
+    }
+    /**
+     * @return {?}
+     */
+    buildKeyframes() {
+        this.applyStylesToKeyframe();
+        /** @type {?} */
+        const preStyleProps = new Set();
+        /** @type {?} */
+        const postStyleProps = new Set();
+        /** @type {?} */
+        const isEmpty = this._keyframes.size === 1 && this.duration === 0;
+        /** @type {?} */
+        let finalKeyframes = [];
+        this._keyframes.forEach((/**
+         * @param {?} keyframe
+         * @param {?} time
+         * @return {?}
+         */
+        (keyframe, time) => {
+            /** @type {?} */
+            const finalKeyframe = copyStyles(keyframe, true);
+            Object.keys(finalKeyframe).forEach((/**
+             * @param {?} prop
+             * @return {?}
+             */
+            prop => {
+                /** @type {?} */
+                const value = finalKeyframe[prop];
+                if (value == _angular_animations__WEBPACK_IMPORTED_MODULE_0__["ɵPRE_STYLE"]) {
+                    preStyleProps.add(prop);
+                }
+                else if (value == _angular_animations__WEBPACK_IMPORTED_MODULE_0__["AUTO_STYLE"]) {
+                    postStyleProps.add(prop);
+                }
+            }));
+            if (!isEmpty) {
+                finalKeyframe['offset'] = time / this.duration;
+            }
+            finalKeyframes.push(finalKeyframe);
+        }));
+        /** @type {?} */
+        const preProps = preStyleProps.size ? iteratorToArray(preStyleProps.values()) : [];
+        /** @type {?} */
+        const postProps = postStyleProps.size ? iteratorToArray(postStyleProps.values()) : [];
+        // special case for a 0-second animation (which is designed just to place styles onscreen)
+        if (isEmpty) {
+            /** @type {?} */
+            const kf0 = finalKeyframes[0];
+            /** @type {?} */
+            const kf1 = copyObj(kf0);
+            kf0['offset'] = 0;
+            kf1['offset'] = 1;
+            finalKeyframes = [kf0, kf1];
+        }
+        return createTimelineInstruction(this.element, finalKeyframes, preProps, postProps, this.duration, this.startTime, this.easing, false);
+    }
+}
+if (false) {}
+class SubTimelineBuilder extends TimelineBuilder {
+    /**
+     * @param {?} driver
+     * @param {?} element
+     * @param {?} keyframes
+     * @param {?} preStyleProps
+     * @param {?} postStyleProps
+     * @param {?} timings
+     * @param {?=} _stretchStartingKeyframe
+     */
+    constructor(driver, element, keyframes, preStyleProps, postStyleProps, timings, _stretchStartingKeyframe = false) {
+        super(driver, element, timings.delay);
+        this.element = element;
+        this.keyframes = keyframes;
+        this.preStyleProps = preStyleProps;
+        this.postStyleProps = postStyleProps;
+        this._stretchStartingKeyframe = _stretchStartingKeyframe;
+        this.timings = { duration: timings.duration, delay: timings.delay, easing: timings.easing };
+    }
+    /**
+     * @return {?}
+     */
+    containsAnimation() { return this.keyframes.length > 1; }
+    /**
+     * @return {?}
+     */
+    buildKeyframes() {
+        /** @type {?} */
+        let keyframes = this.keyframes;
+        let { delay, duration, easing } = this.timings;
+        if (this._stretchStartingKeyframe && delay) {
+            /** @type {?} */
+            const newKeyframes = [];
+            /** @type {?} */
+            const totalTime = duration + delay;
+            /** @type {?} */
+            const startingGap = delay / totalTime;
+            // the original starting keyframe now starts once the delay is done
+            /** @type {?} */
+            const newFirstKeyframe = copyStyles(keyframes[0], false);
+            newFirstKeyframe['offset'] = 0;
+            newKeyframes.push(newFirstKeyframe);
+            /** @type {?} */
+            const oldFirstKeyframe = copyStyles(keyframes[0], false);
+            oldFirstKeyframe['offset'] = roundOffset(startingGap);
+            newKeyframes.push(oldFirstKeyframe);
+            /*
+                    When the keyframe is stretched then it means that the delay before the animation
+                    starts is gone. Instead the first keyframe is placed at the start of the animation
+                    and it is then copied to where it starts when the original delay is over. This basically
+                    means nothing animates during that delay, but the styles are still renderered. For this
+                    to work the original offset values that exist in the original keyframes must be "warped"
+                    so that they can take the new keyframe + delay into account.
+            
+                    delay=1000, duration=1000, keyframes = 0 .5 1
+            
+                    turns into
+            
+                    delay=0, duration=2000, keyframes = 0 .33 .66 1
+                   */
+            // offsets between 1 ... n -1 are all warped by the keyframe stretch
+            /** @type {?} */
+            const limit = keyframes.length - 1;
+            for (let i = 1; i <= limit; i++) {
+                /** @type {?} */
+                let kf = copyStyles(keyframes[i], false);
+                /** @type {?} */
+                const oldOffset = (/** @type {?} */ (kf['offset']));
+                /** @type {?} */
+                const timeAtKeyframe = delay + oldOffset * duration;
+                kf['offset'] = roundOffset(timeAtKeyframe / totalTime);
+                newKeyframes.push(kf);
+            }
+            // the new starting keyframe should be added at the start
+            duration = totalTime;
+            delay = 0;
+            easing = '';
+            keyframes = newKeyframes;
+        }
+        return createTimelineInstruction(this.element, keyframes, this.preStyleProps, this.postStyleProps, duration, delay, easing, true);
+    }
+}
+if (false) {}
+/**
+ * @param {?} offset
+ * @param {?=} decimalPoints
+ * @return {?}
+ */
+function roundOffset(offset, decimalPoints = 3) {
+    /** @type {?} */
+    const mult = Math.pow(10, decimalPoints - 1);
+    return Math.round(offset * mult) / mult;
+}
+/**
+ * @param {?} input
+ * @param {?} allStyles
+ * @return {?}
+ */
+function flattenStyles(input, allStyles) {
+    /** @type {?} */
+    const styles = {};
+    /** @type {?} */
+    let allProperties;
+    input.forEach((/**
+     * @param {?} token
+     * @return {?}
+     */
+    token => {
+        if (token === '*') {
+            allProperties = allProperties || Object.keys(allStyles);
+            allProperties.forEach((/**
+             * @param {?} prop
+             * @return {?}
+             */
+            prop => { styles[prop] = _angular_animations__WEBPACK_IMPORTED_MODULE_0__["AUTO_STYLE"]; }));
+        }
+        else {
+            copyStyles((/** @type {?} */ (token)), false, styles);
+        }
+    }));
+    return styles;
+}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/browser/src/dsl/animation.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class Animation {
+    /**
+     * @param {?} _driver
+     * @param {?} input
+     */
+    constructor(_driver, input) {
+        this._driver = _driver;
+        /** @type {?} */
+        const errors = [];
+        /** @type {?} */
+        const ast = buildAnimationAst(_driver, input, errors);
+        if (errors.length) {
+            /** @type {?} */
+            const errorMessage = `animation validation failed:\n${errors.join("\n")}`;
+            throw new Error(errorMessage);
+        }
+        this._animationAst = ast;
+    }
+    /**
+     * @param {?} element
+     * @param {?} startingStyles
+     * @param {?} destinationStyles
+     * @param {?} options
+     * @param {?=} subInstructions
+     * @return {?}
+     */
+    buildTimelines(element, startingStyles, destinationStyles, options, subInstructions) {
+        /** @type {?} */
+        const start = Array.isArray(startingStyles) ? normalizeStyles(startingStyles) :
+            (/** @type {?} */ (startingStyles));
+        /** @type {?} */
+        const dest = Array.isArray(destinationStyles) ? normalizeStyles(destinationStyles) :
+            (/** @type {?} */ (destinationStyles));
+        /** @type {?} */
+        const errors = [];
+        subInstructions = subInstructions || new ElementInstructionMap();
+        /** @type {?} */
+        const result = buildAnimationTimelines(this._driver, element, this._animationAst, ENTER_CLASSNAME, LEAVE_CLASSNAME, start, dest, options, subInstructions, errors);
+        if (errors.length) {
+            /** @type {?} */
+            const errorMessage = `animation building failed:\n${errors.join("\n")}`;
+            throw new Error(errorMessage);
+        }
+        return result;
+    }
+}
+if (false) {}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/browser/src/dsl/style_normalization/animation_style_normalizer.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * \@publicApi
+ * @abstract
+ */
+class AnimationStyleNormalizer {
+}
+if (false) {}
+/**
+ * \@publicApi
+ */
+class NoopAnimationStyleNormalizer {
+    /**
+     * @param {?} propertyName
+     * @param {?} errors
+     * @return {?}
+     */
+    normalizePropertyName(propertyName, errors) { return propertyName; }
+    /**
+     * @param {?} userProvidedProperty
+     * @param {?} normalizedProperty
+     * @param {?} value
+     * @param {?} errors
+     * @return {?}
+     */
+    normalizeStyleValue(userProvidedProperty, normalizedProperty, value, errors) {
+        return (/** @type {?} */ (value));
+    }
+}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/browser/src/dsl/style_normalization/web_animations_style_normalizer.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class WebAnimationsStyleNormalizer extends AnimationStyleNormalizer {
+    /**
+     * @param {?} propertyName
+     * @param {?} errors
+     * @return {?}
+     */
+    normalizePropertyName(propertyName, errors) {
+        return dashCaseToCamelCase(propertyName);
+    }
+    /**
+     * @param {?} userProvidedProperty
+     * @param {?} normalizedProperty
+     * @param {?} value
+     * @param {?} errors
+     * @return {?}
+     */
+    normalizeStyleValue(userProvidedProperty, normalizedProperty, value, errors) {
+        /** @type {?} */
+        let unit = '';
+        /** @type {?} */
+        const strVal = value.toString().trim();
+        if (DIMENSIONAL_PROP_MAP[normalizedProperty] && value !== 0 && value !== '0') {
+            if (typeof value === 'number') {
+                unit = 'px';
+            }
+            else {
+                /** @type {?} */
+                const valAndSuffixMatch = value.match(/^[+-]?[\d\.]+([a-z]*)$/);
+                if (valAndSuffixMatch && valAndSuffixMatch[1].length == 0) {
+                    errors.push(`Please provide a CSS unit value for ${userProvidedProperty}:${value}`);
+                }
+            }
+        }
+        return strVal + unit;
+    }
+}
+const ɵ0$1 = /**
+ * @return {?}
+ */
+() => makeBooleanMap('width,height,minWidth,minHeight,maxWidth,maxHeight,left,top,bottom,right,fontSize,outlineWidth,outlineOffset,paddingTop,paddingLeft,paddingBottom,paddingRight,marginTop,marginLeft,marginBottom,marginRight,borderRadius,borderWidth,borderTopWidth,borderLeftWidth,borderRightWidth,borderBottomWidth,textIndent,perspective'
+    .split(','));
+/** @type {?} */
+const DIMENSIONAL_PROP_MAP = ((ɵ0$1))();
+/**
+ * @param {?} keys
+ * @return {?}
+ */
+function makeBooleanMap(keys) {
+    /** @type {?} */
+    const map = {};
+    keys.forEach((/**
+     * @param {?} key
+     * @return {?}
+     */
+    key => map[key] = true));
+    return map;
+}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/browser/src/dsl/animation_transition_instruction.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * @record
+ */
+function AnimationTransitionInstruction() { }
+if (false) {}
+/**
+ * @param {?} element
+ * @param {?} triggerName
+ * @param {?} fromState
+ * @param {?} toState
+ * @param {?} isRemovalTransition
+ * @param {?} fromStyles
+ * @param {?} toStyles
+ * @param {?} timelines
+ * @param {?} queriedElements
+ * @param {?} preStyleProps
+ * @param {?} postStyleProps
+ * @param {?} totalTime
+ * @param {?=} errors
+ * @return {?}
+ */
+function createTransitionInstruction(element, triggerName, fromState, toState, isRemovalTransition, fromStyles, toStyles, timelines, queriedElements, preStyleProps, postStyleProps, totalTime, errors) {
+    return {
+        type: 0 /* TransitionAnimation */,
+        element,
+        triggerName,
+        isRemovalTransition,
+        fromState,
+        fromStyles,
+        toState,
+        toStyles,
+        timelines,
+        queriedElements,
+        preStyleProps,
+        postStyleProps,
+        totalTime,
+        errors
+    };
+}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/browser/src/dsl/animation_transition_factory.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/** @type {?} */
+const EMPTY_OBJECT = {};
+class AnimationTransitionFactory {
+    /**
+     * @param {?} _triggerName
+     * @param {?} ast
+     * @param {?} _stateStyles
+     */
+    constructor(_triggerName, ast, _stateStyles) {
+        this._triggerName = _triggerName;
+        this.ast = ast;
+        this._stateStyles = _stateStyles;
+    }
+    /**
+     * @param {?} currentState
+     * @param {?} nextState
+     * @param {?} element
+     * @param {?} params
+     * @return {?}
+     */
+    match(currentState, nextState, element, params) {
+        return oneOrMoreTransitionsMatch(this.ast.matchers, currentState, nextState, element, params);
+    }
+    /**
+     * @param {?} stateName
+     * @param {?} params
+     * @param {?} errors
+     * @return {?}
+     */
+    buildStyles(stateName, params, errors) {
+        /** @type {?} */
+        const backupStateStyler = this._stateStyles['*'];
+        /** @type {?} */
+        const stateStyler = this._stateStyles[stateName];
+        /** @type {?} */
+        const backupStyles = backupStateStyler ? backupStateStyler.buildStyles(params, errors) : {};
+        return stateStyler ? stateStyler.buildStyles(params, errors) : backupStyles;
+    }
+    /**
+     * @param {?} driver
+     * @param {?} element
+     * @param {?} currentState
+     * @param {?} nextState
+     * @param {?} enterClassName
+     * @param {?} leaveClassName
+     * @param {?=} currentOptions
+     * @param {?=} nextOptions
+     * @param {?=} subInstructions
+     * @param {?=} skipAstBuild
+     * @return {?}
+     */
+    build(driver, element, currentState, nextState, enterClassName, leaveClassName, currentOptions, nextOptions, subInstructions, skipAstBuild) {
+        /** @type {?} */
+        const errors = [];
+        /** @type {?} */
+        const transitionAnimationParams = this.ast.options && this.ast.options.params || EMPTY_OBJECT;
+        /** @type {?} */
+        const currentAnimationParams = currentOptions && currentOptions.params || EMPTY_OBJECT;
+        /** @type {?} */
+        const currentStateStyles = this.buildStyles(currentState, currentAnimationParams, errors);
+        /** @type {?} */
+        const nextAnimationParams = nextOptions && nextOptions.params || EMPTY_OBJECT;
+        /** @type {?} */
+        const nextStateStyles = this.buildStyles(nextState, nextAnimationParams, errors);
+        /** @type {?} */
+        const queriedElements = new Set();
+        /** @type {?} */
+        const preStyleMap = new Map();
+        /** @type {?} */
+        const postStyleMap = new Map();
+        /** @type {?} */
+        const isRemoval = nextState === 'void';
+        /** @type {?} */
+        const animationOptions = { params: Object.assign(Object.assign({}, transitionAnimationParams), nextAnimationParams) };
+        /** @type {?} */
+        const timelines = skipAstBuild ? [] : buildAnimationTimelines(driver, element, this.ast.animation, enterClassName, leaveClassName, currentStateStyles, nextStateStyles, animationOptions, subInstructions, errors);
+        /** @type {?} */
+        let totalTime = 0;
+        timelines.forEach((/**
+         * @param {?} tl
+         * @return {?}
+         */
+        tl => { totalTime = Math.max(tl.duration + tl.delay, totalTime); }));
+        if (errors.length) {
+            return createTransitionInstruction(element, this._triggerName, currentState, nextState, isRemoval, currentStateStyles, nextStateStyles, [], [], preStyleMap, postStyleMap, totalTime, errors);
+        }
+        timelines.forEach((/**
+         * @param {?} tl
+         * @return {?}
+         */
+        tl => {
+            /** @type {?} */
+            const elm = tl.element;
+            /** @type {?} */
+            const preProps = getOrSetAsInMap(preStyleMap, elm, {});
+            tl.preStyleProps.forEach((/**
+             * @param {?} prop
+             * @return {?}
+             */
+            prop => preProps[prop] = true));
+            /** @type {?} */
+            const postProps = getOrSetAsInMap(postStyleMap, elm, {});
+            tl.postStyleProps.forEach((/**
+             * @param {?} prop
+             * @return {?}
+             */
+            prop => postProps[prop] = true));
+            if (elm !== element) {
+                queriedElements.add(elm);
+            }
+        }));
+        /** @type {?} */
+        const queriedElementsList = iteratorToArray(queriedElements.values());
+        return createTransitionInstruction(element, this._triggerName, currentState, nextState, isRemoval, currentStateStyles, nextStateStyles, timelines, queriedElementsList, preStyleMap, postStyleMap, totalTime);
+    }
+}
+if (false) {}
+/**
+ * @param {?} matchFns
+ * @param {?} currentState
+ * @param {?} nextState
+ * @param {?} element
+ * @param {?} params
+ * @return {?}
+ */
+function oneOrMoreTransitionsMatch(matchFns, currentState, nextState, element, params) {
+    return matchFns.some((/**
+     * @param {?} fn
+     * @return {?}
+     */
+    fn => fn(currentState, nextState, element, params)));
+}
+class AnimationStateStyles {
+    /**
+     * @param {?} styles
+     * @param {?} defaultParams
+     */
+    constructor(styles, defaultParams) {
+        this.styles = styles;
+        this.defaultParams = defaultParams;
+    }
+    /**
+     * @param {?} params
+     * @param {?} errors
+     * @return {?}
+     */
+    buildStyles(params, errors) {
+        /** @type {?} */
+        const finalStyles = {};
+        /** @type {?} */
+        const combinedParams = copyObj(this.defaultParams);
+        Object.keys(params).forEach((/**
+         * @param {?} key
+         * @return {?}
+         */
+        key => {
+            /** @type {?} */
+            const value = params[key];
+            if (value != null) {
+                combinedParams[key] = value;
+            }
+        }));
+        this.styles.styles.forEach((/**
+         * @param {?} value
+         * @return {?}
+         */
+        value => {
+            if (typeof value !== 'string') {
+                /** @type {?} */
+                const styleObj = (/** @type {?} */ (value));
+                Object.keys(styleObj).forEach((/**
+                 * @param {?} prop
+                 * @return {?}
+                 */
+                prop => {
+                    /** @type {?} */
+                    let val = styleObj[prop];
+                    if (val.length > 1) {
+                        val = interpolateParams(val, combinedParams, errors);
+                    }
+                    finalStyles[prop] = val;
+                }));
+            }
+        }));
+        return finalStyles;
+    }
+}
+if (false) {}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/browser/src/dsl/animation_trigger.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * \@publicApi
+ * @param {?} name
+ * @param {?} ast
+ * @return {?}
+ */
+function buildTrigger(name, ast) {
+    return new AnimationTrigger(name, ast);
+}
+/**
+ * \@publicApi
+ */
+class AnimationTrigger {
+    /**
+     * @param {?} name
+     * @param {?} ast
+     */
+    constructor(name, ast) {
+        this.name = name;
+        this.ast = ast;
+        this.transitionFactories = [];
+        this.states = {};
+        ast.states.forEach((/**
+         * @param {?} ast
+         * @return {?}
+         */
+        ast => {
+            /** @type {?} */
+            const defaultParams = (ast.options && ast.options.params) || {};
+            this.states[ast.name] = new AnimationStateStyles(ast.style, defaultParams);
+        }));
+        balanceProperties(this.states, 'true', '1');
+        balanceProperties(this.states, 'false', '0');
+        ast.transitions.forEach((/**
+         * @param {?} ast
+         * @return {?}
+         */
+        ast => {
+            this.transitionFactories.push(new AnimationTransitionFactory(name, ast, this.states));
+        }));
+        this.fallbackTransition = createFallbackTransition(name, this.states);
+    }
+    /**
+     * @return {?}
+     */
+    get containsQueries() { return this.ast.queryCount > 0; }
+    /**
+     * @param {?} currentState
+     * @param {?} nextState
+     * @param {?} element
+     * @param {?} params
+     * @return {?}
+     */
+    matchTransition(currentState, nextState, element, params) {
+        /** @type {?} */
+        const entry = this.transitionFactories.find((/**
+         * @param {?} f
+         * @return {?}
+         */
+        f => f.match(currentState, nextState, element, params)));
+        return entry || null;
+    }
+    /**
+     * @param {?} currentState
+     * @param {?} params
+     * @param {?} errors
+     * @return {?}
+     */
+    matchStyles(currentState, params, errors) {
+        return this.fallbackTransition.buildStyles(currentState, params, errors);
+    }
+}
+if (false) {}
+/**
+ * @param {?} triggerName
+ * @param {?} states
+ * @return {?}
+ */
+function createFallbackTransition(triggerName, states) {
+    /** @type {?} */
+    const matchers = [(/**
+         * @param {?} fromState
+         * @param {?} toState
+         * @return {?}
+         */
+        (fromState, toState) => true)];
+    /** @type {?} */
+    const animation = { type: 2 /* Sequence */, steps: [], options: null };
+    /** @type {?} */
+    const transition = {
+        type: 1 /* Transition */,
+        animation,
+        matchers,
+        options: null,
+        queryCount: 0,
+        depCount: 0
+    };
+    return new AnimationTransitionFactory(triggerName, transition, states);
+}
+/**
+ * @param {?} obj
+ * @param {?} key1
+ * @param {?} key2
+ * @return {?}
+ */
+function balanceProperties(obj, key1, key2) {
+    if (obj.hasOwnProperty(key1)) {
+        if (!obj.hasOwnProperty(key2)) {
+            obj[key2] = obj[key1];
+        }
+    }
+    else if (obj.hasOwnProperty(key2)) {
+        obj[key1] = obj[key2];
+    }
+}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/browser/src/render/timeline_animation_engine.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/** @type {?} */
+const EMPTY_INSTRUCTION_MAP = new ElementInstructionMap();
+class TimelineAnimationEngine {
+    /**
+     * @param {?} bodyNode
+     * @param {?} _driver
+     * @param {?} _normalizer
+     */
+    constructor(bodyNode, _driver, _normalizer) {
+        this.bodyNode = bodyNode;
+        this._driver = _driver;
+        this._normalizer = _normalizer;
+        this._animations = {};
+        this._playersById = {};
+        this.players = [];
+    }
+    /**
+     * @param {?} id
+     * @param {?} metadata
+     * @return {?}
+     */
+    register(id, metadata) {
+        /** @type {?} */
+        const errors = [];
+        /** @type {?} */
+        const ast = buildAnimationAst(this._driver, metadata, errors);
+        if (errors.length) {
+            throw new Error(`Unable to build the animation due to the following errors: ${errors.join("\n")}`);
+        }
+        else {
+            this._animations[id] = ast;
+        }
+    }
+    /**
+     * @private
+     * @param {?} i
+     * @param {?} preStyles
+     * @param {?=} postStyles
+     * @return {?}
+     */
+    _buildPlayer(i, preStyles, postStyles) {
+        /** @type {?} */
+        const element = i.element;
+        /** @type {?} */
+        const keyframes = normalizeKeyframes(this._driver, this._normalizer, element, i.keyframes, preStyles, postStyles);
+        return this._driver.animate(element, keyframes, i.duration, i.delay, i.easing, [], true);
+    }
+    /**
+     * @param {?} id
+     * @param {?} element
+     * @param {?=} options
+     * @return {?}
+     */
+    create(id, element, options = {}) {
+        /** @type {?} */
+        const errors = [];
+        /** @type {?} */
+        const ast = this._animations[id];
+        /** @type {?} */
+        let instructions;
+        /** @type {?} */
+        const autoStylesMap = new Map();
+        if (ast) {
+            instructions = buildAnimationTimelines(this._driver, element, ast, ENTER_CLASSNAME, LEAVE_CLASSNAME, {}, {}, options, EMPTY_INSTRUCTION_MAP, errors);
+            instructions.forEach((/**
+             * @param {?} inst
+             * @return {?}
+             */
+            inst => {
+                /** @type {?} */
+                const styles = getOrSetAsInMap(autoStylesMap, inst.element, {});
+                inst.postStyleProps.forEach((/**
+                 * @param {?} prop
+                 * @return {?}
+                 */
+                prop => styles[prop] = null));
+            }));
+        }
+        else {
+            errors.push('The requested animation doesn\'t exist or has already been destroyed');
+            instructions = [];
+        }
+        if (errors.length) {
+            throw new Error(`Unable to create the animation due to the following errors: ${errors.join("\n")}`);
+        }
+        autoStylesMap.forEach((/**
+         * @param {?} styles
+         * @param {?} element
+         * @return {?}
+         */
+        (styles, element) => {
+            Object.keys(styles).forEach((/**
+             * @param {?} prop
+             * @return {?}
+             */
+            prop => { styles[prop] = this._driver.computeStyle(element, prop, _angular_animations__WEBPACK_IMPORTED_MODULE_0__["AUTO_STYLE"]); }));
+        }));
+        /** @type {?} */
+        const players = instructions.map((/**
+         * @param {?} i
+         * @return {?}
+         */
+        i => {
+            /** @type {?} */
+            const styles = autoStylesMap.get(i.element);
+            return this._buildPlayer(i, {}, styles);
+        }));
+        /** @type {?} */
+        const player = optimizeGroupPlayer(players);
+        this._playersById[id] = player;
+        player.onDestroy((/**
+         * @return {?}
+         */
+        () => this.destroy(id)));
+        this.players.push(player);
+        return player;
+    }
+    /**
+     * @param {?} id
+     * @return {?}
+     */
+    destroy(id) {
+        /** @type {?} */
+        const player = this._getPlayer(id);
+        player.destroy();
+        delete this._playersById[id];
+        /** @type {?} */
+        const index = this.players.indexOf(player);
+        if (index >= 0) {
+            this.players.splice(index, 1);
+        }
+    }
+    /**
+     * @private
+     * @param {?} id
+     * @return {?}
+     */
+    _getPlayer(id) {
+        /** @type {?} */
+        const player = this._playersById[id];
+        if (!player) {
+            throw new Error(`Unable to find the timeline player referenced by ${id}`);
+        }
+        return player;
+    }
+    /**
+     * @param {?} id
+     * @param {?} element
+     * @param {?} eventName
+     * @param {?} callback
+     * @return {?}
+     */
+    listen(id, element, eventName, callback) {
+        // triggerName, fromState, toState are all ignored for timeline animations
+        /** @type {?} */
+        const baseEvent = makeAnimationEvent(element, '', '', '');
+        listenOnPlayer(this._getPlayer(id), eventName, baseEvent, callback);
+        return (/**
+         * @return {?}
+         */
+        () => { });
+    }
+    /**
+     * @param {?} id
+     * @param {?} element
+     * @param {?} command
+     * @param {?} args
+     * @return {?}
+     */
+    command(id, element, command, args) {
+        if (command == 'register') {
+            this.register(id, (/** @type {?} */ (args[0])));
+            return;
+        }
+        if (command == 'create') {
+            /** @type {?} */
+            const options = (/** @type {?} */ ((args[0] || {})));
+            this.create(id, element, options);
+            return;
+        }
+        /** @type {?} */
+        const player = this._getPlayer(id);
+        switch (command) {
+            case 'play':
+                player.play();
+                break;
+            case 'pause':
+                player.pause();
+                break;
+            case 'reset':
+                player.reset();
+                break;
+            case 'restart':
+                player.restart();
+                break;
+            case 'finish':
+                player.finish();
+                break;
+            case 'init':
+                player.init();
+                break;
+            case 'setPosition':
+                player.setPosition(parseFloat((/** @type {?} */ (args[0]))));
+                break;
+            case 'destroy':
+                this.destroy(id);
+                break;
+        }
+    }
+}
+if (false) {}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/browser/src/render/transition_animation_engine.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/** @type {?} */
+const QUEUED_CLASSNAME = 'ng-animate-queued';
+/** @type {?} */
+const QUEUED_SELECTOR = '.ng-animate-queued';
+/** @type {?} */
+const DISABLED_CLASSNAME = 'ng-animate-disabled';
+/** @type {?} */
+const DISABLED_SELECTOR = '.ng-animate-disabled';
+/** @type {?} */
+const STAR_CLASSNAME = 'ng-star-inserted';
+/** @type {?} */
+const STAR_SELECTOR = '.ng-star-inserted';
+/** @type {?} */
+const EMPTY_PLAYER_ARRAY = [];
+/** @type {?} */
+const NULL_REMOVAL_STATE = {
+    namespaceId: '',
+    setForRemoval: false,
+    setForMove: false,
+    hasAnimation: false,
+    removedBeforeQueried: false
+};
+/** @type {?} */
+const NULL_REMOVED_QUERIED_STATE = {
+    namespaceId: '',
+    setForMove: false,
+    setForRemoval: false,
+    hasAnimation: false,
+    removedBeforeQueried: true
+};
+/**
+ * @record
+ */
+function TriggerListener() { }
+if (false) {}
+/**
+ * @record
+ */
+function QueueInstruction() { }
+if (false) {}
+/** @type {?} */
+const REMOVAL_FLAG = '__ng_removed';
+/**
+ * @record
+ */
+function ElementAnimationState() { }
+if (false) {}
+class StateValue {
+    /**
+     * @param {?} input
+     * @param {?=} namespaceId
+     */
+    constructor(input, namespaceId = '') {
+        this.namespaceId = namespaceId;
+        /** @type {?} */
+        const isObj = input && input.hasOwnProperty('value');
+        /** @type {?} */
+        const value = isObj ? input['value'] : input;
+        this.value = normalizeTriggerValue(value);
+        if (isObj) {
+            /** @type {?} */
+            const options = copyObj((/** @type {?} */ (input)));
+            delete options['value'];
+            this.options = (/** @type {?} */ (options));
+        }
+        else {
+            this.options = {};
+        }
+        if (!this.options.params) {
+            this.options.params = {};
+        }
+    }
+    /**
+     * @return {?}
+     */
+    get params() { return (/** @type {?} */ (this.options.params)); }
+    /**
+     * @param {?} options
+     * @return {?}
+     */
+    absorbOptions(options) {
+        /** @type {?} */
+        const newParams = options.params;
+        if (newParams) {
+            /** @type {?} */
+            const oldParams = (/** @type {?} */ (this.options.params));
+            Object.keys(newParams).forEach((/**
+             * @param {?} prop
+             * @return {?}
+             */
+            prop => {
+                if (oldParams[prop] == null) {
+                    oldParams[prop] = newParams[prop];
+                }
+            }));
+        }
+    }
+}
+if (false) {}
+/** @type {?} */
+const VOID_VALUE = 'void';
+/** @type {?} */
+const DEFAULT_STATE_VALUE = new StateValue(VOID_VALUE);
+class AnimationTransitionNamespace {
+    /**
+     * @param {?} id
+     * @param {?} hostElement
+     * @param {?} _engine
+     */
+    constructor(id, hostElement, _engine) {
+        this.id = id;
+        this.hostElement = hostElement;
+        this._engine = _engine;
+        this.players = [];
+        this._triggers = {};
+        this._queue = [];
+        this._elementListeners = new Map();
+        this._hostClassName = 'ng-tns-' + id;
+        addClass(hostElement, this._hostClassName);
+    }
+    /**
+     * @param {?} element
+     * @param {?} name
+     * @param {?} phase
+     * @param {?} callback
+     * @return {?}
+     */
+    listen(element, name, phase, callback) {
+        if (!this._triggers.hasOwnProperty(name)) {
+            throw new Error(`Unable to listen on the animation trigger event "${phase}" because the animation trigger "${name}" doesn\'t exist!`);
+        }
+        if (phase == null || phase.length == 0) {
+            throw new Error(`Unable to listen on the animation trigger "${name}" because the provided event is undefined!`);
+        }
+        if (!isTriggerEventValid(phase)) {
+            throw new Error(`The provided animation trigger event "${phase}" for the animation trigger "${name}" is not supported!`);
+        }
+        /** @type {?} */
+        const listeners = getOrSetAsInMap(this._elementListeners, element, []);
+        /** @type {?} */
+        const data = { name, phase, callback };
+        listeners.push(data);
+        /** @type {?} */
+        const triggersWithStates = getOrSetAsInMap(this._engine.statesByElement, element, {});
+        if (!triggersWithStates.hasOwnProperty(name)) {
+            addClass(element, NG_TRIGGER_CLASSNAME);
+            addClass(element, NG_TRIGGER_CLASSNAME + '-' + name);
+            triggersWithStates[name] = DEFAULT_STATE_VALUE;
+        }
+        return (/**
+         * @return {?}
+         */
+        () => {
+            // the event listener is removed AFTER the flush has occurred such
+            // that leave animations callbacks can fire (otherwise if the node
+            // is removed in between then the listeners would be deregistered)
+            this._engine.afterFlush((/**
+             * @return {?}
+             */
+            () => {
+                /** @type {?} */
+                const index = listeners.indexOf(data);
+                if (index >= 0) {
+                    listeners.splice(index, 1);
+                }
+                if (!this._triggers[name]) {
+                    delete triggersWithStates[name];
+                }
+            }));
+        });
+    }
+    /**
+     * @param {?} name
+     * @param {?} ast
+     * @return {?}
+     */
+    register(name, ast) {
+        if (this._triggers[name]) {
+            // throw
+            return false;
+        }
+        else {
+            this._triggers[name] = ast;
+            return true;
+        }
+    }
+    /**
+     * @private
+     * @param {?} name
+     * @return {?}
+     */
+    _getTrigger(name) {
+        /** @type {?} */
+        const trigger = this._triggers[name];
+        if (!trigger) {
+            throw new Error(`The provided animation trigger "${name}" has not been registered!`);
+        }
+        return trigger;
+    }
+    /**
+     * @param {?} element
+     * @param {?} triggerName
+     * @param {?} value
+     * @param {?=} defaultToFallback
+     * @return {?}
+     */
+    trigger(element, triggerName, value, defaultToFallback = true) {
+        /** @type {?} */
+        const trigger = this._getTrigger(triggerName);
+        /** @type {?} */
+        const player = new TransitionAnimationPlayer(this.id, triggerName, element);
+        /** @type {?} */
+        let triggersWithStates = this._engine.statesByElement.get(element);
+        if (!triggersWithStates) {
+            addClass(element, NG_TRIGGER_CLASSNAME);
+            addClass(element, NG_TRIGGER_CLASSNAME + '-' + triggerName);
+            this._engine.statesByElement.set(element, triggersWithStates = {});
+        }
+        /** @type {?} */
+        let fromState = triggersWithStates[triggerName];
+        /** @type {?} */
+        const toState = new StateValue(value, this.id);
+        /** @type {?} */
+        const isObj = value && value.hasOwnProperty('value');
+        if (!isObj && fromState) {
+            toState.absorbOptions(fromState.options);
+        }
+        triggersWithStates[triggerName] = toState;
+        if (!fromState) {
+            fromState = DEFAULT_STATE_VALUE;
+        }
+        /** @type {?} */
+        const isRemoval = toState.value === VOID_VALUE;
+        // normally this isn't reached by here, however, if an object expression
+        // is passed in then it may be a new object each time. Comparing the value
+        // is important since that will stay the same despite there being a new object.
+        // The removal arc here is special cased because the same element is triggered
+        // twice in the event that it contains animations on the outer/inner portions
+        // of the host container
+        if (!isRemoval && fromState.value === toState.value) {
+            // this means that despite the value not changing, some inner params
+            // have changed which means that the animation final styles need to be applied
+            if (!objEquals(fromState.params, toState.params)) {
+                /** @type {?} */
+                const errors = [];
+                /** @type {?} */
+                const fromStyles = trigger.matchStyles(fromState.value, fromState.params, errors);
+                /** @type {?} */
+                const toStyles = trigger.matchStyles(toState.value, toState.params, errors);
+                if (errors.length) {
+                    this._engine.reportError(errors);
+                }
+                else {
+                    this._engine.afterFlush((/**
+                     * @return {?}
+                     */
+                    () => {
+                        eraseStyles(element, fromStyles);
+                        setStyles(element, toStyles);
+                    }));
+                }
+            }
+            return;
+        }
+        /** @type {?} */
+        const playersOnElement = getOrSetAsInMap(this._engine.playersByElement, element, []);
+        playersOnElement.forEach((/**
+         * @param {?} player
+         * @return {?}
+         */
+        player => {
+            // only remove the player if it is queued on the EXACT same trigger/namespace
+            // we only also deal with queued players here because if the animation has
+            // started then we want to keep the player alive until the flush happens
+            // (which is where the previousPlayers are passed into the new palyer)
+            if (player.namespaceId == this.id && player.triggerName == triggerName && player.queued) {
+                player.destroy();
+            }
+        }));
+        /** @type {?} */
+        let transition = trigger.matchTransition(fromState.value, toState.value, element, toState.params);
+        /** @type {?} */
+        let isFallbackTransition = false;
+        if (!transition) {
+            if (!defaultToFallback)
+                return;
+            transition = trigger.fallbackTransition;
+            isFallbackTransition = true;
+        }
+        this._engine.totalQueuedPlayers++;
+        this._queue.push({ element, triggerName, transition, fromState, toState, player, isFallbackTransition });
+        if (!isFallbackTransition) {
+            addClass(element, QUEUED_CLASSNAME);
+            player.onStart((/**
+             * @return {?}
+             */
+            () => { removeClass(element, QUEUED_CLASSNAME); }));
+        }
+        player.onDone((/**
+         * @return {?}
+         */
+        () => {
+            /** @type {?} */
+            let index = this.players.indexOf(player);
+            if (index >= 0) {
+                this.players.splice(index, 1);
+            }
+            /** @type {?} */
+            const players = this._engine.playersByElement.get(element);
+            if (players) {
+                /** @type {?} */
+                let index = players.indexOf(player);
+                if (index >= 0) {
+                    players.splice(index, 1);
+                }
+            }
+        }));
+        this.players.push(player);
+        playersOnElement.push(player);
+        return player;
+    }
+    /**
+     * @param {?} name
+     * @return {?}
+     */
+    deregister(name) {
+        delete this._triggers[name];
+        this._engine.statesByElement.forEach((/**
+         * @param {?} stateMap
+         * @param {?} element
+         * @return {?}
+         */
+        (stateMap, element) => { delete stateMap[name]; }));
+        this._elementListeners.forEach((/**
+         * @param {?} listeners
+         * @param {?} element
+         * @return {?}
+         */
+        (listeners, element) => {
+            this._elementListeners.set(element, listeners.filter((/**
+             * @param {?} entry
+             * @return {?}
+             */
+            entry => { return entry.name != name; })));
+        }));
+    }
+    /**
+     * @param {?} element
+     * @return {?}
+     */
+    clearElementCache(element) {
+        this._engine.statesByElement.delete(element);
+        this._elementListeners.delete(element);
+        /** @type {?} */
+        const elementPlayers = this._engine.playersByElement.get(element);
+        if (elementPlayers) {
+            elementPlayers.forEach((/**
+             * @param {?} player
+             * @return {?}
+             */
+            player => player.destroy()));
+            this._engine.playersByElement.delete(element);
+        }
+    }
+    /**
+     * @private
+     * @param {?} rootElement
+     * @param {?} context
+     * @return {?}
+     */
+    _signalRemovalForInnerTriggers(rootElement, context) {
+        /** @type {?} */
+        const elements = this._engine.driver.query(rootElement, NG_TRIGGER_SELECTOR, true);
+        // emulate a leave animation for all inner nodes within this node.
+        // If there are no animations found for any of the nodes then clear the cache
+        // for the element.
+        elements.forEach((/**
+         * @param {?} elm
+         * @return {?}
+         */
+        elm => {
+            // this means that an inner remove() operation has already kicked off
+            // the animation on this element...
+            if (elm[REMOVAL_FLAG])
+                return;
+            /** @type {?} */
+            const namespaces = this._engine.fetchNamespacesByElement(elm);
+            if (namespaces.size) {
+                namespaces.forEach((/**
+                 * @param {?} ns
+                 * @return {?}
+                 */
+                ns => ns.triggerLeaveAnimation(elm, context, false, true)));
+            }
+            else {
+                this.clearElementCache(elm);
+            }
+        }));
+        // If the child elements were removed along with the parent, their animations might not
+        // have completed. Clear all the elements from the cache so we don't end up with a memory leak.
+        this._engine.afterFlushAnimationsDone((/**
+         * @return {?}
+         */
+        () => elements.forEach((/**
+         * @param {?} elm
+         * @return {?}
+         */
+        elm => this.clearElementCache(elm)))));
+    }
+    /**
+     * @param {?} element
+     * @param {?} context
+     * @param {?=} destroyAfterComplete
+     * @param {?=} defaultToFallback
+     * @return {?}
+     */
+    triggerLeaveAnimation(element, context, destroyAfterComplete, defaultToFallback) {
+        /** @type {?} */
+        const triggerStates = this._engine.statesByElement.get(element);
+        if (triggerStates) {
+            /** @type {?} */
+            const players = [];
+            Object.keys(triggerStates).forEach((/**
+             * @param {?} triggerName
+             * @return {?}
+             */
+            triggerName => {
+                // this check is here in the event that an element is removed
+                // twice (both on the host level and the component level)
+                if (this._triggers[triggerName]) {
+                    /** @type {?} */
+                    const player = this.trigger(element, triggerName, VOID_VALUE, defaultToFallback);
+                    if (player) {
+                        players.push(player);
+                    }
+                }
+            }));
+            if (players.length) {
+                this._engine.markElementAsRemoved(this.id, element, true, context);
+                if (destroyAfterComplete) {
+                    optimizeGroupPlayer(players).onDone((/**
+                     * @return {?}
+                     */
+                    () => this._engine.processLeaveNode(element)));
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+    /**
+     * @param {?} element
+     * @return {?}
+     */
+    prepareLeaveAnimationListeners(element) {
+        /** @type {?} */
+        const listeners = this._elementListeners.get(element);
+        if (listeners) {
+            /** @type {?} */
+            const visitedTriggers = new Set();
+            listeners.forEach((/**
+             * @param {?} listener
+             * @return {?}
+             */
+            listener => {
+                /** @type {?} */
+                const triggerName = listener.name;
+                if (visitedTriggers.has(triggerName))
+                    return;
+                visitedTriggers.add(triggerName);
+                /** @type {?} */
+                const trigger = this._triggers[triggerName];
+                /** @type {?} */
+                const transition = trigger.fallbackTransition;
+                /** @type {?} */
+                const elementStates = (/** @type {?} */ (this._engine.statesByElement.get(element)));
+                /** @type {?} */
+                const fromState = elementStates[triggerName] || DEFAULT_STATE_VALUE;
+                /** @type {?} */
+                const toState = new StateValue(VOID_VALUE);
+                /** @type {?} */
+                const player = new TransitionAnimationPlayer(this.id, triggerName, element);
+                this._engine.totalQueuedPlayers++;
+                this._queue.push({
+                    element,
+                    triggerName,
+                    transition,
+                    fromState,
+                    toState,
+                    player,
+                    isFallbackTransition: true
+                });
+            }));
+        }
+    }
+    /**
+     * @param {?} element
+     * @param {?} context
+     * @return {?}
+     */
+    removeNode(element, context) {
+        /** @type {?} */
+        const engine = this._engine;
+        if (element.childElementCount) {
+            this._signalRemovalForInnerTriggers(element, context);
+        }
+        // this means that a * => VOID animation was detected and kicked off
+        if (this.triggerLeaveAnimation(element, context, true))
+            return;
+        // find the player that is animating and make sure that the
+        // removal is delayed until that player has completed
+        /** @type {?} */
+        let containsPotentialParentTransition = false;
+        if (engine.totalAnimations) {
+            /** @type {?} */
+            const currentPlayers = engine.players.length ? engine.playersByQueriedElement.get(element) : [];
+            // when this `if statement` does not continue forward it means that
+            // a previous animation query has selected the current element and
+            // is animating it. In this situation want to continue forwards and
+            // allow the element to be queued up for animation later.
+            if (currentPlayers && currentPlayers.length) {
+                containsPotentialParentTransition = true;
+            }
+            else {
+                /** @type {?} */
+                let parent = element;
+                while (parent = parent.parentNode) {
+                    /** @type {?} */
+                    const triggers = engine.statesByElement.get(parent);
+                    if (triggers) {
+                        containsPotentialParentTransition = true;
+                        break;
+                    }
+                }
+            }
+        }
+        // at this stage we know that the element will either get removed
+        // during flush or will be picked up by a parent query. Either way
+        // we need to fire the listeners for this element when it DOES get
+        // removed (once the query parent animation is done or after flush)
+        this.prepareLeaveAnimationListeners(element);
+        // whether or not a parent has an animation we need to delay the deferral of the leave
+        // operation until we have more information (which we do after flush() has been called)
+        if (containsPotentialParentTransition) {
+            engine.markElementAsRemoved(this.id, element, false, context);
+        }
+        else {
+            /** @type {?} */
+            const removalFlag = element[REMOVAL_FLAG];
+            if (!removalFlag || removalFlag === NULL_REMOVAL_STATE) {
+                // we do this after the flush has occurred such
+                // that the callbacks can be fired
+                engine.afterFlush((/**
+                 * @return {?}
+                 */
+                () => this.clearElementCache(element)));
+                engine.destroyInnerAnimations(element);
+                engine._onRemovalComplete(element, context);
+            }
+        }
+    }
+    /**
+     * @param {?} element
+     * @param {?} parent
+     * @return {?}
+     */
+    insertNode(element, parent) { addClass(element, this._hostClassName); }
+    /**
+     * @param {?} microtaskId
+     * @return {?}
+     */
+    drainQueuedTransitions(microtaskId) {
+        /** @type {?} */
+        const instructions = [];
+        this._queue.forEach((/**
+         * @param {?} entry
+         * @return {?}
+         */
+        entry => {
+            /** @type {?} */
+            const player = entry.player;
+            if (player.destroyed)
+                return;
+            /** @type {?} */
+            const element = entry.element;
+            /** @type {?} */
+            const listeners = this._elementListeners.get(element);
+            if (listeners) {
+                listeners.forEach((/**
+                 * @param {?} listener
+                 * @return {?}
+                 */
+                (listener) => {
+                    if (listener.name == entry.triggerName) {
+                        /** @type {?} */
+                        const baseEvent = makeAnimationEvent(element, entry.triggerName, entry.fromState.value, entry.toState.value);
+                        ((/** @type {?} */ (baseEvent)))['_data'] = microtaskId;
+                        listenOnPlayer(entry.player, listener.phase, baseEvent, listener.callback);
+                    }
+                }));
+            }
+            if (player.markedForDestroy) {
+                this._engine.afterFlush((/**
+                 * @return {?}
+                 */
+                () => {
+                    // now we can destroy the element properly since the event listeners have
+                    // been bound to the player
+                    player.destroy();
+                }));
+            }
+            else {
+                instructions.push(entry);
+            }
+        }));
+        this._queue = [];
+        return instructions.sort((/**
+         * @param {?} a
+         * @param {?} b
+         * @return {?}
+         */
+        (a, b) => {
+            // if depCount == 0 them move to front
+            // otherwise if a contains b then move back
+            /** @type {?} */
+            const d0 = a.transition.ast.depCount;
+            /** @type {?} */
+            const d1 = b.transition.ast.depCount;
+            if (d0 == 0 || d1 == 0) {
+                return d0 - d1;
+            }
+            return this._engine.driver.containsElement(a.element, b.element) ? 1 : -1;
+        }));
+    }
+    /**
+     * @param {?} context
+     * @return {?}
+     */
+    destroy(context) {
+        this.players.forEach((/**
+         * @param {?} p
+         * @return {?}
+         */
+        p => p.destroy()));
+        this._signalRemovalForInnerTriggers(this.hostElement, context);
+    }
+    /**
+     * @param {?} element
+     * @return {?}
+     */
+    elementContainsData(element) {
+        /** @type {?} */
+        let containsData = false;
+        if (this._elementListeners.has(element))
+            containsData = true;
+        containsData =
+            (this._queue.find((/**
+             * @param {?} entry
+             * @return {?}
+             */
+            entry => entry.element === element)) ? true : false) || containsData;
+        return containsData;
+    }
+}
+if (false) {}
+/**
+ * @record
+ */
+function QueuedTransition() { }
+if (false) {}
+class TransitionAnimationEngine {
+    /**
+     * @param {?} bodyNode
+     * @param {?} driver
+     * @param {?} _normalizer
+     */
+    constructor(bodyNode, driver, _normalizer) {
+        this.bodyNode = bodyNode;
+        this.driver = driver;
+        this._normalizer = _normalizer;
+        this.players = [];
+        this.newHostElements = new Map();
+        this.playersByElement = new Map();
+        this.playersByQueriedElement = new Map();
+        this.statesByElement = new Map();
+        this.disabledNodes = new Set();
+        this.totalAnimations = 0;
+        this.totalQueuedPlayers = 0;
+        this._namespaceLookup = {};
+        this._namespaceList = [];
+        this._flushFns = [];
+        this._whenQuietFns = [];
+        this.namespacesByHostElement = new Map();
+        this.collectedEnterElements = [];
+        this.collectedLeaveElements = [];
+        // this method is designed to be overridden by the code that uses this engine
+        this.onRemovalComplete = (/**
+         * @param {?} element
+         * @param {?} context
+         * @return {?}
+         */
+        (element, context) => { });
+    }
+    /**
+     * \@internal
+     * @param {?} element
+     * @param {?} context
+     * @return {?}
+     */
+    _onRemovalComplete(element, context) { this.onRemovalComplete(element, context); }
+    /**
+     * @return {?}
+     */
+    get queuedPlayers() {
+        /** @type {?} */
+        const players = [];
+        this._namespaceList.forEach((/**
+         * @param {?} ns
+         * @return {?}
+         */
+        ns => {
+            ns.players.forEach((/**
+             * @param {?} player
+             * @return {?}
+             */
+            player => {
+                if (player.queued) {
+                    players.push(player);
+                }
+            }));
+        }));
+        return players;
+    }
+    /**
+     * @param {?} namespaceId
+     * @param {?} hostElement
+     * @return {?}
+     */
+    createNamespace(namespaceId, hostElement) {
+        /** @type {?} */
+        const ns = new AnimationTransitionNamespace(namespaceId, hostElement, this);
+        if (hostElement.parentNode) {
+            this._balanceNamespaceList(ns, hostElement);
+        }
+        else {
+            // defer this later until flush during when the host element has
+            // been inserted so that we know exactly where to place it in
+            // the namespace list
+            this.newHostElements.set(hostElement, ns);
+            // given that this host element is apart of the animation code, it
+            // may or may not be inserted by a parent node that is an of an
+            // animation renderer type. If this happens then we can still have
+            // access to this item when we query for :enter nodes. If the parent
+            // is a renderer then the set data-structure will normalize the entry
+            this.collectEnterElement(hostElement);
+        }
+        return this._namespaceLookup[namespaceId] = ns;
+    }
+    /**
+     * @private
+     * @param {?} ns
+     * @param {?} hostElement
+     * @return {?}
+     */
+    _balanceNamespaceList(ns, hostElement) {
+        /** @type {?} */
+        const limit = this._namespaceList.length - 1;
+        if (limit >= 0) {
+            /** @type {?} */
+            let found = false;
+            for (let i = limit; i >= 0; i--) {
+                /** @type {?} */
+                const nextNamespace = this._namespaceList[i];
+                if (this.driver.containsElement(nextNamespace.hostElement, hostElement)) {
+                    this._namespaceList.splice(i + 1, 0, ns);
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                this._namespaceList.splice(0, 0, ns);
+            }
+        }
+        else {
+            this._namespaceList.push(ns);
+        }
+        this.namespacesByHostElement.set(hostElement, ns);
+        return ns;
+    }
+    /**
+     * @param {?} namespaceId
+     * @param {?} hostElement
+     * @return {?}
+     */
+    register(namespaceId, hostElement) {
+        /** @type {?} */
+        let ns = this._namespaceLookup[namespaceId];
+        if (!ns) {
+            ns = this.createNamespace(namespaceId, hostElement);
+        }
+        return ns;
+    }
+    /**
+     * @param {?} namespaceId
+     * @param {?} name
+     * @param {?} trigger
+     * @return {?}
+     */
+    registerTrigger(namespaceId, name, trigger) {
+        /** @type {?} */
+        let ns = this._namespaceLookup[namespaceId];
+        if (ns && ns.register(name, trigger)) {
+            this.totalAnimations++;
+        }
+    }
+    /**
+     * @param {?} namespaceId
+     * @param {?} context
+     * @return {?}
+     */
+    destroy(namespaceId, context) {
+        if (!namespaceId)
+            return;
+        /** @type {?} */
+        const ns = this._fetchNamespace(namespaceId);
+        this.afterFlush((/**
+         * @return {?}
+         */
+        () => {
+            this.namespacesByHostElement.delete(ns.hostElement);
+            delete this._namespaceLookup[namespaceId];
+            /** @type {?} */
+            const index = this._namespaceList.indexOf(ns);
+            if (index >= 0) {
+                this._namespaceList.splice(index, 1);
+            }
+        }));
+        this.afterFlushAnimationsDone((/**
+         * @return {?}
+         */
+        () => ns.destroy(context)));
+    }
+    /**
+     * @private
+     * @param {?} id
+     * @return {?}
+     */
+    _fetchNamespace(id) { return this._namespaceLookup[id]; }
+    /**
+     * @param {?} element
+     * @return {?}
+     */
+    fetchNamespacesByElement(element) {
+        // normally there should only be one namespace per element, however
+        // if @triggers are placed on both the component element and then
+        // its host element (within the component code) then there will be
+        // two namespaces returned. We use a set here to simply the dedupe
+        // of namespaces incase there are multiple triggers both the elm and host
+        /** @type {?} */
+        const namespaces = new Set();
+        /** @type {?} */
+        const elementStates = this.statesByElement.get(element);
+        if (elementStates) {
+            /** @type {?} */
+            const keys = Object.keys(elementStates);
+            for (let i = 0; i < keys.length; i++) {
+                /** @type {?} */
+                const nsId = elementStates[keys[i]].namespaceId;
+                if (nsId) {
+                    /** @type {?} */
+                    const ns = this._fetchNamespace(nsId);
+                    if (ns) {
+                        namespaces.add(ns);
+                    }
+                }
+            }
+        }
+        return namespaces;
+    }
+    /**
+     * @param {?} namespaceId
+     * @param {?} element
+     * @param {?} name
+     * @param {?} value
+     * @return {?}
+     */
+    trigger(namespaceId, element, name, value) {
+        if (isElementNode(element)) {
+            /** @type {?} */
+            const ns = this._fetchNamespace(namespaceId);
+            if (ns) {
+                ns.trigger(element, name, value);
+                return true;
+            }
+        }
+        return false;
+    }
+    /**
+     * @param {?} namespaceId
+     * @param {?} element
+     * @param {?} parent
+     * @param {?} insertBefore
+     * @return {?}
+     */
+    insertNode(namespaceId, element, parent, insertBefore) {
+        if (!isElementNode(element))
+            return;
+        // special case for when an element is removed and reinserted (move operation)
+        // when this occurs we do not want to use the element for deletion later
+        /** @type {?} */
+        const details = (/** @type {?} */ (element[REMOVAL_FLAG]));
+        if (details && details.setForRemoval) {
+            details.setForRemoval = false;
+            details.setForMove = true;
+            /** @type {?} */
+            const index = this.collectedLeaveElements.indexOf(element);
+            if (index >= 0) {
+                this.collectedLeaveElements.splice(index, 1);
+            }
+        }
+        // in the event that the namespaceId is blank then the caller
+        // code does not contain any animation code in it, but it is
+        // just being called so that the node is marked as being inserted
+        if (namespaceId) {
+            /** @type {?} */
+            const ns = this._fetchNamespace(namespaceId);
+            // This if-statement is a workaround for router issue #21947.
+            // The router sometimes hits a race condition where while a route
+            // is being instantiated a new navigation arrives, triggering leave
+            // animation of DOM that has not been fully initialized, until this
+            // is resolved, we need to handle the scenario when DOM is not in a
+            // consistent state during the animation.
+            if (ns) {
+                ns.insertNode(element, parent);
+            }
+        }
+        // only *directives and host elements are inserted before
+        if (insertBefore) {
+            this.collectEnterElement(element);
+        }
+    }
+    /**
+     * @param {?} element
+     * @return {?}
+     */
+    collectEnterElement(element) { this.collectedEnterElements.push(element); }
+    /**
+     * @param {?} element
+     * @param {?} value
+     * @return {?}
+     */
+    markElementAsDisabled(element, value) {
+        if (value) {
+            if (!this.disabledNodes.has(element)) {
+                this.disabledNodes.add(element);
+                addClass(element, DISABLED_CLASSNAME);
+            }
+        }
+        else if (this.disabledNodes.has(element)) {
+            this.disabledNodes.delete(element);
+            removeClass(element, DISABLED_CLASSNAME);
+        }
+    }
+    /**
+     * @param {?} namespaceId
+     * @param {?} element
+     * @param {?} isHostElement
+     * @param {?} context
+     * @return {?}
+     */
+    removeNode(namespaceId, element, isHostElement, context) {
+        if (isElementNode(element)) {
+            /** @type {?} */
+            const ns = namespaceId ? this._fetchNamespace(namespaceId) : null;
+            if (ns) {
+                ns.removeNode(element, context);
+            }
+            else {
+                this.markElementAsRemoved(namespaceId, element, false, context);
+            }
+            if (isHostElement) {
+                /** @type {?} */
+                const hostNS = this.namespacesByHostElement.get(element);
+                if (hostNS && hostNS.id !== namespaceId) {
+                    hostNS.removeNode(element, context);
+                }
+            }
+        }
+        else {
+            this._onRemovalComplete(element, context);
+        }
+    }
+    /**
+     * @param {?} namespaceId
+     * @param {?} element
+     * @param {?=} hasAnimation
+     * @param {?=} context
+     * @return {?}
+     */
+    markElementAsRemoved(namespaceId, element, hasAnimation, context) {
+        this.collectedLeaveElements.push(element);
+        element[REMOVAL_FLAG] = {
+            namespaceId,
+            setForRemoval: context, hasAnimation,
+            removedBeforeQueried: false
+        };
+    }
+    /**
+     * @param {?} namespaceId
+     * @param {?} element
+     * @param {?} name
+     * @param {?} phase
+     * @param {?} callback
+     * @return {?}
+     */
+    listen(namespaceId, element, name, phase, callback) {
+        if (isElementNode(element)) {
+            return this._fetchNamespace(namespaceId).listen(element, name, phase, callback);
+        }
+        return (/**
+         * @return {?}
+         */
+        () => { });
+    }
+    /**
+     * @private
+     * @param {?} entry
+     * @param {?} subTimelines
+     * @param {?} enterClassName
+     * @param {?} leaveClassName
+     * @param {?=} skipBuildAst
+     * @return {?}
+     */
+    _buildInstruction(entry, subTimelines, enterClassName, leaveClassName, skipBuildAst) {
+        return entry.transition.build(this.driver, entry.element, entry.fromState.value, entry.toState.value, enterClassName, leaveClassName, entry.fromState.options, entry.toState.options, subTimelines, skipBuildAst);
+    }
+    /**
+     * @param {?} containerElement
+     * @return {?}
+     */
+    destroyInnerAnimations(containerElement) {
+        /** @type {?} */
+        let elements = this.driver.query(containerElement, NG_TRIGGER_SELECTOR, true);
+        elements.forEach((/**
+         * @param {?} element
+         * @return {?}
+         */
+        element => this.destroyActiveAnimationsForElement(element)));
+        if (this.playersByQueriedElement.size == 0)
+            return;
+        elements = this.driver.query(containerElement, NG_ANIMATING_SELECTOR, true);
+        elements.forEach((/**
+         * @param {?} element
+         * @return {?}
+         */
+        element => this.finishActiveQueriedAnimationOnElement(element)));
+    }
+    /**
+     * @param {?} element
+     * @return {?}
+     */
+    destroyActiveAnimationsForElement(element) {
+        /** @type {?} */
+        const players = this.playersByElement.get(element);
+        if (players) {
+            players.forEach((/**
+             * @param {?} player
+             * @return {?}
+             */
+            player => {
+                // special case for when an element is set for destruction, but hasn't started.
+                // in this situation we want to delay the destruction until the flush occurs
+                // so that any event listeners attached to the player are triggered.
+                if (player.queued) {
+                    player.markedForDestroy = true;
+                }
+                else {
+                    player.destroy();
+                }
+            }));
+        }
+    }
+    /**
+     * @param {?} element
+     * @return {?}
+     */
+    finishActiveQueriedAnimationOnElement(element) {
+        /** @type {?} */
+        const players = this.playersByQueriedElement.get(element);
+        if (players) {
+            players.forEach((/**
+             * @param {?} player
+             * @return {?}
+             */
+            player => player.finish()));
+        }
+    }
+    /**
+     * @return {?}
+     */
+    whenRenderingDone() {
+        return new Promise((/**
+         * @param {?} resolve
+         * @return {?}
+         */
+        resolve => {
+            if (this.players.length) {
+                return optimizeGroupPlayer(this.players).onDone((/**
+                 * @return {?}
+                 */
+                () => resolve()));
+            }
+            else {
+                resolve();
+            }
+        }));
+    }
+    /**
+     * @param {?} element
+     * @return {?}
+     */
+    processLeaveNode(element) {
+        /** @type {?} */
+        const details = (/** @type {?} */ (element[REMOVAL_FLAG]));
+        if (details && details.setForRemoval) {
+            // this will prevent it from removing it twice
+            element[REMOVAL_FLAG] = NULL_REMOVAL_STATE;
+            if (details.namespaceId) {
+                this.destroyInnerAnimations(element);
+                /** @type {?} */
+                const ns = this._fetchNamespace(details.namespaceId);
+                if (ns) {
+                    ns.clearElementCache(element);
+                }
+            }
+            this._onRemovalComplete(element, details.setForRemoval);
+        }
+        if (this.driver.matchesElement(element, DISABLED_SELECTOR)) {
+            this.markElementAsDisabled(element, false);
+        }
+        this.driver.query(element, DISABLED_SELECTOR, true).forEach((/**
+         * @param {?} node
+         * @return {?}
+         */
+        node => {
+            this.markElementAsDisabled(node, false);
+        }));
+    }
+    /**
+     * @param {?=} microtaskId
+     * @return {?}
+     */
+    flush(microtaskId = -1) {
+        /** @type {?} */
+        let players = [];
+        if (this.newHostElements.size) {
+            this.newHostElements.forEach((/**
+             * @param {?} ns
+             * @param {?} element
+             * @return {?}
+             */
+            (ns, element) => this._balanceNamespaceList(ns, element)));
+            this.newHostElements.clear();
+        }
+        if (this.totalAnimations && this.collectedEnterElements.length) {
+            for (let i = 0; i < this.collectedEnterElements.length; i++) {
+                /** @type {?} */
+                const elm = this.collectedEnterElements[i];
+                addClass(elm, STAR_CLASSNAME);
+            }
+        }
+        if (this._namespaceList.length &&
+            (this.totalQueuedPlayers || this.collectedLeaveElements.length)) {
+            /** @type {?} */
+            const cleanupFns = [];
+            try {
+                players = this._flushAnimations(cleanupFns, microtaskId);
+            }
+            finally {
+                for (let i = 0; i < cleanupFns.length; i++) {
+                    cleanupFns[i]();
+                }
+            }
+        }
+        else {
+            for (let i = 0; i < this.collectedLeaveElements.length; i++) {
+                /** @type {?} */
+                const element = this.collectedLeaveElements[i];
+                this.processLeaveNode(element);
+            }
+        }
+        this.totalQueuedPlayers = 0;
+        this.collectedEnterElements.length = 0;
+        this.collectedLeaveElements.length = 0;
+        this._flushFns.forEach((/**
+         * @param {?} fn
+         * @return {?}
+         */
+        fn => fn()));
+        this._flushFns = [];
+        if (this._whenQuietFns.length) {
+            // we move these over to a variable so that
+            // if any new callbacks are registered in another
+            // flush they do not populate the existing set
+            /** @type {?} */
+            const quietFns = this._whenQuietFns;
+            this._whenQuietFns = [];
+            if (players.length) {
+                optimizeGroupPlayer(players).onDone((/**
+                 * @return {?}
+                 */
+                () => { quietFns.forEach((/**
+                 * @param {?} fn
+                 * @return {?}
+                 */
+                fn => fn())); }));
+            }
+            else {
+                quietFns.forEach((/**
+                 * @param {?} fn
+                 * @return {?}
+                 */
+                fn => fn()));
+            }
+        }
+    }
+    /**
+     * @param {?} errors
+     * @return {?}
+     */
+    reportError(errors) {
+        throw new Error(`Unable to process animations due to the following failed trigger transitions\n ${errors.join('\n')}`);
+    }
+    /**
+     * @private
+     * @param {?} cleanupFns
+     * @param {?} microtaskId
+     * @return {?}
+     */
+    _flushAnimations(cleanupFns, microtaskId) {
+        /** @type {?} */
+        const subTimelines = new ElementInstructionMap();
+        /** @type {?} */
+        const skippedPlayers = [];
+        /** @type {?} */
+        const skippedPlayersMap = new Map();
+        /** @type {?} */
+        const queuedInstructions = [];
+        /** @type {?} */
+        const queriedElements = new Map();
+        /** @type {?} */
+        const allPreStyleElements = new Map();
+        /** @type {?} */
+        const allPostStyleElements = new Map();
+        /** @type {?} */
+        const disabledElementsSet = new Set();
+        this.disabledNodes.forEach((/**
+         * @param {?} node
+         * @return {?}
+         */
+        node => {
+            disabledElementsSet.add(node);
+            /** @type {?} */
+            const nodesThatAreDisabled = this.driver.query(node, QUEUED_SELECTOR, true);
+            for (let i = 0; i < nodesThatAreDisabled.length; i++) {
+                disabledElementsSet.add(nodesThatAreDisabled[i]);
+            }
+        }));
+        /** @type {?} */
+        const bodyNode = this.bodyNode;
+        /** @type {?} */
+        const allTriggerElements = Array.from(this.statesByElement.keys());
+        /** @type {?} */
+        const enterNodeMap = buildRootMap(allTriggerElements, this.collectedEnterElements);
+        // this must occur before the instructions are built below such that
+        // the :enter queries match the elements (since the timeline queries
+        // are fired during instruction building).
+        /** @type {?} */
+        const enterNodeMapIds = new Map();
+        /** @type {?} */
+        let i = 0;
+        enterNodeMap.forEach((/**
+         * @param {?} nodes
+         * @param {?} root
+         * @return {?}
+         */
+        (nodes, root) => {
+            /** @type {?} */
+            const className = ENTER_CLASSNAME + i++;
+            enterNodeMapIds.set(root, className);
+            nodes.forEach((/**
+             * @param {?} node
+             * @return {?}
+             */
+            node => addClass(node, className)));
+        }));
+        /** @type {?} */
+        const allLeaveNodes = [];
+        /** @type {?} */
+        const mergedLeaveNodes = new Set();
+        /** @type {?} */
+        const leaveNodesWithoutAnimations = new Set();
+        for (let i = 0; i < this.collectedLeaveElements.length; i++) {
+            /** @type {?} */
+            const element = this.collectedLeaveElements[i];
+            /** @type {?} */
+            const details = (/** @type {?} */ (element[REMOVAL_FLAG]));
+            if (details && details.setForRemoval) {
+                allLeaveNodes.push(element);
+                mergedLeaveNodes.add(element);
+                if (details.hasAnimation) {
+                    this.driver.query(element, STAR_SELECTOR, true).forEach((/**
+                     * @param {?} elm
+                     * @return {?}
+                     */
+                    elm => mergedLeaveNodes.add(elm)));
+                }
+                else {
+                    leaveNodesWithoutAnimations.add(element);
+                }
+            }
+        }
+        /** @type {?} */
+        const leaveNodeMapIds = new Map();
+        /** @type {?} */
+        const leaveNodeMap = buildRootMap(allTriggerElements, Array.from(mergedLeaveNodes));
+        leaveNodeMap.forEach((/**
+         * @param {?} nodes
+         * @param {?} root
+         * @return {?}
+         */
+        (nodes, root) => {
+            /** @type {?} */
+            const className = LEAVE_CLASSNAME + i++;
+            leaveNodeMapIds.set(root, className);
+            nodes.forEach((/**
+             * @param {?} node
+             * @return {?}
+             */
+            node => addClass(node, className)));
+        }));
+        cleanupFns.push((/**
+         * @return {?}
+         */
+        () => {
+            enterNodeMap.forEach((/**
+             * @param {?} nodes
+             * @param {?} root
+             * @return {?}
+             */
+            (nodes, root) => {
+                /** @type {?} */
+                const className = (/** @type {?} */ (enterNodeMapIds.get(root)));
+                nodes.forEach((/**
+                 * @param {?} node
+                 * @return {?}
+                 */
+                node => removeClass(node, className)));
+            }));
+            leaveNodeMap.forEach((/**
+             * @param {?} nodes
+             * @param {?} root
+             * @return {?}
+             */
+            (nodes, root) => {
+                /** @type {?} */
+                const className = (/** @type {?} */ (leaveNodeMapIds.get(root)));
+                nodes.forEach((/**
+                 * @param {?} node
+                 * @return {?}
+                 */
+                node => removeClass(node, className)));
+            }));
+            allLeaveNodes.forEach((/**
+             * @param {?} element
+             * @return {?}
+             */
+            element => { this.processLeaveNode(element); }));
+        }));
+        /** @type {?} */
+        const allPlayers = [];
+        /** @type {?} */
+        const erroneousTransitions = [];
+        for (let i = this._namespaceList.length - 1; i >= 0; i--) {
+            /** @type {?} */
+            const ns = this._namespaceList[i];
+            ns.drainQueuedTransitions(microtaskId).forEach((/**
+             * @param {?} entry
+             * @return {?}
+             */
+            entry => {
+                /** @type {?} */
+                const player = entry.player;
+                /** @type {?} */
+                const element = entry.element;
+                allPlayers.push(player);
+                if (this.collectedEnterElements.length) {
+                    /** @type {?} */
+                    const details = (/** @type {?} */ (element[REMOVAL_FLAG]));
+                    // move animations are currently not supported...
+                    if (details && details.setForMove) {
+                        player.destroy();
+                        return;
+                    }
+                }
+                /** @type {?} */
+                const nodeIsOrphaned = !bodyNode || !this.driver.containsElement(bodyNode, element);
+                /** @type {?} */
+                const leaveClassName = (/** @type {?} */ (leaveNodeMapIds.get(element)));
+                /** @type {?} */
+                const enterClassName = (/** @type {?} */ (enterNodeMapIds.get(element)));
+                /** @type {?} */
+                const instruction = (/** @type {?} */ (this._buildInstruction(entry, subTimelines, enterClassName, leaveClassName, nodeIsOrphaned)));
+                if (instruction.errors && instruction.errors.length) {
+                    erroneousTransitions.push(instruction);
+                    return;
+                }
+                // even though the element may not be apart of the DOM, it may
+                // still be added at a later point (due to the mechanics of content
+                // projection and/or dynamic component insertion) therefore it's
+                // important we still style the element.
+                if (nodeIsOrphaned) {
+                    player.onStart((/**
+                     * @return {?}
+                     */
+                    () => eraseStyles(element, instruction.fromStyles)));
+                    player.onDestroy((/**
+                     * @return {?}
+                     */
+                    () => setStyles(element, instruction.toStyles)));
+                    skippedPlayers.push(player);
+                    return;
+                }
+                // if a unmatched transition is queued to go then it SHOULD NOT render
+                // an animation and cancel the previously running animations.
+                if (entry.isFallbackTransition) {
+                    player.onStart((/**
+                     * @return {?}
+                     */
+                    () => eraseStyles(element, instruction.fromStyles)));
+                    player.onDestroy((/**
+                     * @return {?}
+                     */
+                    () => setStyles(element, instruction.toStyles)));
+                    skippedPlayers.push(player);
+                    return;
+                }
+                // this means that if a parent animation uses this animation as a sub trigger
+                // then it will instruct the timeline builder to not add a player delay, but
+                // instead stretch the first keyframe gap up until the animation starts. The
+                // reason this is important is to prevent extra initialization styles from being
+                // required by the user in the animation.
+                instruction.timelines.forEach((/**
+                 * @param {?} tl
+                 * @return {?}
+                 */
+                tl => tl.stretchStartingKeyframe = true));
+                subTimelines.append(element, instruction.timelines);
+                /** @type {?} */
+                const tuple = { instruction, player, element };
+                queuedInstructions.push(tuple);
+                instruction.queriedElements.forEach((/**
+                 * @param {?} element
+                 * @return {?}
+                 */
+                element => getOrSetAsInMap(queriedElements, element, []).push(player)));
+                instruction.preStyleProps.forEach((/**
+                 * @param {?} stringMap
+                 * @param {?} element
+                 * @return {?}
+                 */
+                (stringMap, element) => {
+                    /** @type {?} */
+                    const props = Object.keys(stringMap);
+                    if (props.length) {
+                        /** @type {?} */
+                        let setVal = (/** @type {?} */ (allPreStyleElements.get(element)));
+                        if (!setVal) {
+                            allPreStyleElements.set(element, setVal = new Set());
+                        }
+                        props.forEach((/**
+                         * @param {?} prop
+                         * @return {?}
+                         */
+                        prop => setVal.add(prop)));
+                    }
+                }));
+                instruction.postStyleProps.forEach((/**
+                 * @param {?} stringMap
+                 * @param {?} element
+                 * @return {?}
+                 */
+                (stringMap, element) => {
+                    /** @type {?} */
+                    const props = Object.keys(stringMap);
+                    /** @type {?} */
+                    let setVal = (/** @type {?} */ (allPostStyleElements.get(element)));
+                    if (!setVal) {
+                        allPostStyleElements.set(element, setVal = new Set());
+                    }
+                    props.forEach((/**
+                     * @param {?} prop
+                     * @return {?}
+                     */
+                    prop => setVal.add(prop)));
+                }));
+            }));
+        }
+        if (erroneousTransitions.length) {
+            /** @type {?} */
+            const errors = [];
+            erroneousTransitions.forEach((/**
+             * @param {?} instruction
+             * @return {?}
+             */
+            instruction => {
+                errors.push(`@${instruction.triggerName} has failed due to:\n`);
+                (/** @type {?} */ (instruction.errors)).forEach((/**
+                 * @param {?} error
+                 * @return {?}
+                 */
+                error => errors.push(`- ${error}\n`)));
+            }));
+            allPlayers.forEach((/**
+             * @param {?} player
+             * @return {?}
+             */
+            player => player.destroy()));
+            this.reportError(errors);
+        }
+        /** @type {?} */
+        const allPreviousPlayersMap = new Map();
+        // this map works to tell which element in the DOM tree is contained by
+        // which animation. Further down below this map will get populated once
+        // the players are built and in doing so it can efficiently figure out
+        // if a sub player is skipped due to a parent player having priority.
+        /** @type {?} */
+        const animationElementMap = new Map();
+        queuedInstructions.forEach((/**
+         * @param {?} entry
+         * @return {?}
+         */
+        entry => {
+            /** @type {?} */
+            const element = entry.element;
+            if (subTimelines.has(element)) {
+                animationElementMap.set(element, element);
+                this._beforeAnimationBuild(entry.player.namespaceId, entry.instruction, allPreviousPlayersMap);
+            }
+        }));
+        skippedPlayers.forEach((/**
+         * @param {?} player
+         * @return {?}
+         */
+        player => {
+            /** @type {?} */
+            const element = player.element;
+            /** @type {?} */
+            const previousPlayers = this._getPreviousPlayers(element, false, player.namespaceId, player.triggerName, null);
+            previousPlayers.forEach((/**
+             * @param {?} prevPlayer
+             * @return {?}
+             */
+            prevPlayer => {
+                getOrSetAsInMap(allPreviousPlayersMap, element, []).push(prevPlayer);
+                prevPlayer.destroy();
+            }));
+        }));
+        // this is a special case for nodes that will be removed (either by)
+        // having their own leave animations or by being queried in a container
+        // that will be removed once a parent animation is complete. The idea
+        // here is that * styles must be identical to ! styles because of
+        // backwards compatibility (* is also filled in by default in many places).
+        // Otherwise * styles will return an empty value or auto since the element
+        // that is being getComputedStyle'd will not be visible (since * = destination)
+        /** @type {?} */
+        const replaceNodes = allLeaveNodes.filter((/**
+         * @param {?} node
+         * @return {?}
+         */
+        node => {
+            return replacePostStylesAsPre(node, allPreStyleElements, allPostStyleElements);
+        }));
+        // POST STAGE: fill the * styles
+        /** @type {?} */
+        const postStylesMap = new Map();
+        /** @type {?} */
+        const allLeaveQueriedNodes = cloakAndComputeStyles(postStylesMap, this.driver, leaveNodesWithoutAnimations, allPostStyleElements, _angular_animations__WEBPACK_IMPORTED_MODULE_0__["AUTO_STYLE"]);
+        allLeaveQueriedNodes.forEach((/**
+         * @param {?} node
+         * @return {?}
+         */
+        node => {
+            if (replacePostStylesAsPre(node, allPreStyleElements, allPostStyleElements)) {
+                replaceNodes.push(node);
+            }
+        }));
+        // PRE STAGE: fill the ! styles
+        /** @type {?} */
+        const preStylesMap = new Map();
+        enterNodeMap.forEach((/**
+         * @param {?} nodes
+         * @param {?} root
+         * @return {?}
+         */
+        (nodes, root) => {
+            cloakAndComputeStyles(preStylesMap, this.driver, new Set(nodes), allPreStyleElements, _angular_animations__WEBPACK_IMPORTED_MODULE_0__["ɵPRE_STYLE"]);
+        }));
+        replaceNodes.forEach((/**
+         * @param {?} node
+         * @return {?}
+         */
+        node => {
+            /** @type {?} */
+            const post = postStylesMap.get(node);
+            /** @type {?} */
+            const pre = preStylesMap.get(node);
+            postStylesMap.set(node, (/** @type {?} */ (Object.assign(Object.assign({}, post), pre))));
+        }));
+        /** @type {?} */
+        const rootPlayers = [];
+        /** @type {?} */
+        const subPlayers = [];
+        /** @type {?} */
+        const NO_PARENT_ANIMATION_ELEMENT_DETECTED = {};
+        queuedInstructions.forEach((/**
+         * @param {?} entry
+         * @return {?}
+         */
+        entry => {
+            const { element, player, instruction } = entry;
+            // this means that it was never consumed by a parent animation which
+            // means that it is independent and therefore should be set for animation
+            if (subTimelines.has(element)) {
+                if (disabledElementsSet.has(element)) {
+                    player.onDestroy((/**
+                     * @return {?}
+                     */
+                    () => setStyles(element, instruction.toStyles)));
+                    player.disabled = true;
+                    player.overrideTotalTime(instruction.totalTime);
+                    skippedPlayers.push(player);
+                    return;
+                }
+                // this will flow up the DOM and query the map to figure out
+                // if a parent animation has priority over it. In the situation
+                // that a parent is detected then it will cancel the loop. If
+                // nothing is detected, or it takes a few hops to find a parent,
+                // then it will fill in the missing nodes and signal them as having
+                // a detected parent (or a NO_PARENT value via a special constant).
+                /** @type {?} */
+                let parentWithAnimation = NO_PARENT_ANIMATION_ELEMENT_DETECTED;
+                if (animationElementMap.size > 1) {
+                    /** @type {?} */
+                    let elm = element;
+                    /** @type {?} */
+                    const parentsToAdd = [];
+                    while (elm = elm.parentNode) {
+                        /** @type {?} */
+                        const detectedParent = animationElementMap.get(elm);
+                        if (detectedParent) {
+                            parentWithAnimation = detectedParent;
+                            break;
+                        }
+                        parentsToAdd.push(elm);
+                    }
+                    parentsToAdd.forEach((/**
+                     * @param {?} parent
+                     * @return {?}
+                     */
+                    parent => animationElementMap.set(parent, parentWithAnimation)));
+                }
+                /** @type {?} */
+                const innerPlayer = this._buildAnimation(player.namespaceId, instruction, allPreviousPlayersMap, skippedPlayersMap, preStylesMap, postStylesMap);
+                player.setRealPlayer(innerPlayer);
+                if (parentWithAnimation === NO_PARENT_ANIMATION_ELEMENT_DETECTED) {
+                    rootPlayers.push(player);
+                }
+                else {
+                    /** @type {?} */
+                    const parentPlayers = this.playersByElement.get(parentWithAnimation);
+                    if (parentPlayers && parentPlayers.length) {
+                        player.parentPlayer = optimizeGroupPlayer(parentPlayers);
+                    }
+                    skippedPlayers.push(player);
+                }
+            }
+            else {
+                eraseStyles(element, instruction.fromStyles);
+                player.onDestroy((/**
+                 * @return {?}
+                 */
+                () => setStyles(element, instruction.toStyles)));
+                // there still might be a ancestor player animating this
+                // element therefore we will still add it as a sub player
+                // even if its animation may be disabled
+                subPlayers.push(player);
+                if (disabledElementsSet.has(element)) {
+                    skippedPlayers.push(player);
+                }
+            }
+        }));
+        // find all of the sub players' corresponding inner animation player
+        subPlayers.forEach((/**
+         * @param {?} player
+         * @return {?}
+         */
+        player => {
+            // even if any players are not found for a sub animation then it
+            // will still complete itself after the next tick since it's Noop
+            /** @type {?} */
+            const playersForElement = skippedPlayersMap.get(player.element);
+            if (playersForElement && playersForElement.length) {
+                /** @type {?} */
+                const innerPlayer = optimizeGroupPlayer(playersForElement);
+                player.setRealPlayer(innerPlayer);
+            }
+        }));
+        // the reason why we don't actually play the animation is
+        // because all that a skipped player is designed to do is to
+        // fire the start/done transition callback events
+        skippedPlayers.forEach((/**
+         * @param {?} player
+         * @return {?}
+         */
+        player => {
+            if (player.parentPlayer) {
+                player.syncPlayerEvents(player.parentPlayer);
+            }
+            else {
+                player.destroy();
+            }
+        }));
+        // run through all of the queued removals and see if they
+        // were picked up by a query. If not then perform the removal
+        // operation right away unless a parent animation is ongoing.
+        for (let i = 0; i < allLeaveNodes.length; i++) {
+            /** @type {?} */
+            const element = allLeaveNodes[i];
+            /** @type {?} */
+            const details = (/** @type {?} */ (element[REMOVAL_FLAG]));
+            removeClass(element, LEAVE_CLASSNAME);
+            // this means the element has a removal animation that is being
+            // taken care of and therefore the inner elements will hang around
+            // until that animation is over (or the parent queried animation)
+            if (details && details.hasAnimation)
+                continue;
+            /** @type {?} */
+            let players = [];
+            // if this element is queried or if it contains queried children
+            // then we want for the element not to be removed from the page
+            // until the queried animations have finished
+            if (queriedElements.size) {
+                /** @type {?} */
+                let queriedPlayerResults = queriedElements.get(element);
+                if (queriedPlayerResults && queriedPlayerResults.length) {
+                    players.push(...queriedPlayerResults);
+                }
+                /** @type {?} */
+                let queriedInnerElements = this.driver.query(element, NG_ANIMATING_SELECTOR, true);
+                for (let j = 0; j < queriedInnerElements.length; j++) {
+                    /** @type {?} */
+                    let queriedPlayers = queriedElements.get(queriedInnerElements[j]);
+                    if (queriedPlayers && queriedPlayers.length) {
+                        players.push(...queriedPlayers);
+                    }
+                }
+            }
+            /** @type {?} */
+            const activePlayers = players.filter((/**
+             * @param {?} p
+             * @return {?}
+             */
+            p => !p.destroyed));
+            if (activePlayers.length) {
+                removeNodesAfterAnimationDone(this, element, activePlayers);
+            }
+            else {
+                this.processLeaveNode(element);
+            }
+        }
+        // this is required so the cleanup method doesn't remove them
+        allLeaveNodes.length = 0;
+        rootPlayers.forEach((/**
+         * @param {?} player
+         * @return {?}
+         */
+        player => {
+            this.players.push(player);
+            player.onDone((/**
+             * @return {?}
+             */
+            () => {
+                player.destroy();
+                /** @type {?} */
+                const index = this.players.indexOf(player);
+                this.players.splice(index, 1);
+            }));
+            player.play();
+        }));
+        return rootPlayers;
+    }
+    /**
+     * @param {?} namespaceId
+     * @param {?} element
+     * @return {?}
+     */
+    elementContainsData(namespaceId, element) {
+        /** @type {?} */
+        let containsData = false;
+        /** @type {?} */
+        const details = (/** @type {?} */ (element[REMOVAL_FLAG]));
+        if (details && details.setForRemoval)
+            containsData = true;
+        if (this.playersByElement.has(element))
+            containsData = true;
+        if (this.playersByQueriedElement.has(element))
+            containsData = true;
+        if (this.statesByElement.has(element))
+            containsData = true;
+        return this._fetchNamespace(namespaceId).elementContainsData(element) || containsData;
+    }
+    /**
+     * @param {?} callback
+     * @return {?}
+     */
+    afterFlush(callback) { this._flushFns.push(callback); }
+    /**
+     * @param {?} callback
+     * @return {?}
+     */
+    afterFlushAnimationsDone(callback) { this._whenQuietFns.push(callback); }
+    /**
+     * @private
+     * @param {?} element
+     * @param {?} isQueriedElement
+     * @param {?=} namespaceId
+     * @param {?=} triggerName
+     * @param {?=} toStateValue
+     * @return {?}
+     */
+    _getPreviousPlayers(element, isQueriedElement, namespaceId, triggerName, toStateValue) {
+        /** @type {?} */
+        let players = [];
+        if (isQueriedElement) {
+            /** @type {?} */
+            const queriedElementPlayers = this.playersByQueriedElement.get(element);
+            if (queriedElementPlayers) {
+                players = queriedElementPlayers;
+            }
+        }
+        else {
+            /** @type {?} */
+            const elementPlayers = this.playersByElement.get(element);
+            if (elementPlayers) {
+                /** @type {?} */
+                const isRemovalAnimation = !toStateValue || toStateValue == VOID_VALUE;
+                elementPlayers.forEach((/**
+                 * @param {?} player
+                 * @return {?}
+                 */
+                player => {
+                    if (player.queued)
+                        return;
+                    if (!isRemovalAnimation && player.triggerName != triggerName)
+                        return;
+                    players.push(player);
+                }));
+            }
+        }
+        if (namespaceId || triggerName) {
+            players = players.filter((/**
+             * @param {?} player
+             * @return {?}
+             */
+            player => {
+                if (namespaceId && namespaceId != player.namespaceId)
+                    return false;
+                if (triggerName && triggerName != player.triggerName)
+                    return false;
+                return true;
+            }));
+        }
+        return players;
+    }
+    /**
+     * @private
+     * @param {?} namespaceId
+     * @param {?} instruction
+     * @param {?} allPreviousPlayersMap
+     * @return {?}
+     */
+    _beforeAnimationBuild(namespaceId, instruction, allPreviousPlayersMap) {
+        /** @type {?} */
+        const triggerName = instruction.triggerName;
+        /** @type {?} */
+        const rootElement = instruction.element;
+        // when a removal animation occurs, ALL previous players are collected
+        // and destroyed (even if they are outside of the current namespace)
+        /** @type {?} */
+        const targetNameSpaceId = instruction.isRemovalTransition ? undefined : namespaceId;
+        /** @type {?} */
+        const targetTriggerName = instruction.isRemovalTransition ? undefined : triggerName;
+        for (const timelineInstruction of instruction.timelines) {
+            /** @type {?} */
+            const element = timelineInstruction.element;
+            /** @type {?} */
+            const isQueriedElement = element !== rootElement;
+            /** @type {?} */
+            const players = getOrSetAsInMap(allPreviousPlayersMap, element, []);
+            /** @type {?} */
+            const previousPlayers = this._getPreviousPlayers(element, isQueriedElement, targetNameSpaceId, targetTriggerName, instruction.toState);
+            previousPlayers.forEach((/**
+             * @param {?} player
+             * @return {?}
+             */
+            player => {
+                /** @type {?} */
+                const realPlayer = (/** @type {?} */ (((/** @type {?} */ (player))).getRealPlayer()));
+                if (realPlayer.beforeDestroy) {
+                    realPlayer.beforeDestroy();
+                }
+                player.destroy();
+                players.push(player);
+            }));
+        }
+        // this needs to be done so that the PRE/POST styles can be
+        // computed properly without interfering with the previous animation
+        eraseStyles(rootElement, instruction.fromStyles);
+    }
+    /**
+     * @private
+     * @param {?} namespaceId
+     * @param {?} instruction
+     * @param {?} allPreviousPlayersMap
+     * @param {?} skippedPlayersMap
+     * @param {?} preStylesMap
+     * @param {?} postStylesMap
+     * @return {?}
+     */
+    _buildAnimation(namespaceId, instruction, allPreviousPlayersMap, skippedPlayersMap, preStylesMap, postStylesMap) {
+        /** @type {?} */
+        const triggerName = instruction.triggerName;
+        /** @type {?} */
+        const rootElement = instruction.element;
+        // we first run this so that the previous animation player
+        // data can be passed into the successive animation players
+        /** @type {?} */
+        const allQueriedPlayers = [];
+        /** @type {?} */
+        const allConsumedElements = new Set();
+        /** @type {?} */
+        const allSubElements = new Set();
+        /** @type {?} */
+        const allNewPlayers = instruction.timelines.map((/**
+         * @param {?} timelineInstruction
+         * @return {?}
+         */
+        timelineInstruction => {
+            /** @type {?} */
+            const element = timelineInstruction.element;
+            allConsumedElements.add(element);
+            // FIXME (matsko): make sure to-be-removed animations are removed properly
+            /** @type {?} */
+            const details = element[REMOVAL_FLAG];
+            if (details && details.removedBeforeQueried)
+                return new _angular_animations__WEBPACK_IMPORTED_MODULE_0__["NoopAnimationPlayer"](timelineInstruction.duration, timelineInstruction.delay);
+            /** @type {?} */
+            const isQueriedElement = element !== rootElement;
+            /** @type {?} */
+            const previousPlayers = flattenGroupPlayers((allPreviousPlayersMap.get(element) || EMPTY_PLAYER_ARRAY)
+                .map((/**
+             * @param {?} p
+             * @return {?}
+             */
+            p => p.getRealPlayer())))
+                .filter((/**
+             * @param {?} p
+             * @return {?}
+             */
+            p => {
+                // the `element` is not apart of the AnimationPlayer definition, but
+                // Mock/WebAnimations
+                // use the element within their implementation. This will be added in Angular5 to
+                // AnimationPlayer
+                /** @type {?} */
+                const pp = (/** @type {?} */ (p));
+                return pp.element ? pp.element === element : false;
+            }));
+            /** @type {?} */
+            const preStyles = preStylesMap.get(element);
+            /** @type {?} */
+            const postStyles = postStylesMap.get(element);
+            /** @type {?} */
+            const keyframes = normalizeKeyframes(this.driver, this._normalizer, element, timelineInstruction.keyframes, preStyles, postStyles);
+            /** @type {?} */
+            const player = this._buildPlayer(timelineInstruction, keyframes, previousPlayers);
+            // this means that this particular player belongs to a sub trigger. It is
+            // important that we match this player up with the corresponding (@trigger.listener)
+            if (timelineInstruction.subTimeline && skippedPlayersMap) {
+                allSubElements.add(element);
+            }
+            if (isQueriedElement) {
+                /** @type {?} */
+                const wrappedPlayer = new TransitionAnimationPlayer(namespaceId, triggerName, element);
+                wrappedPlayer.setRealPlayer(player);
+                allQueriedPlayers.push(wrappedPlayer);
+            }
+            return player;
+        }));
+        allQueriedPlayers.forEach((/**
+         * @param {?} player
+         * @return {?}
+         */
+        player => {
+            getOrSetAsInMap(this.playersByQueriedElement, player.element, []).push(player);
+            player.onDone((/**
+             * @return {?}
+             */
+            () => deleteOrUnsetInMap(this.playersByQueriedElement, player.element, player)));
+        }));
+        allConsumedElements.forEach((/**
+         * @param {?} element
+         * @return {?}
+         */
+        element => addClass(element, NG_ANIMATING_CLASSNAME)));
+        /** @type {?} */
+        const player = optimizeGroupPlayer(allNewPlayers);
+        player.onDestroy((/**
+         * @return {?}
+         */
+        () => {
+            allConsumedElements.forEach((/**
+             * @param {?} element
+             * @return {?}
+             */
+            element => removeClass(element, NG_ANIMATING_CLASSNAME)));
+            setStyles(rootElement, instruction.toStyles);
+        }));
+        // this basically makes all of the callbacks for sub element animations
+        // be dependent on the upper players for when they finish
+        allSubElements.forEach((/**
+         * @param {?} element
+         * @return {?}
+         */
+        element => { getOrSetAsInMap(skippedPlayersMap, element, []).push(player); }));
+        return player;
+    }
+    /**
+     * @private
+     * @param {?} instruction
+     * @param {?} keyframes
+     * @param {?} previousPlayers
+     * @return {?}
+     */
+    _buildPlayer(instruction, keyframes, previousPlayers) {
+        if (keyframes.length > 0) {
+            return this.driver.animate(instruction.element, keyframes, instruction.duration, instruction.delay, instruction.easing, previousPlayers);
+        }
+        // special case for when an empty transition|definition is provided
+        // ... there is no point in rendering an empty animation
+        return new _angular_animations__WEBPACK_IMPORTED_MODULE_0__["NoopAnimationPlayer"](instruction.duration, instruction.delay);
+    }
+}
+if (false) {}
+class TransitionAnimationPlayer {
+    /**
+     * @param {?} namespaceId
+     * @param {?} triggerName
+     * @param {?} element
+     */
+    constructor(namespaceId, triggerName, element) {
+        this.namespaceId = namespaceId;
+        this.triggerName = triggerName;
+        this.element = element;
+        this._player = new _angular_animations__WEBPACK_IMPORTED_MODULE_0__["NoopAnimationPlayer"]();
+        this._containsRealPlayer = false;
+        this._queuedCallbacks = {};
+        this.destroyed = false;
+        this.markedForDestroy = false;
+        this.disabled = false;
+        this.queued = true;
+        this.totalTime = 0;
+    }
+    /**
+     * @param {?} player
+     * @return {?}
+     */
+    setRealPlayer(player) {
+        if (this._containsRealPlayer)
+            return;
+        this._player = player;
+        Object.keys(this._queuedCallbacks).forEach((/**
+         * @param {?} phase
+         * @return {?}
+         */
+        phase => {
+            this._queuedCallbacks[phase].forEach((/**
+             * @param {?} callback
+             * @return {?}
+             */
+            callback => listenOnPlayer(player, phase, undefined, callback)));
+        }));
+        this._queuedCallbacks = {};
+        this._containsRealPlayer = true;
+        this.overrideTotalTime(player.totalTime);
+        ((/** @type {?} */ (this))).queued = false;
+    }
+    /**
+     * @return {?}
+     */
+    getRealPlayer() { return this._player; }
+    /**
+     * @param {?} totalTime
+     * @return {?}
+     */
+    overrideTotalTime(totalTime) { ((/** @type {?} */ (this))).totalTime = totalTime; }
+    /**
+     * @param {?} player
+     * @return {?}
+     */
+    syncPlayerEvents(player) {
+        /** @type {?} */
+        const p = (/** @type {?} */ (this._player));
+        if (p.triggerCallback) {
+            player.onStart((/**
+             * @return {?}
+             */
+            () => (/** @type {?} */ (p.triggerCallback))('start')));
+        }
+        player.onDone((/**
+         * @return {?}
+         */
+        () => this.finish()));
+        player.onDestroy((/**
+         * @return {?}
+         */
+        () => this.destroy()));
+    }
+    /**
+     * @private
+     * @param {?} name
+     * @param {?} callback
+     * @return {?}
+     */
+    _queueEvent(name, callback) {
+        getOrSetAsInMap(this._queuedCallbacks, name, []).push(callback);
+    }
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    onDone(fn) {
+        if (this.queued) {
+            this._queueEvent('done', fn);
+        }
+        this._player.onDone(fn);
+    }
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    onStart(fn) {
+        if (this.queued) {
+            this._queueEvent('start', fn);
+        }
+        this._player.onStart(fn);
+    }
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    onDestroy(fn) {
+        if (this.queued) {
+            this._queueEvent('destroy', fn);
+        }
+        this._player.onDestroy(fn);
+    }
+    /**
+     * @return {?}
+     */
+    init() { this._player.init(); }
+    /**
+     * @return {?}
+     */
+    hasStarted() { return this.queued ? false : this._player.hasStarted(); }
+    /**
+     * @return {?}
+     */
+    play() { !this.queued && this._player.play(); }
+    /**
+     * @return {?}
+     */
+    pause() { !this.queued && this._player.pause(); }
+    /**
+     * @return {?}
+     */
+    restart() { !this.queued && this._player.restart(); }
+    /**
+     * @return {?}
+     */
+    finish() { this._player.finish(); }
+    /**
+     * @return {?}
+     */
+    destroy() {
+        ((/** @type {?} */ (this))).destroyed = true;
+        this._player.destroy();
+    }
+    /**
+     * @return {?}
+     */
+    reset() { !this.queued && this._player.reset(); }
+    /**
+     * @param {?} p
+     * @return {?}
+     */
+    setPosition(p) {
+        if (!this.queued) {
+            this._player.setPosition(p);
+        }
+    }
+    /**
+     * @return {?}
+     */
+    getPosition() { return this.queued ? 0 : this._player.getPosition(); }
+    /**
+     * \@internal
+     * @param {?} phaseName
+     * @return {?}
+     */
+    triggerCallback(phaseName) {
+        /** @type {?} */
+        const p = (/** @type {?} */ (this._player));
+        if (p.triggerCallback) {
+            p.triggerCallback(phaseName);
+        }
+    }
+}
+if (false) {}
+/**
+ * @param {?} map
+ * @param {?} key
+ * @param {?} value
+ * @return {?}
+ */
+function deleteOrUnsetInMap(map, key, value) {
+    /** @type {?} */
+    let currentValues;
+    if (map instanceof Map) {
+        currentValues = map.get(key);
+        if (currentValues) {
+            if (currentValues.length) {
+                /** @type {?} */
+                const index = currentValues.indexOf(value);
+                currentValues.splice(index, 1);
+            }
+            if (currentValues.length == 0) {
+                map.delete(key);
+            }
+        }
+    }
+    else {
+        currentValues = map[key];
+        if (currentValues) {
+            if (currentValues.length) {
+                /** @type {?} */
+                const index = currentValues.indexOf(value);
+                currentValues.splice(index, 1);
+            }
+            if (currentValues.length == 0) {
+                delete map[key];
+            }
+        }
+    }
+    return currentValues;
+}
+/**
+ * @param {?} value
+ * @return {?}
+ */
+function normalizeTriggerValue(value) {
+    // we use `!= null` here because it's the most simple
+    // way to test against a "falsy" value without mixing
+    // in empty strings or a zero value. DO NOT OPTIMIZE.
+    return value != null ? value : null;
+}
+/**
+ * @param {?} node
+ * @return {?}
+ */
+function isElementNode(node) {
+    return node && node['nodeType'] === 1;
+}
+/**
+ * @param {?} eventName
+ * @return {?}
+ */
+function isTriggerEventValid(eventName) {
+    return eventName == 'start' || eventName == 'done';
+}
+/**
+ * @param {?} element
+ * @param {?=} value
+ * @return {?}
+ */
+function cloakElement(element, value) {
+    /** @type {?} */
+    const oldValue = element.style.display;
+    element.style.display = value != null ? value : 'none';
+    return oldValue;
+}
+/**
+ * @param {?} valuesMap
+ * @param {?} driver
+ * @param {?} elements
+ * @param {?} elementPropsMap
+ * @param {?} defaultStyle
+ * @return {?}
+ */
+function cloakAndComputeStyles(valuesMap, driver, elements, elementPropsMap, defaultStyle) {
+    /** @type {?} */
+    const cloakVals = [];
+    elements.forEach((/**
+     * @param {?} element
+     * @return {?}
+     */
+    element => cloakVals.push(cloakElement(element))));
+    /** @type {?} */
+    const failedElements = [];
+    elementPropsMap.forEach((/**
+     * @param {?} props
+     * @param {?} element
+     * @return {?}
+     */
+    (props, element) => {
+        /** @type {?} */
+        const styles = {};
+        props.forEach((/**
+         * @param {?} prop
+         * @return {?}
+         */
+        prop => {
+            /** @type {?} */
+            const value = styles[prop] = driver.computeStyle(element, prop, defaultStyle);
+            // there is no easy way to detect this because a sub element could be removed
+            // by a parent animation element being detached.
+            if (!value || value.length == 0) {
+                element[REMOVAL_FLAG] = NULL_REMOVED_QUERIED_STATE;
+                failedElements.push(element);
+            }
+        }));
+        valuesMap.set(element, styles);
+    }));
+    // we use a index variable here since Set.forEach(a, i) does not return
+    // an index value for the closure (but instead just the value)
+    /** @type {?} */
+    let i = 0;
+    elements.forEach((/**
+     * @param {?} element
+     * @return {?}
+     */
+    element => cloakElement(element, cloakVals[i++])));
+    return failedElements;
+}
+/*
+Since the Angular renderer code will return a collection of inserted
+nodes in all areas of a DOM tree, it's up to this algorithm to figure
+out which nodes are roots for each animation @trigger.
+
+By placing each inserted node into a Set and traversing upwards, it
+is possible to find the @trigger elements and well any direct *star
+insertion nodes, if a @trigger root is found then the enter element
+is placed into the Map[@trigger] spot.
+ */
+/**
+ * @param {?} roots
+ * @param {?} nodes
+ * @return {?}
+ */
+function buildRootMap(roots, nodes) {
+    /** @type {?} */
+    const rootMap = new Map();
+    roots.forEach((/**
+     * @param {?} root
+     * @return {?}
+     */
+    root => rootMap.set(root, [])));
+    if (nodes.length == 0)
+        return rootMap;
+    /** @type {?} */
+    const NULL_NODE = 1;
+    /** @type {?} */
+    const nodeSet = new Set(nodes);
+    /** @type {?} */
+    const localRootMap = new Map();
+    /**
+     * @param {?} node
+     * @return {?}
+     */
+    function getRoot(node) {
+        if (!node)
+            return NULL_NODE;
+        /** @type {?} */
+        let root = localRootMap.get(node);
+        if (root)
+            return root;
+        /** @type {?} */
+        const parent = node.parentNode;
+        if (rootMap.has(parent)) { // ngIf inside @trigger
+            root = parent;
+        }
+        else if (nodeSet.has(parent)) { // ngIf inside ngIf
+            root = NULL_NODE;
+        }
+        else { // recurse upwards
+            root = getRoot(parent);
+        }
+        localRootMap.set(node, root);
+        return root;
+    }
+    nodes.forEach((/**
+     * @param {?} node
+     * @return {?}
+     */
+    node => {
+        /** @type {?} */
+        const root = getRoot(node);
+        if (root !== NULL_NODE) {
+            (/** @type {?} */ (rootMap.get(root))).push(node);
+        }
+    }));
+    return rootMap;
+}
+/** @type {?} */
+const CLASSES_CACHE_KEY = '$$classes';
+/**
+ * @param {?} element
+ * @param {?} className
+ * @return {?}
+ */
+function containsClass(element, className) {
+    if (element.classList) {
+        return element.classList.contains(className);
+    }
+    else {
+        /** @type {?} */
+        const classes = element[CLASSES_CACHE_KEY];
+        return classes && classes[className];
+    }
+}
+/**
+ * @param {?} element
+ * @param {?} className
+ * @return {?}
+ */
+function addClass(element, className) {
+    if (element.classList) {
+        element.classList.add(className);
+    }
+    else {
+        /** @type {?} */
+        let classes = element[CLASSES_CACHE_KEY];
+        if (!classes) {
+            classes = element[CLASSES_CACHE_KEY] = {};
+        }
+        classes[className] = true;
+    }
+}
+/**
+ * @param {?} element
+ * @param {?} className
+ * @return {?}
+ */
+function removeClass(element, className) {
+    if (element.classList) {
+        element.classList.remove(className);
+    }
+    else {
+        /** @type {?} */
+        let classes = element[CLASSES_CACHE_KEY];
+        if (classes) {
+            delete classes[className];
+        }
+    }
+}
+/**
+ * @param {?} engine
+ * @param {?} element
+ * @param {?} players
+ * @return {?}
+ */
+function removeNodesAfterAnimationDone(engine, element, players) {
+    optimizeGroupPlayer(players).onDone((/**
+     * @return {?}
+     */
+    () => engine.processLeaveNode(element)));
+}
+/**
+ * @param {?} players
+ * @return {?}
+ */
+function flattenGroupPlayers(players) {
+    /** @type {?} */
+    const finalPlayers = [];
+    _flattenGroupPlayersRecur(players, finalPlayers);
+    return finalPlayers;
+}
+/**
+ * @param {?} players
+ * @param {?} finalPlayers
+ * @return {?}
+ */
+function _flattenGroupPlayersRecur(players, finalPlayers) {
+    for (let i = 0; i < players.length; i++) {
+        /** @type {?} */
+        const player = players[i];
+        if (player instanceof _angular_animations__WEBPACK_IMPORTED_MODULE_0__["ɵAnimationGroupPlayer"]) {
+            _flattenGroupPlayersRecur(player.players, finalPlayers);
+        }
+        else {
+            finalPlayers.push(player);
+        }
+    }
+}
+/**
+ * @param {?} a
+ * @param {?} b
+ * @return {?}
+ */
+function objEquals(a, b) {
+    /** @type {?} */
+    const k1 = Object.keys(a);
+    /** @type {?} */
+    const k2 = Object.keys(b);
+    if (k1.length != k2.length)
+        return false;
+    for (let i = 0; i < k1.length; i++) {
+        /** @type {?} */
+        const prop = k1[i];
+        if (!b.hasOwnProperty(prop) || a[prop] !== b[prop])
+            return false;
+    }
+    return true;
+}
+/**
+ * @param {?} element
+ * @param {?} allPreStyleElements
+ * @param {?} allPostStyleElements
+ * @return {?}
+ */
+function replacePostStylesAsPre(element, allPreStyleElements, allPostStyleElements) {
+    /** @type {?} */
+    const postEntry = allPostStyleElements.get(element);
+    if (!postEntry)
+        return false;
+    /** @type {?} */
+    let preEntry = allPreStyleElements.get(element);
+    if (preEntry) {
+        postEntry.forEach((/**
+         * @param {?} data
+         * @return {?}
+         */
+        data => (/** @type {?} */ (preEntry)).add(data)));
+    }
+    else {
+        allPreStyleElements.set(element, postEntry);
+    }
+    allPostStyleElements.delete(element);
+    return true;
+}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/browser/src/render/animation_engine_next.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class AnimationEngine {
+    /**
+     * @param {?} bodyNode
+     * @param {?} _driver
+     * @param {?} normalizer
+     */
+    constructor(bodyNode, _driver, normalizer) {
+        this.bodyNode = bodyNode;
+        this._driver = _driver;
+        this._triggerCache = {};
+        // this method is designed to be overridden by the code that uses this engine
+        this.onRemovalComplete = (/**
+         * @param {?} element
+         * @param {?} context
+         * @return {?}
+         */
+        (element, context) => { });
+        this._transitionEngine = new TransitionAnimationEngine(bodyNode, _driver, normalizer);
+        this._timelineEngine = new TimelineAnimationEngine(bodyNode, _driver, normalizer);
+        this._transitionEngine.onRemovalComplete = (/**
+         * @param {?} element
+         * @param {?} context
+         * @return {?}
+         */
+        (element, context) => this.onRemovalComplete(element, context));
+    }
+    /**
+     * @param {?} componentId
+     * @param {?} namespaceId
+     * @param {?} hostElement
+     * @param {?} name
+     * @param {?} metadata
+     * @return {?}
+     */
+    registerTrigger(componentId, namespaceId, hostElement, name, metadata) {
+        /** @type {?} */
+        const cacheKey = componentId + '-' + name;
+        /** @type {?} */
+        let trigger = this._triggerCache[cacheKey];
+        if (!trigger) {
+            /** @type {?} */
+            const errors = [];
+            /** @type {?} */
+            const ast = (/** @type {?} */ (buildAnimationAst(this._driver, (/** @type {?} */ (metadata)), errors)));
+            if (errors.length) {
+                throw new Error(`The animation trigger "${name}" has failed to build due to the following errors:\n - ${errors.join("\n - ")}`);
+            }
+            trigger = buildTrigger(name, ast);
+            this._triggerCache[cacheKey] = trigger;
+        }
+        this._transitionEngine.registerTrigger(namespaceId, name, trigger);
+    }
+    /**
+     * @param {?} namespaceId
+     * @param {?} hostElement
+     * @return {?}
+     */
+    register(namespaceId, hostElement) {
+        this._transitionEngine.register(namespaceId, hostElement);
+    }
+    /**
+     * @param {?} namespaceId
+     * @param {?} context
+     * @return {?}
+     */
+    destroy(namespaceId, context) {
+        this._transitionEngine.destroy(namespaceId, context);
+    }
+    /**
+     * @param {?} namespaceId
+     * @param {?} element
+     * @param {?} parent
+     * @param {?} insertBefore
+     * @return {?}
+     */
+    onInsert(namespaceId, element, parent, insertBefore) {
+        this._transitionEngine.insertNode(namespaceId, element, parent, insertBefore);
+    }
+    /**
+     * @param {?} namespaceId
+     * @param {?} element
+     * @param {?} context
+     * @param {?=} isHostElement
+     * @return {?}
+     */
+    onRemove(namespaceId, element, context, isHostElement) {
+        this._transitionEngine.removeNode(namespaceId, element, isHostElement || false, context);
+    }
+    /**
+     * @param {?} element
+     * @param {?} disable
+     * @return {?}
+     */
+    disableAnimations(element, disable) {
+        this._transitionEngine.markElementAsDisabled(element, disable);
+    }
+    /**
+     * @param {?} namespaceId
+     * @param {?} element
+     * @param {?} property
+     * @param {?} value
+     * @return {?}
+     */
+    process(namespaceId, element, property, value) {
+        if (property.charAt(0) == '@') {
+            const [id, action] = parseTimelineCommand(property);
+            /** @type {?} */
+            const args = (/** @type {?} */ (value));
+            this._timelineEngine.command(id, element, action, args);
+        }
+        else {
+            this._transitionEngine.trigger(namespaceId, element, property, value);
+        }
+    }
+    /**
+     * @param {?} namespaceId
+     * @param {?} element
+     * @param {?} eventName
+     * @param {?} eventPhase
+     * @param {?} callback
+     * @return {?}
+     */
+    listen(namespaceId, element, eventName, eventPhase, callback) {
+        // @@listen
+        if (eventName.charAt(0) == '@') {
+            const [id, action] = parseTimelineCommand(eventName);
+            return this._timelineEngine.listen(id, element, action, callback);
+        }
+        return this._transitionEngine.listen(namespaceId, element, eventName, eventPhase, callback);
+    }
+    /**
+     * @param {?=} microtaskId
+     * @return {?}
+     */
+    flush(microtaskId = -1) { this._transitionEngine.flush(microtaskId); }
+    /**
+     * @return {?}
+     */
+    get players() {
+        return ((/** @type {?} */ (this._transitionEngine.players)))
+            .concat((/** @type {?} */ (this._timelineEngine.players)));
+    }
+    /**
+     * @return {?}
+     */
+    whenRenderingDone() { return this._transitionEngine.whenRenderingDone(); }
+}
+if (false) {}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/browser/src/render/special_cased_styles.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * Returns an instance of `SpecialCasedStyles` if and when any special (non animateable) styles are
+ * detected.
+ *
+ * In CSS there exist properties that cannot be animated within a keyframe animation
+ * (whether it be via CSS keyframes or web-animations) and the animation implementation
+ * will ignore them. This function is designed to detect those special cased styles and
+ * return a container that will be executed at the start and end of the animation.
+ *
+ * @param {?} element
+ * @param {?} styles
+ * @return {?} an instance of `SpecialCasedStyles` if any special styles are detected otherwise `null`
+ */
+function packageNonAnimatableStyles(element, styles) {
+    /** @type {?} */
+    let startStyles = null;
+    /** @type {?} */
+    let endStyles = null;
+    if (Array.isArray(styles) && styles.length) {
+        startStyles = filterNonAnimatableStyles(styles[0]);
+        if (styles.length > 1) {
+            endStyles = filterNonAnimatableStyles(styles[styles.length - 1]);
+        }
+    }
+    else if (styles) {
+        startStyles = filterNonAnimatableStyles(styles);
+    }
+    return (startStyles || endStyles) ? new SpecialCasedStyles(element, startStyles, endStyles) :
+        null;
+}
+/**
+ * Designed to be executed during a keyframe-based animation to apply any special-cased styles.
+ *
+ * When started (when the `start()` method is run) then the provided `startStyles`
+ * will be applied. When finished (when the `finish()` method is called) the
+ * `endStyles` will be applied as well any any starting styles. Finally when
+ * `destroy()` is called then all styles will be removed.
+ */
+class SpecialCasedStyles {
+    /**
+     * @param {?} _element
+     * @param {?} _startStyles
+     * @param {?} _endStyles
+     */
+    constructor(_element, _startStyles, _endStyles) {
+        this._element = _element;
+        this._startStyles = _startStyles;
+        this._endStyles = _endStyles;
+        this._state = 0 /* Pending */;
+        /** @type {?} */
+        let initialStyles = SpecialCasedStyles.initialStylesByElement.get(_element);
+        if (!initialStyles) {
+            SpecialCasedStyles.initialStylesByElement.set(_element, initialStyles = {});
+        }
+        this._initialStyles = initialStyles;
+    }
+    /**
+     * @return {?}
+     */
+    start() {
+        if (this._state < 1 /* Started */) {
+            if (this._startStyles) {
+                setStyles(this._element, this._startStyles, this._initialStyles);
+            }
+            this._state = 1 /* Started */;
+        }
+    }
+    /**
+     * @return {?}
+     */
+    finish() {
+        this.start();
+        if (this._state < 2 /* Finished */) {
+            setStyles(this._element, this._initialStyles);
+            if (this._endStyles) {
+                setStyles(this._element, this._endStyles);
+                this._endStyles = null;
+            }
+            this._state = 1 /* Started */;
+        }
+    }
+    /**
+     * @return {?}
+     */
+    destroy() {
+        this.finish();
+        if (this._state < 3 /* Destroyed */) {
+            SpecialCasedStyles.initialStylesByElement.delete(this._element);
+            if (this._startStyles) {
+                eraseStyles(this._element, this._startStyles);
+                this._endStyles = null;
+            }
+            if (this._endStyles) {
+                eraseStyles(this._element, this._endStyles);
+                this._endStyles = null;
+            }
+            setStyles(this._element, this._initialStyles);
+            this._state = 3 /* Destroyed */;
+        }
+    }
+}
+SpecialCasedStyles.initialStylesByElement = new WeakMap();
+if (false) {}
+/** @enum {number} */
+const SpecialCasedStylesState = {
+    Pending: 0,
+    Started: 1,
+    Finished: 2,
+    Destroyed: 3,
+};
+/**
+ * @param {?} styles
+ * @return {?}
+ */
+function filterNonAnimatableStyles(styles) {
+    /** @type {?} */
+    let result = null;
+    /** @type {?} */
+    const props = Object.keys(styles);
+    for (let i = 0; i < props.length; i++) {
+        /** @type {?} */
+        const prop = props[i];
+        if (isNonAnimatableStyle(prop)) {
+            result = result || {};
+            result[prop] = styles[prop];
+        }
+    }
+    return result;
+}
+/**
+ * @param {?} prop
+ * @return {?}
+ */
+function isNonAnimatableStyle(prop) {
+    return prop === 'display' || prop === 'position';
+}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/browser/src/render/css_keyframes/element_animation_style_handler.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ * @type {?}
+ */
+const ELAPSED_TIME_MAX_DECIMAL_PLACES = 3;
+/** @type {?} */
+const ANIMATION_PROP = 'animation';
+/** @type {?} */
+const ANIMATIONEND_EVENT = 'animationend';
+/** @type {?} */
+const ONE_SECOND$1 = 1000;
+class ElementAnimationStyleHandler {
+    /**
+     * @param {?} _element
+     * @param {?} _name
+     * @param {?} _duration
+     * @param {?} _delay
+     * @param {?} _easing
+     * @param {?} _fillMode
+     * @param {?} _onDoneFn
+     */
+    constructor(_element, _name, _duration, _delay, _easing, _fillMode, _onDoneFn) {
+        this._element = _element;
+        this._name = _name;
+        this._duration = _duration;
+        this._delay = _delay;
+        this._easing = _easing;
+        this._fillMode = _fillMode;
+        this._onDoneFn = _onDoneFn;
+        this._finished = false;
+        this._destroyed = false;
+        this._startTime = 0;
+        this._position = 0;
+        this._eventFn = (/**
+         * @param {?} e
+         * @return {?}
+         */
+        (e) => this._handleCallback(e));
+    }
+    /**
+     * @return {?}
+     */
+    apply() {
+        applyKeyframeAnimation(this._element, `${this._duration}ms ${this._easing} ${this._delay}ms 1 normal ${this._fillMode} ${this._name}`);
+        addRemoveAnimationEvent(this._element, this._eventFn, false);
+        this._startTime = Date.now();
+    }
+    /**
+     * @return {?}
+     */
+    pause() { playPauseAnimation(this._element, this._name, 'paused'); }
+    /**
+     * @return {?}
+     */
+    resume() { playPauseAnimation(this._element, this._name, 'running'); }
+    /**
+     * @param {?} position
+     * @return {?}
+     */
+    setPosition(position) {
+        /** @type {?} */
+        const index = findIndexForAnimation(this._element, this._name);
+        this._position = position * this._duration;
+        setAnimationStyle(this._element, 'Delay', `-${this._position}ms`, index);
+    }
+    /**
+     * @return {?}
+     */
+    getPosition() { return this._position; }
+    /**
+     * @private
+     * @param {?} event
+     * @return {?}
+     */
+    _handleCallback(event) {
+        /** @type {?} */
+        const timestamp = event._ngTestManualTimestamp || Date.now();
+        /** @type {?} */
+        const elapsedTime = parseFloat(event.elapsedTime.toFixed(ELAPSED_TIME_MAX_DECIMAL_PLACES)) * ONE_SECOND$1;
+        if (event.animationName == this._name &&
+            Math.max(timestamp - this._startTime, 0) >= this._delay && elapsedTime >= this._duration) {
+            this.finish();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    finish() {
+        if (this._finished)
+            return;
+        this._finished = true;
+        this._onDoneFn();
+        addRemoveAnimationEvent(this._element, this._eventFn, true);
+    }
+    /**
+     * @return {?}
+     */
+    destroy() {
+        if (this._destroyed)
+            return;
+        this._destroyed = true;
+        this.finish();
+        removeKeyframeAnimation(this._element, this._name);
+    }
+}
+if (false) {}
+/**
+ * @param {?} element
+ * @param {?} name
+ * @param {?} status
+ * @return {?}
+ */
+function playPauseAnimation(element, name, status) {
+    /** @type {?} */
+    const index = findIndexForAnimation(element, name);
+    setAnimationStyle(element, 'PlayState', status, index);
+}
+/**
+ * @param {?} element
+ * @param {?} value
+ * @return {?}
+ */
+function applyKeyframeAnimation(element, value) {
+    /** @type {?} */
+    const anim = getAnimationStyle(element, '').trim();
+    /** @type {?} */
+    let index = 0;
+    if (anim.length) {
+        index = countChars(anim, ',') + 1;
+        value = `${anim}, ${value}`;
+    }
+    setAnimationStyle(element, '', value);
+    return index;
+}
+/**
+ * @param {?} element
+ * @param {?} name
+ * @return {?}
+ */
+function removeKeyframeAnimation(element, name) {
+    /** @type {?} */
+    const anim = getAnimationStyle(element, '');
+    /** @type {?} */
+    const tokens = anim.split(',');
+    /** @type {?} */
+    const index = findMatchingTokenIndex(tokens, name);
+    if (index >= 0) {
+        tokens.splice(index, 1);
+        /** @type {?} */
+        const newValue = tokens.join(',');
+        setAnimationStyle(element, '', newValue);
+    }
+}
+/**
+ * @param {?} element
+ * @param {?} value
+ * @return {?}
+ */
+function findIndexForAnimation(element, value) {
+    /** @type {?} */
+    const anim = getAnimationStyle(element, '');
+    if (anim.indexOf(',') > 0) {
+        /** @type {?} */
+        const tokens = anim.split(',');
+        return findMatchingTokenIndex(tokens, value);
+    }
+    return findMatchingTokenIndex([anim], value);
+}
+/**
+ * @param {?} tokens
+ * @param {?} searchToken
+ * @return {?}
+ */
+function findMatchingTokenIndex(tokens, searchToken) {
+    for (let i = 0; i < tokens.length; i++) {
+        if (tokens[i].indexOf(searchToken) >= 0) {
+            return i;
+        }
+    }
+    return -1;
+}
+/**
+ * @param {?} element
+ * @param {?} fn
+ * @param {?} doRemove
+ * @return {?}
+ */
+function addRemoveAnimationEvent(element, fn, doRemove) {
+    doRemove ? element.removeEventListener(ANIMATIONEND_EVENT, fn) :
+        element.addEventListener(ANIMATIONEND_EVENT, fn);
+}
+/**
+ * @param {?} element
+ * @param {?} name
+ * @param {?} value
+ * @param {?=} index
+ * @return {?}
+ */
+function setAnimationStyle(element, name, value, index) {
+    /** @type {?} */
+    const prop = ANIMATION_PROP + name;
+    if (index != null) {
+        /** @type {?} */
+        const oldValue = element.style[prop];
+        if (oldValue.length) {
+            /** @type {?} */
+            const tokens = oldValue.split(',');
+            tokens[index] = value;
+            value = tokens.join(',');
+        }
+    }
+    element.style[prop] = value;
+}
+/**
+ * @param {?} element
+ * @param {?} name
+ * @return {?}
+ */
+function getAnimationStyle(element, name) {
+    return element.style[ANIMATION_PROP + name];
+}
+/**
+ * @param {?} value
+ * @param {?} char
+ * @return {?}
+ */
+function countChars(value, char) {
+    /** @type {?} */
+    let count = 0;
+    for (let i = 0; i < value.length; i++) {
+        /** @type {?} */
+        const c = value.charAt(i);
+        if (c === char)
+            count++;
+    }
+    return count;
+}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/browser/src/render/css_keyframes/css_keyframes_player.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/** @type {?} */
+const DEFAULT_FILL_MODE = 'forwards';
+/** @type {?} */
+const DEFAULT_EASING = 'linear';
+/** @enum {number} */
+const AnimatorControlState = {
+    INITIALIZED: 1, STARTED: 2, FINISHED: 3, DESTROYED: 4,
+};
+class CssKeyframesPlayer {
+    /**
+     * @param {?} element
+     * @param {?} keyframes
+     * @param {?} animationName
+     * @param {?} _duration
+     * @param {?} _delay
+     * @param {?} easing
+     * @param {?} _finalStyles
+     * @param {?=} _specialStyles
+     */
+    constructor(element, keyframes, animationName, _duration, _delay, easing, _finalStyles, _specialStyles) {
+        this.element = element;
+        this.keyframes = keyframes;
+        this.animationName = animationName;
+        this._duration = _duration;
+        this._delay = _delay;
+        this._finalStyles = _finalStyles;
+        this._specialStyles = _specialStyles;
+        this._onDoneFns = [];
+        this._onStartFns = [];
+        this._onDestroyFns = [];
+        this._started = false;
+        this.currentSnapshot = {};
+        this._state = 0;
+        this.easing = easing || DEFAULT_EASING;
+        this.totalTime = _duration + _delay;
+        this._buildStyler();
+    }
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    onStart(fn) { this._onStartFns.push(fn); }
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    onDone(fn) { this._onDoneFns.push(fn); }
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    onDestroy(fn) { this._onDestroyFns.push(fn); }
+    /**
+     * @return {?}
+     */
+    destroy() {
+        this.init();
+        if (this._state >= 4 /* DESTROYED */)
+            return;
+        this._state = 4 /* DESTROYED */;
+        this._styler.destroy();
+        this._flushStartFns();
+        this._flushDoneFns();
+        if (this._specialStyles) {
+            this._specialStyles.destroy();
+        }
+        this._onDestroyFns.forEach((/**
+         * @param {?} fn
+         * @return {?}
+         */
+        fn => fn()));
+        this._onDestroyFns = [];
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    _flushDoneFns() {
+        this._onDoneFns.forEach((/**
+         * @param {?} fn
+         * @return {?}
+         */
+        fn => fn()));
+        this._onDoneFns = [];
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    _flushStartFns() {
+        this._onStartFns.forEach((/**
+         * @param {?} fn
+         * @return {?}
+         */
+        fn => fn()));
+        this._onStartFns = [];
+    }
+    /**
+     * @return {?}
+     */
+    finish() {
+        this.init();
+        if (this._state >= 3 /* FINISHED */)
+            return;
+        this._state = 3 /* FINISHED */;
+        this._styler.finish();
+        this._flushStartFns();
+        if (this._specialStyles) {
+            this._specialStyles.finish();
+        }
+        this._flushDoneFns();
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    setPosition(value) { this._styler.setPosition(value); }
+    /**
+     * @return {?}
+     */
+    getPosition() { return this._styler.getPosition(); }
+    /**
+     * @return {?}
+     */
+    hasStarted() { return this._state >= 2 /* STARTED */; }
+    /**
+     * @return {?}
+     */
+    init() {
+        if (this._state >= 1 /* INITIALIZED */)
+            return;
+        this._state = 1 /* INITIALIZED */;
+        /** @type {?} */
+        const elm = this.element;
+        this._styler.apply();
+        if (this._delay) {
+            this._styler.pause();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    play() {
+        this.init();
+        if (!this.hasStarted()) {
+            this._flushStartFns();
+            this._state = 2 /* STARTED */;
+            if (this._specialStyles) {
+                this._specialStyles.start();
+            }
+        }
+        this._styler.resume();
+    }
+    /**
+     * @return {?}
+     */
+    pause() {
+        this.init();
+        this._styler.pause();
+    }
+    /**
+     * @return {?}
+     */
+    restart() {
+        this.reset();
+        this.play();
+    }
+    /**
+     * @return {?}
+     */
+    reset() {
+        this._styler.destroy();
+        this._buildStyler();
+        this._styler.apply();
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    _buildStyler() {
+        this._styler = new ElementAnimationStyleHandler(this.element, this.animationName, this._duration, this._delay, this.easing, DEFAULT_FILL_MODE, (/**
+         * @return {?}
+         */
+        () => this.finish()));
+    }
+    /**
+     * \@internal
+     * @param {?} phaseName
+     * @return {?}
+     */
+    triggerCallback(phaseName) {
+        /** @type {?} */
+        const methods = phaseName == 'start' ? this._onStartFns : this._onDoneFns;
+        methods.forEach((/**
+         * @param {?} fn
+         * @return {?}
+         */
+        fn => fn()));
+        methods.length = 0;
+    }
+    /**
+     * @return {?}
+     */
+    beforeDestroy() {
+        this.init();
+        /** @type {?} */
+        const styles = {};
+        if (this.hasStarted()) {
+            /** @type {?} */
+            const finished = this._state >= 3 /* FINISHED */;
+            Object.keys(this._finalStyles).forEach((/**
+             * @param {?} prop
+             * @return {?}
+             */
+            prop => {
+                if (prop != 'offset') {
+                    styles[prop] = finished ? this._finalStyles[prop] : computeStyle(this.element, prop);
+                }
+            }));
+        }
+        this.currentSnapshot = styles;
+    }
+}
+if (false) {}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/browser/src/render/css_keyframes/direct_style_player.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class DirectStylePlayer extends _angular_animations__WEBPACK_IMPORTED_MODULE_0__["NoopAnimationPlayer"] {
+    /**
+     * @param {?} element
+     * @param {?} styles
+     */
+    constructor(element, styles) {
+        super();
+        this.element = element;
+        this._startingStyles = {};
+        this.__initialized = false;
+        this._styles = hypenatePropsObject(styles);
+    }
+    /**
+     * @return {?}
+     */
+    init() {
+        if (this.__initialized || !this._startingStyles)
+            return;
+        this.__initialized = true;
+        Object.keys(this._styles).forEach((/**
+         * @param {?} prop
+         * @return {?}
+         */
+        prop => {
+            (/** @type {?} */ (this._startingStyles))[prop] = this.element.style[prop];
+        }));
+        super.init();
+    }
+    /**
+     * @return {?}
+     */
+    play() {
+        if (!this._startingStyles)
+            return;
+        this.init();
+        Object.keys(this._styles)
+            .forEach((/**
+         * @param {?} prop
+         * @return {?}
+         */
+        prop => this.element.style.setProperty(prop, this._styles[prop])));
+        super.play();
+    }
+    /**
+     * @return {?}
+     */
+    destroy() {
+        if (!this._startingStyles)
+            return;
+        Object.keys(this._startingStyles).forEach((/**
+         * @param {?} prop
+         * @return {?}
+         */
+        prop => {
+            /** @type {?} */
+            const value = (/** @type {?} */ (this._startingStyles))[prop];
+            if (value) {
+                this.element.style.setProperty(prop, value);
+            }
+            else {
+                this.element.style.removeProperty(prop);
+            }
+        }));
+        this._startingStyles = null;
+        super.destroy();
+    }
+}
+if (false) {}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/browser/src/render/css_keyframes/css_keyframes_driver.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/** @type {?} */
+const KEYFRAMES_NAME_PREFIX = 'gen_css_kf_';
+/** @type {?} */
+const TAB_SPACE = ' ';
+class CssKeyframesDriver {
+    constructor() {
+        this._count = 0;
+        this._head = document.querySelector('head');
+        this._warningIssued = false;
+    }
+    /**
+     * @param {?} prop
+     * @return {?}
+     */
+    validateStyleProperty(prop) { return validateStyleProperty(prop); }
+    /**
+     * @param {?} element
+     * @param {?} selector
+     * @return {?}
+     */
+    matchesElement(element, selector) {
+        return matchesElement(element, selector);
+    }
+    /**
+     * @param {?} elm1
+     * @param {?} elm2
+     * @return {?}
+     */
+    containsElement(elm1, elm2) { return containsElement(elm1, elm2); }
+    /**
+     * @param {?} element
+     * @param {?} selector
+     * @param {?} multi
+     * @return {?}
+     */
+    query(element, selector, multi) {
+        return invokeQuery(element, selector, multi);
+    }
+    /**
+     * @param {?} element
+     * @param {?} prop
+     * @param {?=} defaultValue
+     * @return {?}
+     */
+    computeStyle(element, prop, defaultValue) {
+        return (/** @type {?} */ (((/** @type {?} */ (window.getComputedStyle(element))))[prop]));
+    }
+    /**
+     * @param {?} element
+     * @param {?} name
+     * @param {?} keyframes
+     * @return {?}
+     */
+    buildKeyframeElement(element, name, keyframes) {
+        keyframes = keyframes.map((/**
+         * @param {?} kf
+         * @return {?}
+         */
+        kf => hypenatePropsObject(kf)));
+        /** @type {?} */
+        let keyframeStr = `@keyframes ${name} {\n`;
+        /** @type {?} */
+        let tab = '';
+        keyframes.forEach((/**
+         * @param {?} kf
+         * @return {?}
+         */
+        kf => {
+            tab = TAB_SPACE;
+            /** @type {?} */
+            const offset = parseFloat(kf['offset']);
+            keyframeStr += `${tab}${offset * 100}% {\n`;
+            tab += TAB_SPACE;
+            Object.keys(kf).forEach((/**
+             * @param {?} prop
+             * @return {?}
+             */
+            prop => {
+                /** @type {?} */
+                const value = kf[prop];
+                switch (prop) {
+                    case 'offset':
+                        return;
+                    case 'easing':
+                        if (value) {
+                            keyframeStr += `${tab}animation-timing-function: ${value};\n`;
+                        }
+                        return;
+                    default:
+                        keyframeStr += `${tab}${prop}: ${value};\n`;
+                        return;
+                }
+            }));
+            keyframeStr += `${tab}}\n`;
+        }));
+        keyframeStr += `}\n`;
+        /** @type {?} */
+        const kfElm = document.createElement('style');
+        kfElm.innerHTML = keyframeStr;
+        return kfElm;
+    }
+    /**
+     * @param {?} element
+     * @param {?} keyframes
+     * @param {?} duration
+     * @param {?} delay
+     * @param {?} easing
+     * @param {?=} previousPlayers
+     * @param {?=} scrubberAccessRequested
+     * @return {?}
+     */
+    animate(element, keyframes, duration, delay, easing, previousPlayers = [], scrubberAccessRequested) {
+        if (scrubberAccessRequested) {
+            this._notifyFaultyScrubber();
+        }
+        /** @type {?} */
+        const previousCssKeyframePlayers = (/** @type {?} */ (previousPlayers.filter((/**
+         * @param {?} player
+         * @return {?}
+         */
+        player => player instanceof CssKeyframesPlayer))));
+        /** @type {?} */
+        const previousStyles = {};
+        if (allowPreviousPlayerStylesMerge(duration, delay)) {
+            previousCssKeyframePlayers.forEach((/**
+             * @param {?} player
+             * @return {?}
+             */
+            player => {
+                /** @type {?} */
+                let styles = player.currentSnapshot;
+                Object.keys(styles).forEach((/**
+                 * @param {?} prop
+                 * @return {?}
+                 */
+                prop => previousStyles[prop] = styles[prop]));
+            }));
+        }
+        keyframes = balancePreviousStylesIntoKeyframes(element, keyframes, previousStyles);
+        /** @type {?} */
+        const finalStyles = flattenKeyframesIntoStyles(keyframes);
+        // if there is no animation then there is no point in applying
+        // styles and waiting for an event to get fired. This causes lag.
+        // It's better to just directly apply the styles to the element
+        // via the direct styling animation player.
+        if (duration == 0) {
+            return new DirectStylePlayer(element, finalStyles);
+        }
+        /** @type {?} */
+        const animationName = `${KEYFRAMES_NAME_PREFIX}${this._count++}`;
+        /** @type {?} */
+        const kfElm = this.buildKeyframeElement(element, animationName, keyframes);
+        (/** @type {?} */ (document.querySelector('head'))).appendChild(kfElm);
+        /** @type {?} */
+        const specialStyles = packageNonAnimatableStyles(element, keyframes);
+        /** @type {?} */
+        const player = new CssKeyframesPlayer(element, keyframes, animationName, duration, delay, easing, finalStyles, specialStyles);
+        player.onDestroy((/**
+         * @return {?}
+         */
+        () => removeElement(kfElm)));
+        return player;
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    _notifyFaultyScrubber() {
+        if (!this._warningIssued) {
+            console.warn('@angular/animations: please load the web-animations.js polyfill to allow programmatic access...\n', '  visit http://bit.ly/IWukam to learn more about using the web-animation-js polyfill.');
+            this._warningIssued = true;
+        }
+    }
+}
+if (false) {}
+/**
+ * @param {?} keyframes
+ * @return {?}
+ */
+function flattenKeyframesIntoStyles(keyframes) {
+    /** @type {?} */
+    let flatKeyframes = {};
+    if (keyframes) {
+        /** @type {?} */
+        const kfs = Array.isArray(keyframes) ? keyframes : [keyframes];
+        kfs.forEach((/**
+         * @param {?} kf
+         * @return {?}
+         */
+        kf => {
+            Object.keys(kf).forEach((/**
+             * @param {?} prop
+             * @return {?}
+             */
+            prop => {
+                if (prop == 'offset' || prop == 'easing')
+                    return;
+                flatKeyframes[prop] = kf[prop];
+            }));
+        }));
+    }
+    return flatKeyframes;
+}
+/**
+ * @param {?} node
+ * @return {?}
+ */
+function removeElement(node) {
+    node.parentNode.removeChild(node);
+}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/browser/src/render/web_animations/web_animations_player.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class WebAnimationsPlayer {
+    /**
+     * @param {?} element
+     * @param {?} keyframes
+     * @param {?} options
+     * @param {?=} _specialStyles
+     */
+    constructor(element, keyframes, options, _specialStyles) {
+        this.element = element;
+        this.keyframes = keyframes;
+        this.options = options;
+        this._specialStyles = _specialStyles;
+        this._onDoneFns = [];
+        this._onStartFns = [];
+        this._onDestroyFns = [];
+        this._initialized = false;
+        this._finished = false;
+        this._started = false;
+        this._destroyed = false;
+        this.time = 0;
+        this.parentPlayer = null;
+        this.currentSnapshot = {};
+        this._duration = (/** @type {?} */ (options['duration']));
+        this._delay = (/** @type {?} */ (options['delay'])) || 0;
+        this.time = this._duration + this._delay;
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    _onFinish() {
+        if (!this._finished) {
+            this._finished = true;
+            this._onDoneFns.forEach((/**
+             * @param {?} fn
+             * @return {?}
+             */
+            fn => fn()));
+            this._onDoneFns = [];
+        }
+    }
+    /**
+     * @return {?}
+     */
+    init() {
+        this._buildPlayer();
+        this._preparePlayerBeforeStart();
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    _buildPlayer() {
+        if (this._initialized)
+            return;
+        this._initialized = true;
+        /** @type {?} */
+        const keyframes = this.keyframes;
+        ((/** @type {?} */ (this))).domPlayer =
+            this._triggerWebAnimation(this.element, keyframes, this.options);
+        this._finalKeyframe = keyframes.length ? keyframes[keyframes.length - 1] : {};
+        this.domPlayer.addEventListener('finish', (/**
+         * @return {?}
+         */
+        () => this._onFinish()));
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    _preparePlayerBeforeStart() {
+        // this is required so that the player doesn't start to animate right away
+        if (this._delay) {
+            this._resetDomPlayerState();
+        }
+        else {
+            this.domPlayer.pause();
+        }
+    }
+    /**
+     * \@internal
+     * @param {?} element
+     * @param {?} keyframes
+     * @param {?} options
+     * @return {?}
+     */
+    _triggerWebAnimation(element, keyframes, options) {
+        // jscompiler doesn't seem to know animate is a native property because it's not fully
+        // supported yet across common browsers (we polyfill it for Edge/Safari) [CL #143630929]
+        return (/** @type {?} */ (element['animate'](keyframes, options)));
+    }
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    onStart(fn) { this._onStartFns.push(fn); }
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    onDone(fn) { this._onDoneFns.push(fn); }
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    onDestroy(fn) { this._onDestroyFns.push(fn); }
+    /**
+     * @return {?}
+     */
+    play() {
+        this._buildPlayer();
+        if (!this.hasStarted()) {
+            this._onStartFns.forEach((/**
+             * @param {?} fn
+             * @return {?}
+             */
+            fn => fn()));
+            this._onStartFns = [];
+            this._started = true;
+            if (this._specialStyles) {
+                this._specialStyles.start();
+            }
+        }
+        this.domPlayer.play();
+    }
+    /**
+     * @return {?}
+     */
+    pause() {
+        this.init();
+        this.domPlayer.pause();
+    }
+    /**
+     * @return {?}
+     */
+    finish() {
+        this.init();
+        if (this._specialStyles) {
+            this._specialStyles.finish();
+        }
+        this._onFinish();
+        this.domPlayer.finish();
+    }
+    /**
+     * @return {?}
+     */
+    reset() {
+        this._resetDomPlayerState();
+        this._destroyed = false;
+        this._finished = false;
+        this._started = false;
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    _resetDomPlayerState() {
+        if (this.domPlayer) {
+            this.domPlayer.cancel();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    restart() {
+        this.reset();
+        this.play();
+    }
+    /**
+     * @return {?}
+     */
+    hasStarted() { return this._started; }
+    /**
+     * @return {?}
+     */
+    destroy() {
+        if (!this._destroyed) {
+            this._destroyed = true;
+            this._resetDomPlayerState();
+            this._onFinish();
+            if (this._specialStyles) {
+                this._specialStyles.destroy();
+            }
+            this._onDestroyFns.forEach((/**
+             * @param {?} fn
+             * @return {?}
+             */
+            fn => fn()));
+            this._onDestroyFns = [];
+        }
+    }
+    /**
+     * @param {?} p
+     * @return {?}
+     */
+    setPosition(p) { this.domPlayer.currentTime = p * this.time; }
+    /**
+     * @return {?}
+     */
+    getPosition() { return this.domPlayer.currentTime / this.time; }
+    /**
+     * @return {?}
+     */
+    get totalTime() { return this._delay + this._duration; }
+    /**
+     * @return {?}
+     */
+    beforeDestroy() {
+        /** @type {?} */
+        const styles = {};
+        if (this.hasStarted()) {
+            Object.keys(this._finalKeyframe).forEach((/**
+             * @param {?} prop
+             * @return {?}
+             */
+            prop => {
+                if (prop != 'offset') {
+                    styles[prop] =
+                        this._finished ? this._finalKeyframe[prop] : computeStyle(this.element, prop);
+                }
+            }));
+        }
+        this.currentSnapshot = styles;
+    }
+    /**
+     * \@internal
+     * @param {?} phaseName
+     * @return {?}
+     */
+    triggerCallback(phaseName) {
+        /** @type {?} */
+        const methods = phaseName == 'start' ? this._onStartFns : this._onDoneFns;
+        methods.forEach((/**
+         * @param {?} fn
+         * @return {?}
+         */
+        fn => fn()));
+        methods.length = 0;
+    }
+}
+if (false) {}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/browser/src/render/web_animations/web_animations_driver.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class WebAnimationsDriver {
+    constructor() {
+        this._isNativeImpl = /\{\s*\[native\s+code\]\s*\}/.test(getElementAnimateFn().toString());
+        this._cssKeyframesDriver = new CssKeyframesDriver();
+    }
+    /**
+     * @param {?} prop
+     * @return {?}
+     */
+    validateStyleProperty(prop) { return validateStyleProperty(prop); }
+    /**
+     * @param {?} element
+     * @param {?} selector
+     * @return {?}
+     */
+    matchesElement(element, selector) {
+        return matchesElement(element, selector);
+    }
+    /**
+     * @param {?} elm1
+     * @param {?} elm2
+     * @return {?}
+     */
+    containsElement(elm1, elm2) { return containsElement(elm1, elm2); }
+    /**
+     * @param {?} element
+     * @param {?} selector
+     * @param {?} multi
+     * @return {?}
+     */
+    query(element, selector, multi) {
+        return invokeQuery(element, selector, multi);
+    }
+    /**
+     * @param {?} element
+     * @param {?} prop
+     * @param {?=} defaultValue
+     * @return {?}
+     */
+    computeStyle(element, prop, defaultValue) {
+        return (/** @type {?} */ (((/** @type {?} */ (window.getComputedStyle(element))))[prop]));
+    }
+    /**
+     * @param {?} supported
+     * @return {?}
+     */
+    overrideWebAnimationsSupport(supported) { this._isNativeImpl = supported; }
+    /**
+     * @param {?} element
+     * @param {?} keyframes
+     * @param {?} duration
+     * @param {?} delay
+     * @param {?} easing
+     * @param {?=} previousPlayers
+     * @param {?=} scrubberAccessRequested
+     * @return {?}
+     */
+    animate(element, keyframes, duration, delay, easing, previousPlayers = [], scrubberAccessRequested) {
+        /** @type {?} */
+        const useKeyframes = !scrubberAccessRequested && !this._isNativeImpl;
+        if (useKeyframes) {
+            return this._cssKeyframesDriver.animate(element, keyframes, duration, delay, easing, previousPlayers);
+        }
+        /** @type {?} */
+        const fill = delay == 0 ? 'both' : 'forwards';
+        /** @type {?} */
+        const playerOptions = { duration, delay, fill };
+        // we check for this to avoid having a null|undefined value be present
+        // for the easing (which results in an error for certain browsers #9752)
+        if (easing) {
+            playerOptions['easing'] = easing;
+        }
+        /** @type {?} */
+        const previousStyles = {};
+        /** @type {?} */
+        const previousWebAnimationPlayers = (/** @type {?} */ (previousPlayers.filter((/**
+         * @param {?} player
+         * @return {?}
+         */
+        player => player instanceof WebAnimationsPlayer))));
+        if (allowPreviousPlayerStylesMerge(duration, delay)) {
+            previousWebAnimationPlayers.forEach((/**
+             * @param {?} player
+             * @return {?}
+             */
+            player => {
+                /** @type {?} */
+                let styles = player.currentSnapshot;
+                Object.keys(styles).forEach((/**
+                 * @param {?} prop
+                 * @return {?}
+                 */
+                prop => previousStyles[prop] = styles[prop]));
+            }));
+        }
+        keyframes = keyframes.map((/**
+         * @param {?} styles
+         * @return {?}
+         */
+        styles => copyStyles(styles, false)));
+        keyframes = balancePreviousStylesIntoKeyframes(element, keyframes, previousStyles);
+        /** @type {?} */
+        const specialStyles = packageNonAnimatableStyles(element, keyframes);
+        return new WebAnimationsPlayer(element, keyframes, playerOptions, specialStyles);
+    }
+}
+if (false) {}
+/**
+ * @return {?}
+ */
+function supportsWebAnimations() {
+    return typeof getElementAnimateFn() === 'function';
+}
+/**
+ * @return {?}
+ */
+function getElementAnimateFn() {
+    return (isBrowser() && ((/** @type {?} */ (Element))).prototype['animate']) || {};
+}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/browser/src/private_export.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/browser/src/browser.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/browser/public_api.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/animations/browser/index.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * Generated bundle index. Do not edit.
+ */
+
+
+
+//# sourceMappingURL=browser.js.map
+
+/***/ }),
+
 /***/ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js ***!
@@ -61282,6 +70867,843 @@ ReactiveFormsModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
 
 /***/ }),
 
+/***/ "./node_modules/@angular/platform-browser/__ivy_ngcc__/fesm2015/animations.js":
+/*!************************************************************************************!*\
+  !*** ./node_modules/@angular/platform-browser/__ivy_ngcc__/fesm2015/animations.js ***!
+  \************************************************************************************/
+/*! exports provided: ANIMATION_MODULE_TYPE, BrowserAnimationsModule, NoopAnimationsModule, ɵAnimationRenderer, ɵAnimationRendererFactory, ɵBrowserAnimationBuilder, ɵBrowserAnimationFactory, ɵInjectableAnimationEngine, ɵangular_packages_platform_browser_animations_animations_a, ɵangular_packages_platform_browser_animations_animations_b, ɵangular_packages_platform_browser_animations_animations_c, ɵangular_packages_platform_browser_animations_animations_d, ɵangular_packages_platform_browser_animations_animations_e, ɵangular_packages_platform_browser_animations_animations_f */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ANIMATION_MODULE_TYPE", function() { return ANIMATION_MODULE_TYPE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BrowserAnimationsModule", function() { return BrowserAnimationsModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NoopAnimationsModule", function() { return NoopAnimationsModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵAnimationRenderer", function() { return AnimationRenderer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵAnimationRendererFactory", function() { return AnimationRendererFactory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵBrowserAnimationBuilder", function() { return BrowserAnimationBuilder; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵBrowserAnimationFactory", function() { return BrowserAnimationFactory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵInjectableAnimationEngine", function() { return InjectableAnimationEngine; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_platform_browser_animations_animations_a", function() { return instantiateSupportedAnimationDriver; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_platform_browser_animations_animations_b", function() { return instantiateDefaultStyleNormalizer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_platform_browser_animations_animations_c", function() { return instantiateRendererFactory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_platform_browser_animations_animations_d", function() { return BROWSER_ANIMATIONS_PROVIDERS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_platform_browser_animations_animations_e", function() { return BROWSER_NOOP_ANIMATIONS_PROVIDERS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_platform_browser_animations_animations_f", function() { return BaseAnimationRenderer; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/__ivy_ngcc__/fesm2015/platform-browser.js");
+/* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/__ivy_ngcc__/fesm2015/animations.js");
+/* harmony import */ var _angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/animations/browser */ "./node_modules/@angular/animations/__ivy_ngcc__/fesm2015/browser.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/**
+ * @license Angular v9.0.7
+ * (c) 2010-2020 Google LLC. https://angular.io/
+ * License: MIT
+ */
+
+
+
+
+
+
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/platform-browser/animations/src/animation_builder.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+
+class BrowserAnimationBuilder extends _angular_animations__WEBPACK_IMPORTED_MODULE_2__["AnimationBuilder"] {
+    /**
+     * @param {?} rootRenderer
+     * @param {?} doc
+     */
+    constructor(rootRenderer, doc) {
+        super();
+        this._nextAnimationId = 0;
+        /** @type {?} */
+        const typeData = (/** @type {?} */ ({
+            id: '0',
+            encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
+            styles: [],
+            data: { animation: [] }
+        }));
+        this._renderer = (/** @type {?} */ (rootRenderer.createRenderer(doc.body, typeData)));
+    }
+    /**
+     * @param {?} animation
+     * @return {?}
+     */
+    build(animation) {
+        /** @type {?} */
+        const id = this._nextAnimationId.toString();
+        this._nextAnimationId++;
+        /** @type {?} */
+        const entry = Array.isArray(animation) ? Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["sequence"])(animation) : animation;
+        issueAnimationCommand(this._renderer, null, id, 'register', [entry]);
+        return new BrowserAnimationFactory(id, this._renderer);
+    }
+}
+BrowserAnimationBuilder.ɵfac = function BrowserAnimationBuilder_Factory(t) { return new (t || BrowserAnimationBuilder)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["RendererFactory2"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_4__["DOCUMENT"])); };
+BrowserAnimationBuilder.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: BrowserAnimationBuilder, factory: BrowserAnimationBuilder.ɵfac });
+/** @nocollapse */
+BrowserAnimationBuilder.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["RendererFactory2"] },
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["DOCUMENT"],] }] }
+];
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](BrowserAnimationBuilder, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["RendererFactory2"] }, { type: undefined, decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+                args: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["DOCUMENT"]]
+            }] }]; }, null); })();
+if (false) {}
+class BrowserAnimationFactory extends _angular_animations__WEBPACK_IMPORTED_MODULE_2__["AnimationFactory"] {
+    /**
+     * @param {?} _id
+     * @param {?} _renderer
+     */
+    constructor(_id, _renderer) {
+        super();
+        this._id = _id;
+        this._renderer = _renderer;
+    }
+    /**
+     * @param {?} element
+     * @param {?=} options
+     * @return {?}
+     */
+    create(element, options) {
+        return new RendererAnimationPlayer(this._id, element, options || {}, this._renderer);
+    }
+}
+if (false) {}
+class RendererAnimationPlayer {
+    /**
+     * @param {?} id
+     * @param {?} element
+     * @param {?} options
+     * @param {?} _renderer
+     */
+    constructor(id, element, options, _renderer) {
+        this.id = id;
+        this.element = element;
+        this._renderer = _renderer;
+        this.parentPlayer = null;
+        this._started = false;
+        this.totalTime = 0;
+        this._command('create', options);
+    }
+    /**
+     * @private
+     * @param {?} eventName
+     * @param {?} callback
+     * @return {?}
+     */
+    _listen(eventName, callback) {
+        return this._renderer.listen(this.element, `@@${this.id}:${eventName}`, callback);
+    }
+    /**
+     * @private
+     * @param {?} command
+     * @param {...?} args
+     * @return {?}
+     */
+    _command(command, ...args) {
+        return issueAnimationCommand(this._renderer, this.element, this.id, command, args);
+    }
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    onDone(fn) { this._listen('done', fn); }
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    onStart(fn) { this._listen('start', fn); }
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    onDestroy(fn) { this._listen('destroy', fn); }
+    /**
+     * @return {?}
+     */
+    init() { this._command('init'); }
+    /**
+     * @return {?}
+     */
+    hasStarted() { return this._started; }
+    /**
+     * @return {?}
+     */
+    play() {
+        this._command('play');
+        this._started = true;
+    }
+    /**
+     * @return {?}
+     */
+    pause() { this._command('pause'); }
+    /**
+     * @return {?}
+     */
+    restart() { this._command('restart'); }
+    /**
+     * @return {?}
+     */
+    finish() { this._command('finish'); }
+    /**
+     * @return {?}
+     */
+    destroy() { this._command('destroy'); }
+    /**
+     * @return {?}
+     */
+    reset() { this._command('reset'); }
+    /**
+     * @param {?} p
+     * @return {?}
+     */
+    setPosition(p) { this._command('setPosition', p); }
+    /**
+     * @return {?}
+     */
+    getPosition() { return 0; }
+}
+if (false) {}
+/**
+ * @param {?} renderer
+ * @param {?} element
+ * @param {?} id
+ * @param {?} command
+ * @param {?} args
+ * @return {?}
+ */
+function issueAnimationCommand(renderer, element, id, command, args) {
+    return renderer.setProperty(element, `@@${id}:${command}`, args);
+}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/platform-browser/animations/src/animation_renderer.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/** @type {?} */
+const ANIMATION_PREFIX = '@';
+/** @type {?} */
+const DISABLE_ANIMATIONS_FLAG = '@.disabled';
+/**
+ * @record
+ */
+function RecursiveAnimationTriggerMetadata() { }
+class AnimationRendererFactory {
+    /**
+     * @param {?} delegate
+     * @param {?} engine
+     * @param {?} _zone
+     */
+    constructor(delegate, engine, _zone) {
+        this.delegate = delegate;
+        this.engine = engine;
+        this._zone = _zone;
+        this._currentId = 0;
+        this._microtaskId = 1;
+        this._animationCallbacksBuffer = [];
+        this._rendererCache = new Map();
+        this._cdRecurDepth = 0;
+        this.promise = Promise.resolve(0);
+        engine.onRemovalComplete = (/**
+         * @param {?} element
+         * @param {?} delegate
+         * @return {?}
+         */
+        (element, delegate) => {
+            // Note: if an component element has a leave animation, and the component
+            // a host leave animation, the view engine will call `removeChild` for the parent
+            // component renderer as well as for the child component renderer.
+            // Therefore, we need to check if we already removed the element.
+            if (delegate && delegate.parentNode(element)) {
+                delegate.removeChild(element.parentNode, element);
+            }
+        });
+    }
+    /**
+     * @param {?} hostElement
+     * @param {?} type
+     * @return {?}
+     */
+    createRenderer(hostElement, type) {
+        /** @type {?} */
+        const EMPTY_NAMESPACE_ID = '';
+        // cache the delegates to find out which cached delegate can
+        // be used by which cached renderer
+        /** @type {?} */
+        const delegate = this.delegate.createRenderer(hostElement, type);
+        if (!hostElement || !type || !type.data || !type.data['animation']) {
+            /** @type {?} */
+            let renderer = this._rendererCache.get(delegate);
+            if (!renderer) {
+                renderer = new BaseAnimationRenderer(EMPTY_NAMESPACE_ID, delegate, this.engine);
+                // only cache this result when the base renderer is used
+                this._rendererCache.set(delegate, renderer);
+            }
+            return renderer;
+        }
+        /** @type {?} */
+        const componentId = type.id;
+        /** @type {?} */
+        const namespaceId = type.id + '-' + this._currentId;
+        this._currentId++;
+        this.engine.register(namespaceId, hostElement);
+        /** @type {?} */
+        const registerTrigger = (/**
+         * @param {?} trigger
+         * @return {?}
+         */
+        (trigger) => {
+            if (Array.isArray(trigger)) {
+                trigger.forEach(registerTrigger);
+            }
+            else {
+                this.engine.registerTrigger(componentId, namespaceId, hostElement, trigger.name, trigger);
+            }
+        });
+        /** @type {?} */
+        const animationTriggers = (/** @type {?} */ (type.data['animation']));
+        animationTriggers.forEach(registerTrigger);
+        return new AnimationRenderer(this, namespaceId, delegate, this.engine);
+    }
+    /**
+     * @return {?}
+     */
+    begin() {
+        this._cdRecurDepth++;
+        if (this.delegate.begin) {
+            this.delegate.begin();
+        }
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    _scheduleCountTask() {
+        // always use promise to schedule microtask instead of use Zone
+        this.promise.then((/**
+         * @return {?}
+         */
+        () => { this._microtaskId++; }));
+    }
+    /**
+     * \@internal
+     * @param {?} count
+     * @param {?} fn
+     * @param {?} data
+     * @return {?}
+     */
+    scheduleListenerCallback(count, fn, data) {
+        if (count >= 0 && count < this._microtaskId) {
+            this._zone.run((/**
+             * @return {?}
+             */
+            () => fn(data)));
+            return;
+        }
+        if (this._animationCallbacksBuffer.length == 0) {
+            Promise.resolve(null).then((/**
+             * @return {?}
+             */
+            () => {
+                this._zone.run((/**
+                 * @return {?}
+                 */
+                () => {
+                    this._animationCallbacksBuffer.forEach((/**
+                     * @param {?} tuple
+                     * @return {?}
+                     */
+                    tuple => {
+                        const [fn, data] = tuple;
+                        fn(data);
+                    }));
+                    this._animationCallbacksBuffer = [];
+                }));
+            }));
+        }
+        this._animationCallbacksBuffer.push([fn, data]);
+    }
+    /**
+     * @return {?}
+     */
+    end() {
+        this._cdRecurDepth--;
+        // this is to prevent animations from running twice when an inner
+        // component does CD when a parent component instead has inserted it
+        if (this._cdRecurDepth == 0) {
+            this._zone.runOutsideAngular((/**
+             * @return {?}
+             */
+            () => {
+                this._scheduleCountTask();
+                this.engine.flush(this._microtaskId);
+            }));
+        }
+        if (this.delegate.end) {
+            this.delegate.end();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    whenRenderingDone() { return this.engine.whenRenderingDone(); }
+}
+AnimationRendererFactory.ɵfac = function AnimationRendererFactory_Factory(t) { return new (t || AnimationRendererFactory)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["RendererFactory2"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__["ɵAnimationEngine"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"])); };
+AnimationRendererFactory.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: AnimationRendererFactory, factory: AnimationRendererFactory.ɵfac });
+/** @nocollapse */
+AnimationRendererFactory.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["RendererFactory2"] },
+    { type: _angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__["ɵAnimationEngine"] },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"] }
+];
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AnimationRendererFactory, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["RendererFactory2"] }, { type: _angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__["ɵAnimationEngine"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"] }]; }, null); })();
+if (false) {}
+class BaseAnimationRenderer {
+    /**
+     * @param {?} namespaceId
+     * @param {?} delegate
+     * @param {?} engine
+     */
+    constructor(namespaceId, delegate, engine) {
+        this.namespaceId = namespaceId;
+        this.delegate = delegate;
+        this.engine = engine;
+        this.destroyNode = this.delegate.destroyNode ? (/**
+         * @param {?} n
+         * @return {?}
+         */
+        (n) => (/** @type {?} */ (delegate.destroyNode))(n)) : null;
+    }
+    /**
+     * @return {?}
+     */
+    get data() { return this.delegate.data; }
+    /**
+     * @return {?}
+     */
+    destroy() {
+        this.engine.destroy(this.namespaceId, this.delegate);
+        this.delegate.destroy();
+    }
+    /**
+     * @param {?} name
+     * @param {?=} namespace
+     * @return {?}
+     */
+    createElement(name, namespace) {
+        return this.delegate.createElement(name, namespace);
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    createComment(value) { return this.delegate.createComment(value); }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    createText(value) { return this.delegate.createText(value); }
+    /**
+     * @param {?} parent
+     * @param {?} newChild
+     * @return {?}
+     */
+    appendChild(parent, newChild) {
+        this.delegate.appendChild(parent, newChild);
+        this.engine.onInsert(this.namespaceId, newChild, parent, false);
+    }
+    /**
+     * @param {?} parent
+     * @param {?} newChild
+     * @param {?} refChild
+     * @return {?}
+     */
+    insertBefore(parent, newChild, refChild) {
+        this.delegate.insertBefore(parent, newChild, refChild);
+        this.engine.onInsert(this.namespaceId, newChild, parent, true);
+    }
+    /**
+     * @param {?} parent
+     * @param {?} oldChild
+     * @param {?} isHostElement
+     * @return {?}
+     */
+    removeChild(parent, oldChild, isHostElement) {
+        this.engine.onRemove(this.namespaceId, oldChild, this.delegate, isHostElement);
+    }
+    /**
+     * @param {?} selectorOrNode
+     * @param {?=} preserveContent
+     * @return {?}
+     */
+    selectRootElement(selectorOrNode, preserveContent) {
+        return this.delegate.selectRootElement(selectorOrNode, preserveContent);
+    }
+    /**
+     * @param {?} node
+     * @return {?}
+     */
+    parentNode(node) { return this.delegate.parentNode(node); }
+    /**
+     * @param {?} node
+     * @return {?}
+     */
+    nextSibling(node) { return this.delegate.nextSibling(node); }
+    /**
+     * @param {?} el
+     * @param {?} name
+     * @param {?} value
+     * @param {?=} namespace
+     * @return {?}
+     */
+    setAttribute(el, name, value, namespace) {
+        this.delegate.setAttribute(el, name, value, namespace);
+    }
+    /**
+     * @param {?} el
+     * @param {?} name
+     * @param {?=} namespace
+     * @return {?}
+     */
+    removeAttribute(el, name, namespace) {
+        this.delegate.removeAttribute(el, name, namespace);
+    }
+    /**
+     * @param {?} el
+     * @param {?} name
+     * @return {?}
+     */
+    addClass(el, name) { this.delegate.addClass(el, name); }
+    /**
+     * @param {?} el
+     * @param {?} name
+     * @return {?}
+     */
+    removeClass(el, name) { this.delegate.removeClass(el, name); }
+    /**
+     * @param {?} el
+     * @param {?} style
+     * @param {?} value
+     * @param {?=} flags
+     * @return {?}
+     */
+    setStyle(el, style, value, flags) {
+        this.delegate.setStyle(el, style, value, flags);
+    }
+    /**
+     * @param {?} el
+     * @param {?} style
+     * @param {?=} flags
+     * @return {?}
+     */
+    removeStyle(el, style, flags) {
+        this.delegate.removeStyle(el, style, flags);
+    }
+    /**
+     * @param {?} el
+     * @param {?} name
+     * @param {?} value
+     * @return {?}
+     */
+    setProperty(el, name, value) {
+        if (name.charAt(0) == ANIMATION_PREFIX && name == DISABLE_ANIMATIONS_FLAG) {
+            this.disableAnimations(el, !!value);
+        }
+        else {
+            this.delegate.setProperty(el, name, value);
+        }
+    }
+    /**
+     * @param {?} node
+     * @param {?} value
+     * @return {?}
+     */
+    setValue(node, value) { this.delegate.setValue(node, value); }
+    /**
+     * @param {?} target
+     * @param {?} eventName
+     * @param {?} callback
+     * @return {?}
+     */
+    listen(target, eventName, callback) {
+        return this.delegate.listen(target, eventName, callback);
+    }
+    /**
+     * @protected
+     * @param {?} element
+     * @param {?} value
+     * @return {?}
+     */
+    disableAnimations(element, value) {
+        this.engine.disableAnimations(element, value);
+    }
+}
+if (false) {}
+class AnimationRenderer extends BaseAnimationRenderer {
+    /**
+     * @param {?} factory
+     * @param {?} namespaceId
+     * @param {?} delegate
+     * @param {?} engine
+     */
+    constructor(factory, namespaceId, delegate, engine) {
+        super(namespaceId, delegate, engine);
+        this.factory = factory;
+        this.namespaceId = namespaceId;
+    }
+    /**
+     * @param {?} el
+     * @param {?} name
+     * @param {?} value
+     * @return {?}
+     */
+    setProperty(el, name, value) {
+        if (name.charAt(0) == ANIMATION_PREFIX) {
+            if (name.charAt(1) == '.' && name == DISABLE_ANIMATIONS_FLAG) {
+                value = value === undefined ? true : !!value;
+                this.disableAnimations(el, (/** @type {?} */ (value)));
+            }
+            else {
+                this.engine.process(this.namespaceId, el, name.substr(1), value);
+            }
+        }
+        else {
+            this.delegate.setProperty(el, name, value);
+        }
+    }
+    /**
+     * @param {?} target
+     * @param {?} eventName
+     * @param {?} callback
+     * @return {?}
+     */
+    listen(target, eventName, callback) {
+        if (eventName.charAt(0) == ANIMATION_PREFIX) {
+            /** @type {?} */
+            const element = resolveElementFromTarget(target);
+            /** @type {?} */
+            let name = eventName.substr(1);
+            /** @type {?} */
+            let phase = '';
+            // @listener.phase is for trigger animation callbacks
+            // @@listener is for animation builder callbacks
+            if (name.charAt(0) != ANIMATION_PREFIX) {
+                [name, phase] = parseTriggerCallbackName(name);
+            }
+            return this.engine.listen(this.namespaceId, element, name, phase, (/**
+             * @param {?} event
+             * @return {?}
+             */
+            event => {
+                /** @type {?} */
+                const countId = ((/** @type {?} */ (event)))['_data'] || -1;
+                this.factory.scheduleListenerCallback(countId, callback, event);
+            }));
+        }
+        return this.delegate.listen(target, eventName, callback);
+    }
+}
+if (false) {}
+/**
+ * @param {?} target
+ * @return {?}
+ */
+function resolveElementFromTarget(target) {
+    switch (target) {
+        case 'body':
+            return document.body;
+        case 'document':
+            return document;
+        case 'window':
+            return window;
+        default:
+            return target;
+    }
+}
+/**
+ * @param {?} triggerName
+ * @return {?}
+ */
+function parseTriggerCallbackName(triggerName) {
+    /** @type {?} */
+    const dotIndex = triggerName.indexOf('.');
+    /** @type {?} */
+    const trigger = triggerName.substring(0, dotIndex);
+    /** @type {?} */
+    const phase = triggerName.substr(dotIndex + 1);
+    return [trigger, phase];
+}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/platform-browser/animations/src/providers.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class InjectableAnimationEngine extends _angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__["ɵAnimationEngine"] {
+    /**
+     * @param {?} doc
+     * @param {?} driver
+     * @param {?} normalizer
+     */
+    constructor(doc, driver, normalizer) {
+        super(doc.body, driver, normalizer);
+    }
+}
+InjectableAnimationEngine.ɵfac = function InjectableAnimationEngine_Factory(t) { return new (t || InjectableAnimationEngine)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_4__["DOCUMENT"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__["AnimationDriver"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__["ɵAnimationStyleNormalizer"])); };
+InjectableAnimationEngine.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: InjectableAnimationEngine, factory: InjectableAnimationEngine.ɵfac });
+/** @nocollapse */
+InjectableAnimationEngine.ctorParameters = () => [
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["DOCUMENT"],] }] },
+    { type: _angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__["AnimationDriver"] },
+    { type: _angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__["ɵAnimationStyleNormalizer"] }
+];
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](InjectableAnimationEngine, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
+    }], function () { return [{ type: undefined, decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+                args: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["DOCUMENT"]]
+            }] }, { type: _angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__["AnimationDriver"] }, { type: _angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__["ɵAnimationStyleNormalizer"] }]; }, null); })();
+/**
+ * @return {?}
+ */
+function instantiateSupportedAnimationDriver() {
+    return Object(_angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__["ɵsupportsWebAnimations"])() ? new _angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__["ɵWebAnimationsDriver"]() : new _angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__["ɵCssKeyframesDriver"]();
+}
+/**
+ * @return {?}
+ */
+function instantiateDefaultStyleNormalizer() {
+    return new _angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__["ɵWebAnimationsStyleNormalizer"]();
+}
+/**
+ * @param {?} renderer
+ * @param {?} engine
+ * @param {?} zone
+ * @return {?}
+ */
+function instantiateRendererFactory(renderer, engine, zone) {
+    return new AnimationRendererFactory(renderer, engine, zone);
+}
+/**
+ * \@publicApi
+ * @type {?}
+ */
+const ANIMATION_MODULE_TYPE = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('AnimationModuleType');
+/** @type {?} */
+const SHARED_ANIMATION_PROVIDERS = [
+    { provide: _angular_animations__WEBPACK_IMPORTED_MODULE_2__["AnimationBuilder"], useClass: BrowserAnimationBuilder },
+    { provide: _angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__["ɵAnimationStyleNormalizer"], useFactory: instantiateDefaultStyleNormalizer },
+    { provide: _angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__["ɵAnimationEngine"], useClass: InjectableAnimationEngine }, {
+        provide: _angular_core__WEBPACK_IMPORTED_MODULE_0__["RendererFactory2"],
+        useFactory: instantiateRendererFactory,
+        deps: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["ɵDomRendererFactory2"], _angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__["ɵAnimationEngine"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]]
+    }
+];
+/**
+ * Separate providers from the actual module so that we can do a local modification in Google3 to
+ * include them in the BrowserModule.
+ * @type {?}
+ */
+const BROWSER_ANIMATIONS_PROVIDERS = [
+    { provide: _angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__["AnimationDriver"], useFactory: instantiateSupportedAnimationDriver },
+    { provide: ANIMATION_MODULE_TYPE, useValue: 'BrowserAnimations' }, ...SHARED_ANIMATION_PROVIDERS
+];
+/**
+ * Separate providers from the actual module so that we can do a local modification in Google3 to
+ * include them in the BrowserTestingModule.
+ * @type {?}
+ */
+const BROWSER_NOOP_ANIMATIONS_PROVIDERS = [
+    { provide: _angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__["AnimationDriver"], useClass: _angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__["ɵNoopAnimationDriver"] },
+    { provide: ANIMATION_MODULE_TYPE, useValue: 'NoopAnimations' }, ...SHARED_ANIMATION_PROVIDERS
+];
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/platform-browser/animations/src/module.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * Exports `BrowserModule` with additional [dependency-injection providers](guide/glossary#provider)
+ * for use with animations. See [Animations](guide/animations).
+ * \@publicApi
+ */
+class BrowserAnimationsModule {
+}
+BrowserAnimationsModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: BrowserAnimationsModule });
+BrowserAnimationsModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function BrowserAnimationsModule_Factory(t) { return new (t || BrowserAnimationsModule)(); }, providers: BROWSER_ANIMATIONS_PROVIDERS, imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](BrowserAnimationsModule, { exports: function () { return [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"]]; } }); })();
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](BrowserAnimationsModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+        args: [{
+                exports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"]],
+                providers: BROWSER_ANIMATIONS_PROVIDERS
+            }]
+    }], null, null); })();
+/**
+ * A null player that must be imported to allow disabling of animations.
+ * \@publicApi
+ */
+class NoopAnimationsModule {
+}
+NoopAnimationsModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: NoopAnimationsModule });
+NoopAnimationsModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function NoopAnimationsModule_Factory(t) { return new (t || NoopAnimationsModule)(); }, providers: BROWSER_NOOP_ANIMATIONS_PROVIDERS, imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](NoopAnimationsModule, { exports: function () { return [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"]]; } }); })();
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NoopAnimationsModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+        args: [{
+                exports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"]],
+                providers: BROWSER_NOOP_ANIMATIONS_PROVIDERS
+            }]
+    }], null, null); })();
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/platform-browser/animations/src/private_export.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/platform-browser/animations/src/animations.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/platform-browser/animations/public_api.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/platform-browser/animations/index.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * Generated bundle index. Do not edit.
+ */
+
+
+
+//# sourceMappingURL=animations.js.map
+
+/***/ }),
+
 /***/ "./node_modules/@angular/platform-browser/__ivy_ngcc__/fesm2015/platform-browser.js":
 /*!******************************************************************************************!*\
   !*** ./node_modules/@angular/platform-browser/__ivy_ngcc__/fesm2015/platform-browser.js ***!
@@ -72995,6 +83417,1480 @@ const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('9.0.7
 
 /***/ }),
 
+/***/ "./node_modules/generate-serial-number/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/generate-serial-number/index.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+(function() {
+  function _splitDigits(num) {
+    return Array.prototype.map.call((num + '').trim().split(''), function(v) {
+      return parseInt(v, 10);
+    });
+  }
+
+  function _sum(num) {
+    return _splitDigits(num).reduce(function(c, v) {
+      return c + v;
+    });
+  }
+
+  /**
+   * create check sum.
+   *
+   * @param {string|number} num
+   * @return {number} check sum value
+   */
+  function checkSum(num) {
+    if (num == null) {
+      return 0;
+    }
+    var doubled = _splitDigits(num).reverse().map(function(v, idx) {
+      return idx % 2 === 0 ? v * 2 : v;
+    });
+    var sum = doubled.reduce(function(tmp, v) {
+      return tmp + _sum(v);
+    }, 0);
+    var check = 10 - (sum % 10);
+    return check === 10 ? 0 : check;
+  }
+
+  /**
+   * validate num.
+   *
+   * @param {string|number} checkNumber check number
+   * @return {boolean} true: checkNumber is valid
+   */
+  function isValid(checkNumber) {
+    if (checkNumber == null) {
+      return false;
+    }
+    var numbers = _splitDigits(checkNumber);
+    return numbers.pop() === checkSum(numbers.join(''));
+  }
+
+  /**
+   * create generate code
+   *
+   * @param {number} length generage
+   * @return {string} generaged digits value
+   */
+  function generate(length) {
+    var len = length - 1;
+    var ary = new Array(len);
+    for (var i = 0; i < len; i++) {
+      ary.push(Math.floor(Math.random() * 10));
+    }
+    var num = ary.join('');
+    return num + '' + checkSum(num);
+  }
+
+  module.exports = {
+    isValid: isValid,
+    checkSum: checkSum,
+    generate: generate
+  };
+}());
+
+
+/***/ }),
+
+/***/ "./node_modules/ngx-toastr/__ivy_ngcc__/fesm2015/ngx-toastr.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/ngx-toastr/__ivy_ngcc__/fesm2015/ngx-toastr.js ***!
+  \*********************************************************************/
+/*! exports provided: BasePortalHost, ComponentPortal, DefaultGlobalConfig, DefaultNoAnimationsGlobalConfig, DefaultNoComponentGlobalConfig, Overlay, OverlayContainer, OverlayRef, TOAST_CONFIG, Toast, ToastContainerDirective, ToastContainerModule, ToastInjector, ToastNoAnimation, ToastNoAnimationModule, ToastPackage, ToastRef, ToastrComponentlessModule, ToastrModule, ToastrService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BasePortalHost", function() { return BasePortalHost; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ComponentPortal", function() { return ComponentPortal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DefaultGlobalConfig", function() { return DefaultGlobalConfig; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DefaultNoAnimationsGlobalConfig", function() { return DefaultNoAnimationsGlobalConfig; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DefaultNoComponentGlobalConfig", function() { return DefaultNoComponentGlobalConfig; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Overlay", function() { return Overlay; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OverlayContainer", function() { return OverlayContainer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OverlayRef", function() { return OverlayRef; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TOAST_CONFIG", function() { return TOAST_CONFIG; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Toast", function() { return Toast; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ToastContainerDirective", function() { return ToastContainerDirective; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ToastContainerModule", function() { return ToastContainerModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ToastInjector", function() { return ToastInjector; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ToastNoAnimation", function() { return ToastNoAnimation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ToastNoAnimationModule", function() { return ToastNoAnimationModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ToastPackage", function() { return ToastPackage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ToastRef", function() { return ToastRef; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ToastrComponentlessModule", function() { return ToastrComponentlessModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ToastrModule", function() { return ToastrModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ToastrService", function() { return ToastrService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/__ivy_ngcc__/fesm2015/animations.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/__ivy_ngcc__/fesm2015/platform-browser.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+
+
+
+
+
+
+
+
+
+
+
+const _c0 = ["toast-component", ""];
+function Toast_button_0_Template(rf, ctx) { if (rf & 1) {
+    const _r6 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "button", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function Toast_button_0_Template_button_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r6); const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r5.remove(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "span", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](2, "\u00D7");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} }
+function Toast_div_1_ng_container_2_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementContainerStart"](0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementContainerEnd"]();
+} if (rf & 2) {
+    const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("[", ctx_r7.duplicatesCount + 1, "]");
+} }
+function Toast_div_1_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, Toast_div_1_ng_container_2_Template, 2, 1, "ng-container", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassMap"](ctx_r1.options.titleClass);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵattribute"]("aria-label", ctx_r1.title);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", ctx_r1.title, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r1.duplicatesCount);
+} }
+function Toast_div_2_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "div", 7);
+} if (rf & 2) {
+    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassMap"](ctx_r2.options.messageClass);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("innerHTML", ctx_r2.message, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsanitizeHtml"]);
+} }
+function Toast_div_3_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassMap"](ctx_r3.options.messageClass);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵattribute"]("aria-label", ctx_r3.message);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", ctx_r3.message, " ");
+} }
+function Toast_div_4_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](1, "div", 9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵstyleProp"]("width", ctx_r4.width + "%");
+} }
+function ToastNoAnimation_button_0_Template(rf, ctx) { if (rf & 1) {
+    const _r14 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "button", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ToastNoAnimation_button_0_Template_button_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r14); const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r13.remove(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "span", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](2, "\u00D7");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} }
+function ToastNoAnimation_div_1_ng_container_2_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementContainerStart"](0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementContainerEnd"]();
+} if (rf & 2) {
+    const ctx_r15 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("[", ctx_r15.duplicatesCount + 1, "]");
+} }
+function ToastNoAnimation_div_1_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, ToastNoAnimation_div_1_ng_container_2_Template, 2, 1, "ng-container", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassMap"](ctx_r9.options.titleClass);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵattribute"]("aria-label", ctx_r9.title);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", ctx_r9.title, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r9.duplicatesCount);
+} }
+function ToastNoAnimation_div_2_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "div", 7);
+} if (rf & 2) {
+    const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassMap"](ctx_r10.options.messageClass);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("innerHTML", ctx_r10.message, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsanitizeHtml"]);
+} }
+function ToastNoAnimation_div_3_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassMap"](ctx_r11.options.messageClass);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵattribute"]("aria-label", ctx_r11.message);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", ctx_r11.message, " ");
+} }
+function ToastNoAnimation_div_4_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](1, "div", 9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵstyleProp"]("width", ctx_r12.width + "%");
+} }
+let ToastContainerDirective = class ToastContainerDirective {
+    constructor(el) {
+        this.el = el;
+    }
+    getContainerElement() {
+        return this.el.nativeElement;
+    }
+};
+ToastContainerDirective.ɵfac = function ToastContainerDirective_Factory(t) { return new (t || ToastContainerDirective)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"])); };
+ToastContainerDirective.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineDirective"]({ type: ToastContainerDirective, selectors: [["", "toastContainer", ""]], exportAs: ["toastContainer"] });
+ToastContainerDirective.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] }
+];
+let ToastContainerModule = class ToastContainerModule {
+};
+ToastContainerModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule"]({ type: ToastContainerModule });
+ToastContainerModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({ factory: function ToastContainerModule_Factory(t) { return new (t || ToastContainerModule)(); } });
+
+/**
+ * Everything a toast needs to launch
+ */
+class ToastPackage {
+    constructor(toastId, config, message, title, toastType, toastRef) {
+        this.toastId = toastId;
+        this.config = config;
+        this.message = message;
+        this.title = title;
+        this.toastType = toastType;
+        this.toastRef = toastRef;
+        this._onTap = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this._onAction = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this.toastRef.afterClosed().subscribe(() => {
+            this._onAction.complete();
+            this._onTap.complete();
+        });
+    }
+    /** Fired on click */
+    triggerTap() {
+        this._onTap.next();
+        if (this.config.tapToDismiss) {
+            this._onTap.complete();
+        }
+    }
+    onTap() {
+        return this._onTap.asObservable();
+    }
+    /** available for use in custom toast */
+    triggerAction(action) {
+        this._onAction.next(action);
+    }
+    onAction() {
+        return this._onAction.asObservable();
+    }
+}
+const DefaultNoComponentGlobalConfig = {
+    maxOpened: 0,
+    autoDismiss: false,
+    newestOnTop: true,
+    preventDuplicates: false,
+    countDuplicates: false,
+    resetTimeoutOnDuplicate: false,
+    iconClasses: {
+        error: 'toast-error',
+        info: 'toast-info',
+        success: 'toast-success',
+        warning: 'toast-warning',
+    },
+    // Individual
+    closeButton: false,
+    disableTimeOut: false,
+    timeOut: 5000,
+    extendedTimeOut: 1000,
+    enableHtml: false,
+    progressBar: false,
+    toastClass: 'ngx-toastr',
+    positionClass: 'toast-top-right',
+    titleClass: 'toast-title',
+    messageClass: 'toast-message',
+    easing: 'ease-in',
+    easeTime: 300,
+    tapToDismiss: true,
+    onActivateTick: false,
+    progressAnimation: 'decreasing',
+};
+const TOAST_CONFIG = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["InjectionToken"]('ToastConfig');
+
+/**
+ * A `ComponentPortal` is a portal that instantiates some Component upon attachment.
+ */
+class ComponentPortal {
+    constructor(component, injector) {
+        this.component = component;
+        this.injector = injector;
+    }
+    /** Attach this portal to a host. */
+    attach(host, newestOnTop) {
+        this._attachedHost = host;
+        return host.attach(this, newestOnTop);
+    }
+    /** Detach this portal from its host */
+    detach() {
+        const host = this._attachedHost;
+        if (host) {
+            this._attachedHost = undefined;
+            return host.detach();
+        }
+    }
+    /** Whether this portal is attached to a host. */
+    get isAttached() {
+        return this._attachedHost != null;
+    }
+    /**
+     * Sets the PortalHost reference without performing `attach()`. This is used directly by
+     * the PortalHost when it is performing an `attach()` or `detach()`.
+     */
+    setAttachedHost(host) {
+        this._attachedHost = host;
+    }
+}
+/**
+ * Partial implementation of PortalHost that only deals with attaching a
+ * ComponentPortal
+ */
+class BasePortalHost {
+    attach(portal, newestOnTop) {
+        this._attachedPortal = portal;
+        return this.attachComponentPortal(portal, newestOnTop);
+    }
+    detach() {
+        if (this._attachedPortal) {
+            this._attachedPortal.setAttachedHost();
+        }
+        this._attachedPortal = undefined;
+        if (this._disposeFn) {
+            this._disposeFn();
+            this._disposeFn = undefined;
+        }
+    }
+    setDisposeFn(fn) {
+        this._disposeFn = fn;
+    }
+}
+
+/**
+ * A PortalHost for attaching portals to an arbitrary DOM element outside of the Angular
+ * application context.
+ *
+ * This is the only part of the portal core that directly touches the DOM.
+ */
+class DomPortalHost extends BasePortalHost {
+    constructor(_hostDomElement, _componentFactoryResolver, _appRef) {
+        super();
+        this._hostDomElement = _hostDomElement;
+        this._componentFactoryResolver = _componentFactoryResolver;
+        this._appRef = _appRef;
+    }
+    /**
+     * Attach the given ComponentPortal to DOM element using the ComponentFactoryResolver.
+     * @param portal Portal to be attached
+     */
+    attachComponentPortal(portal, newestOnTop) {
+        const componentFactory = this._componentFactoryResolver.resolveComponentFactory(portal.component);
+        let componentRef;
+        // If the portal specifies a ViewContainerRef, we will use that as the attachment point
+        // for the component (in terms of Angular's component tree, not rendering).
+        // When the ViewContainerRef is missing, we use the factory to create the component directly
+        // and then manually attach the ChangeDetector for that component to the application (which
+        // happens automatically when using a ViewContainer).
+        componentRef = componentFactory.create(portal.injector);
+        // When creating a component outside of a ViewContainer, we need to manually register
+        // its ChangeDetector with the application. This API is unfortunately not yet published
+        // in Angular core. The change detector must also be deregistered when the component
+        // is destroyed to prevent memory leaks.
+        this._appRef.attachView(componentRef.hostView);
+        this.setDisposeFn(() => {
+            this._appRef.detachView(componentRef.hostView);
+            componentRef.destroy();
+        });
+        // At this point the component has been instantiated, so we move it to the location in the DOM
+        // where we want it to be rendered.
+        if (newestOnTop) {
+            this._hostDomElement.insertBefore(this._getComponentRootNode(componentRef), this._hostDomElement.firstChild);
+        }
+        else {
+            this._hostDomElement.appendChild(this._getComponentRootNode(componentRef));
+        }
+        return componentRef;
+    }
+    /** Gets the root HTMLElement for an instantiated component. */
+    _getComponentRootNode(componentRef) {
+        return componentRef.hostView.rootNodes[0];
+    }
+}
+
+/** Container inside which all toasts will render. */
+let OverlayContainer = class OverlayContainer {
+    constructor(_document) {
+        this._document = _document;
+    }
+    ngOnDestroy() {
+        if (this._containerElement && this._containerElement.parentNode) {
+            this._containerElement.parentNode.removeChild(this._containerElement);
+        }
+    }
+    /**
+     * This method returns the overlay container element. It will lazily
+     * create the element the first time  it is called to facilitate using
+     * the container in non-browser environments.
+     * @returns the container element
+     */
+    getContainerElement() {
+        if (!this._containerElement) {
+            this._createContainer();
+        }
+        return this._containerElement;
+    }
+    /**
+     * Create the overlay container element, which is simply a div
+     * with the 'cdk-overlay-container' class on the document body.
+     */
+    _createContainer() {
+        const container = this._document.createElement('div');
+        container.classList.add('overlay-container');
+        this._document.body.appendChild(container);
+        this._containerElement = container;
+    }
+};
+OverlayContainer.ɵfac = function OverlayContainer_Factory(t) { return new (t || OverlayContainer)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_5__["DOCUMENT"])); };
+OverlayContainer.ctorParameters = () => [
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["DOCUMENT"],] }] }
+];
+OverlayContainer.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({ factory: function OverlayContainer_Factory() { return new OverlayContainer(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_common__WEBPACK_IMPORTED_MODULE_5__["DOCUMENT"])); }, token: OverlayContainer, providedIn: "root" });
+OverlayContainer = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([ Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__param"])(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_common__WEBPACK_IMPORTED_MODULE_5__["DOCUMENT"]))
+], OverlayContainer);
+
+/**
+ * Reference to an overlay that has been created with the Overlay service.
+ * Used to manipulate or dispose of said overlay.
+ */
+class OverlayRef {
+    constructor(_portalHost) {
+        this._portalHost = _portalHost;
+    }
+    attach(portal, newestOnTop = true) {
+        return this._portalHost.attach(portal, newestOnTop);
+    }
+    /**
+     * Detaches an overlay from a portal.
+     * @returns Resolves when the overlay has been detached.
+     */
+    detach() {
+        return this._portalHost.detach();
+    }
+}
+
+/**
+ * Service to create Overlays. Overlays are dynamically added pieces of floating UI, meant to be
+ * used as a low-level building building block for other components. Dialogs, tooltips, menus,
+ * selects, etc. can all be built using overlays. The service should primarily be used by authors
+ * of re-usable components rather than developers building end-user applications.
+ *
+ * An overlay *is* a PortalHost, so any kind of Portal can be loaded into one.
+ */
+let Overlay = class Overlay {
+    constructor(_overlayContainer, _componentFactoryResolver, _appRef, _document) {
+        this._overlayContainer = _overlayContainer;
+        this._componentFactoryResolver = _componentFactoryResolver;
+        this._appRef = _appRef;
+        this._document = _document;
+        // Namespace panes by overlay container
+        this._paneElements = new Map();
+    }
+    /**
+     * Creates an overlay.
+     * @returns A reference to the created overlay.
+     */
+    create(positionClass, overlayContainer) {
+        // get existing pane if possible
+        return this._createOverlayRef(this.getPaneElement(positionClass, overlayContainer));
+    }
+    getPaneElement(positionClass = '', overlayContainer) {
+        if (!this._paneElements.get(overlayContainer)) {
+            this._paneElements.set(overlayContainer, {});
+        }
+        if (!this._paneElements.get(overlayContainer)[positionClass]) {
+            this._paneElements.get(overlayContainer)[positionClass] = this._createPaneElement(positionClass, overlayContainer);
+        }
+        return this._paneElements.get(overlayContainer)[positionClass];
+    }
+    /**
+     * Creates the DOM element for an overlay and appends it to the overlay container.
+     * @returns Newly-created pane element
+     */
+    _createPaneElement(positionClass, overlayContainer) {
+        const pane = this._document.createElement('div');
+        pane.id = 'toast-container';
+        pane.classList.add(positionClass);
+        pane.classList.add('toast-container');
+        if (!overlayContainer) {
+            this._overlayContainer.getContainerElement().appendChild(pane);
+        }
+        else {
+            overlayContainer.getContainerElement().appendChild(pane);
+        }
+        return pane;
+    }
+    /**
+     * Create a DomPortalHost into which the overlay content can be loaded.
+     * @param pane The DOM element to turn into a portal host.
+     * @returns A portal host for the given DOM element.
+     */
+    _createPortalHost(pane) {
+        return new DomPortalHost(pane, this._componentFactoryResolver, this._appRef);
+    }
+    /**
+     * Creates an OverlayRef for an overlay in the given DOM element.
+     * @param pane DOM element for the overlay
+     */
+    _createOverlayRef(pane) {
+        return new OverlayRef(this._createPortalHost(pane));
+    }
+};
+Overlay.ɵfac = function Overlay_Factory(t) { return new (t || Overlay)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](OverlayContainer), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ComponentFactoryResolver"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ApplicationRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_5__["DOCUMENT"])); };
+Overlay.ctorParameters = () => [
+    { type: OverlayContainer },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ComponentFactoryResolver"] },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ApplicationRef"] },
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["DOCUMENT"],] }] }
+];
+Overlay.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({ factory: function Overlay_Factory() { return new Overlay(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(OverlayContainer), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ComponentFactoryResolver"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ApplicationRef"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_common__WEBPACK_IMPORTED_MODULE_5__["DOCUMENT"])); }, token: Overlay, providedIn: "root" });
+Overlay = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([ Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__param"])(3, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_common__WEBPACK_IMPORTED_MODULE_5__["DOCUMENT"]))
+], Overlay);
+
+/**
+ * Reference to a toast opened via the Toastr service.
+ */
+class ToastRef {
+    constructor(_overlayRef) {
+        this._overlayRef = _overlayRef;
+        /** Count of duplicates of this toast */
+        this.duplicatesCount = 0;
+        /** Subject for notifying the user that the toast has finished closing. */
+        this._afterClosed = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        /** triggered when toast is activated */
+        this._activate = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        /** notifies the toast that it should close before the timeout */
+        this._manualClose = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        /** notifies the toast that it should reset the timeouts */
+        this._resetTimeout = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        /** notifies the toast that it should count a duplicate toast */
+        this._countDuplicate = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+    }
+    manualClose() {
+        this._manualClose.next();
+        this._manualClose.complete();
+    }
+    manualClosed() {
+        return this._manualClose.asObservable();
+    }
+    timeoutReset() {
+        return this._resetTimeout.asObservable();
+    }
+    countDuplicate() {
+        return this._countDuplicate.asObservable();
+    }
+    /**
+     * Close the toast.
+     */
+    close() {
+        this._overlayRef.detach();
+        this._afterClosed.next();
+        this._manualClose.next();
+        this._afterClosed.complete();
+        this._manualClose.complete();
+        this._activate.complete();
+        this._resetTimeout.complete();
+        this._countDuplicate.complete();
+    }
+    /** Gets an observable that is notified when the toast is finished closing. */
+    afterClosed() {
+        return this._afterClosed.asObservable();
+    }
+    isInactive() {
+        return this._activate.isStopped;
+    }
+    activate() {
+        this._activate.next();
+        this._activate.complete();
+    }
+    /** Gets an observable that is notified when the toast has started opening. */
+    afterActivate() {
+        return this._activate.asObservable();
+    }
+    /** Reset the toast timouts and count duplicates */
+    onDuplicate(resetTimeout, countDuplicate) {
+        if (resetTimeout) {
+            this._resetTimeout.next();
+        }
+        if (countDuplicate) {
+            this._countDuplicate.next(++this.duplicatesCount);
+        }
+    }
+}
+/** Custom injector type specifically for instantiating components with a toast. */
+class ToastInjector {
+    constructor(_toastPackage, _parentInjector) {
+        this._toastPackage = _toastPackage;
+        this._parentInjector = _parentInjector;
+    }
+    get(token, notFoundValue, flags) {
+        if (token === ToastPackage) {
+            return this._toastPackage;
+        }
+        return this._parentInjector.get(token, notFoundValue, flags);
+    }
+}
+
+let ToastrService = class ToastrService {
+    constructor(token, overlay, _injector, sanitizer, ngZone) {
+        this.overlay = overlay;
+        this._injector = _injector;
+        this.sanitizer = sanitizer;
+        this.ngZone = ngZone;
+        this.currentlyActive = 0;
+        this.toasts = [];
+        this.index = 0;
+        this.toastrConfig = Object.assign(Object.assign({}, token.default), token.config);
+        if (token.config.iconClasses) {
+            this.toastrConfig.iconClasses = Object.assign(Object.assign({}, token.default.iconClasses), token.config.iconClasses);
+        }
+    }
+    /** show toast */
+    show(message, title, override = {}, type = '') {
+        return this._preBuildNotification(type, message, title, this.applyConfig(override));
+    }
+    /** show successful toast */
+    success(message, title, override = {}) {
+        const type = this.toastrConfig.iconClasses.success || '';
+        return this._preBuildNotification(type, message, title, this.applyConfig(override));
+    }
+    /** show error toast */
+    error(message, title, override = {}) {
+        const type = this.toastrConfig.iconClasses.error || '';
+        return this._preBuildNotification(type, message, title, this.applyConfig(override));
+    }
+    /** show info toast */
+    info(message, title, override = {}) {
+        const type = this.toastrConfig.iconClasses.info || '';
+        return this._preBuildNotification(type, message, title, this.applyConfig(override));
+    }
+    /** show warning toast */
+    warning(message, title, override = {}) {
+        const type = this.toastrConfig.iconClasses.warning || '';
+        return this._preBuildNotification(type, message, title, this.applyConfig(override));
+    }
+    /**
+     * Remove all or a single toast by id
+     */
+    clear(toastId) {
+        // Call every toastRef manualClose function
+        for (const toast of this.toasts) {
+            if (toastId !== undefined) {
+                if (toast.toastId === toastId) {
+                    toast.toastRef.manualClose();
+                    return;
+                }
+            }
+            else {
+                toast.toastRef.manualClose();
+            }
+        }
+    }
+    /**
+     * Remove and destroy a single toast by id
+     */
+    remove(toastId) {
+        const found = this._findToast(toastId);
+        if (!found) {
+            return false;
+        }
+        found.activeToast.toastRef.close();
+        this.toasts.splice(found.index, 1);
+        this.currentlyActive = this.currentlyActive - 1;
+        if (!this.toastrConfig.maxOpened || !this.toasts.length) {
+            return false;
+        }
+        if (this.currentlyActive < this.toastrConfig.maxOpened &&
+            this.toasts[this.currentlyActive]) {
+            const p = this.toasts[this.currentlyActive].toastRef;
+            if (!p.isInactive()) {
+                this.currentlyActive = this.currentlyActive + 1;
+                p.activate();
+            }
+        }
+        return true;
+    }
+    /**
+     * Determines if toast message is already shown
+     */
+    findDuplicate(message, resetOnDuplicate, countDuplicates) {
+        for (const toast of this.toasts) {
+            if (toast.message === message) {
+                toast.toastRef.onDuplicate(resetOnDuplicate, countDuplicates);
+                return toast;
+            }
+        }
+        return null;
+    }
+    /** create a clone of global config and apply individual settings */
+    applyConfig(override = {}) {
+        return Object.assign(Object.assign({}, this.toastrConfig), override);
+    }
+    /**
+     * Find toast object by id
+     */
+    _findToast(toastId) {
+        for (let i = 0; i < this.toasts.length; i++) {
+            if (this.toasts[i].toastId === toastId) {
+                return { index: i, activeToast: this.toasts[i] };
+            }
+        }
+        return null;
+    }
+    /**
+     * Determines the need to run inside angular's zone then builds the toast
+     */
+    _preBuildNotification(toastType, message, title, config) {
+        if (config.onActivateTick) {
+            return this.ngZone.run(() => this._buildNotification(toastType, message, title, config));
+        }
+        return this._buildNotification(toastType, message, title, config);
+    }
+    /**
+     * Creates and attaches toast data to component
+     * returns the active toast, or in case preventDuplicates is enabled the original/non-duplicate active toast.
+     */
+    _buildNotification(toastType, message, title, config) {
+        if (!config.toastComponent) {
+            throw new Error('toastComponent required');
+        }
+        // max opened and auto dismiss = true
+        // if timeout = 0 resetting it would result in setting this.hideTime = Date.now(). Hence, we only want to reset timeout if there is
+        // a timeout at all
+        const duplicate = this.findDuplicate(message, this.toastrConfig.resetTimeoutOnDuplicate && config.timeOut > 0, this.toastrConfig.countDuplicates);
+        if (message && this.toastrConfig.preventDuplicates && duplicate !== null) {
+            return duplicate;
+        }
+        this.previousToastMessage = message;
+        let keepInactive = false;
+        if (this.toastrConfig.maxOpened &&
+            this.currentlyActive >= this.toastrConfig.maxOpened) {
+            keepInactive = true;
+            if (this.toastrConfig.autoDismiss) {
+                this.clear(this.toasts[0].toastId);
+            }
+        }
+        const overlayRef = this.overlay.create(config.positionClass, this.overlayContainer);
+        this.index = this.index + 1;
+        let sanitizedMessage = message;
+        if (message && config.enableHtml) {
+            sanitizedMessage = this.sanitizer.sanitize(_angular_core__WEBPACK_IMPORTED_MODULE_1__["SecurityContext"].HTML, message);
+        }
+        const toastRef = new ToastRef(overlayRef);
+        const toastPackage = new ToastPackage(this.index, config, sanitizedMessage, title, toastType, toastRef);
+        const toastInjector = new ToastInjector(toastPackage, this._injector);
+        const component = new ComponentPortal(config.toastComponent, toastInjector);
+        const portal = overlayRef.attach(component, this.toastrConfig.newestOnTop);
+        toastRef.componentInstance = portal.instance;
+        const ins = {
+            toastId: this.index,
+            message: message || '',
+            toastRef,
+            onShown: toastRef.afterActivate(),
+            onHidden: toastRef.afterClosed(),
+            onTap: toastPackage.onTap(),
+            onAction: toastPackage.onAction(),
+            portal
+        };
+        if (!keepInactive) {
+            this.currentlyActive = this.currentlyActive + 1;
+            setTimeout(() => {
+                ins.toastRef.activate();
+            });
+        }
+        this.toasts.push(ins);
+        return ins;
+    }
+};
+ToastrService.ɵfac = function ToastrService_Factory(t) { return new (t || ToastrService)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](TOAST_CONFIG), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](Overlay), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injector"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__["DomSanitizer"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"])); };
+ToastrService.ctorParameters = () => [
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [TOAST_CONFIG,] }] },
+    { type: Overlay },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injector"] },
+    { type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__["DomSanitizer"] },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }
+];
+ToastrService.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({ factory: function ToastrService_Factory() { return new ToastrService(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(TOAST_CONFIG), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(Overlay), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_core__WEBPACK_IMPORTED_MODULE_1__["INJECTOR"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__["DomSanitizer"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"])); }, token: ToastrService, providedIn: "root" });
+ToastrService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([ Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__param"])(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(TOAST_CONFIG))
+], ToastrService);
+
+let Toast = class Toast {
+    constructor(toastrService, toastPackage, ngZone) {
+        this.toastrService = toastrService;
+        this.toastPackage = toastPackage;
+        this.ngZone = ngZone;
+        /** width of progress bar */
+        this.width = -1;
+        /** a combination of toast type and options.toastClass */
+        this.toastClasses = '';
+        /** controls animation */
+        this.state = {
+            value: 'inactive',
+            params: {
+                easeTime: this.toastPackage.config.easeTime,
+                easing: 'ease-in'
+            }
+        };
+        this.message = toastPackage.message;
+        this.title = toastPackage.title;
+        this.options = toastPackage.config;
+        this.originalTimeout = toastPackage.config.timeOut;
+        this.toastClasses = `${toastPackage.toastType} ${toastPackage.config.toastClass}`;
+        this.sub = toastPackage.toastRef.afterActivate().subscribe(() => {
+            this.activateToast();
+        });
+        this.sub1 = toastPackage.toastRef.manualClosed().subscribe(() => {
+            this.remove();
+        });
+        this.sub2 = toastPackage.toastRef.timeoutReset().subscribe(() => {
+            this.resetTimeout();
+        });
+        this.sub3 = toastPackage.toastRef.countDuplicate().subscribe(count => {
+            this.duplicatesCount = count;
+        });
+    }
+    /** hides component when waiting to be displayed */
+    get displayStyle() {
+        if (this.state.value === 'inactive') {
+            return 'none';
+        }
+    }
+    ngOnDestroy() {
+        this.sub.unsubscribe();
+        this.sub1.unsubscribe();
+        this.sub2.unsubscribe();
+        this.sub3.unsubscribe();
+        clearInterval(this.intervalId);
+        clearTimeout(this.timeout);
+    }
+    /**
+     * activates toast and sets timeout
+     */
+    activateToast() {
+        this.state = Object.assign(Object.assign({}, this.state), { value: 'active' });
+        if (!(this.options.disableTimeOut === true || this.options.disableTimeOut === 'timeOut') && this.options.timeOut) {
+            this.outsideTimeout(() => this.remove(), this.options.timeOut);
+            this.hideTime = new Date().getTime() + this.options.timeOut;
+            if (this.options.progressBar) {
+                this.outsideInterval(() => this.updateProgress(), 10);
+            }
+        }
+    }
+    /**
+     * updates progress bar width
+     */
+    updateProgress() {
+        if (this.width === 0 || this.width === 100 || !this.options.timeOut) {
+            return;
+        }
+        const now = new Date().getTime();
+        const remaining = this.hideTime - now;
+        this.width = (remaining / this.options.timeOut) * 100;
+        if (this.options.progressAnimation === 'increasing') {
+            this.width = 100 - this.width;
+        }
+        if (this.width <= 0) {
+            this.width = 0;
+        }
+        if (this.width >= 100) {
+            this.width = 100;
+        }
+    }
+    resetTimeout() {
+        clearTimeout(this.timeout);
+        clearInterval(this.intervalId);
+        this.state = Object.assign(Object.assign({}, this.state), { value: 'active' });
+        this.outsideTimeout(() => this.remove(), this.originalTimeout);
+        this.options.timeOut = this.originalTimeout;
+        this.hideTime = new Date().getTime() + (this.options.timeOut || 0);
+        this.width = -1;
+        if (this.options.progressBar) {
+            this.outsideInterval(() => this.updateProgress(), 10);
+        }
+    }
+    /**
+     * tells toastrService to remove this toast after animation time
+     */
+    remove() {
+        if (this.state.value === 'removed') {
+            return;
+        }
+        clearTimeout(this.timeout);
+        this.state = Object.assign(Object.assign({}, this.state), { value: 'removed' });
+        this.outsideTimeout(() => this.toastrService.remove(this.toastPackage.toastId), +this.toastPackage.config.easeTime);
+    }
+    tapToast() {
+        if (this.state.value === 'removed') {
+            return;
+        }
+        this.toastPackage.triggerTap();
+        if (this.options.tapToDismiss) {
+            this.remove();
+        }
+    }
+    stickAround() {
+        if (this.state.value === 'removed') {
+            return;
+        }
+        clearTimeout(this.timeout);
+        this.options.timeOut = 0;
+        this.hideTime = 0;
+        // disable progressBar
+        clearInterval(this.intervalId);
+        this.width = 0;
+    }
+    delayedHideToast() {
+        if ((this.options.disableTimeOut === true || this.options.disableTimeOut === 'extendedTimeOut') ||
+            this.options.extendedTimeOut === 0 ||
+            this.state.value === 'removed') {
+            return;
+        }
+        this.outsideTimeout(() => this.remove(), this.options.extendedTimeOut);
+        this.options.timeOut = this.options.extendedTimeOut;
+        this.hideTime = new Date().getTime() + (this.options.timeOut || 0);
+        this.width = -1;
+        if (this.options.progressBar) {
+            this.outsideInterval(() => this.updateProgress(), 10);
+        }
+    }
+    outsideTimeout(func, timeout) {
+        if (this.ngZone) {
+            this.ngZone.runOutsideAngular(() => (this.timeout = setTimeout(() => this.runInsideAngular(func), timeout)));
+        }
+        else {
+            this.timeout = setTimeout(() => func(), timeout);
+        }
+    }
+    outsideInterval(func, timeout) {
+        if (this.ngZone) {
+            this.ngZone.runOutsideAngular(() => (this.intervalId = setInterval(() => this.runInsideAngular(func), timeout)));
+        }
+        else {
+            this.intervalId = setInterval(() => func(), timeout);
+        }
+    }
+    runInsideAngular(func) {
+        if (this.ngZone) {
+            this.ngZone.run(() => func());
+        }
+        else {
+            func();
+        }
+    }
+};
+Toast.ɵfac = function Toast_Factory(t) { return new (t || Toast)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](ToastrService), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](ToastPackage), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"])); };
+Toast.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: Toast, selectors: [["", "toast-component", ""]], hostVars: 5, hostBindings: function Toast_HostBindings(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function Toast_click_HostBindingHandler() { return ctx.tapToast(); })("mouseenter", function Toast_mouseenter_HostBindingHandler() { return ctx.stickAround(); })("mouseleave", function Toast_mouseleave_HostBindingHandler() { return ctx.delayedHideToast(); });
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵupdateSyntheticHostBinding"]("@flyInOut", ctx.state);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassMap"](ctx.toastClasses);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵstyleProp"]("display", ctx.displayStyle);
+    } }, attrs: _c0, decls: 5, vars: 5, consts: [["class", "toast-close-button", "aria-label", "Close", 3, "click", 4, "ngIf"], [3, "class", 4, "ngIf"], ["role", "alertdialog", "aria-live", "polite", 3, "class", "innerHTML", 4, "ngIf"], ["role", "alertdialog", "aria-live", "polite", 3, "class", 4, "ngIf"], [4, "ngIf"], ["aria-label", "Close", 1, "toast-close-button", 3, "click"], ["aria-hidden", "true"], ["role", "alertdialog", "aria-live", "polite", 3, "innerHTML"], ["role", "alertdialog", "aria-live", "polite"], [1, "toast-progress"]], template: function Toast_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](0, Toast_button_0_Template, 3, 0, "button", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](1, Toast_div_1_Template, 3, 5, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, Toast_div_2_Template, 1, 3, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](3, Toast_div_3_Template, 2, 4, "div", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](4, Toast_div_4_Template, 2, 2, "div", 4);
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.options.closeButton);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.title);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.message && ctx.options.enableHtml);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.message && !ctx.options.enableHtml);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.options.progressBar);
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"]], encapsulation: 2, data: { animation: [
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["trigger"])('flyInOut', [
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["state"])('inactive', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["style"])({ opacity: 0 })),
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["state"])('active', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["style"])({ opacity: 1 })),
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["state"])('removed', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["style"])({ opacity: 0 })),
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["transition"])('inactive => active', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["animate"])('{{ easeTime }}ms {{ easing }}')),
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["transition"])('active => removed', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["animate"])('{{ easeTime }}ms {{ easing }}'))
+            ])
+        ] } });
+Toast.ctorParameters = () => [
+    { type: ToastrService },
+    { type: ToastPackage },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }
+];
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostBinding"])('class')
+], Toast.prototype, "toastClasses", void 0);
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostBinding"])('@flyInOut')
+], Toast.prototype, "state", void 0);
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostBinding"])('style.display')
+], Toast.prototype, "displayStyle", null);
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostListener"])('click')
+], Toast.prototype, "tapToast", null);
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostListener"])('mouseenter')
+], Toast.prototype, "stickAround", null);
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostListener"])('mouseleave')
+], Toast.prototype, "delayedHideToast", null);
+
+var ToastrModule_1;
+const DefaultGlobalConfig = Object.assign(Object.assign({}, DefaultNoComponentGlobalConfig), { toastComponent: Toast });
+let ToastrModule = ToastrModule_1 = class ToastrModule {
+    static forRoot(config = {}) {
+        return {
+            ngModule: ToastrModule_1,
+            providers: [
+                {
+                    provide: TOAST_CONFIG,
+                    useValue: {
+                        default: DefaultGlobalConfig,
+                        config,
+                    },
+                },
+            ],
+        };
+    }
+};
+ToastrModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule"]({ type: ToastrModule });
+ToastrModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({ factory: function ToastrModule_Factory(t) { return new (t || ToastrModule)(); }, imports: [[_angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"]]] });
+let ToastrComponentlessModule = class ToastrComponentlessModule {
+    static forRoot(config = {}) {
+        return {
+            ngModule: ToastrModule,
+            providers: [
+                {
+                    provide: TOAST_CONFIG,
+                    useValue: {
+                        default: DefaultNoComponentGlobalConfig,
+                        config,
+                    },
+                },
+            ],
+        };
+    }
+};
+ToastrComponentlessModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule"]({ type: ToastrComponentlessModule });
+ToastrComponentlessModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({ factory: function ToastrComponentlessModule_Factory(t) { return new (t || ToastrComponentlessModule)(); }, imports: [[_angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"]]] });
+
+var ToastNoAnimationModule_1;
+let ToastNoAnimation = class ToastNoAnimation {
+    constructor(toastrService, toastPackage, appRef) {
+        this.toastrService = toastrService;
+        this.toastPackage = toastPackage;
+        this.appRef = appRef;
+        /** width of progress bar */
+        this.width = -1;
+        /** a combination of toast type and options.toastClass */
+        this.toastClasses = '';
+        /** controls animation */
+        this.state = 'inactive';
+        this.message = toastPackage.message;
+        this.title = toastPackage.title;
+        this.options = toastPackage.config;
+        this.originalTimeout = toastPackage.config.timeOut;
+        this.toastClasses = `${toastPackage.toastType} ${toastPackage.config.toastClass}`;
+        this.sub = toastPackage.toastRef.afterActivate().subscribe(() => {
+            this.activateToast();
+        });
+        this.sub1 = toastPackage.toastRef.manualClosed().subscribe(() => {
+            this.remove();
+        });
+        this.sub2 = toastPackage.toastRef.timeoutReset().subscribe(() => {
+            this.resetTimeout();
+        });
+        this.sub3 = toastPackage.toastRef.countDuplicate().subscribe(count => {
+            this.duplicatesCount = count;
+        });
+    }
+    /** hides component when waiting to be displayed */
+    get displayStyle() {
+        if (this.state === 'inactive') {
+            return 'none';
+        }
+    }
+    ngOnDestroy() {
+        this.sub.unsubscribe();
+        this.sub1.unsubscribe();
+        this.sub2.unsubscribe();
+        this.sub3.unsubscribe();
+        clearInterval(this.intervalId);
+        clearTimeout(this.timeout);
+    }
+    /**
+     * activates toast and sets timeout
+     */
+    activateToast() {
+        this.state = 'active';
+        if (!(this.options.disableTimeOut === true || this.options.disableTimeOut === 'timeOut') && this.options.timeOut) {
+            this.timeout = setTimeout(() => {
+                this.remove();
+            }, this.options.timeOut);
+            this.hideTime = new Date().getTime() + this.options.timeOut;
+            if (this.options.progressBar) {
+                this.intervalId = setInterval(() => this.updateProgress(), 10);
+            }
+        }
+        if (this.options.onActivateTick) {
+            this.appRef.tick();
+        }
+    }
+    /**
+     * updates progress bar width
+     */
+    updateProgress() {
+        if (this.width === 0 || this.width === 100 || !this.options.timeOut) {
+            return;
+        }
+        const now = new Date().getTime();
+        const remaining = this.hideTime - now;
+        this.width = (remaining / this.options.timeOut) * 100;
+        if (this.options.progressAnimation === 'increasing') {
+            this.width = 100 - this.width;
+        }
+        if (this.width <= 0) {
+            this.width = 0;
+        }
+        if (this.width >= 100) {
+            this.width = 100;
+        }
+    }
+    resetTimeout() {
+        clearTimeout(this.timeout);
+        clearInterval(this.intervalId);
+        this.state = 'active';
+        this.options.timeOut = this.originalTimeout;
+        this.timeout = setTimeout(() => this.remove(), this.originalTimeout);
+        this.hideTime = new Date().getTime() + (this.originalTimeout || 0);
+        this.width = -1;
+        if (this.options.progressBar) {
+            this.intervalId = setInterval(() => this.updateProgress(), 10);
+        }
+    }
+    /**
+     * tells toastrService to remove this toast after animation time
+     */
+    remove() {
+        if (this.state === 'removed') {
+            return;
+        }
+        clearTimeout(this.timeout);
+        this.state = 'removed';
+        this.timeout = setTimeout(() => this.toastrService.remove(this.toastPackage.toastId));
+    }
+    tapToast() {
+        if (this.state === 'removed') {
+            return;
+        }
+        this.toastPackage.triggerTap();
+        if (this.options.tapToDismiss) {
+            this.remove();
+        }
+    }
+    stickAround() {
+        if (this.state === 'removed') {
+            return;
+        }
+        clearTimeout(this.timeout);
+        this.options.timeOut = 0;
+        this.hideTime = 0;
+        // disable progressBar
+        clearInterval(this.intervalId);
+        this.width = 0;
+    }
+    delayedHideToast() {
+        if ((this.options.disableTimeOut === true || this.options.disableTimeOut === 'extendedTimeOut') ||
+            this.options.extendedTimeOut === 0 ||
+            this.state === 'removed') {
+            return;
+        }
+        this.timeout = setTimeout(() => this.remove(), this.options.extendedTimeOut);
+        this.options.timeOut = this.options.extendedTimeOut;
+        this.hideTime = new Date().getTime() + (this.options.timeOut || 0);
+        this.width = -1;
+        if (this.options.progressBar) {
+            this.intervalId = setInterval(() => this.updateProgress(), 10);
+        }
+    }
+};
+ToastNoAnimation.ɵfac = function ToastNoAnimation_Factory(t) { return new (t || ToastNoAnimation)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](ToastrService), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](ToastPackage), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ApplicationRef"])); };
+ToastNoAnimation.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: ToastNoAnimation, selectors: [["", "toast-component", ""]], hostVars: 4, hostBindings: function ToastNoAnimation_HostBindings(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ToastNoAnimation_click_HostBindingHandler() { return ctx.tapToast(); })("mouseenter", function ToastNoAnimation_mouseenter_HostBindingHandler() { return ctx.stickAround(); })("mouseleave", function ToastNoAnimation_mouseleave_HostBindingHandler() { return ctx.delayedHideToast(); });
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassMap"](ctx.toastClasses);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵstyleProp"]("display", ctx.displayStyle);
+    } }, attrs: _c0, decls: 5, vars: 5, consts: [["class", "toast-close-button", "aria-label", "Close", 3, "click", 4, "ngIf"], [3, "class", 4, "ngIf"], ["role", "alert", "aria-live", "polite", 3, "class", "innerHTML", 4, "ngIf"], ["role", "alert", "aria-live", "polite", 3, "class", 4, "ngIf"], [4, "ngIf"], ["aria-label", "Close", 1, "toast-close-button", 3, "click"], ["aria-hidden", "true"], ["role", "alert", "aria-live", "polite", 3, "innerHTML"], ["role", "alert", "aria-live", "polite"], [1, "toast-progress"]], template: function ToastNoAnimation_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](0, ToastNoAnimation_button_0_Template, 3, 0, "button", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](1, ToastNoAnimation_div_1_Template, 3, 5, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, ToastNoAnimation_div_2_Template, 1, 3, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](3, ToastNoAnimation_div_3_Template, 2, 4, "div", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](4, ToastNoAnimation_div_4_Template, 2, 2, "div", 4);
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.options.closeButton);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.title);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.message && ctx.options.enableHtml);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.message && !ctx.options.enableHtml);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.options.progressBar);
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"]], encapsulation: 2 });
+ToastNoAnimation.ctorParameters = () => [
+    { type: ToastrService },
+    { type: ToastPackage },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ApplicationRef"] }
+];
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostBinding"])('class')
+], ToastNoAnimation.prototype, "toastClasses", void 0);
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostBinding"])('style.display')
+], ToastNoAnimation.prototype, "displayStyle", null);
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostListener"])('click')
+], ToastNoAnimation.prototype, "tapToast", null);
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostListener"])('mouseenter')
+], ToastNoAnimation.prototype, "stickAround", null);
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostListener"])('mouseleave')
+], ToastNoAnimation.prototype, "delayedHideToast", null);
+const DefaultNoAnimationsGlobalConfig = Object.assign(Object.assign({}, DefaultNoComponentGlobalConfig), { toastComponent: ToastNoAnimation });
+let ToastNoAnimationModule = ToastNoAnimationModule_1 = class ToastNoAnimationModule {
+    static forRoot(config = {}) {
+        return {
+            ngModule: ToastNoAnimationModule_1,
+            providers: [
+                {
+                    provide: TOAST_CONFIG,
+                    useValue: {
+                        default: DefaultNoAnimationsGlobalConfig,
+                        config,
+                    },
+                },
+            ],
+        };
+    }
+};
+ToastNoAnimationModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule"]({ type: ToastNoAnimationModule });
+ToastNoAnimationModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({ factory: function ToastNoAnimationModule_Factory(t) { return new (t || ToastNoAnimationModule)(); }, imports: [[_angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"]]] });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ToastContainerDirective, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"],
+        args: [{
+                selector: '[toastContainer]',
+                exportAs: 'toastContainer'
+            }]
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] }]; }, null); })();
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](ToastContainerModule, { declarations: [ToastContainerDirective], exports: [ToastContainerDirective] }); })();
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ToastContainerModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
+        args: [{
+                declarations: [ToastContainerDirective],
+                exports: [ToastContainerDirective]
+            }]
+    }], null, null); })();
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](OverlayContainer, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
+        args: [{ providedIn: 'root' }]
+    }], function () { return [{ type: undefined, decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
+                args: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["DOCUMENT"]]
+            }] }]; }, null); })();
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](Overlay, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
+        args: [{ providedIn: 'root' }]
+    }], function () { return [{ type: OverlayContainer }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ComponentFactoryResolver"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ApplicationRef"] }, { type: undefined, decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
+                args: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["DOCUMENT"]]
+            }] }]; }, null); })();
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ToastrService, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
+        args: [{ providedIn: 'root' }]
+    }], function () { return [{ type: undefined, decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
+                args: [TOAST_CONFIG]
+            }] }, { type: Overlay }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injector"] }, { type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__["DomSanitizer"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }]; }, null); })();
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](Toast, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"],
+        args: [{
+                selector: '[toast-component]',
+                template: `
+  <button *ngIf="options.closeButton" (click)="remove()" class="toast-close-button" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <div *ngIf="title" [class]="options.titleClass" [attr.aria-label]="title">
+    {{ title }} <ng-container *ngIf="duplicatesCount">[{{ duplicatesCount + 1 }}]</ng-container>
+  </div>
+  <div *ngIf="message && options.enableHtml" role="alertdialog" aria-live="polite"
+    [class]="options.messageClass" [innerHTML]="message">
+  </div>
+  <div *ngIf="message && !options.enableHtml" role="alertdialog" aria-live="polite"
+    [class]="options.messageClass" [attr.aria-label]="message">
+    {{ message }}
+  </div>
+  <div *ngIf="options.progressBar">
+    <div class="toast-progress" [style.width]="width + '%'"></div>
+  </div>
+  `,
+                animations: [
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["trigger"])('flyInOut', [
+                        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["state"])('inactive', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["style"])({ opacity: 0 })),
+                        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["state"])('active', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["style"])({ opacity: 1 })),
+                        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["state"])('removed', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["style"])({ opacity: 0 })),
+                        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["transition"])('inactive => active', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["animate"])('{{ easeTime }}ms {{ easing }}')),
+                        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["transition"])('active => removed', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["animate"])('{{ easeTime }}ms {{ easing }}'))
+                    ])
+                ],
+                preserveWhitespaces: false
+            }]
+    }], function () { return [{ type: ToastrService }, { type: ToastPackage }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }]; }, { toastClasses: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["HostBinding"],
+            args: ['class']
+        }], state: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["HostBinding"],
+            args: ['@flyInOut']
+        }], displayStyle: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["HostBinding"],
+            args: ['style.display']
+        }], tapToast: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["HostListener"],
+            args: ['click']
+        }], stickAround: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["HostListener"],
+            args: ['mouseenter']
+        }], delayedHideToast: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["HostListener"],
+            args: ['mouseleave']
+        }] }); })();
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](ToastrModule, { declarations: function () { return [Toast]; }, imports: function () { return [_angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"]]; }, exports: function () { return [Toast]; } }); })();
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ToastrModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
+        args: [{
+                imports: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"]],
+                declarations: [Toast],
+                exports: [Toast],
+                entryComponents: [Toast]
+            }]
+    }], null, null); })();
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](ToastrComponentlessModule, { imports: function () { return [_angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"]]; } }); })();
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ToastrComponentlessModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
+        args: [{
+                imports: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"]]
+            }]
+    }], null, null); })();
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ToastNoAnimation, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"],
+        args: [{
+                selector: '[toast-component]',
+                template: `
+  <button *ngIf="options.closeButton" (click)="remove()" class="toast-close-button" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <div *ngIf="title" [class]="options.titleClass" [attr.aria-label]="title">
+    {{ title }} <ng-container *ngIf="duplicatesCount">[{{ duplicatesCount + 1 }}]</ng-container>
+  </div>
+  <div *ngIf="message && options.enableHtml" role="alert" aria-live="polite"
+    [class]="options.messageClass" [innerHTML]="message">
+  </div>
+  <div *ngIf="message && !options.enableHtml" role="alert" aria-live="polite"
+    [class]="options.messageClass" [attr.aria-label]="message">
+    {{ message }}
+  </div>
+  <div *ngIf="options.progressBar">
+    <div class="toast-progress" [style.width]="width + '%'"></div>
+  </div>
+  `
+            }]
+    }], function () { return [{ type: ToastrService }, { type: ToastPackage }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ApplicationRef"] }]; }, { toastClasses: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["HostBinding"],
+            args: ['class']
+        }], displayStyle: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["HostBinding"],
+            args: ['style.display']
+        }], tapToast: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["HostListener"],
+            args: ['click']
+        }], stickAround: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["HostListener"],
+            args: ['mouseenter']
+        }], delayedHideToast: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["HostListener"],
+            args: ['mouseleave']
+        }] }); })();
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](ToastNoAnimationModule, { declarations: function () { return [ToastNoAnimation]; }, imports: function () { return [_angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"]]; }, exports: function () { return [ToastNoAnimation]; } }); })();
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ToastNoAnimationModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
+        args: [{
+                imports: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"]],
+                declarations: [ToastNoAnimation],
+                exports: [ToastNoAnimation],
+                entryComponents: [ToastNoAnimation]
+            }]
+    }], null, null); })();
+
+/**
+ * Generated bundle index. Do not edit.
+ */
+
+
+
+//# sourceMappingURL=ngx-toastr.js.map
+
+/***/ }),
+
 /***/ "./node_modules/rxjs/_esm2015/index.js":
 /*!*********************************************!*\
   !*** ./node_modules/rxjs/_esm2015/index.js ***!
@@ -84064,6 +95960,4241 @@ __webpack_require__.r(__webpack_exports__);
 
 
 //# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sweetalert2/dist/sweetalert2.all.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/sweetalert2/dist/sweetalert2.all.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*!
+* sweetalert2 v11.4.18
+* Released under the MIT License.
+*/
+(function (global, factory) {
+   true ? module.exports = factory() :
+  undefined;
+}(this, function () { 'use strict';
+
+  const consolePrefix = 'SweetAlert2:';
+  /**
+   * Filter the unique values into a new array
+   * @param arr
+   */
+
+  const uniqueArray = arr => {
+    const result = [];
+
+    for (let i = 0; i < arr.length; i++) {
+      if (result.indexOf(arr[i]) === -1) {
+        result.push(arr[i]);
+      }
+    }
+
+    return result;
+  };
+  /**
+   * Capitalize the first letter of a string
+   * @param {string} str
+   * @returns {string}
+   */
+
+  const capitalizeFirstLetter = str => str.charAt(0).toUpperCase() + str.slice(1);
+  /**
+   * @param {NodeList | HTMLCollection | NamedNodeMap | DOMTokenList} nodeList
+   * @returns {array}
+   */
+
+  const toArray = nodeList => Array.prototype.slice.call(nodeList);
+  /**
+   * Standardize console warnings
+   * @param {string | array} message
+   */
+
+  const warn = message => {
+    console.warn("".concat(consolePrefix, " ").concat(typeof message === 'object' ? message.join(' ') : message));
+  };
+  /**
+   * Standardize console errors
+   * @param {string} message
+   */
+
+  const error = message => {
+    console.error("".concat(consolePrefix, " ").concat(message));
+  };
+  /**
+   * Private global state for `warnOnce`
+   * @type {Array}
+   * @private
+   */
+
+  const previousWarnOnceMessages = [];
+  /**
+   * Show a console warning, but only if it hasn't already been shown
+   * @param {string} message
+   */
+
+  const warnOnce = message => {
+    if (!previousWarnOnceMessages.includes(message)) {
+      previousWarnOnceMessages.push(message);
+      warn(message);
+    }
+  };
+  /**
+   * Show a one-time console warning about deprecated params/methods
+   */
+
+  const warnAboutDeprecation = (deprecatedParam, useInstead) => {
+    warnOnce("\"".concat(deprecatedParam, "\" is deprecated and will be removed in the next major release. Please use \"").concat(useInstead, "\" instead."));
+  };
+  /**
+   * If `arg` is a function, call it (with no arguments or context) and return the result.
+   * Otherwise, just pass the value through
+   * @param arg
+   */
+
+  const callIfFunction = arg => typeof arg === 'function' ? arg() : arg;
+  const hasToPromiseFn = arg => arg && typeof arg.toPromise === 'function';
+  const asPromise = arg => hasToPromiseFn(arg) ? arg.toPromise() : Promise.resolve(arg);
+  const isPromise = arg => arg && Promise.resolve(arg) === arg;
+  const getRandomElement = arr => arr[Math.floor(Math.random() * arr.length)];
+
+  const defaultParams = {
+    title: '',
+    titleText: '',
+    text: '',
+    html: '',
+    footer: '',
+    icon: undefined,
+    iconColor: undefined,
+    iconHtml: undefined,
+    template: undefined,
+    toast: false,
+    showClass: {
+      popup: 'swal2-show',
+      backdrop: 'swal2-backdrop-show',
+      icon: 'swal2-icon-show'
+    },
+    hideClass: {
+      popup: 'swal2-hide',
+      backdrop: 'swal2-backdrop-hide',
+      icon: 'swal2-icon-hide'
+    },
+    customClass: {},
+    target: 'body',
+    color: undefined,
+    backdrop: true,
+    heightAuto: true,
+    allowOutsideClick: true,
+    allowEscapeKey: true,
+    allowEnterKey: true,
+    stopKeydownPropagation: true,
+    keydownListenerCapture: false,
+    showConfirmButton: true,
+    showDenyButton: false,
+    showCancelButton: false,
+    preConfirm: undefined,
+    preDeny: undefined,
+    confirmButtonText: 'OK',
+    confirmButtonAriaLabel: '',
+    confirmButtonColor: undefined,
+    denyButtonText: 'No',
+    denyButtonAriaLabel: '',
+    denyButtonColor: undefined,
+    cancelButtonText: 'Cancel',
+    cancelButtonAriaLabel: '',
+    cancelButtonColor: undefined,
+    buttonsStyling: true,
+    reverseButtons: false,
+    focusConfirm: true,
+    focusDeny: false,
+    focusCancel: false,
+    returnFocus: true,
+    showCloseButton: false,
+    closeButtonHtml: '&times;',
+    closeButtonAriaLabel: 'Close this dialog',
+    loaderHtml: '',
+    showLoaderOnConfirm: false,
+    showLoaderOnDeny: false,
+    imageUrl: undefined,
+    imageWidth: undefined,
+    imageHeight: undefined,
+    imageAlt: '',
+    timer: undefined,
+    timerProgressBar: false,
+    width: undefined,
+    padding: undefined,
+    background: undefined,
+    input: undefined,
+    inputPlaceholder: '',
+    inputLabel: '',
+    inputValue: '',
+    inputOptions: {},
+    inputAutoTrim: true,
+    inputAttributes: {},
+    inputValidator: undefined,
+    returnInputValueOnDeny: false,
+    validationMessage: undefined,
+    grow: false,
+    position: 'center',
+    progressSteps: [],
+    currentProgressStep: undefined,
+    progressStepsDistance: undefined,
+    willOpen: undefined,
+    didOpen: undefined,
+    didRender: undefined,
+    willClose: undefined,
+    didClose: undefined,
+    didDestroy: undefined,
+    scrollbarPadding: true
+  };
+  const updatableParams = ['allowEscapeKey', 'allowOutsideClick', 'background', 'buttonsStyling', 'cancelButtonAriaLabel', 'cancelButtonColor', 'cancelButtonText', 'closeButtonAriaLabel', 'closeButtonHtml', 'color', 'confirmButtonAriaLabel', 'confirmButtonColor', 'confirmButtonText', 'currentProgressStep', 'customClass', 'denyButtonAriaLabel', 'denyButtonColor', 'denyButtonText', 'didClose', 'didDestroy', 'footer', 'hideClass', 'html', 'icon', 'iconColor', 'iconHtml', 'imageAlt', 'imageHeight', 'imageUrl', 'imageWidth', 'preConfirm', 'preDeny', 'progressSteps', 'returnFocus', 'reverseButtons', 'showCancelButton', 'showCloseButton', 'showConfirmButton', 'showDenyButton', 'text', 'title', 'titleText', 'willClose'];
+  const deprecatedParams = {};
+  const toastIncompatibleParams = ['allowOutsideClick', 'allowEnterKey', 'backdrop', 'focusConfirm', 'focusDeny', 'focusCancel', 'returnFocus', 'heightAuto', 'keydownListenerCapture'];
+  /**
+   * Is valid parameter
+   * @param {string} paramName
+   */
+
+  const isValidParameter = paramName => {
+    return Object.prototype.hasOwnProperty.call(defaultParams, paramName);
+  };
+  /**
+   * Is valid parameter for Swal.update() method
+   * @param {string} paramName
+   */
+
+  const isUpdatableParameter = paramName => {
+    return updatableParams.indexOf(paramName) !== -1;
+  };
+  /**
+   * Is deprecated parameter
+   * @param {string} paramName
+   */
+
+  const isDeprecatedParameter = paramName => {
+    return deprecatedParams[paramName];
+  };
+
+  const checkIfParamIsValid = param => {
+    if (!isValidParameter(param)) {
+      warn("Unknown parameter \"".concat(param, "\""));
+    }
+  };
+
+  const checkIfToastParamIsValid = param => {
+    if (toastIncompatibleParams.includes(param)) {
+      warn("The parameter \"".concat(param, "\" is incompatible with toasts"));
+    }
+  };
+
+  const checkIfParamIsDeprecated = param => {
+    if (isDeprecatedParameter(param)) {
+      warnAboutDeprecation(param, isDeprecatedParameter(param));
+    }
+  };
+  /**
+   * Show relevant warnings for given params
+   *
+   * @param params
+   */
+
+
+  const showWarningsForParams = params => {
+    if (!params.backdrop && params.allowOutsideClick) {
+      warn('"allowOutsideClick" parameter requires `backdrop` parameter to be set to `true`');
+    }
+
+    for (const param in params) {
+      checkIfParamIsValid(param);
+
+      if (params.toast) {
+        checkIfToastParamIsValid(param);
+      }
+
+      checkIfParamIsDeprecated(param);
+    }
+  };
+
+  const swalPrefix = 'swal2-';
+  /**
+   * @param {string[]} items
+   * @returns {object}
+   */
+
+  const prefix = items => {
+    const result = {};
+
+    for (const i in items) {
+      result[items[i]] = swalPrefix + items[i];
+    }
+
+    return result;
+  };
+  const swalClasses = prefix(['container', 'shown', 'height-auto', 'iosfix', 'popup', 'modal', 'no-backdrop', 'no-transition', 'toast', 'toast-shown', 'show', 'hide', 'close', 'title', 'html-container', 'actions', 'confirm', 'deny', 'cancel', 'default-outline', 'footer', 'icon', 'icon-content', 'image', 'input', 'file', 'range', 'select', 'radio', 'checkbox', 'label', 'textarea', 'inputerror', 'input-label', 'validation-message', 'progress-steps', 'active-progress-step', 'progress-step', 'progress-step-line', 'loader', 'loading', 'styled', 'top', 'top-start', 'top-end', 'top-left', 'top-right', 'center', 'center-start', 'center-end', 'center-left', 'center-right', 'bottom', 'bottom-start', 'bottom-end', 'bottom-left', 'bottom-right', 'grow-row', 'grow-column', 'grow-fullscreen', 'rtl', 'timer-progress-bar', 'timer-progress-bar-container', 'scrollbar-measure', 'icon-success', 'icon-warning', 'icon-info', 'icon-question', 'icon-error', 'no-war']);
+  const iconTypes = prefix(['success', 'warning', 'info', 'question', 'error']);
+
+  /**
+   * Gets the popup container which contains the backdrop and the popup itself.
+   *
+   * @returns {HTMLElement | null}
+   */
+
+  const getContainer = () => document.body.querySelector(".".concat(swalClasses.container));
+  /**
+   * @param {string} selectorString
+   * @returns {HTMLElement | null}
+   */
+
+  const elementBySelector = selectorString => {
+    const container = getContainer();
+    return container ? container.querySelector(selectorString) : null;
+  };
+  /**
+   * @param {string} className
+   * @returns {HTMLElement | null}
+   */
+
+  const elementByClass = className => {
+    return elementBySelector(".".concat(className));
+  };
+  /**
+   * @returns {HTMLElement | null}
+   */
+
+
+  const getPopup = () => elementByClass(swalClasses.popup);
+  /**
+   * @returns {HTMLElement | null}
+   */
+
+  const getIcon = () => elementByClass(swalClasses.icon);
+  /**
+   * @returns {HTMLElement | null}
+   */
+
+  const getTitle = () => elementByClass(swalClasses.title);
+  /**
+   * @returns {HTMLElement | null}
+   */
+
+  const getHtmlContainer = () => elementByClass(swalClasses['html-container']);
+  /**
+   * @returns {HTMLElement | null}
+   */
+
+  const getImage = () => elementByClass(swalClasses.image);
+  /**
+   * @returns {HTMLElement | null}
+   */
+
+  const getProgressSteps = () => elementByClass(swalClasses['progress-steps']);
+  /**
+   * @returns {HTMLElement | null}
+   */
+
+  const getValidationMessage = () => elementByClass(swalClasses['validation-message']);
+  /**
+   * @returns {HTMLElement | null}
+   */
+
+  const getConfirmButton = () => elementBySelector(".".concat(swalClasses.actions, " .").concat(swalClasses.confirm));
+  /**
+   * @returns {HTMLElement | null}
+   */
+
+  const getDenyButton = () => elementBySelector(".".concat(swalClasses.actions, " .").concat(swalClasses.deny));
+  /**
+   * @returns {HTMLElement | null}
+   */
+
+  const getInputLabel = () => elementByClass(swalClasses['input-label']);
+  /**
+   * @returns {HTMLElement | null}
+   */
+
+  const getLoader = () => elementBySelector(".".concat(swalClasses.loader));
+  /**
+   * @returns {HTMLElement | null}
+   */
+
+  const getCancelButton = () => elementBySelector(".".concat(swalClasses.actions, " .").concat(swalClasses.cancel));
+  /**
+   * @returns {HTMLElement | null}
+   */
+
+  const getActions = () => elementByClass(swalClasses.actions);
+  /**
+   * @returns {HTMLElement | null}
+   */
+
+  const getFooter = () => elementByClass(swalClasses.footer);
+  /**
+   * @returns {HTMLElement | null}
+   */
+
+  const getTimerProgressBar = () => elementByClass(swalClasses['timer-progress-bar']);
+  /**
+   * @returns {HTMLElement | null}
+   */
+
+  const getCloseButton = () => elementByClass(swalClasses.close); // https://github.com/jkup/focusable/blob/master/index.js
+
+  const focusable = "\n  a[href],\n  area[href],\n  input:not([disabled]),\n  select:not([disabled]),\n  textarea:not([disabled]),\n  button:not([disabled]),\n  iframe,\n  object,\n  embed,\n  [tabindex=\"0\"],\n  [contenteditable],\n  audio[controls],\n  video[controls],\n  summary\n";
+  /**
+   * @returns {HTMLElement[]}
+   */
+
+  const getFocusableElements = () => {
+    const focusableElementsWithTabindex = toArray(getPopup().querySelectorAll('[tabindex]:not([tabindex="-1"]):not([tabindex="0"])')) // sort according to tabindex
+    .sort((a, b) => {
+      const tabindexA = parseInt(a.getAttribute('tabindex'));
+      const tabindexB = parseInt(b.getAttribute('tabindex'));
+
+      if (tabindexA > tabindexB) {
+        return 1;
+      } else if (tabindexA < tabindexB) {
+        return -1;
+      }
+
+      return 0;
+    });
+    const otherFocusableElements = toArray(getPopup().querySelectorAll(focusable)).filter(el => el.getAttribute('tabindex') !== '-1');
+    return uniqueArray(focusableElementsWithTabindex.concat(otherFocusableElements)).filter(el => isVisible(el));
+  };
+  /**
+   * @returns {boolean}
+   */
+
+  const isModal = () => {
+    return hasClass(document.body, swalClasses.shown) && !hasClass(document.body, swalClasses['toast-shown']) && !hasClass(document.body, swalClasses['no-backdrop']);
+  };
+  /**
+   * @returns {boolean}
+   */
+
+  const isToast = () => {
+    return getPopup() && hasClass(getPopup(), swalClasses.toast);
+  };
+  /**
+   * @returns {boolean}
+   */
+
+  const isLoading = () => {
+    return getPopup().hasAttribute('data-loading');
+  };
+
+  const states = {
+    previousBodyPadding: null
+  };
+  /**
+   * Securely set innerHTML of an element
+   * https://github.com/sweetalert2/sweetalert2/issues/1926
+   *
+   * @param {HTMLElement} elem
+   * @param {string} html
+   */
+
+  const setInnerHtml = (elem, html) => {
+    elem.textContent = '';
+
+    if (html) {
+      const parser = new DOMParser();
+      const parsed = parser.parseFromString(html, "text/html");
+      toArray(parsed.querySelector('head').childNodes).forEach(child => {
+        elem.appendChild(child);
+      });
+      toArray(parsed.querySelector('body').childNodes).forEach(child => {
+        elem.appendChild(child);
+      });
+    }
+  };
+  /**
+   * @param {HTMLElement} elem
+   * @param {string} className
+   * @returns {boolean}
+   */
+
+  const hasClass = (elem, className) => {
+    if (!className) {
+      return false;
+    }
+
+    const classList = className.split(/\s+/);
+
+    for (let i = 0; i < classList.length; i++) {
+      if (!elem.classList.contains(classList[i])) {
+        return false;
+      }
+    }
+
+    return true;
+  };
+  /**
+   * @param {HTMLElement} elem
+   * @param {SweetAlertOptions} params
+   */
+
+  const removeCustomClasses = (elem, params) => {
+    toArray(elem.classList).forEach(className => {
+      if (!Object.values(swalClasses).includes(className) && !Object.values(iconTypes).includes(className) && !Object.values(params.showClass).includes(className)) {
+        elem.classList.remove(className);
+      }
+    });
+  };
+  /**
+   * @param {HTMLElement} elem
+   * @param {SweetAlertOptions} params
+   * @param {string} className
+   */
+
+
+  const applyCustomClass = (elem, params, className) => {
+    removeCustomClasses(elem, params);
+
+    if (params.customClass && params.customClass[className]) {
+      if (typeof params.customClass[className] !== 'string' && !params.customClass[className].forEach) {
+        return warn("Invalid type of customClass.".concat(className, "! Expected string or iterable object, got \"").concat(typeof params.customClass[className], "\""));
+      }
+
+      addClass(elem, params.customClass[className]);
+    }
+  };
+  /**
+   * @param {HTMLElement} popup
+   * @param {import('./renderers/renderInput').InputClass} inputClass
+   * @returns {HTMLInputElement | null}
+   */
+
+  const getInput = (popup, inputClass) => {
+    if (!inputClass) {
+      return null;
+    }
+
+    switch (inputClass) {
+      case 'select':
+      case 'textarea':
+      case 'file':
+        return popup.querySelector(".".concat(swalClasses.popup, " > .").concat(swalClasses[inputClass]));
+
+      case 'checkbox':
+        return popup.querySelector(".".concat(swalClasses.popup, " > .").concat(swalClasses.checkbox, " input"));
+
+      case 'radio':
+        return popup.querySelector(".".concat(swalClasses.popup, " > .").concat(swalClasses.radio, " input:checked")) || popup.querySelector(".".concat(swalClasses.popup, " > .").concat(swalClasses.radio, " input:first-child"));
+
+      case 'range':
+        return popup.querySelector(".".concat(swalClasses.popup, " > .").concat(swalClasses.range, " input"));
+
+      default:
+        return popup.querySelector(".".concat(swalClasses.popup, " > .").concat(swalClasses.input));
+    }
+  };
+  /**
+   * @param {HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement} input
+   */
+
+  const focusInput = input => {
+    input.focus(); // place cursor at end of text in text input
+
+    if (input.type !== 'file') {
+      // http://stackoverflow.com/a/2345915
+      const val = input.value;
+      input.value = '';
+      input.value = val;
+    }
+  };
+  /**
+   * @param {HTMLElement | HTMLElement[] | null} target
+   * @param {string | string[] | readonly string[]} classList
+   * @param {boolean} condition
+   */
+
+  const toggleClass = (target, classList, condition) => {
+    if (!target || !classList) {
+      return;
+    }
+
+    if (typeof classList === 'string') {
+      classList = classList.split(/\s+/).filter(Boolean);
+    }
+
+    classList.forEach(className => {
+      if (Array.isArray(target)) {
+        target.forEach(elem => {
+          condition ? elem.classList.add(className) : elem.classList.remove(className);
+        });
+      } else {
+        condition ? target.classList.add(className) : target.classList.remove(className);
+      }
+    });
+  };
+  /**
+   * @param {HTMLElement | HTMLElement[] | null} target
+   * @param {string | string[] | readonly string[]} classList
+   */
+
+  const addClass = (target, classList) => {
+    toggleClass(target, classList, true);
+  };
+  /**
+   * @param {HTMLElement | HTMLElement[] | null} target
+   * @param {string | string[] | readonly string[]} classList
+   */
+
+  const removeClass = (target, classList) => {
+    toggleClass(target, classList, false);
+  };
+  /**
+   * Get direct child of an element by class name
+   *
+   * @param {HTMLElement} elem
+   * @param {string} className
+   * @returns {HTMLElement | null}
+   */
+
+  const getDirectChildByClass = (elem, className) => {
+    const childNodes = toArray(elem.childNodes);
+
+    for (let i = 0; i < childNodes.length; i++) {
+      if (hasClass(childNodes[i], className)) {
+        return childNodes[i];
+      }
+    }
+  };
+  /**
+   * @param {HTMLElement} elem
+   * @param {string} property
+   * @param {*} value
+   */
+
+  const applyNumericalStyle = (elem, property, value) => {
+    if (value === "".concat(parseInt(value))) {
+      value = parseInt(value);
+    }
+
+    if (value || parseInt(value) === 0) {
+      elem.style[property] = typeof value === 'number' ? "".concat(value, "px") : value;
+    } else {
+      elem.style.removeProperty(property);
+    }
+  };
+  /**
+   * @param {HTMLElement} elem
+   * @param {string} display
+   */
+
+  const show = function (elem) {
+    let display = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'flex';
+    elem.style.display = display;
+  };
+  /**
+   * @param {HTMLElement} elem
+   */
+
+  const hide = elem => {
+    elem.style.display = 'none';
+  };
+  /**
+   * @param {HTMLElement} parent
+   * @param {string} selector
+   * @param {string} property
+   * @param {string} value
+   */
+
+  const setStyle = (parent, selector, property, value) => {
+    /** @type {HTMLElement} */
+    const el = parent.querySelector(selector);
+
+    if (el) {
+      el.style[property] = value;
+    }
+  };
+  /**
+   * @param {HTMLElement} elem
+   * @param {any} condition
+   * @param {string} display
+   */
+
+  const toggle = function (elem, condition) {
+    let display = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'flex';
+    condition ? show(elem, display) : hide(elem);
+  };
+  /**
+   * borrowed from jquery $(elem).is(':visible') implementation
+   *
+   * @param {HTMLElement} elem
+   * @returns {boolean}
+   */
+
+  const isVisible = elem => !!(elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length));
+  /**
+   * @returns {boolean}
+   */
+
+  const allButtonsAreHidden = () => !isVisible(getConfirmButton()) && !isVisible(getDenyButton()) && !isVisible(getCancelButton());
+  /**
+   * @returns {boolean}
+   */
+
+  const isScrollable = elem => !!(elem.scrollHeight > elem.clientHeight);
+  /**
+   * borrowed from https://stackoverflow.com/a/46352119
+   *
+   * @param {HTMLElement} elem
+   * @returns {boolean}
+   */
+
+  const hasCssAnimation = elem => {
+    const style = window.getComputedStyle(elem);
+    const animDuration = parseFloat(style.getPropertyValue('animation-duration') || '0');
+    const transDuration = parseFloat(style.getPropertyValue('transition-duration') || '0');
+    return animDuration > 0 || transDuration > 0;
+  };
+  /**
+   * @param {number} timer
+   * @param {boolean} reset
+   */
+
+  const animateTimerProgressBar = function (timer) {
+    let reset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    const timerProgressBar = getTimerProgressBar();
+
+    if (isVisible(timerProgressBar)) {
+      if (reset) {
+        timerProgressBar.style.transition = 'none';
+        timerProgressBar.style.width = '100%';
+      }
+
+      setTimeout(() => {
+        timerProgressBar.style.transition = "width ".concat(timer / 1000, "s linear");
+        timerProgressBar.style.width = '0%';
+      }, 10);
+    }
+  };
+  const stopTimerProgressBar = () => {
+    const timerProgressBar = getTimerProgressBar();
+    const timerProgressBarWidth = parseInt(window.getComputedStyle(timerProgressBar).width);
+    timerProgressBar.style.removeProperty('transition');
+    timerProgressBar.style.width = '100%';
+    const timerProgressBarFullWidth = parseInt(window.getComputedStyle(timerProgressBar).width);
+    const timerProgressBarPercent = timerProgressBarWidth / timerProgressBarFullWidth * 100;
+    timerProgressBar.style.removeProperty('transition');
+    timerProgressBar.style.width = "".concat(timerProgressBarPercent, "%");
+  };
+
+  /**
+   * Detect Node env
+   *
+   * @returns {boolean}
+   */
+  const isNodeEnv = () => typeof window === 'undefined' || typeof document === 'undefined';
+
+  const RESTORE_FOCUS_TIMEOUT = 100;
+
+  /** @type {GlobalState} */
+
+  const globalState = {};
+
+  const focusPreviousActiveElement = () => {
+    if (globalState.previousActiveElement instanceof HTMLElement) {
+      globalState.previousActiveElement.focus();
+      globalState.previousActiveElement = null;
+    } else if (document.body) {
+      document.body.focus();
+    }
+  };
+  /**
+   * Restore previous active (focused) element
+   *
+   * @param {boolean} returnFocus
+   * @returns {Promise}
+   */
+
+
+  const restoreActiveElement = returnFocus => {
+    return new Promise(resolve => {
+      if (!returnFocus) {
+        return resolve();
+      }
+
+      const x = window.scrollX;
+      const y = window.scrollY;
+      globalState.restoreFocusTimeout = setTimeout(() => {
+        focusPreviousActiveElement();
+        resolve();
+      }, RESTORE_FOCUS_TIMEOUT); // issues/900
+
+      window.scrollTo(x, y);
+    });
+  };
+
+  const sweetHTML = "\n <div aria-labelledby=\"".concat(swalClasses.title, "\" aria-describedby=\"").concat(swalClasses['html-container'], "\" class=\"").concat(swalClasses.popup, "\" tabindex=\"-1\">\n   <button type=\"button\" class=\"").concat(swalClasses.close, "\"></button>\n   <ul class=\"").concat(swalClasses['progress-steps'], "\"></ul>\n   <div class=\"").concat(swalClasses.icon, "\"></div>\n   <img class=\"").concat(swalClasses.image, "\" />\n   <h2 class=\"").concat(swalClasses.title, "\" id=\"").concat(swalClasses.title, "\"></h2>\n   <div class=\"").concat(swalClasses['html-container'], "\" id=\"").concat(swalClasses['html-container'], "\"></div>\n   <input class=\"").concat(swalClasses.input, "\" />\n   <input type=\"file\" class=\"").concat(swalClasses.file, "\" />\n   <div class=\"").concat(swalClasses.range, "\">\n     <input type=\"range\" />\n     <output></output>\n   </div>\n   <select class=\"").concat(swalClasses.select, "\"></select>\n   <div class=\"").concat(swalClasses.radio, "\"></div>\n   <label for=\"").concat(swalClasses.checkbox, "\" class=\"").concat(swalClasses.checkbox, "\">\n     <input type=\"checkbox\" />\n     <span class=\"").concat(swalClasses.label, "\"></span>\n   </label>\n   <textarea class=\"").concat(swalClasses.textarea, "\"></textarea>\n   <div class=\"").concat(swalClasses['validation-message'], "\" id=\"").concat(swalClasses['validation-message'], "\"></div>\n   <div class=\"").concat(swalClasses.actions, "\">\n     <div class=\"").concat(swalClasses.loader, "\"></div>\n     <button type=\"button\" class=\"").concat(swalClasses.confirm, "\"></button>\n     <button type=\"button\" class=\"").concat(swalClasses.deny, "\"></button>\n     <button type=\"button\" class=\"").concat(swalClasses.cancel, "\"></button>\n   </div>\n   <div class=\"").concat(swalClasses.footer, "\"></div>\n   <div class=\"").concat(swalClasses['timer-progress-bar-container'], "\">\n     <div class=\"").concat(swalClasses['timer-progress-bar'], "\"></div>\n   </div>\n </div>\n").replace(/(^|\n)\s*/g, '');
+  /**
+   * @returns {boolean}
+   */
+
+  const resetOldContainer = () => {
+    const oldContainer = getContainer();
+
+    if (!oldContainer) {
+      return false;
+    }
+
+    oldContainer.remove();
+    removeClass([document.documentElement, document.body], [swalClasses['no-backdrop'], swalClasses['toast-shown'], swalClasses['has-column']]);
+    return true;
+  };
+
+  const resetValidationMessage = () => {
+    globalState.currentInstance.resetValidationMessage();
+  };
+
+  const addInputChangeListeners = () => {
+    const popup = getPopup();
+    const input = getDirectChildByClass(popup, swalClasses.input);
+    const file = getDirectChildByClass(popup, swalClasses.file);
+    /** @type {HTMLInputElement} */
+
+    const range = popup.querySelector(".".concat(swalClasses.range, " input"));
+    /** @type {HTMLOutputElement} */
+
+    const rangeOutput = popup.querySelector(".".concat(swalClasses.range, " output"));
+    const select = getDirectChildByClass(popup, swalClasses.select);
+    /** @type {HTMLInputElement} */
+
+    const checkbox = popup.querySelector(".".concat(swalClasses.checkbox, " input"));
+    const textarea = getDirectChildByClass(popup, swalClasses.textarea);
+    input.oninput = resetValidationMessage;
+    file.onchange = resetValidationMessage;
+    select.onchange = resetValidationMessage;
+    checkbox.onchange = resetValidationMessage;
+    textarea.oninput = resetValidationMessage;
+
+    range.oninput = () => {
+      resetValidationMessage();
+      rangeOutput.value = range.value;
+    };
+
+    range.onchange = () => {
+      resetValidationMessage();
+      rangeOutput.value = range.value;
+    };
+  };
+  /**
+   * @param {string | HTMLElement} target
+   * @returns {HTMLElement}
+   */
+
+
+  const getTarget = target => typeof target === 'string' ? document.querySelector(target) : target;
+  /**
+   * @param {SweetAlertOptions} params
+   */
+
+
+  const setupAccessibility = params => {
+    const popup = getPopup();
+    popup.setAttribute('role', params.toast ? 'alert' : 'dialog');
+    popup.setAttribute('aria-live', params.toast ? 'polite' : 'assertive');
+
+    if (!params.toast) {
+      popup.setAttribute('aria-modal', 'true');
+    }
+  };
+  /**
+   * @param {HTMLElement} targetElement
+   */
+
+
+  const setupRTL = targetElement => {
+    if (window.getComputedStyle(targetElement).direction === 'rtl') {
+      addClass(getContainer(), swalClasses.rtl);
+    }
+  };
+  /**
+   * Add modal + backdrop + no-war message for Russians to DOM
+   *
+   * @param {SweetAlertOptions} params
+   */
+
+
+  const init = params => {
+    // Clean up the old popup container if it exists
+    const oldContainerExisted = resetOldContainer();
+    /* istanbul ignore if */
+
+    if (isNodeEnv()) {
+      error('SweetAlert2 requires document to initialize');
+      return;
+    }
+
+    const container = document.createElement('div');
+    container.className = swalClasses.container;
+
+    if (oldContainerExisted) {
+      addClass(container, swalClasses['no-transition']);
+    }
+
+    setInnerHtml(container, sweetHTML);
+    const targetElement = getTarget(params.target);
+    targetElement.appendChild(container);
+    setupAccessibility(params);
+    setupRTL(targetElement);
+    addInputChangeListeners();
+    noWarMessageForRussians(container, params);
+  };
+  /**
+   * @param {HTMLElement} container
+   * @param {SweetAlertOptions} params
+   */
+
+  const noWarMessageForRussians = (container, params) => {
+    if (params.toast) {
+      return;
+    } // This message is targeted at people who are corrupted by propaganda, everybody else
+    // is already against war either silently or actively.
+    //
+    // The point is to wrap the truth-bomb into a patriotic title so they will actually click it
+    // and listen to the uncomfortable truth about the war from the people they love or respect.
+
+
+    const message = getRandomElement([{
+      text: 'ШВАРЦЕНЕГГЕР обратился <br> к РУССКОМУ НАРОДУ о войне',
+      // Arnold is loved in Russia by all people including those who are for this war
+      // His speech might change the mind of those who are brainwashed by propaganda
+      youtubeId: 'fWClXZd9c78'
+    }, {
+      text: 'РУССКИЙ ПАТРИОТ <br> открыл главную тайну спецоперации',
+      // In this video one of the most famous Russian nationalist leaders, Dmitry Demushkin,
+      // explains that this war has no sense and produces the exact opposite result of what
+      // it was intended to do.
+      youtubeId: '_RjBNkn88yA'
+    }, {
+      text: 'ГЕРОЙ НОВОРОССИИ СТРЕЛКОВ <br> дал оценку ходу спецоперации',
+      // In this video Igor Girkin, who played a key role in the annexation of Crimea,
+      // explains that this war has failed already and all possible outcomes are bad for Russia.
+      youtubeId: 'yUmzQT4C8JY'
+    }, {
+      text: 'ФИНСКИЙ ДРУГ РОССИИ <br> говорит ПО-РУССКИ о спецоперации',
+      youtubeId: 'hkCYb6edUrQ'
+    }, {
+      text: 'ЮРИЙ ПОДОЛЯКА честно <br> о генералах РУССКОЙ АРМИИ',
+      youtubeId: 'w4-_8BJKfpk'
+    }, {
+      text: 'Полковник ФСБ СТРЕЛКОВ <br> об успехах РОССИИ в спецоперации',
+      youtubeId: 'saK5UTKroDA'
+    }]); // The message will only be shown to Russian users visiting Russian sites
+
+    if (/^ru\b/.test(navigator.language) && location.host.match(/\.(ru|su|xn--p1ai)$/)) {
+      const noWar = document.createElement('div');
+      noWar.className = swalClasses['no-war'];
+      setInnerHtml(noWar, "<a href=\"https://www.youtube.com/watch?v=".concat(message.youtubeId, "\" target=\"_blank\">").concat(message.text, "</a>"));
+      container.appendChild(noWar);
+      container.style.paddingTop = '4em';
+    }
+  };
+
+  /**
+   * @param {HTMLElement | object | string} param
+   * @param {HTMLElement} target
+   */
+
+  const parseHtmlToContainer = (param, target) => {
+    // DOM element
+    if (param instanceof HTMLElement) {
+      target.appendChild(param);
+    } // Object
+    else if (typeof param === 'object') {
+      handleObject(param, target);
+    } // Plain string
+    else if (param) {
+      setInnerHtml(target, param);
+    }
+  };
+  /**
+   * @param {object} param
+   * @param {HTMLElement} target
+   */
+
+  const handleObject = (param, target) => {
+    // JQuery element(s)
+    if (param.jquery) {
+      handleJqueryElem(target, param);
+    } // For other objects use their string representation
+    else {
+      setInnerHtml(target, param.toString());
+    }
+  };
+  /**
+   * @param {HTMLElement} target
+   * @param {HTMLElement} elem
+   */
+
+
+  const handleJqueryElem = (target, elem) => {
+    target.textContent = '';
+
+    if (0 in elem) {
+      for (let i = 0; (i in elem); i++) {
+        target.appendChild(elem[i].cloneNode(true));
+      }
+    } else {
+      target.appendChild(elem.cloneNode(true));
+    }
+  };
+
+  /**
+   * @returns {'webkitAnimationEnd' | 'animationend' | false}
+   */
+
+  const animationEndEvent = (() => {
+    // Prevent run in Node env
+
+    /* istanbul ignore if */
+    if (isNodeEnv()) {
+      return false;
+    }
+
+    const testEl = document.createElement('div');
+    const transEndEventNames = {
+      WebkitAnimation: 'webkitAnimationEnd',
+      // Chrome, Safari and Opera
+      animation: 'animationend' // Standard syntax
+
+    };
+
+    for (const i in transEndEventNames) {
+      if (Object.prototype.hasOwnProperty.call(transEndEventNames, i) && typeof testEl.style[i] !== 'undefined') {
+        return transEndEventNames[i];
+      }
+    }
+
+    return false;
+  })();
+
+  /**
+   * Measure scrollbar width for padding body during modal show/hide
+   * https://github.com/twbs/bootstrap/blob/master/js/src/modal.js
+   *
+   * @returns {number}
+   */
+
+  const measureScrollbar = () => {
+    const scrollDiv = document.createElement('div');
+    scrollDiv.className = swalClasses['scrollbar-measure'];
+    document.body.appendChild(scrollDiv);
+    const scrollbarWidth = scrollDiv.getBoundingClientRect().width - scrollDiv.clientWidth;
+    document.body.removeChild(scrollDiv);
+    return scrollbarWidth;
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+
+  const renderActions = (instance, params) => {
+    const actions = getActions();
+    const loader = getLoader(); // Actions (buttons) wrapper
+
+    if (!params.showConfirmButton && !params.showDenyButton && !params.showCancelButton) {
+      hide(actions);
+    } else {
+      show(actions);
+    } // Custom class
+
+
+    applyCustomClass(actions, params, 'actions'); // Render all the buttons
+
+    renderButtons(actions, loader, params); // Loader
+
+    setInnerHtml(loader, params.loaderHtml);
+    applyCustomClass(loader, params, 'loader');
+  };
+  /**
+   * @param {HTMLElement} actions
+   * @param {HTMLElement} loader
+   * @param {SweetAlertOptions} params
+   */
+
+  function renderButtons(actions, loader, params) {
+    const confirmButton = getConfirmButton();
+    const denyButton = getDenyButton();
+    const cancelButton = getCancelButton(); // Render buttons
+
+    renderButton(confirmButton, 'confirm', params);
+    renderButton(denyButton, 'deny', params);
+    renderButton(cancelButton, 'cancel', params);
+    handleButtonsStyling(confirmButton, denyButton, cancelButton, params);
+
+    if (params.reverseButtons) {
+      if (params.toast) {
+        actions.insertBefore(cancelButton, confirmButton);
+        actions.insertBefore(denyButton, confirmButton);
+      } else {
+        actions.insertBefore(cancelButton, loader);
+        actions.insertBefore(denyButton, loader);
+        actions.insertBefore(confirmButton, loader);
+      }
+    }
+  }
+  /**
+   * @param {HTMLElement} confirmButton
+   * @param {HTMLElement} denyButton
+   * @param {HTMLElement} cancelButton
+   * @param {SweetAlertOptions} params
+   */
+
+
+  function handleButtonsStyling(confirmButton, denyButton, cancelButton, params) {
+    if (!params.buttonsStyling) {
+      return removeClass([confirmButton, denyButton, cancelButton], swalClasses.styled);
+    }
+
+    addClass([confirmButton, denyButton, cancelButton], swalClasses.styled); // Buttons background colors
+
+    if (params.confirmButtonColor) {
+      confirmButton.style.backgroundColor = params.confirmButtonColor;
+      addClass(confirmButton, swalClasses['default-outline']);
+    }
+
+    if (params.denyButtonColor) {
+      denyButton.style.backgroundColor = params.denyButtonColor;
+      addClass(denyButton, swalClasses['default-outline']);
+    }
+
+    if (params.cancelButtonColor) {
+      cancelButton.style.backgroundColor = params.cancelButtonColor;
+      addClass(cancelButton, swalClasses['default-outline']);
+    }
+  }
+  /**
+   * @param {HTMLElement} button
+   * @param {'confirm' | 'deny' | 'cancel'} buttonType
+   * @param {SweetAlertOptions} params
+   */
+
+
+  function renderButton(button, buttonType, params) {
+    toggle(button, params["show".concat(capitalizeFirstLetter(buttonType), "Button")], 'inline-block');
+    setInnerHtml(button, params["".concat(buttonType, "ButtonText")]); // Set caption text
+
+    button.setAttribute('aria-label', params["".concat(buttonType, "ButtonAriaLabel")]); // ARIA label
+    // Add buttons custom classes
+
+    button.className = swalClasses[buttonType];
+    applyCustomClass(button, params, "".concat(buttonType, "Button"));
+    addClass(button, params["".concat(buttonType, "ButtonClass")]);
+  }
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+
+  const renderContainer = (instance, params) => {
+    const container = getContainer();
+
+    if (!container) {
+      return;
+    }
+
+    handleBackdropParam(container, params.backdrop);
+    handlePositionParam(container, params.position);
+    handleGrowParam(container, params.grow); // Custom class
+
+    applyCustomClass(container, params, 'container');
+  };
+  /**
+   * @param {HTMLElement} container
+   * @param {SweetAlertOptions['backdrop']} backdrop
+   */
+
+  function handleBackdropParam(container, backdrop) {
+    if (typeof backdrop === 'string') {
+      container.style.background = backdrop;
+    } else if (!backdrop) {
+      addClass([document.documentElement, document.body], swalClasses['no-backdrop']);
+    }
+  }
+  /**
+   * @param {HTMLElement} container
+   * @param {SweetAlertOptions['position']} position
+   */
+
+
+  function handlePositionParam(container, position) {
+    if (position in swalClasses) {
+      addClass(container, swalClasses[position]);
+    } else {
+      warn('The "position" parameter is not valid, defaulting to "center"');
+      addClass(container, swalClasses.center);
+    }
+  }
+  /**
+   * @param {HTMLElement} container
+   * @param {SweetAlertOptions['grow']} grow
+   */
+
+
+  function handleGrowParam(container, grow) {
+    if (grow && typeof grow === 'string') {
+      const growClass = "grow-".concat(grow);
+
+      if (growClass in swalClasses) {
+        addClass(container, swalClasses[growClass]);
+      }
+    }
+  }
+
+  /**
+   * This module contains `WeakMap`s for each effectively-"private  property" that a `Swal` has.
+   * For example, to set the private property "foo" of `this` to "bar", you can `privateProps.foo.set(this, 'bar')`
+   * This is the approach that Babel will probably take to implement private methods/fields
+   *   https://github.com/tc39/proposal-private-methods
+   *   https://github.com/babel/babel/pull/7555
+   * Once we have the changes from that PR in Babel, and our core class fits reasonable in *one module*
+   *   then we can use that language feature.
+   */
+  var privateProps = {
+    awaitingPromise: new WeakMap(),
+    promise: new WeakMap(),
+    innerParams: new WeakMap(),
+    domCache: new WeakMap()
+  };
+
+  /// <reference path="../../../../sweetalert2.d.ts"/>
+  /** @type {InputClass[]} */
+
+  const inputClasses = ['input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea'];
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+
+  const renderInput = (instance, params) => {
+    const popup = getPopup();
+    const innerParams = privateProps.innerParams.get(instance);
+    const rerender = !innerParams || params.input !== innerParams.input;
+    inputClasses.forEach(inputClass => {
+      const inputContainer = getDirectChildByClass(popup, swalClasses[inputClass]); // set attributes
+
+      setAttributes(inputClass, params.inputAttributes); // set class
+
+      inputContainer.className = swalClasses[inputClass];
+
+      if (rerender) {
+        hide(inputContainer);
+      }
+    });
+
+    if (params.input) {
+      if (rerender) {
+        showInput(params);
+      } // set custom class
+
+
+      setCustomClass(params);
+    }
+  };
+  /**
+   * @param {SweetAlertOptions} params
+   */
+
+  const showInput = params => {
+    if (!renderInputType[params.input]) {
+      return error("Unexpected type of input! Expected \"text\", \"email\", \"password\", \"number\", \"tel\", \"select\", \"radio\", \"checkbox\", \"textarea\", \"file\" or \"url\", got \"".concat(params.input, "\""));
+    }
+
+    const inputContainer = getInputContainer(params.input);
+    const input = renderInputType[params.input](inputContainer, params);
+    show(inputContainer); // input autofocus
+
+    setTimeout(() => {
+      focusInput(input);
+    });
+  };
+  /**
+   * @param {HTMLInputElement} input
+   */
+
+
+  const removeAttributes = input => {
+    for (let i = 0; i < input.attributes.length; i++) {
+      const attrName = input.attributes[i].name;
+
+      if (!['type', 'value', 'style'].includes(attrName)) {
+        input.removeAttribute(attrName);
+      }
+    }
+  };
+  /**
+   * @param {InputClass} inputClass
+   * @param {SweetAlertOptions['inputAttributes']} inputAttributes
+   */
+
+
+  const setAttributes = (inputClass, inputAttributes) => {
+    const input = getInput(getPopup(), inputClass);
+
+    if (!input) {
+      return;
+    }
+
+    removeAttributes(input);
+
+    for (const attr in inputAttributes) {
+      input.setAttribute(attr, inputAttributes[attr]);
+    }
+  };
+  /**
+   * @param {SweetAlertOptions} params
+   */
+
+
+  const setCustomClass = params => {
+    const inputContainer = getInputContainer(params.input);
+
+    if (typeof params.customClass === 'object') {
+      addClass(inputContainer, params.customClass.input);
+    }
+  };
+  /**
+   * @param {HTMLInputElement | HTMLTextAreaElement} input
+   * @param {SweetAlertOptions} params
+   */
+
+
+  const setInputPlaceholder = (input, params) => {
+    if (!input.placeholder || params.inputPlaceholder) {
+      input.placeholder = params.inputPlaceholder;
+    }
+  };
+  /**
+   * @param {Input} input
+   * @param {Input} prependTo
+   * @param {SweetAlertOptions} params
+   */
+
+
+  const setInputLabel = (input, prependTo, params) => {
+    if (params.inputLabel) {
+      input.id = swalClasses.input;
+      const label = document.createElement('label');
+      const labelClass = swalClasses['input-label'];
+      label.setAttribute('for', input.id);
+      label.className = labelClass;
+
+      if (typeof params.customClass === 'object') {
+        addClass(label, params.customClass.inputLabel);
+      }
+
+      label.innerText = params.inputLabel;
+      prependTo.insertAdjacentElement('beforebegin', label);
+    }
+  };
+  /**
+   * @param {SweetAlertOptions['input']} inputType
+   * @returns {HTMLElement}
+   */
+
+
+  const getInputContainer = inputType => {
+    return getDirectChildByClass(getPopup(), swalClasses[inputType] || swalClasses.input);
+  };
+  /**
+   * @param {HTMLInputElement | HTMLOutputElement | HTMLTextAreaElement} input
+   * @param {SweetAlertOptions['inputValue']} inputValue
+   */
+
+
+  const checkAndSetInputValue = (input, inputValue) => {
+    if (['string', 'number'].includes(typeof inputValue)) {
+      input.value = "".concat(inputValue);
+    } else if (!isPromise(inputValue)) {
+      warn("Unexpected type of inputValue! Expected \"string\", \"number\" or \"Promise\", got \"".concat(typeof inputValue, "\""));
+    }
+  };
+  /** @type Record<string, (input: Input | HTMLElement, params: SweetAlertOptions) => Input> */
+
+
+  const renderInputType = {};
+  /**
+   * @param {HTMLInputElement} input
+   * @param {SweetAlertOptions} params
+   * @returns {HTMLInputElement}
+   */
+
+  renderInputType.text = renderInputType.email = renderInputType.password = renderInputType.number = renderInputType.tel = renderInputType.url = (input, params) => {
+    checkAndSetInputValue(input, params.inputValue);
+    setInputLabel(input, input, params);
+    setInputPlaceholder(input, params);
+    input.type = params.input;
+    return input;
+  };
+  /**
+   * @param {HTMLInputElement} input
+   * @param {SweetAlertOptions} params
+   * @returns {HTMLInputElement}
+   */
+
+
+  renderInputType.file = (input, params) => {
+    setInputLabel(input, input, params);
+    setInputPlaceholder(input, params);
+    return input;
+  };
+  /**
+   * @param {HTMLInputElement} range
+   * @param {SweetAlertOptions} params
+   * @returns {HTMLInputElement}
+   */
+
+
+  renderInputType.range = (range, params) => {
+    const rangeInput = range.querySelector('input');
+    const rangeOutput = range.querySelector('output');
+    checkAndSetInputValue(rangeInput, params.inputValue);
+    rangeInput.type = params.input;
+    checkAndSetInputValue(rangeOutput, params.inputValue);
+    setInputLabel(rangeInput, range, params);
+    return range;
+  };
+  /**
+   * @param {HTMLSelectElement} select
+   * @param {SweetAlertOptions} params
+   * @returns {HTMLSelectElement}
+   */
+
+
+  renderInputType.select = (select, params) => {
+    select.textContent = '';
+
+    if (params.inputPlaceholder) {
+      const placeholder = document.createElement('option');
+      setInnerHtml(placeholder, params.inputPlaceholder);
+      placeholder.value = '';
+      placeholder.disabled = true;
+      placeholder.selected = true;
+      select.appendChild(placeholder);
+    }
+
+    setInputLabel(select, select, params);
+    return select;
+  };
+  /**
+   * @param {HTMLInputElement} radio
+   * @returns {HTMLInputElement}
+   */
+
+
+  renderInputType.radio = radio => {
+    radio.textContent = '';
+    return radio;
+  };
+  /**
+   * @param {HTMLLabelElement} checkboxContainer
+   * @param {SweetAlertOptions} params
+   * @returns {HTMLInputElement}
+   */
+
+
+  renderInputType.checkbox = (checkboxContainer, params) => {
+    const checkbox = getInput(getPopup(), 'checkbox');
+    checkbox.value = '1';
+    checkbox.id = swalClasses.checkbox;
+    checkbox.checked = Boolean(params.inputValue);
+    const label = checkboxContainer.querySelector('span');
+    setInnerHtml(label, params.inputPlaceholder);
+    return checkbox;
+  };
+  /**
+   * @param {HTMLTextAreaElement} textarea
+   * @param {SweetAlertOptions} params
+   * @returns {HTMLTextAreaElement}
+   */
+
+
+  renderInputType.textarea = (textarea, params) => {
+    checkAndSetInputValue(textarea, params.inputValue);
+    setInputPlaceholder(textarea, params);
+    setInputLabel(textarea, textarea, params);
+    /**
+     * @param {HTMLElement} el
+     * @returns {number}
+     */
+
+    const getMargin = el => parseInt(window.getComputedStyle(el).marginLeft) + parseInt(window.getComputedStyle(el).marginRight); // https://github.com/sweetalert2/sweetalert2/issues/2291
+
+
+    setTimeout(() => {
+      // https://github.com/sweetalert2/sweetalert2/issues/1699
+      if ('MutationObserver' in window) {
+        const initialPopupWidth = parseInt(window.getComputedStyle(getPopup()).width);
+
+        const textareaResizeHandler = () => {
+          const textareaWidth = textarea.offsetWidth + getMargin(textarea);
+
+          if (textareaWidth > initialPopupWidth) {
+            getPopup().style.width = "".concat(textareaWidth, "px");
+          } else {
+            getPopup().style.width = null;
+          }
+        };
+
+        new MutationObserver(textareaResizeHandler).observe(textarea, {
+          attributes: true,
+          attributeFilter: ['style']
+        });
+      }
+    });
+    return textarea;
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+
+  const renderContent = (instance, params) => {
+    const htmlContainer = getHtmlContainer();
+    applyCustomClass(htmlContainer, params, 'htmlContainer'); // Content as HTML
+
+    if (params.html) {
+      parseHtmlToContainer(params.html, htmlContainer);
+      show(htmlContainer, 'block');
+    } // Content as plain text
+    else if (params.text) {
+      htmlContainer.textContent = params.text;
+      show(htmlContainer, 'block');
+    } // No content
+    else {
+      hide(htmlContainer);
+    }
+
+    renderInput(instance, params);
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+
+  const renderFooter = (instance, params) => {
+    const footer = getFooter();
+    toggle(footer, params.footer);
+
+    if (params.footer) {
+      parseHtmlToContainer(params.footer, footer);
+    } // Custom class
+
+
+    applyCustomClass(footer, params, 'footer');
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+
+  const renderCloseButton = (instance, params) => {
+    const closeButton = getCloseButton();
+    setInnerHtml(closeButton, params.closeButtonHtml); // Custom class
+
+    applyCustomClass(closeButton, params, 'closeButton');
+    toggle(closeButton, params.showCloseButton);
+    closeButton.setAttribute('aria-label', params.closeButtonAriaLabel);
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+
+  const renderIcon = (instance, params) => {
+    const innerParams = privateProps.innerParams.get(instance);
+    const icon = getIcon(); // if the given icon already rendered, apply the styling without re-rendering the icon
+
+    if (innerParams && params.icon === innerParams.icon) {
+      // Custom or default content
+      setContent(icon, params);
+      applyStyles(icon, params);
+      return;
+    }
+
+    if (!params.icon && !params.iconHtml) {
+      hide(icon);
+      return;
+    }
+
+    if (params.icon && Object.keys(iconTypes).indexOf(params.icon) === -1) {
+      error("Unknown icon! Expected \"success\", \"error\", \"warning\", \"info\" or \"question\", got \"".concat(params.icon, "\""));
+      hide(icon);
+      return;
+    }
+
+    show(icon); // Custom or default content
+
+    setContent(icon, params);
+    applyStyles(icon, params); // Animate icon
+
+    addClass(icon, params.showClass.icon);
+  };
+  /**
+   * @param {HTMLElement} icon
+   * @param {SweetAlertOptions} params
+   */
+
+  const applyStyles = (icon, params) => {
+    for (const iconType in iconTypes) {
+      if (params.icon !== iconType) {
+        removeClass(icon, iconTypes[iconType]);
+      }
+    }
+
+    addClass(icon, iconTypes[params.icon]); // Icon color
+
+    setColor(icon, params); // Success icon background color
+
+    adjustSuccessIconBackgroundColor(); // Custom class
+
+    applyCustomClass(icon, params, 'icon');
+  }; // Adjust success icon background color to match the popup background color
+
+
+  const adjustSuccessIconBackgroundColor = () => {
+    const popup = getPopup();
+    const popupBackgroundColor = window.getComputedStyle(popup).getPropertyValue('background-color');
+    /** @type {NodeListOf<HTMLElement>} */
+
+    const successIconParts = popup.querySelectorAll('[class^=swal2-success-circular-line], .swal2-success-fix');
+
+    for (let i = 0; i < successIconParts.length; i++) {
+      successIconParts[i].style.backgroundColor = popupBackgroundColor;
+    }
+  };
+
+  const successIconHtml = "\n  <div class=\"swal2-success-circular-line-left\"></div>\n  <span class=\"swal2-success-line-tip\"></span> <span class=\"swal2-success-line-long\"></span>\n  <div class=\"swal2-success-ring\"></div> <div class=\"swal2-success-fix\"></div>\n  <div class=\"swal2-success-circular-line-right\"></div>\n";
+  const errorIconHtml = "\n  <span class=\"swal2-x-mark\">\n    <span class=\"swal2-x-mark-line-left\"></span>\n    <span class=\"swal2-x-mark-line-right\"></span>\n  </span>\n";
+  /**
+   * @param {HTMLElement} icon
+   * @param {SweetAlertOptions} params
+   */
+
+  const setContent = (icon, params) => {
+    let oldContent = icon.innerHTML;
+    let newContent;
+
+    if (params.iconHtml) {
+      newContent = iconContent(params.iconHtml);
+    } else if (params.icon === 'success') {
+      newContent = successIconHtml;
+      oldContent = oldContent.replace(/ style=".*?"/g, ''); // undo adjustSuccessIconBackgroundColor()
+    } else if (params.icon === 'error') {
+      newContent = errorIconHtml;
+    } else {
+      const defaultIconHtml = {
+        question: '?',
+        warning: '!',
+        info: 'i'
+      };
+      newContent = iconContent(defaultIconHtml[params.icon]);
+    }
+
+    if (oldContent.trim() !== newContent.trim()) {
+      setInnerHtml(icon, newContent);
+    }
+  };
+  /**
+   * @param {HTMLElement} icon
+   * @param {SweetAlertOptions} params
+   */
+
+
+  const setColor = (icon, params) => {
+    if (!params.iconColor) {
+      return;
+    }
+
+    icon.style.color = params.iconColor;
+    icon.style.borderColor = params.iconColor;
+
+    for (const sel of ['.swal2-success-line-tip', '.swal2-success-line-long', '.swal2-x-mark-line-left', '.swal2-x-mark-line-right']) {
+      setStyle(icon, sel, 'backgroundColor', params.iconColor);
+    }
+
+    setStyle(icon, '.swal2-success-ring', 'borderColor', params.iconColor);
+  };
+  /**
+   * @param {string} content
+   * @returns {string}
+   */
+
+
+  const iconContent = content => "<div class=\"".concat(swalClasses['icon-content'], "\">").concat(content, "</div>");
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+
+  const renderImage = (instance, params) => {
+    const image = getImage();
+
+    if (!params.imageUrl) {
+      return hide(image);
+    }
+
+    show(image, ''); // Src, alt
+
+    image.setAttribute('src', params.imageUrl);
+    image.setAttribute('alt', params.imageAlt); // Width, height
+
+    applyNumericalStyle(image, 'width', params.imageWidth);
+    applyNumericalStyle(image, 'height', params.imageHeight); // Class
+
+    image.className = swalClasses.image;
+    applyCustomClass(image, params, 'image');
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+
+  const renderProgressSteps = (instance, params) => {
+    const progressStepsContainer = getProgressSteps();
+
+    if (!params.progressSteps || params.progressSteps.length === 0) {
+      return hide(progressStepsContainer);
+    }
+
+    show(progressStepsContainer);
+    progressStepsContainer.textContent = '';
+
+    if (params.currentProgressStep >= params.progressSteps.length) {
+      warn('Invalid currentProgressStep parameter, it should be less than progressSteps.length ' + '(currentProgressStep like JS arrays starts from 0)');
+    }
+
+    params.progressSteps.forEach((step, index) => {
+      const stepEl = createStepElement(step);
+      progressStepsContainer.appendChild(stepEl);
+
+      if (index === params.currentProgressStep) {
+        addClass(stepEl, swalClasses['active-progress-step']);
+      }
+
+      if (index !== params.progressSteps.length - 1) {
+        const lineEl = createLineElement(params);
+        progressStepsContainer.appendChild(lineEl);
+      }
+    });
+  };
+  /**
+   * @param {string} step
+   * @returns {HTMLLIElement}
+   */
+
+  const createStepElement = step => {
+    const stepEl = document.createElement('li');
+    addClass(stepEl, swalClasses['progress-step']);
+    setInnerHtml(stepEl, step);
+    return stepEl;
+  };
+  /**
+   * @param {SweetAlertOptions} params
+   * @returns {HTMLLIElement}
+   */
+
+
+  const createLineElement = params => {
+    const lineEl = document.createElement('li');
+    addClass(lineEl, swalClasses['progress-step-line']);
+
+    if (params.progressStepsDistance) {
+      applyNumericalStyle(lineEl, 'width', params.progressStepsDistance);
+    }
+
+    return lineEl;
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+
+  const renderTitle = (instance, params) => {
+    const title = getTitle();
+    toggle(title, params.title || params.titleText, 'block');
+
+    if (params.title) {
+      parseHtmlToContainer(params.title, title);
+    }
+
+    if (params.titleText) {
+      title.innerText = params.titleText;
+    } // Custom class
+
+
+    applyCustomClass(title, params, 'title');
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+
+  const renderPopup = (instance, params) => {
+    const container = getContainer();
+    const popup = getPopup(); // Width
+    // https://github.com/sweetalert2/sweetalert2/issues/2170
+
+    if (params.toast) {
+      applyNumericalStyle(container, 'width', params.width);
+      popup.style.width = '100%';
+      popup.insertBefore(getLoader(), getIcon());
+    } else {
+      applyNumericalStyle(popup, 'width', params.width);
+    } // Padding
+
+
+    applyNumericalStyle(popup, 'padding', params.padding); // Color
+
+    if (params.color) {
+      popup.style.color = params.color;
+    } // Background
+
+
+    if (params.background) {
+      popup.style.background = params.background;
+    }
+
+    hide(getValidationMessage()); // Classes
+
+    addClasses(popup, params);
+  };
+  /**
+   * @param {HTMLElement} popup
+   * @param {SweetAlertOptions} params
+   */
+
+  const addClasses = (popup, params) => {
+    // Default Class + showClass when updating Swal.update({})
+    popup.className = "".concat(swalClasses.popup, " ").concat(isVisible(popup) ? params.showClass.popup : '');
+
+    if (params.toast) {
+      addClass([document.documentElement, document.body], swalClasses['toast-shown']);
+      addClass(popup, swalClasses.toast);
+    } else {
+      addClass(popup, swalClasses.modal);
+    } // Custom class
+
+
+    applyCustomClass(popup, params, 'popup');
+
+    if (typeof params.customClass === 'string') {
+      addClass(popup, params.customClass);
+    } // Icon class (#1842)
+
+
+    if (params.icon) {
+      addClass(popup, swalClasses["icon-".concat(params.icon)]);
+    }
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+
+  const render = (instance, params) => {
+    renderPopup(instance, params);
+    renderContainer(instance, params);
+    renderProgressSteps(instance, params);
+    renderIcon(instance, params);
+    renderImage(instance, params);
+    renderTitle(instance, params);
+    renderCloseButton(instance, params);
+    renderContent(instance, params);
+    renderActions(instance, params);
+    renderFooter(instance, params);
+
+    if (typeof params.didRender === 'function') {
+      params.didRender(getPopup());
+    }
+  };
+
+  const DismissReason = Object.freeze({
+    cancel: 'cancel',
+    backdrop: 'backdrop',
+    close: 'close',
+    esc: 'esc',
+    timer: 'timer'
+  });
+
+  // Adding aria-hidden="true" to elements outside of the active modal dialog ensures that
+  // elements not within the active modal dialog will not be surfaced if a user opens a screen
+  // reader’s list of elements (headings, form controls, landmarks, etc.) in the document.
+
+  const setAriaHidden = () => {
+    const bodyChildren = toArray(document.body.children);
+    bodyChildren.forEach(el => {
+      if (el === getContainer() || el.contains(getContainer())) {
+        return;
+      }
+
+      if (el.hasAttribute('aria-hidden')) {
+        el.setAttribute('data-previous-aria-hidden', el.getAttribute('aria-hidden'));
+      }
+
+      el.setAttribute('aria-hidden', 'true');
+    });
+  };
+  const unsetAriaHidden = () => {
+    const bodyChildren = toArray(document.body.children);
+    bodyChildren.forEach(el => {
+      if (el.hasAttribute('data-previous-aria-hidden')) {
+        el.setAttribute('aria-hidden', el.getAttribute('data-previous-aria-hidden'));
+        el.removeAttribute('data-previous-aria-hidden');
+      } else {
+        el.removeAttribute('aria-hidden');
+      }
+    });
+  };
+
+  const swalStringParams = ['swal-title', 'swal-html', 'swal-footer'];
+  const getTemplateParams = params => {
+    const template = typeof params.template === 'string' ? document.querySelector(params.template) : params.template;
+
+    if (!template) {
+      return {};
+    }
+    /** @type {DocumentFragment} */
+
+
+    const templateContent = template.content;
+    showWarningsForElements(templateContent);
+    const result = Object.assign(getSwalParams(templateContent), getSwalButtons(templateContent), getSwalImage(templateContent), getSwalIcon(templateContent), getSwalInput(templateContent), getSwalStringParams(templateContent, swalStringParams));
+    return result;
+  };
+  /**
+   * @param {DocumentFragment} templateContent
+   */
+
+  const getSwalParams = templateContent => {
+    const result = {};
+    toArray(templateContent.querySelectorAll('swal-param')).forEach(param => {
+      showWarningsForAttributes(param, ['name', 'value']);
+      const paramName = param.getAttribute('name');
+      const value = param.getAttribute('value');
+
+      if (typeof defaultParams[paramName] === 'boolean' && value === 'false') {
+        result[paramName] = false;
+      }
+
+      if (typeof defaultParams[paramName] === 'object') {
+        result[paramName] = JSON.parse(value);
+      }
+    });
+    return result;
+  };
+  /**
+   * @param {DocumentFragment} templateContent
+   */
+
+
+  const getSwalButtons = templateContent => {
+    const result = {};
+    toArray(templateContent.querySelectorAll('swal-button')).forEach(button => {
+      showWarningsForAttributes(button, ['type', 'color', 'aria-label']);
+      const type = button.getAttribute('type');
+      result["".concat(type, "ButtonText")] = button.innerHTML;
+      result["show".concat(capitalizeFirstLetter(type), "Button")] = true;
+
+      if (button.hasAttribute('color')) {
+        result["".concat(type, "ButtonColor")] = button.getAttribute('color');
+      }
+
+      if (button.hasAttribute('aria-label')) {
+        result["".concat(type, "ButtonAriaLabel")] = button.getAttribute('aria-label');
+      }
+    });
+    return result;
+  };
+  /**
+   * @param {DocumentFragment} templateContent
+   */
+
+
+  const getSwalImage = templateContent => {
+    const result = {};
+    /** @type {HTMLElement} */
+
+    const image = templateContent.querySelector('swal-image');
+
+    if (image) {
+      showWarningsForAttributes(image, ['src', 'width', 'height', 'alt']);
+
+      if (image.hasAttribute('src')) {
+        result.imageUrl = image.getAttribute('src');
+      }
+
+      if (image.hasAttribute('width')) {
+        result.imageWidth = image.getAttribute('width');
+      }
+
+      if (image.hasAttribute('height')) {
+        result.imageHeight = image.getAttribute('height');
+      }
+
+      if (image.hasAttribute('alt')) {
+        result.imageAlt = image.getAttribute('alt');
+      }
+    }
+
+    return result;
+  };
+  /**
+   * @param {DocumentFragment} templateContent
+   */
+
+
+  const getSwalIcon = templateContent => {
+    const result = {};
+    /** @type {HTMLElement} */
+
+    const icon = templateContent.querySelector('swal-icon');
+
+    if (icon) {
+      showWarningsForAttributes(icon, ['type', 'color']);
+
+      if (icon.hasAttribute('type')) {
+        result.icon = icon.getAttribute('type');
+      }
+
+      if (icon.hasAttribute('color')) {
+        result.iconColor = icon.getAttribute('color');
+      }
+
+      result.iconHtml = icon.innerHTML;
+    }
+
+    return result;
+  };
+  /**
+   * @param {DocumentFragment} templateContent
+   */
+
+
+  const getSwalInput = templateContent => {
+    const result = {};
+    /** @type {HTMLElement} */
+
+    const input = templateContent.querySelector('swal-input');
+
+    if (input) {
+      showWarningsForAttributes(input, ['type', 'label', 'placeholder', 'value']);
+      result.input = input.getAttribute('type') || 'text';
+
+      if (input.hasAttribute('label')) {
+        result.inputLabel = input.getAttribute('label');
+      }
+
+      if (input.hasAttribute('placeholder')) {
+        result.inputPlaceholder = input.getAttribute('placeholder');
+      }
+
+      if (input.hasAttribute('value')) {
+        result.inputValue = input.getAttribute('value');
+      }
+    }
+
+    const inputOptions = templateContent.querySelectorAll('swal-input-option');
+
+    if (inputOptions.length) {
+      result.inputOptions = {};
+      toArray(inputOptions).forEach(option => {
+        showWarningsForAttributes(option, ['value']);
+        const optionValue = option.getAttribute('value');
+        const optionName = option.innerHTML;
+        result.inputOptions[optionValue] = optionName;
+      });
+    }
+
+    return result;
+  };
+  /**
+   * @param {DocumentFragment} templateContent
+   * @param {string[]} paramNames
+   */
+
+
+  const getSwalStringParams = (templateContent, paramNames) => {
+    const result = {};
+
+    for (const i in paramNames) {
+      const paramName = paramNames[i];
+      /** @type {HTMLElement} */
+
+      const tag = templateContent.querySelector(paramName);
+
+      if (tag) {
+        showWarningsForAttributes(tag, []);
+        result[paramName.replace(/^swal-/, '')] = tag.innerHTML.trim();
+      }
+    }
+
+    return result;
+  };
+  /**
+   * @param {DocumentFragment} templateContent
+   */
+
+
+  const showWarningsForElements = templateContent => {
+    const allowedElements = swalStringParams.concat(['swal-param', 'swal-button', 'swal-image', 'swal-icon', 'swal-input', 'swal-input-option']);
+    toArray(templateContent.children).forEach(el => {
+      const tagName = el.tagName.toLowerCase();
+
+      if (allowedElements.indexOf(tagName) === -1) {
+        warn("Unrecognized element <".concat(tagName, ">"));
+      }
+    });
+  };
+  /**
+   * @param {HTMLElement} el
+   * @param {string[]} allowedAttributes
+   */
+
+
+  const showWarningsForAttributes = (el, allowedAttributes) => {
+    toArray(el.attributes).forEach(attribute => {
+      if (allowedAttributes.indexOf(attribute.name) === -1) {
+        warn(["Unrecognized attribute \"".concat(attribute.name, "\" on <").concat(el.tagName.toLowerCase(), ">."), "".concat(allowedAttributes.length ? "Allowed attributes are: ".concat(allowedAttributes.join(', ')) : 'To set the value, use HTML within the element.')]);
+      }
+    });
+  };
+
+  var defaultInputValidators = {
+    /**
+     * @param {string} string
+     * @param {string} validationMessage
+     * @returns {Promise<void | string>}
+     */
+    email: (string, validationMessage) => {
+      return /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9-]{2,24}$/.test(string) ? Promise.resolve() : Promise.resolve(validationMessage || 'Invalid email address');
+    },
+
+    /**
+     * @param {string} string
+     * @param {string} validationMessage
+     * @returns {Promise<void | string>}
+     */
+    url: (string, validationMessage) => {
+      // taken from https://stackoverflow.com/a/3809435 with a small change from #1306 and #2013
+      return /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-z]{2,63}\b([-a-zA-Z0-9@:%_+.~#?&/=]*)$/.test(string) ? Promise.resolve() : Promise.resolve(validationMessage || 'Invalid URL');
+    }
+  };
+
+  /**
+   * @param {SweetAlertOptions} params
+   */
+
+  function setDefaultInputValidators(params) {
+    // Use default `inputValidator` for supported input types if not provided
+    if (!params.inputValidator) {
+      Object.keys(defaultInputValidators).forEach(key => {
+        if (params.input === key) {
+          params.inputValidator = defaultInputValidators[key];
+        }
+      });
+    }
+  }
+  /**
+   * @param {SweetAlertOptions} params
+   */
+
+
+  function validateCustomTargetElement(params) {
+    // Determine if the custom target element is valid
+    if (!params.target || typeof params.target === 'string' && !document.querySelector(params.target) || typeof params.target !== 'string' && !params.target.appendChild) {
+      warn('Target parameter is not valid, defaulting to "body"');
+      params.target = 'body';
+    }
+  }
+  /**
+   * Set type, text and actions on popup
+   *
+   * @param {SweetAlertOptions} params
+   */
+
+
+  function setParameters(params) {
+    setDefaultInputValidators(params); // showLoaderOnConfirm && preConfirm
+
+    if (params.showLoaderOnConfirm && !params.preConfirm) {
+      warn('showLoaderOnConfirm is set to true, but preConfirm is not defined.\n' + 'showLoaderOnConfirm should be used together with preConfirm, see usage example:\n' + 'https://sweetalert2.github.io/#ajax-request');
+    }
+
+    validateCustomTargetElement(params); // Replace newlines with <br> in title
+
+    if (typeof params.title === 'string') {
+      params.title = params.title.split('\n').join('<br />');
+    }
+
+    init(params);
+  }
+
+  class Timer {
+    constructor(callback, delay) {
+      this.callback = callback;
+      this.remaining = delay;
+      this.running = false;
+      this.start();
+    }
+
+    start() {
+      if (!this.running) {
+        this.running = true;
+        this.started = new Date();
+        this.id = setTimeout(this.callback, this.remaining);
+      }
+
+      return this.remaining;
+    }
+
+    stop() {
+      if (this.running) {
+        this.running = false;
+        clearTimeout(this.id);
+        this.remaining -= new Date().getTime() - this.started.getTime();
+      }
+
+      return this.remaining;
+    }
+
+    increase(n) {
+      const running = this.running;
+
+      if (running) {
+        this.stop();
+      }
+
+      this.remaining += n;
+
+      if (running) {
+        this.start();
+      }
+
+      return this.remaining;
+    }
+
+    getTimerLeft() {
+      if (this.running) {
+        this.stop();
+        this.start();
+      }
+
+      return this.remaining;
+    }
+
+    isRunning() {
+      return this.running;
+    }
+
+  }
+
+  const fixScrollbar = () => {
+    // for queues, do not do this more than once
+    if (states.previousBodyPadding !== null) {
+      return;
+    } // if the body has overflow
+
+
+    if (document.body.scrollHeight > window.innerHeight) {
+      // add padding so the content doesn't shift after removal of scrollbar
+      states.previousBodyPadding = parseInt(window.getComputedStyle(document.body).getPropertyValue('padding-right'));
+      document.body.style.paddingRight = "".concat(states.previousBodyPadding + measureScrollbar(), "px");
+    }
+  };
+  const undoScrollbar = () => {
+    if (states.previousBodyPadding !== null) {
+      document.body.style.paddingRight = "".concat(states.previousBodyPadding, "px");
+      states.previousBodyPadding = null;
+    }
+  };
+
+  /* istanbul ignore file */
+
+  const iOSfix = () => {
+    const iOS = // @ts-ignore
+    /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream || navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+
+    if (iOS && !hasClass(document.body, swalClasses.iosfix)) {
+      const offset = document.body.scrollTop;
+      document.body.style.top = "".concat(offset * -1, "px");
+      addClass(document.body, swalClasses.iosfix);
+      lockBodyScroll();
+      addBottomPaddingForTallPopups();
+    }
+  };
+  /**
+   * https://github.com/sweetalert2/sweetalert2/issues/1948
+   */
+
+  const addBottomPaddingForTallPopups = () => {
+    const ua = navigator.userAgent;
+    const iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
+    const webkit = !!ua.match(/WebKit/i);
+    const iOSSafari = iOS && webkit && !ua.match(/CriOS/i);
+
+    if (iOSSafari) {
+      const bottomPanelHeight = 44;
+
+      if (getPopup().scrollHeight > window.innerHeight - bottomPanelHeight) {
+        getContainer().style.paddingBottom = "".concat(bottomPanelHeight, "px");
+      }
+    }
+  };
+  /**
+   * https://github.com/sweetalert2/sweetalert2/issues/1246
+   */
+
+
+  const lockBodyScroll = () => {
+    const container = getContainer();
+    let preventTouchMove;
+
+    container.ontouchstart = e => {
+      preventTouchMove = shouldPreventTouchMove(e);
+    };
+
+    container.ontouchmove = e => {
+      if (preventTouchMove) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    };
+  };
+
+  const shouldPreventTouchMove = event => {
+    const target = event.target;
+    const container = getContainer();
+
+    if (isStylus(event) || isZoom(event)) {
+      return false;
+    }
+
+    if (target === container) {
+      return true;
+    }
+
+    if (!isScrollable(container) && target.tagName !== 'INPUT' && // #1603
+    target.tagName !== 'TEXTAREA' && // #2266
+    !(isScrollable(getHtmlContainer()) && // #1944
+    getHtmlContainer().contains(target))) {
+      return true;
+    }
+
+    return false;
+  };
+  /**
+   * https://github.com/sweetalert2/sweetalert2/issues/1786
+   *
+   * @param {*} event
+   * @returns {boolean}
+   */
+
+
+  const isStylus = event => {
+    return event.touches && event.touches.length && event.touches[0].touchType === 'stylus';
+  };
+  /**
+   * https://github.com/sweetalert2/sweetalert2/issues/1891
+   *
+   * @param {TouchEvent} event
+   * @returns {boolean}
+   */
+
+
+  const isZoom = event => {
+    return event.touches && event.touches.length > 1;
+  };
+
+  const undoIOSfix = () => {
+    if (hasClass(document.body, swalClasses.iosfix)) {
+      const offset = parseInt(document.body.style.top, 10);
+      removeClass(document.body, swalClasses.iosfix);
+      document.body.style.top = '';
+      document.body.scrollTop = offset * -1;
+    }
+  };
+
+  const SHOW_CLASS_TIMEOUT = 10;
+  /**
+   * Open popup, add necessary classes and styles, fix scrollbar
+   *
+   * @param params
+   */
+
+  const openPopup = params => {
+    const container = getContainer();
+    const popup = getPopup();
+
+    if (typeof params.willOpen === 'function') {
+      params.willOpen(popup);
+    }
+
+    const bodyStyles = window.getComputedStyle(document.body);
+    const initialBodyOverflow = bodyStyles.overflowY;
+    addClasses$1(container, popup, params); // scrolling is 'hidden' until animation is done, after that 'auto'
+
+    setTimeout(() => {
+      setScrollingVisibility(container, popup);
+    }, SHOW_CLASS_TIMEOUT);
+
+    if (isModal()) {
+      fixScrollContainer(container, params.scrollbarPadding, initialBodyOverflow);
+      setAriaHidden();
+    }
+
+    if (!isToast() && !globalState.previousActiveElement) {
+      globalState.previousActiveElement = document.activeElement;
+    }
+
+    if (typeof params.didOpen === 'function') {
+      setTimeout(() => params.didOpen(popup));
+    }
+
+    removeClass(container, swalClasses['no-transition']);
+  };
+
+  const swalOpenAnimationFinished = event => {
+    const popup = getPopup();
+
+    if (event.target !== popup) {
+      return;
+    }
+
+    const container = getContainer();
+    popup.removeEventListener(animationEndEvent, swalOpenAnimationFinished);
+    container.style.overflowY = 'auto';
+  };
+
+  const setScrollingVisibility = (container, popup) => {
+    if (animationEndEvent && hasCssAnimation(popup)) {
+      container.style.overflowY = 'hidden';
+      popup.addEventListener(animationEndEvent, swalOpenAnimationFinished);
+    } else {
+      container.style.overflowY = 'auto';
+    }
+  };
+
+  const fixScrollContainer = (container, scrollbarPadding, initialBodyOverflow) => {
+    iOSfix();
+
+    if (scrollbarPadding && initialBodyOverflow !== 'hidden') {
+      fixScrollbar();
+    } // sweetalert2/issues/1247
+
+
+    setTimeout(() => {
+      container.scrollTop = 0;
+    });
+  };
+
+  const addClasses$1 = (container, popup, params) => {
+    addClass(container, params.showClass.backdrop); // this workaround with opacity is needed for https://github.com/sweetalert2/sweetalert2/issues/2059
+
+    popup.style.setProperty('opacity', '0', 'important');
+    show(popup, 'grid');
+    setTimeout(() => {
+      // Animate popup right after showing it
+      addClass(popup, params.showClass.popup); // and remove the opacity workaround
+
+      popup.style.removeProperty('opacity');
+    }, SHOW_CLASS_TIMEOUT); // 10ms in order to fix #2062
+
+    addClass([document.documentElement, document.body], swalClasses.shown);
+
+    if (params.heightAuto && params.backdrop && !params.toast) {
+      addClass([document.documentElement, document.body], swalClasses['height-auto']);
+    }
+  };
+
+  /**
+   * Shows loader (spinner), this is useful with AJAX requests.
+   * By default the loader be shown instead of the "Confirm" button.
+   */
+
+  const showLoading = buttonToReplace => {
+    let popup = getPopup();
+
+    if (!popup) {
+      new Swal(); // eslint-disable-line no-new
+    }
+
+    popup = getPopup();
+    const loader = getLoader();
+
+    if (isToast()) {
+      hide(getIcon());
+    } else {
+      replaceButton(popup, buttonToReplace);
+    }
+
+    show(loader);
+    popup.setAttribute('data-loading', 'true');
+    popup.setAttribute('aria-busy', 'true');
+    popup.focus();
+  };
+
+  const replaceButton = (popup, buttonToReplace) => {
+    const actions = getActions();
+    const loader = getLoader();
+
+    if (!buttonToReplace && isVisible(getConfirmButton())) {
+      buttonToReplace = getConfirmButton();
+    }
+
+    show(actions);
+
+    if (buttonToReplace) {
+      hide(buttonToReplace);
+      loader.setAttribute('data-button-to-replace', buttonToReplace.className);
+    }
+
+    loader.parentNode.insertBefore(loader, buttonToReplace);
+    addClass([popup, actions], swalClasses.loading);
+  };
+
+  const handleInputOptionsAndValue = (instance, params) => {
+    if (params.input === 'select' || params.input === 'radio') {
+      handleInputOptions(instance, params);
+    } else if (['text', 'email', 'number', 'tel', 'textarea'].includes(params.input) && (hasToPromiseFn(params.inputValue) || isPromise(params.inputValue))) {
+      showLoading(getConfirmButton());
+      handleInputValue(instance, params);
+    }
+  };
+  const getInputValue = (instance, innerParams) => {
+    const input = instance.getInput();
+
+    if (!input) {
+      return null;
+    }
+
+    switch (innerParams.input) {
+      case 'checkbox':
+        return getCheckboxValue(input);
+
+      case 'radio':
+        return getRadioValue(input);
+
+      case 'file':
+        return getFileValue(input);
+
+      default:
+        return innerParams.inputAutoTrim ? input.value.trim() : input.value;
+    }
+  };
+
+  const getCheckboxValue = input => input.checked ? 1 : 0;
+
+  const getRadioValue = input => input.checked ? input.value : null;
+
+  const getFileValue = input => input.files.length ? input.getAttribute('multiple') !== null ? input.files : input.files[0] : null;
+
+  const handleInputOptions = (instance, params) => {
+    const popup = getPopup();
+
+    const processInputOptions = inputOptions => populateInputOptions[params.input](popup, formatInputOptions(inputOptions), params);
+
+    if (hasToPromiseFn(params.inputOptions) || isPromise(params.inputOptions)) {
+      showLoading(getConfirmButton());
+      asPromise(params.inputOptions).then(inputOptions => {
+        instance.hideLoading();
+        processInputOptions(inputOptions);
+      });
+    } else if (typeof params.inputOptions === 'object') {
+      processInputOptions(params.inputOptions);
+    } else {
+      error("Unexpected type of inputOptions! Expected object, Map or Promise, got ".concat(typeof params.inputOptions));
+    }
+  };
+
+  const handleInputValue = (instance, params) => {
+    const input = instance.getInput();
+    hide(input);
+    asPromise(params.inputValue).then(inputValue => {
+      input.value = params.input === 'number' ? parseFloat(inputValue) || 0 : "".concat(inputValue);
+      show(input);
+      input.focus();
+      instance.hideLoading();
+    }).catch(err => {
+      error("Error in inputValue promise: ".concat(err));
+      input.value = '';
+      show(input);
+      input.focus();
+      instance.hideLoading();
+    });
+  };
+
+  const populateInputOptions = {
+    select: (popup, inputOptions, params) => {
+      const select = getDirectChildByClass(popup, swalClasses.select);
+
+      const renderOption = (parent, optionLabel, optionValue) => {
+        const option = document.createElement('option');
+        option.value = optionValue;
+        setInnerHtml(option, optionLabel);
+        option.selected = isSelected(optionValue, params.inputValue);
+        parent.appendChild(option);
+      };
+
+      inputOptions.forEach(inputOption => {
+        const optionValue = inputOption[0];
+        const optionLabel = inputOption[1]; // <optgroup> spec:
+        // https://www.w3.org/TR/html401/interact/forms.html#h-17.6
+        // "...all OPTGROUP elements must be specified directly within a SELECT element (i.e., groups may not be nested)..."
+        // check whether this is a <optgroup>
+
+        if (Array.isArray(optionLabel)) {
+          // if it is an array, then it is an <optgroup>
+          const optgroup = document.createElement('optgroup');
+          optgroup.label = optionValue;
+          optgroup.disabled = false; // not configurable for now
+
+          select.appendChild(optgroup);
+          optionLabel.forEach(o => renderOption(optgroup, o[1], o[0]));
+        } else {
+          // case of <option>
+          renderOption(select, optionLabel, optionValue);
+        }
+      });
+      select.focus();
+    },
+    radio: (popup, inputOptions, params) => {
+      const radio = getDirectChildByClass(popup, swalClasses.radio);
+      inputOptions.forEach(inputOption => {
+        const radioValue = inputOption[0];
+        const radioLabel = inputOption[1];
+        const radioInput = document.createElement('input');
+        const radioLabelElement = document.createElement('label');
+        radioInput.type = 'radio';
+        radioInput.name = swalClasses.radio;
+        radioInput.value = radioValue;
+
+        if (isSelected(radioValue, params.inputValue)) {
+          radioInput.checked = true;
+        }
+
+        const label = document.createElement('span');
+        setInnerHtml(label, radioLabel);
+        label.className = swalClasses.label;
+        radioLabelElement.appendChild(radioInput);
+        radioLabelElement.appendChild(label);
+        radio.appendChild(radioLabelElement);
+      });
+      const radios = radio.querySelectorAll('input');
+
+      if (radios.length) {
+        radios[0].focus();
+      }
+    }
+  };
+  /**
+   * Converts `inputOptions` into an array of `[value, label]`s
+   * @param inputOptions
+   */
+
+  const formatInputOptions = inputOptions => {
+    const result = [];
+
+    if (typeof Map !== 'undefined' && inputOptions instanceof Map) {
+      inputOptions.forEach((value, key) => {
+        let valueFormatted = value;
+
+        if (typeof valueFormatted === 'object') {
+          // case of <optgroup>
+          valueFormatted = formatInputOptions(valueFormatted);
+        }
+
+        result.push([key, valueFormatted]);
+      });
+    } else {
+      Object.keys(inputOptions).forEach(key => {
+        let valueFormatted = inputOptions[key];
+
+        if (typeof valueFormatted === 'object') {
+          // case of <optgroup>
+          valueFormatted = formatInputOptions(valueFormatted);
+        }
+
+        result.push([key, valueFormatted]);
+      });
+    }
+
+    return result;
+  };
+
+  const isSelected = (optionValue, inputValue) => {
+    return inputValue && inputValue.toString() === optionValue.toString();
+  };
+
+  /**
+   * Hides loader and shows back the button which was hidden by .showLoading()
+   */
+
+  function hideLoading() {
+    // do nothing if popup is closed
+    const innerParams = privateProps.innerParams.get(this);
+
+    if (!innerParams) {
+      return;
+    }
+
+    const domCache = privateProps.domCache.get(this);
+    hide(domCache.loader);
+
+    if (isToast()) {
+      if (innerParams.icon) {
+        show(getIcon());
+      }
+    } else {
+      showRelatedButton(domCache);
+    }
+
+    removeClass([domCache.popup, domCache.actions], swalClasses.loading);
+    domCache.popup.removeAttribute('aria-busy');
+    domCache.popup.removeAttribute('data-loading');
+    domCache.confirmButton.disabled = false;
+    domCache.denyButton.disabled = false;
+    domCache.cancelButton.disabled = false;
+  }
+
+  const showRelatedButton = domCache => {
+    const buttonToReplace = domCache.popup.getElementsByClassName(domCache.loader.getAttribute('data-button-to-replace'));
+
+    if (buttonToReplace.length) {
+      show(buttonToReplace[0], 'inline-block');
+    } else if (allButtonsAreHidden()) {
+      hide(domCache.actions);
+    }
+  };
+
+  /**
+   * Gets the input DOM node, this method works with input parameter.
+   * @returns {HTMLElement | null}
+   */
+
+  function getInput$1(instance) {
+    const innerParams = privateProps.innerParams.get(instance || this);
+    const domCache = privateProps.domCache.get(instance || this);
+
+    if (!domCache) {
+      return null;
+    }
+
+    return getInput(domCache.popup, innerParams.input);
+  }
+
+  /**
+   * This module contains `WeakMap`s for each effectively-"private  property" that a `Swal` has.
+   * For example, to set the private property "foo" of `this` to "bar", you can `privateProps.foo.set(this, 'bar')`
+   * This is the approach that Babel will probably take to implement private methods/fields
+   *   https://github.com/tc39/proposal-private-methods
+   *   https://github.com/babel/babel/pull/7555
+   * Once we have the changes from that PR in Babel, and our core class fits reasonable in *one module*
+   *   then we can use that language feature.
+   */
+  var privateMethods = {
+    swalPromiseResolve: new WeakMap(),
+    swalPromiseReject: new WeakMap()
+  };
+
+  /*
+   * Global function to determine if SweetAlert2 popup is shown
+   */
+
+  const isVisible$1 = () => {
+    return isVisible(getPopup());
+  };
+  /*
+   * Global function to click 'Confirm' button
+   */
+
+  const clickConfirm = () => getConfirmButton() && getConfirmButton().click();
+  /*
+   * Global function to click 'Deny' button
+   */
+
+  const clickDeny = () => getDenyButton() && getDenyButton().click();
+  /*
+   * Global function to click 'Cancel' button
+   */
+
+  const clickCancel = () => getCancelButton() && getCancelButton().click();
+
+  /**
+   * @param {GlobalState} globalState
+   */
+
+  const removeKeydownHandler = globalState => {
+    if (globalState.keydownTarget && globalState.keydownHandlerAdded) {
+      globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, {
+        capture: globalState.keydownListenerCapture
+      });
+      globalState.keydownHandlerAdded = false;
+    }
+  };
+  /**
+   * @param {SweetAlert2} instance
+   * @param {GlobalState} globalState
+   * @param {SweetAlertOptions} innerParams
+   * @param {*} dismissWith
+   */
+
+  const addKeydownHandler = (instance, globalState, innerParams, dismissWith) => {
+    removeKeydownHandler(globalState);
+
+    if (!innerParams.toast) {
+      globalState.keydownHandler = e => keydownHandler(instance, e, dismissWith);
+
+      globalState.keydownTarget = innerParams.keydownListenerCapture ? window : getPopup();
+      globalState.keydownListenerCapture = innerParams.keydownListenerCapture;
+      globalState.keydownTarget.addEventListener('keydown', globalState.keydownHandler, {
+        capture: globalState.keydownListenerCapture
+      });
+      globalState.keydownHandlerAdded = true;
+    }
+  };
+  /**
+   * @param {SweetAlertOptions} innerParams
+   * @param {number} index
+   * @param {number} increment
+   */
+
+  const setFocus = (innerParams, index, increment) => {
+    const focusableElements = getFocusableElements(); // search for visible elements and select the next possible match
+
+    if (focusableElements.length) {
+      index = index + increment; // rollover to first item
+
+      if (index === focusableElements.length) {
+        index = 0; // go to last item
+      } else if (index === -1) {
+        index = focusableElements.length - 1;
+      }
+
+      return focusableElements[index].focus();
+    } // no visible focusable elements, focus the popup
+
+
+    getPopup().focus();
+  };
+  const arrowKeysNextButton = ['ArrowRight', 'ArrowDown'];
+  const arrowKeysPreviousButton = ['ArrowLeft', 'ArrowUp'];
+  /**
+   * @param {SweetAlert2} instance
+   * @param {KeyboardEvent} e
+   * @param {function} dismissWith
+   */
+
+  const keydownHandler = (instance, e, dismissWith) => {
+    const innerParams = privateProps.innerParams.get(instance);
+
+    if (!innerParams) {
+      return; // This instance has already been destroyed
+    } // Ignore keydown during IME composition
+    // https://developer.mozilla.org/en-US/docs/Web/API/Document/keydown_event#ignoring_keydown_during_ime_composition
+    // https://github.com/sweetalert2/sweetalert2/issues/720
+    // https://github.com/sweetalert2/sweetalert2/issues/2406
+
+
+    if (e.isComposing || e.keyCode === 229) {
+      return;
+    }
+
+    if (innerParams.stopKeydownPropagation) {
+      e.stopPropagation();
+    } // ENTER
+
+
+    if (e.key === 'Enter') {
+      handleEnter(instance, e, innerParams);
+    } // TAB
+    else if (e.key === 'Tab') {
+      handleTab(e, innerParams);
+    } // ARROWS - switch focus between buttons
+    else if ([...arrowKeysNextButton, ...arrowKeysPreviousButton].includes(e.key)) {
+      handleArrows(e.key);
+    } // ESC
+    else if (e.key === 'Escape') {
+      handleEsc(e, innerParams, dismissWith);
+    }
+  };
+  /**
+   * @param {SweetAlert2} instance
+   * @param {KeyboardEvent} e
+   * @param {SweetAlertOptions} innerParams
+   */
+
+
+  const handleEnter = (instance, e, innerParams) => {
+    // https://github.com/sweetalert2/sweetalert2/issues/2386
+    if (!callIfFunction(innerParams.allowEnterKey)) {
+      return;
+    }
+
+    if (e.target && instance.getInput() && e.target instanceof HTMLElement && e.target.outerHTML === instance.getInput().outerHTML) {
+      if (['textarea', 'file'].includes(innerParams.input)) {
+        return; // do not submit
+      }
+
+      clickConfirm();
+      e.preventDefault();
+    }
+  };
+  /**
+   * @param {KeyboardEvent} e
+   * @param {SweetAlertOptions} innerParams
+   */
+
+
+  const handleTab = (e, innerParams) => {
+    const targetElement = e.target;
+    const focusableElements = getFocusableElements();
+    let btnIndex = -1;
+
+    for (let i = 0; i < focusableElements.length; i++) {
+      if (targetElement === focusableElements[i]) {
+        btnIndex = i;
+        break;
+      }
+    } // Cycle to the next button
+
+
+    if (!e.shiftKey) {
+      setFocus(innerParams, btnIndex, 1);
+    } // Cycle to the prev button
+    else {
+      setFocus(innerParams, btnIndex, -1);
+    }
+
+    e.stopPropagation();
+    e.preventDefault();
+  };
+  /**
+   * @param {string} key
+   */
+
+
+  const handleArrows = key => {
+    const confirmButton = getConfirmButton();
+    const denyButton = getDenyButton();
+    const cancelButton = getCancelButton();
+
+    if (document.activeElement instanceof HTMLElement && ![confirmButton, denyButton, cancelButton].includes(document.activeElement)) {
+      return;
+    }
+
+    const sibling = arrowKeysNextButton.includes(key) ? 'nextElementSibling' : 'previousElementSibling';
+    let buttonToFocus = document.activeElement;
+
+    for (let i = 0; i < getActions().children.length; i++) {
+      buttonToFocus = buttonToFocus[sibling];
+
+      if (!buttonToFocus) {
+        return;
+      }
+
+      if (buttonToFocus instanceof HTMLButtonElement && isVisible(buttonToFocus)) {
+        break;
+      }
+    }
+
+    if (buttonToFocus instanceof HTMLButtonElement) {
+      buttonToFocus.focus();
+    }
+  };
+  /**
+   * @param {KeyboardEvent} e
+   * @param {SweetAlertOptions} innerParams
+   * @param {function} dismissWith
+   */
+
+
+  const handleEsc = (e, innerParams, dismissWith) => {
+    if (callIfFunction(innerParams.allowEscapeKey)) {
+      e.preventDefault();
+      dismissWith(DismissReason.esc);
+    }
+  };
+
+  /*
+   * Instance method to close sweetAlert
+   */
+
+  function removePopupAndResetState(instance, container, returnFocus, didClose) {
+    if (isToast()) {
+      triggerDidCloseAndDispose(instance, didClose);
+    } else {
+      restoreActiveElement(returnFocus).then(() => triggerDidCloseAndDispose(instance, didClose));
+      removeKeydownHandler(globalState);
+    }
+
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent); // workaround for #2088
+    // for some reason removing the container in Safari will scroll the document to bottom
+
+    if (isSafari) {
+      container.setAttribute('style', 'display:none !important');
+      container.removeAttribute('class');
+      container.innerHTML = '';
+    } else {
+      container.remove();
+    }
+
+    if (isModal()) {
+      undoScrollbar();
+      undoIOSfix();
+      unsetAriaHidden();
+    }
+
+    removeBodyClasses();
+  }
+
+  function removeBodyClasses() {
+    removeClass([document.documentElement, document.body], [swalClasses.shown, swalClasses['height-auto'], swalClasses['no-backdrop'], swalClasses['toast-shown']]);
+  }
+
+  function close(resolveValue) {
+    resolveValue = prepareResolveValue(resolveValue);
+    const swalPromiseResolve = privateMethods.swalPromiseResolve.get(this);
+    const didClose = triggerClosePopup(this);
+
+    if (this.isAwaitingPromise()) {
+      // A swal awaiting for a promise (after a click on Confirm or Deny) cannot be dismissed anymore #2335
+      if (!resolveValue.isDismissed) {
+        handleAwaitingPromise(this);
+        swalPromiseResolve(resolveValue);
+      }
+    } else if (didClose) {
+      // Resolve Swal promise
+      swalPromiseResolve(resolveValue);
+    }
+  }
+  function isAwaitingPromise() {
+    return !!privateProps.awaitingPromise.get(this);
+  }
+
+  const triggerClosePopup = instance => {
+    const popup = getPopup();
+
+    if (!popup) {
+      return false;
+    }
+
+    const innerParams = privateProps.innerParams.get(instance);
+
+    if (!innerParams || hasClass(popup, innerParams.hideClass.popup)) {
+      return false;
+    }
+
+    removeClass(popup, innerParams.showClass.popup);
+    addClass(popup, innerParams.hideClass.popup);
+    const backdrop = getContainer();
+    removeClass(backdrop, innerParams.showClass.backdrop);
+    addClass(backdrop, innerParams.hideClass.backdrop);
+    handlePopupAnimation(instance, popup, innerParams);
+    return true;
+  };
+
+  function rejectPromise(error) {
+    const rejectPromise = privateMethods.swalPromiseReject.get(this);
+    handleAwaitingPromise(this);
+
+    if (rejectPromise) {
+      // Reject Swal promise
+      rejectPromise(error);
+    }
+  }
+  const handleAwaitingPromise = instance => {
+    if (instance.isAwaitingPromise()) {
+      privateProps.awaitingPromise.delete(instance); // The instance might have been previously partly destroyed, we must resume the destroy process in this case #2335
+
+      if (!privateProps.innerParams.get(instance)) {
+        instance._destroy();
+      }
+    }
+  };
+
+  const prepareResolveValue = resolveValue => {
+    // When user calls Swal.close()
+    if (typeof resolveValue === 'undefined') {
+      return {
+        isConfirmed: false,
+        isDenied: false,
+        isDismissed: true
+      };
+    }
+
+    return Object.assign({
+      isConfirmed: false,
+      isDenied: false,
+      isDismissed: false
+    }, resolveValue);
+  };
+
+  const handlePopupAnimation = (instance, popup, innerParams) => {
+    const container = getContainer(); // If animation is supported, animate
+
+    const animationIsSupported = animationEndEvent && hasCssAnimation(popup);
+
+    if (typeof innerParams.willClose === 'function') {
+      innerParams.willClose(popup);
+    }
+
+    if (animationIsSupported) {
+      animatePopup(instance, popup, container, innerParams.returnFocus, innerParams.didClose);
+    } else {
+      // Otherwise, remove immediately
+      removePopupAndResetState(instance, container, innerParams.returnFocus, innerParams.didClose);
+    }
+  };
+
+  const animatePopup = (instance, popup, container, returnFocus, didClose) => {
+    globalState.swalCloseEventFinishedCallback = removePopupAndResetState.bind(null, instance, container, returnFocus, didClose);
+    popup.addEventListener(animationEndEvent, function (e) {
+      if (e.target === popup) {
+        globalState.swalCloseEventFinishedCallback();
+        delete globalState.swalCloseEventFinishedCallback;
+      }
+    });
+  };
+
+  const triggerDidCloseAndDispose = (instance, didClose) => {
+    setTimeout(() => {
+      if (typeof didClose === 'function') {
+        didClose.bind(instance.params)();
+      }
+
+      instance._destroy();
+    });
+  };
+
+  function setButtonsDisabled(instance, buttons, disabled) {
+    const domCache = privateProps.domCache.get(instance);
+    buttons.forEach(button => {
+      domCache[button].disabled = disabled;
+    });
+  }
+
+  function setInputDisabled(input, disabled) {
+    if (!input) {
+      return false;
+    }
+
+    if (input.type === 'radio') {
+      const radiosContainer = input.parentNode.parentNode;
+      const radios = radiosContainer.querySelectorAll('input');
+
+      for (let i = 0; i < radios.length; i++) {
+        radios[i].disabled = disabled;
+      }
+    } else {
+      input.disabled = disabled;
+    }
+  }
+
+  function enableButtons() {
+    setButtonsDisabled(this, ['confirmButton', 'denyButton', 'cancelButton'], false);
+  }
+  function disableButtons() {
+    setButtonsDisabled(this, ['confirmButton', 'denyButton', 'cancelButton'], true);
+  }
+  function enableInput() {
+    return setInputDisabled(this.getInput(), false);
+  }
+  function disableInput() {
+    return setInputDisabled(this.getInput(), true);
+  }
+
+  function showValidationMessage(error) {
+    const domCache = privateProps.domCache.get(this);
+    const params = privateProps.innerParams.get(this);
+    setInnerHtml(domCache.validationMessage, error);
+    domCache.validationMessage.className = swalClasses['validation-message'];
+
+    if (params.customClass && params.customClass.validationMessage) {
+      addClass(domCache.validationMessage, params.customClass.validationMessage);
+    }
+
+    show(domCache.validationMessage);
+    const input = this.getInput();
+
+    if (input) {
+      input.setAttribute('aria-invalid', true);
+      input.setAttribute('aria-describedby', swalClasses['validation-message']);
+      focusInput(input);
+      addClass(input, swalClasses.inputerror);
+    }
+  } // Hide block with validation message
+
+  function resetValidationMessage$1() {
+    const domCache = privateProps.domCache.get(this);
+
+    if (domCache.validationMessage) {
+      hide(domCache.validationMessage);
+    }
+
+    const input = this.getInput();
+
+    if (input) {
+      input.removeAttribute('aria-invalid');
+      input.removeAttribute('aria-describedby');
+      removeClass(input, swalClasses.inputerror);
+    }
+  }
+
+  function getProgressSteps$1() {
+    const domCache = privateProps.domCache.get(this);
+    return domCache.progressSteps;
+  }
+
+  /**
+   * Updates popup parameters.
+   */
+
+  function update(params) {
+    const popup = getPopup();
+    const innerParams = privateProps.innerParams.get(this);
+
+    if (!popup || hasClass(popup, innerParams.hideClass.popup)) {
+      return warn("You're trying to update the closed or closing popup, that won't work. Use the update() method in preConfirm parameter or show a new popup.");
+    }
+
+    const validUpdatableParams = filterValidParams(params);
+    const updatedParams = Object.assign({}, innerParams, validUpdatableParams);
+    render(this, updatedParams);
+    privateProps.innerParams.set(this, updatedParams);
+    Object.defineProperties(this, {
+      params: {
+        value: Object.assign({}, this.params, params),
+        writable: false,
+        enumerable: true
+      }
+    });
+  }
+
+  const filterValidParams = params => {
+    const validUpdatableParams = {};
+    Object.keys(params).forEach(param => {
+      if (isUpdatableParameter(param)) {
+        validUpdatableParams[param] = params[param];
+      } else {
+        warn("Invalid parameter to update: ".concat(param));
+      }
+    });
+    return validUpdatableParams;
+  };
+
+  function _destroy() {
+    const domCache = privateProps.domCache.get(this);
+    const innerParams = privateProps.innerParams.get(this);
+
+    if (!innerParams) {
+      disposeWeakMaps(this); // The WeakMaps might have been partly destroyed, we must recall it to dispose any remaining WeakMaps #2335
+
+      return; // This instance has already been destroyed
+    } // Check if there is another Swal closing
+
+
+    if (domCache.popup && globalState.swalCloseEventFinishedCallback) {
+      globalState.swalCloseEventFinishedCallback();
+      delete globalState.swalCloseEventFinishedCallback;
+    }
+
+    if (typeof innerParams.didDestroy === 'function') {
+      innerParams.didDestroy();
+    }
+
+    disposeSwal(this);
+  }
+  /**
+   * @param {SweetAlert2} instance
+   */
+
+  const disposeSwal = instance => {
+    disposeWeakMaps(instance); // Unset this.params so GC will dispose it (#1569)
+    // @ts-ignore
+
+    delete instance.params; // Unset globalState props so GC will dispose globalState (#1569)
+
+    delete globalState.keydownHandler;
+    delete globalState.keydownTarget; // Unset currentInstance
+
+    delete globalState.currentInstance;
+  };
+  /**
+   * @param {SweetAlert2} instance
+   */
+
+
+  const disposeWeakMaps = instance => {
+    // If the current instance is awaiting a promise result, we keep the privateMethods to call them once the promise result is retrieved #2335
+    // @ts-ignore
+    if (instance.isAwaitingPromise()) {
+      unsetWeakMaps(privateProps, instance);
+      privateProps.awaitingPromise.set(instance, true);
+    } else {
+      unsetWeakMaps(privateMethods, instance);
+      unsetWeakMaps(privateProps, instance);
+    }
+  };
+  /**
+   * @param {object} obj
+   * @param {SweetAlert2} instance
+   */
+
+
+  const unsetWeakMaps = (obj, instance) => {
+    for (const i in obj) {
+      obj[i].delete(instance);
+    }
+  };
+
+
+
+  var instanceMethods = /*#__PURE__*/Object.freeze({
+    hideLoading: hideLoading,
+    disableLoading: hideLoading,
+    getInput: getInput$1,
+    close: close,
+    isAwaitingPromise: isAwaitingPromise,
+    rejectPromise: rejectPromise,
+    handleAwaitingPromise: handleAwaitingPromise,
+    closePopup: close,
+    closeModal: close,
+    closeToast: close,
+    enableButtons: enableButtons,
+    disableButtons: disableButtons,
+    enableInput: enableInput,
+    disableInput: disableInput,
+    showValidationMessage: showValidationMessage,
+    resetValidationMessage: resetValidationMessage$1,
+    getProgressSteps: getProgressSteps$1,
+    update: update,
+    _destroy: _destroy
+  });
+
+  const handleConfirmButtonClick = instance => {
+    const innerParams = privateProps.innerParams.get(instance);
+    instance.disableButtons();
+
+    if (innerParams.input) {
+      handleConfirmOrDenyWithInput(instance, 'confirm');
+    } else {
+      confirm(instance, true);
+    }
+  };
+  const handleDenyButtonClick = instance => {
+    const innerParams = privateProps.innerParams.get(instance);
+    instance.disableButtons();
+
+    if (innerParams.returnInputValueOnDeny) {
+      handleConfirmOrDenyWithInput(instance, 'deny');
+    } else {
+      deny(instance, false);
+    }
+  };
+  const handleCancelButtonClick = (instance, dismissWith) => {
+    instance.disableButtons();
+    dismissWith(DismissReason.cancel);
+  };
+
+  const handleConfirmOrDenyWithInput = (instance, type
+  /* 'confirm' | 'deny' */
+  ) => {
+    const innerParams = privateProps.innerParams.get(instance);
+
+    if (!innerParams.input) {
+      return error("The \"input\" parameter is needed to be set when using returnInputValueOn".concat(capitalizeFirstLetter(type)));
+    }
+
+    const inputValue = getInputValue(instance, innerParams);
+
+    if (innerParams.inputValidator) {
+      handleInputValidator(instance, inputValue, type);
+    } else if (!instance.getInput().checkValidity()) {
+      instance.enableButtons();
+      instance.showValidationMessage(innerParams.validationMessage);
+    } else if (type === 'deny') {
+      deny(instance, inputValue);
+    } else {
+      confirm(instance, inputValue);
+    }
+  };
+
+  const handleInputValidator = (instance, inputValue, type
+  /* 'confirm' | 'deny' */
+  ) => {
+    const innerParams = privateProps.innerParams.get(instance);
+    instance.disableInput();
+    const validationPromise = Promise.resolve().then(() => asPromise(innerParams.inputValidator(inputValue, innerParams.validationMessage)));
+    validationPromise.then(validationMessage => {
+      instance.enableButtons();
+      instance.enableInput();
+
+      if (validationMessage) {
+        instance.showValidationMessage(validationMessage);
+      } else if (type === 'deny') {
+        deny(instance, inputValue);
+      } else {
+        confirm(instance, inputValue);
+      }
+    });
+  };
+
+  const deny = (instance, value) => {
+    const innerParams = privateProps.innerParams.get(instance || undefined);
+
+    if (innerParams.showLoaderOnDeny) {
+      showLoading(getDenyButton());
+    }
+
+    if (innerParams.preDeny) {
+      privateProps.awaitingPromise.set(instance || undefined, true); // Flagging the instance as awaiting a promise so it's own promise's reject/resolve methods doesn't get destroyed until the result from this preDeny's promise is received
+
+      const preDenyPromise = Promise.resolve().then(() => asPromise(innerParams.preDeny(value, innerParams.validationMessage)));
+      preDenyPromise.then(preDenyValue => {
+        if (preDenyValue === false) {
+          instance.hideLoading();
+          handleAwaitingPromise(instance);
+        } else {
+          instance.closePopup({
+            isDenied: true,
+            value: typeof preDenyValue === 'undefined' ? value : preDenyValue
+          });
+        }
+      }).catch(error$$1 => rejectWith(instance || undefined, error$$1));
+    } else {
+      instance.closePopup({
+        isDenied: true,
+        value
+      });
+    }
+  };
+
+  const succeedWith = (instance, value) => {
+    instance.closePopup({
+      isConfirmed: true,
+      value
+    });
+  };
+
+  const rejectWith = (instance, error$$1) => {
+    instance.rejectPromise(error$$1);
+  };
+
+  const confirm = (instance, value) => {
+    const innerParams = privateProps.innerParams.get(instance || undefined);
+
+    if (innerParams.showLoaderOnConfirm) {
+      showLoading();
+    }
+
+    if (innerParams.preConfirm) {
+      instance.resetValidationMessage();
+      privateProps.awaitingPromise.set(instance || undefined, true); // Flagging the instance as awaiting a promise so it's own promise's reject/resolve methods doesn't get destroyed until the result from this preConfirm's promise is received
+
+      const preConfirmPromise = Promise.resolve().then(() => asPromise(innerParams.preConfirm(value, innerParams.validationMessage)));
+      preConfirmPromise.then(preConfirmValue => {
+        if (isVisible(getValidationMessage()) || preConfirmValue === false) {
+          instance.hideLoading();
+          handleAwaitingPromise(instance);
+        } else {
+          succeedWith(instance, typeof preConfirmValue === 'undefined' ? value : preConfirmValue);
+        }
+      }).catch(error$$1 => rejectWith(instance || undefined, error$$1));
+    } else {
+      succeedWith(instance, value);
+    }
+  };
+
+  const handlePopupClick = (instance, domCache, dismissWith) => {
+    const innerParams = privateProps.innerParams.get(instance);
+
+    if (innerParams.toast) {
+      handleToastClick(instance, domCache, dismissWith);
+    } else {
+      // Ignore click events that had mousedown on the popup but mouseup on the container
+      // This can happen when the user drags a slider
+      handleModalMousedown(domCache); // Ignore click events that had mousedown on the container but mouseup on the popup
+
+      handleContainerMousedown(domCache);
+      handleModalClick(instance, domCache, dismissWith);
+    }
+  };
+
+  const handleToastClick = (instance, domCache, dismissWith) => {
+    // Closing toast by internal click
+    domCache.popup.onclick = () => {
+      const innerParams = privateProps.innerParams.get(instance);
+
+      if (innerParams && (isAnyButtonShown(innerParams) || innerParams.timer || innerParams.input)) {
+        return;
+      }
+
+      dismissWith(DismissReason.close);
+    };
+  };
+  /**
+   * @param {*} innerParams
+   * @returns {boolean}
+   */
+
+
+  const isAnyButtonShown = innerParams => {
+    return innerParams.showConfirmButton || innerParams.showDenyButton || innerParams.showCancelButton || innerParams.showCloseButton;
+  };
+
+  let ignoreOutsideClick = false;
+
+  const handleModalMousedown = domCache => {
+    domCache.popup.onmousedown = () => {
+      domCache.container.onmouseup = function (e) {
+        domCache.container.onmouseup = undefined; // We only check if the mouseup target is the container because usually it doesn't
+        // have any other direct children aside of the popup
+
+        if (e.target === domCache.container) {
+          ignoreOutsideClick = true;
+        }
+      };
+    };
+  };
+
+  const handleContainerMousedown = domCache => {
+    domCache.container.onmousedown = () => {
+      domCache.popup.onmouseup = function (e) {
+        domCache.popup.onmouseup = undefined; // We also need to check if the mouseup target is a child of the popup
+
+        if (e.target === domCache.popup || domCache.popup.contains(e.target)) {
+          ignoreOutsideClick = true;
+        }
+      };
+    };
+  };
+
+  const handleModalClick = (instance, domCache, dismissWith) => {
+    domCache.container.onclick = e => {
+      const innerParams = privateProps.innerParams.get(instance);
+
+      if (ignoreOutsideClick) {
+        ignoreOutsideClick = false;
+        return;
+      }
+
+      if (e.target === domCache.container && callIfFunction(innerParams.allowOutsideClick)) {
+        dismissWith(DismissReason.backdrop);
+      }
+    };
+  };
+
+  const isJqueryElement = elem => typeof elem === 'object' && elem.jquery;
+
+  const isElement = elem => elem instanceof Element || isJqueryElement(elem);
+
+  const argsToParams = args => {
+    const params = {};
+
+    if (typeof args[0] === 'object' && !isElement(args[0])) {
+      Object.assign(params, args[0]);
+    } else {
+      ['title', 'html', 'icon'].forEach((name, index) => {
+        const arg = args[index];
+
+        if (typeof arg === 'string' || isElement(arg)) {
+          params[name] = arg;
+        } else if (arg !== undefined) {
+          error("Unexpected type of ".concat(name, "! Expected \"string\" or \"Element\", got ").concat(typeof arg));
+        }
+      });
+    }
+
+    return params;
+  };
+
+  function fire() {
+    const Swal = this; // eslint-disable-line @typescript-eslint/no-this-alias
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return new Swal(...args);
+  }
+
+  /**
+   * Returns an extended version of `Swal` containing `params` as defaults.
+   * Useful for reusing Swal configuration.
+   *
+   * For example:
+   *
+   * Before:
+   * const textPromptOptions = { input: 'text', showCancelButton: true }
+   * const {value: firstName} = await Swal.fire({ ...textPromptOptions, title: 'What is your first name?' })
+   * const {value: lastName} = await Swal.fire({ ...textPromptOptions, title: 'What is your last name?' })
+   *
+   * After:
+   * const TextPrompt = Swal.mixin({ input: 'text', showCancelButton: true })
+   * const {value: firstName} = await TextPrompt('What is your first name?')
+   * const {value: lastName} = await TextPrompt('What is your last name?')
+   *
+   * @param mixinParams
+   */
+  function mixin(mixinParams) {
+    class MixinSwal extends this {
+      _main(params, priorityMixinParams) {
+        return super._main(params, Object.assign({}, mixinParams, priorityMixinParams));
+      }
+
+    }
+
+    return MixinSwal;
+  }
+
+  /**
+   * If `timer` parameter is set, returns number of milliseconds of timer remained.
+   * Otherwise, returns undefined.
+   */
+
+  const getTimerLeft = () => {
+    return globalState.timeout && globalState.timeout.getTimerLeft();
+  };
+  /**
+   * Stop timer. Returns number of milliseconds of timer remained.
+   * If `timer` parameter isn't set, returns undefined.
+   */
+
+  const stopTimer = () => {
+    if (globalState.timeout) {
+      stopTimerProgressBar();
+      return globalState.timeout.stop();
+    }
+  };
+  /**
+   * Resume timer. Returns number of milliseconds of timer remained.
+   * If `timer` parameter isn't set, returns undefined.
+   */
+
+  const resumeTimer = () => {
+    if (globalState.timeout) {
+      const remaining = globalState.timeout.start();
+      animateTimerProgressBar(remaining);
+      return remaining;
+    }
+  };
+  /**
+   * Resume timer. Returns number of milliseconds of timer remained.
+   * If `timer` parameter isn't set, returns undefined.
+   */
+
+  const toggleTimer = () => {
+    const timer = globalState.timeout;
+    return timer && (timer.running ? stopTimer() : resumeTimer());
+  };
+  /**
+   * Increase timer. Returns number of milliseconds of an updated timer.
+   * If `timer` parameter isn't set, returns undefined.
+   */
+
+  const increaseTimer = n => {
+    if (globalState.timeout) {
+      const remaining = globalState.timeout.increase(n);
+      animateTimerProgressBar(remaining, true);
+      return remaining;
+    }
+  };
+  /**
+   * Check if timer is running. Returns true if timer is running
+   * or false if timer is paused or stopped.
+   * If `timer` parameter isn't set, returns undefined
+   */
+
+  const isTimerRunning = () => {
+    return globalState.timeout && globalState.timeout.isRunning();
+  };
+
+  let bodyClickListenerAdded = false;
+  const clickHandlers = {};
+  function bindClickHandler() {
+    let attr = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'data-swal-template';
+    clickHandlers[attr] = this;
+
+    if (!bodyClickListenerAdded) {
+      document.body.addEventListener('click', bodyClickListener);
+      bodyClickListenerAdded = true;
+    }
+  }
+
+  const bodyClickListener = event => {
+    for (let el = event.target; el && el !== document; el = el.parentNode) {
+      for (const attr in clickHandlers) {
+        const template = el.getAttribute(attr);
+
+        if (template) {
+          clickHandlers[attr].fire({
+            template
+          });
+          return;
+        }
+      }
+    }
+  };
+
+
+
+  var staticMethods = /*#__PURE__*/Object.freeze({
+    isValidParameter: isValidParameter,
+    isUpdatableParameter: isUpdatableParameter,
+    isDeprecatedParameter: isDeprecatedParameter,
+    argsToParams: argsToParams,
+    isVisible: isVisible$1,
+    clickConfirm: clickConfirm,
+    clickDeny: clickDeny,
+    clickCancel: clickCancel,
+    getContainer: getContainer,
+    getPopup: getPopup,
+    getTitle: getTitle,
+    getHtmlContainer: getHtmlContainer,
+    getImage: getImage,
+    getIcon: getIcon,
+    getInputLabel: getInputLabel,
+    getCloseButton: getCloseButton,
+    getActions: getActions,
+    getConfirmButton: getConfirmButton,
+    getDenyButton: getDenyButton,
+    getCancelButton: getCancelButton,
+    getLoader: getLoader,
+    getFooter: getFooter,
+    getTimerProgressBar: getTimerProgressBar,
+    getFocusableElements: getFocusableElements,
+    getValidationMessage: getValidationMessage,
+    isLoading: isLoading,
+    fire: fire,
+    mixin: mixin,
+    showLoading: showLoading,
+    enableLoading: showLoading,
+    getTimerLeft: getTimerLeft,
+    stopTimer: stopTimer,
+    resumeTimer: resumeTimer,
+    toggleTimer: toggleTimer,
+    increaseTimer: increaseTimer,
+    isTimerRunning: isTimerRunning,
+    bindClickHandler: bindClickHandler
+  });
+
+  let currentInstance;
+
+  class SweetAlert {
+    constructor() {
+      // Prevent run in Node env
+      if (typeof window === 'undefined') {
+        return;
+      }
+
+      currentInstance = this; // @ts-ignore
+
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      const outerParams = Object.freeze(this.constructor.argsToParams(args));
+      Object.defineProperties(this, {
+        params: {
+          value: outerParams,
+          writable: false,
+          enumerable: true,
+          configurable: true
+        }
+      }); // @ts-ignore
+
+      const promise = currentInstance._main(currentInstance.params);
+
+      privateProps.promise.set(this, promise);
+    }
+
+    _main(userParams) {
+      let mixinParams = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      showWarningsForParams(Object.assign({}, mixinParams, userParams));
+
+      if (globalState.currentInstance) {
+        // @ts-ignore
+        globalState.currentInstance._destroy();
+
+        if (isModal()) {
+          unsetAriaHidden();
+        }
+      }
+
+      globalState.currentInstance = currentInstance;
+      const innerParams = prepareParams(userParams, mixinParams);
+      setParameters(innerParams);
+      Object.freeze(innerParams); // clear the previous timer
+
+      if (globalState.timeout) {
+        globalState.timeout.stop();
+        delete globalState.timeout;
+      } // clear the restore focus timeout
+
+
+      clearTimeout(globalState.restoreFocusTimeout);
+      const domCache = populateDomCache(currentInstance);
+      render(currentInstance, innerParams);
+      privateProps.innerParams.set(currentInstance, innerParams);
+      return swalPromise(currentInstance, domCache, innerParams);
+    } // `catch` cannot be the name of a module export, so we define our thenable methods here instead
+
+
+    then(onFulfilled) {
+      const promise = privateProps.promise.get(this);
+      return promise.then(onFulfilled);
+    }
+
+    finally(onFinally) {
+      const promise = privateProps.promise.get(this);
+      return promise.finally(onFinally);
+    }
+
+  }
+
+  const swalPromise = (instance, domCache, innerParams) => {
+    return new Promise((resolve, reject) => {
+      // functions to handle all closings/dismissals
+      const dismissWith = dismiss => {
+        instance.closePopup({
+          isDismissed: true,
+          dismiss
+        });
+      };
+
+      privateMethods.swalPromiseResolve.set(instance, resolve);
+      privateMethods.swalPromiseReject.set(instance, reject);
+
+      domCache.confirmButton.onclick = () => handleConfirmButtonClick(instance);
+
+      domCache.denyButton.onclick = () => handleDenyButtonClick(instance);
+
+      domCache.cancelButton.onclick = () => handleCancelButtonClick(instance, dismissWith);
+
+      domCache.closeButton.onclick = () => dismissWith(DismissReason.close);
+
+      handlePopupClick(instance, domCache, dismissWith);
+      addKeydownHandler(instance, globalState, innerParams, dismissWith);
+      handleInputOptionsAndValue(instance, innerParams);
+      openPopup(innerParams);
+      setupTimer(globalState, innerParams, dismissWith);
+      initFocus(domCache, innerParams); // Scroll container to top on open (#1247, #1946)
+
+      setTimeout(() => {
+        domCache.container.scrollTop = 0;
+      });
+    });
+  };
+
+  const prepareParams = (userParams, mixinParams) => {
+    const templateParams = getTemplateParams(userParams);
+    const params = Object.assign({}, defaultParams, mixinParams, templateParams, userParams); // precedence is described in #2131
+
+    params.showClass = Object.assign({}, defaultParams.showClass, params.showClass);
+    params.hideClass = Object.assign({}, defaultParams.hideClass, params.hideClass);
+    return params;
+  };
+  /**
+   * @param {SweetAlert2} instance
+   * @returns {DomCache}
+   */
+
+
+  const populateDomCache = instance => {
+    const domCache = {
+      popup: getPopup(),
+      container: getContainer(),
+      actions: getActions(),
+      confirmButton: getConfirmButton(),
+      denyButton: getDenyButton(),
+      cancelButton: getCancelButton(),
+      loader: getLoader(),
+      closeButton: getCloseButton(),
+      validationMessage: getValidationMessage(),
+      progressSteps: getProgressSteps()
+    };
+    privateProps.domCache.set(instance, domCache);
+    return domCache;
+  };
+  /**
+   * @param {GlobalState} globalState
+   * @param {SweetAlertOptions} innerParams
+   * @param {function} dismissWith
+   */
+
+
+  const setupTimer = (globalState$$1, innerParams, dismissWith) => {
+    const timerProgressBar = getTimerProgressBar();
+    hide(timerProgressBar);
+
+    if (innerParams.timer) {
+      globalState$$1.timeout = new Timer(() => {
+        dismissWith('timer');
+        delete globalState$$1.timeout;
+      }, innerParams.timer);
+
+      if (innerParams.timerProgressBar) {
+        show(timerProgressBar);
+        applyCustomClass(timerProgressBar, innerParams, 'timerProgressBar');
+        setTimeout(() => {
+          if (globalState$$1.timeout && globalState$$1.timeout.running) {
+            // timer can be already stopped or unset at this point
+            animateTimerProgressBar(innerParams.timer);
+          }
+        });
+      }
+    }
+  };
+  /**
+   * @param {DomCache} domCache
+   * @param {SweetAlertOptions} innerParams
+   */
+
+
+  const initFocus = (domCache, innerParams) => {
+    if (innerParams.toast) {
+      return;
+    }
+
+    if (!callIfFunction(innerParams.allowEnterKey)) {
+      return blurActiveElement();
+    }
+
+    if (!focusButton(domCache, innerParams)) {
+      setFocus(innerParams, -1, 1);
+    }
+  };
+  /**
+   * @param {DomCache} domCache
+   * @param {SweetAlertOptions} innerParams
+   * @returns {boolean}
+   */
+
+
+  const focusButton = (domCache, innerParams) => {
+    if (innerParams.focusDeny && isVisible(domCache.denyButton)) {
+      domCache.denyButton.focus();
+      return true;
+    }
+
+    if (innerParams.focusCancel && isVisible(domCache.cancelButton)) {
+      domCache.cancelButton.focus();
+      return true;
+    }
+
+    if (innerParams.focusConfirm && isVisible(domCache.confirmButton)) {
+      domCache.confirmButton.focus();
+      return true;
+    }
+
+    return false;
+  };
+
+  const blurActiveElement = () => {
+    if (document.activeElement instanceof HTMLElement && typeof document.activeElement.blur === 'function') {
+      document.activeElement.blur();
+    }
+  }; // Assign instance methods from src/instanceMethods/*.js to prototype
+
+
+  Object.assign(SweetAlert.prototype, instanceMethods); // Assign static methods from src/staticMethods/*.js to constructor
+
+  Object.assign(SweetAlert, staticMethods); // Proxy to instance methods to constructor, for now, for backwards compatibility
+
+  Object.keys(instanceMethods).forEach(key => {
+    SweetAlert[key] = function () {
+      if (currentInstance) {
+        return currentInstance[key](...arguments);
+      }
+    };
+  });
+  SweetAlert.DismissReason = DismissReason;
+  SweetAlert.version = '11.4.18';
+
+  const Swal = SweetAlert; // @ts-ignore
+
+  Swal.default = Swal;
+
+  return Swal;
+
+}));
+if (typeof this !== 'undefined' && this.Sweetalert2){  this.swal = this.sweetAlert = this.Swal = this.SweetAlert = this.Sweetalert2}
+
+"undefined"!=typeof document&&function(e,t){var n=e.createElement("style");if(e.getElementsByTagName("head")[0].appendChild(n),n.styleSheet)n.styleSheet.disabled||(n.styleSheet.cssText=t);else try{n.innerHTML=t}catch(e){n.innerText=t}}(document,".swal2-popup.swal2-toast{box-sizing:border-box;grid-column:1/4!important;grid-row:1/4!important;grid-template-columns:1fr 99fr 1fr;padding:1em;overflow-y:hidden;background:#fff;box-shadow:0 0 1px hsla(0deg,0%,0%,.075),0 1px 2px hsla(0deg,0%,0%,.075),1px 2px 4px hsla(0deg,0%,0%,.075),1px 3px 8px hsla(0deg,0%,0%,.075),2px 4px 16px hsla(0deg,0%,0%,.075);pointer-events:all}.swal2-popup.swal2-toast>*{grid-column:2}.swal2-popup.swal2-toast .swal2-title{margin:.5em 1em;padding:0;font-size:1em;text-align:initial}.swal2-popup.swal2-toast .swal2-loading{justify-content:center}.swal2-popup.swal2-toast .swal2-input{height:2em;margin:.5em;font-size:1em}.swal2-popup.swal2-toast .swal2-validation-message{font-size:1em}.swal2-popup.swal2-toast .swal2-footer{margin:.5em 0 0;padding:.5em 0 0;font-size:.8em}.swal2-popup.swal2-toast .swal2-close{grid-column:3/3;grid-row:1/99;align-self:center;width:.8em;height:.8em;margin:0;font-size:2em}.swal2-popup.swal2-toast .swal2-html-container{margin:.5em 1em;padding:0;font-size:1em;text-align:initial}.swal2-popup.swal2-toast .swal2-html-container:empty{padding:0}.swal2-popup.swal2-toast .swal2-loader{grid-column:1;grid-row:1/99;align-self:center;width:2em;height:2em;margin:.25em}.swal2-popup.swal2-toast .swal2-icon{grid-column:1;grid-row:1/99;align-self:center;width:2em;min-width:2em;height:2em;margin:0 .5em 0 0}.swal2-popup.swal2-toast .swal2-icon .swal2-icon-content{display:flex;align-items:center;font-size:1.8em;font-weight:700}.swal2-popup.swal2-toast .swal2-icon.swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line]{top:.875em;width:1.375em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:.3125em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:.3125em}.swal2-popup.swal2-toast .swal2-actions{justify-content:flex-start;height:auto;margin:0;margin-top:.5em;padding:0 .5em}.swal2-popup.swal2-toast .swal2-styled{margin:.25em .5em;padding:.4em .6em;font-size:1em}.swal2-popup.swal2-toast .swal2-success{border-color:#a5dc86}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line]{position:absolute;width:1.6em;height:3em;transform:rotate(45deg);border-radius:50%}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.8em;left:-.5em;transform:rotate(-45deg);transform-origin:2em 2em;border-radius:4em 0 0 4em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.25em;left:.9375em;transform-origin:0 1.5em;border-radius:0 4em 4em 0}.swal2-popup.swal2-toast .swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-success .swal2-success-fix{top:0;left:.4375em;width:.4375em;height:2.6875em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line]{height:.3125em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=tip]{top:1.125em;left:.1875em;width:.75em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=long]{top:.9375em;right:.1875em;width:1.375em}.swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-tip{-webkit-animation:swal2-toast-animate-success-line-tip .75s;animation:swal2-toast-animate-success-line-tip .75s}.swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-long{-webkit-animation:swal2-toast-animate-success-line-long .75s;animation:swal2-toast-animate-success-line-long .75s}.swal2-popup.swal2-toast.swal2-show{-webkit-animation:swal2-toast-show .5s;animation:swal2-toast-show .5s}.swal2-popup.swal2-toast.swal2-hide{-webkit-animation:swal2-toast-hide .1s forwards;animation:swal2-toast-hide .1s forwards}.swal2-container{display:grid;position:fixed;z-index:1060;top:0;right:0;bottom:0;left:0;box-sizing:border-box;grid-template-areas:\"top-start     top            top-end\" \"center-start  center         center-end\" \"bottom-start  bottom-center  bottom-end\";grid-template-rows:minmax(-webkit-min-content,auto) minmax(-webkit-min-content,auto) minmax(-webkit-min-content,auto);grid-template-rows:minmax(min-content,auto) minmax(min-content,auto) minmax(min-content,auto);height:100%;padding:.625em;overflow-x:hidden;transition:background-color .1s;-webkit-overflow-scrolling:touch}.swal2-container.swal2-backdrop-show,.swal2-container.swal2-noanimation{background:rgba(0,0,0,.4)}.swal2-container.swal2-backdrop-hide{background:0 0!important}.swal2-container.swal2-bottom-start,.swal2-container.swal2-center-start,.swal2-container.swal2-top-start{grid-template-columns:minmax(0,1fr) auto auto}.swal2-container.swal2-bottom,.swal2-container.swal2-center,.swal2-container.swal2-top{grid-template-columns:auto minmax(0,1fr) auto}.swal2-container.swal2-bottom-end,.swal2-container.swal2-center-end,.swal2-container.swal2-top-end{grid-template-columns:auto auto minmax(0,1fr)}.swal2-container.swal2-top-start>.swal2-popup{align-self:start}.swal2-container.swal2-top>.swal2-popup{grid-column:2;align-self:start;justify-self:center}.swal2-container.swal2-top-end>.swal2-popup,.swal2-container.swal2-top-right>.swal2-popup{grid-column:3;align-self:start;justify-self:end}.swal2-container.swal2-center-left>.swal2-popup,.swal2-container.swal2-center-start>.swal2-popup{grid-row:2;align-self:center}.swal2-container.swal2-center>.swal2-popup{grid-column:2;grid-row:2;align-self:center;justify-self:center}.swal2-container.swal2-center-end>.swal2-popup,.swal2-container.swal2-center-right>.swal2-popup{grid-column:3;grid-row:2;align-self:center;justify-self:end}.swal2-container.swal2-bottom-left>.swal2-popup,.swal2-container.swal2-bottom-start>.swal2-popup{grid-column:1;grid-row:3;align-self:end}.swal2-container.swal2-bottom>.swal2-popup{grid-column:2;grid-row:3;justify-self:center;align-self:end}.swal2-container.swal2-bottom-end>.swal2-popup,.swal2-container.swal2-bottom-right>.swal2-popup{grid-column:3;grid-row:3;align-self:end;justify-self:end}.swal2-container.swal2-grow-fullscreen>.swal2-popup,.swal2-container.swal2-grow-row>.swal2-popup{grid-column:1/4;width:100%}.swal2-container.swal2-grow-column>.swal2-popup,.swal2-container.swal2-grow-fullscreen>.swal2-popup{grid-row:1/4;align-self:stretch}.swal2-container.swal2-no-transition{transition:none!important}.swal2-popup{display:none;position:relative;box-sizing:border-box;grid-template-columns:minmax(0,100%);width:32em;max-width:100%;padding:0 0 1.25em;border:none;border-radius:5px;background:#fff;color:#545454;font-family:inherit;font-size:1rem}.swal2-popup:focus{outline:0}.swal2-popup.swal2-loading{overflow-y:hidden}.swal2-title{position:relative;max-width:100%;margin:0;padding:.8em 1em 0;color:inherit;font-size:1.875em;font-weight:600;text-align:center;text-transform:none;word-wrap:break-word}.swal2-actions{display:flex;z-index:1;box-sizing:border-box;flex-wrap:wrap;align-items:center;justify-content:center;width:auto;margin:1.25em auto 0;padding:0}.swal2-actions:not(.swal2-loading) .swal2-styled[disabled]{opacity:.4}.swal2-actions:not(.swal2-loading) .swal2-styled:hover{background-image:linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.1))}.swal2-actions:not(.swal2-loading) .swal2-styled:active{background-image:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2))}.swal2-loader{display:none;align-items:center;justify-content:center;width:2.2em;height:2.2em;margin:0 1.875em;-webkit-animation:swal2-rotate-loading 1.5s linear 0s infinite normal;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border-width:.25em;border-style:solid;border-radius:100%;border-color:#2778c4 transparent #2778c4 transparent}.swal2-styled{margin:.3125em;padding:.625em 1.1em;transition:box-shadow .1s;box-shadow:0 0 0 3px transparent;font-weight:500}.swal2-styled:not([disabled]){cursor:pointer}.swal2-styled.swal2-confirm{border:0;border-radius:.25em;background:initial;background-color:#7066e0;color:#fff;font-size:1em}.swal2-styled.swal2-confirm:focus{box-shadow:0 0 0 3px rgba(112,102,224,.5)}.swal2-styled.swal2-deny{border:0;border-radius:.25em;background:initial;background-color:#dc3741;color:#fff;font-size:1em}.swal2-styled.swal2-deny:focus{box-shadow:0 0 0 3px rgba(220,55,65,.5)}.swal2-styled.swal2-cancel{border:0;border-radius:.25em;background:initial;background-color:#6e7881;color:#fff;font-size:1em}.swal2-styled.swal2-cancel:focus{box-shadow:0 0 0 3px rgba(110,120,129,.5)}.swal2-styled.swal2-default-outline:focus{box-shadow:0 0 0 3px rgba(100,150,200,.5)}.swal2-styled:focus{outline:0}.swal2-styled::-moz-focus-inner{border:0}.swal2-footer{justify-content:center;margin:1em 0 0;padding:1em 1em 0;border-top:1px solid #eee;color:inherit;font-size:1em}.swal2-timer-progress-bar-container{position:absolute;right:0;bottom:0;left:0;grid-column:auto!important;overflow:hidden;border-bottom-right-radius:5px;border-bottom-left-radius:5px}.swal2-timer-progress-bar{width:100%;height:.25em;background:rgba(0,0,0,.2)}.swal2-image{max-width:100%;margin:2em auto 1em}.swal2-close{z-index:2;align-items:center;justify-content:center;width:1.2em;height:1.2em;margin-top:0;margin-right:0;margin-bottom:-1.2em;padding:0;overflow:hidden;transition:color .1s,box-shadow .1s;border:none;border-radius:5px;background:0 0;color:#ccc;font-family:serif;font-family:monospace;font-size:2.5em;cursor:pointer;justify-self:end}.swal2-close:hover{transform:none;background:0 0;color:#f27474}.swal2-close:focus{outline:0;box-shadow:inset 0 0 0 3px rgba(100,150,200,.5)}.swal2-close::-moz-focus-inner{border:0}.swal2-html-container{z-index:1;justify-content:center;margin:1em 1.6em .3em;padding:0;overflow:auto;color:inherit;font-size:1.125em;font-weight:400;line-height:normal;text-align:center;word-wrap:break-word;word-break:break-word}.swal2-checkbox,.swal2-file,.swal2-input,.swal2-radio,.swal2-select,.swal2-textarea{margin:1em 2em 3px}.swal2-file,.swal2-input,.swal2-textarea{box-sizing:border-box;width:auto;transition:border-color .1s,box-shadow .1s;border:1px solid #d9d9d9;border-radius:.1875em;background:0 0;box-shadow:inset 0 1px 1px rgba(0,0,0,.06),0 0 0 3px transparent;color:inherit;font-size:1.125em}.swal2-file.swal2-inputerror,.swal2-input.swal2-inputerror,.swal2-textarea.swal2-inputerror{border-color:#f27474!important;box-shadow:0 0 2px #f27474!important}.swal2-file:focus,.swal2-input:focus,.swal2-textarea:focus{border:1px solid #b4dbed;outline:0;box-shadow:inset 0 1px 1px rgba(0,0,0,.06),0 0 0 3px rgba(100,150,200,.5)}.swal2-file::-moz-placeholder,.swal2-input::-moz-placeholder,.swal2-textarea::-moz-placeholder{color:#ccc}.swal2-file:-ms-input-placeholder,.swal2-input:-ms-input-placeholder,.swal2-textarea:-ms-input-placeholder{color:#ccc}.swal2-file::placeholder,.swal2-input::placeholder,.swal2-textarea::placeholder{color:#ccc}.swal2-range{margin:1em 2em 3px;background:#fff}.swal2-range input{width:80%}.swal2-range output{width:20%;color:inherit;font-weight:600;text-align:center}.swal2-range input,.swal2-range output{height:2.625em;padding:0;font-size:1.125em;line-height:2.625em}.swal2-input{height:2.625em;padding:0 .75em}.swal2-file{width:75%;margin-right:auto;margin-left:auto;background:0 0;font-size:1.125em}.swal2-textarea{height:6.75em;padding:.75em}.swal2-select{min-width:50%;max-width:100%;padding:.375em .625em;background:0 0;color:inherit;font-size:1.125em}.swal2-checkbox,.swal2-radio{align-items:center;justify-content:center;background:#fff;color:inherit}.swal2-checkbox label,.swal2-radio label{margin:0 .6em;font-size:1.125em}.swal2-checkbox input,.swal2-radio input{flex-shrink:0;margin:0 .4em}.swal2-input-label{display:flex;justify-content:center;margin:1em auto 0}.swal2-validation-message{align-items:center;justify-content:center;margin:1em 0 0;padding:.625em;overflow:hidden;background:#f0f0f0;color:#666;font-size:1em;font-weight:300}.swal2-validation-message::before{content:\"!\";display:inline-block;width:1.5em;min-width:1.5em;height:1.5em;margin:0 .625em;border-radius:50%;background-color:#f27474;color:#fff;font-weight:600;line-height:1.5em;text-align:center}.swal2-icon{position:relative;box-sizing:content-box;justify-content:center;width:5em;height:5em;margin:2.5em auto .6em;border:.25em solid transparent;border-radius:50%;border-color:#000;font-family:inherit;line-height:5em;cursor:default;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.swal2-icon .swal2-icon-content{display:flex;align-items:center;font-size:3.75em}.swal2-icon.swal2-error{border-color:#f27474;color:#f27474}.swal2-icon.swal2-error .swal2-x-mark{position:relative;flex-grow:1}.swal2-icon.swal2-error [class^=swal2-x-mark-line]{display:block;position:absolute;top:2.3125em;width:2.9375em;height:.3125em;border-radius:.125em;background-color:#f27474}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:1.0625em;transform:rotate(45deg)}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:1em;transform:rotate(-45deg)}.swal2-icon.swal2-error.swal2-icon-show{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-icon.swal2-error.swal2-icon-show .swal2-x-mark{-webkit-animation:swal2-animate-error-x-mark .5s;animation:swal2-animate-error-x-mark .5s}.swal2-icon.swal2-warning{border-color:#facea8;color:#f8bb86}.swal2-icon.swal2-warning.swal2-icon-show{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-icon.swal2-warning.swal2-icon-show .swal2-icon-content{-webkit-animation:swal2-animate-i-mark .5s;animation:swal2-animate-i-mark .5s}.swal2-icon.swal2-info{border-color:#9de0f6;color:#3fc3ee}.swal2-icon.swal2-info.swal2-icon-show{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-icon.swal2-info.swal2-icon-show .swal2-icon-content{-webkit-animation:swal2-animate-i-mark .8s;animation:swal2-animate-i-mark .8s}.swal2-icon.swal2-question{border-color:#c9dae1;color:#87adbd}.swal2-icon.swal2-question.swal2-icon-show{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-icon.swal2-question.swal2-icon-show .swal2-icon-content{-webkit-animation:swal2-animate-question-mark .8s;animation:swal2-animate-question-mark .8s}.swal2-icon.swal2-success{border-color:#a5dc86;color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-circular-line]{position:absolute;width:3.75em;height:7.5em;transform:rotate(45deg);border-radius:50%}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.4375em;left:-2.0635em;transform:rotate(-45deg);transform-origin:3.75em 3.75em;border-radius:7.5em 0 0 7.5em}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.6875em;left:1.875em;transform:rotate(-45deg);transform-origin:0 3.75em;border-radius:0 7.5em 7.5em 0}.swal2-icon.swal2-success .swal2-success-ring{position:absolute;z-index:2;top:-.25em;left:-.25em;box-sizing:content-box;width:100%;height:100%;border:.25em solid rgba(165,220,134,.3);border-radius:50%}.swal2-icon.swal2-success .swal2-success-fix{position:absolute;z-index:1;top:.5em;left:1.625em;width:.4375em;height:5.625em;transform:rotate(-45deg)}.swal2-icon.swal2-success [class^=swal2-success-line]{display:block;position:absolute;z-index:2;height:.3125em;border-radius:.125em;background-color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-line][class$=tip]{top:2.875em;left:.8125em;width:1.5625em;transform:rotate(45deg)}.swal2-icon.swal2-success [class^=swal2-success-line][class$=long]{top:2.375em;right:.5em;width:2.9375em;transform:rotate(-45deg)}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-tip{-webkit-animation:swal2-animate-success-line-tip .75s;animation:swal2-animate-success-line-tip .75s}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-long{-webkit-animation:swal2-animate-success-line-long .75s;animation:swal2-animate-success-line-long .75s}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-circular-line-right{-webkit-animation:swal2-rotate-success-circular-line 4.25s ease-in;animation:swal2-rotate-success-circular-line 4.25s ease-in}.swal2-progress-steps{flex-wrap:wrap;align-items:center;max-width:100%;margin:1.25em auto;padding:0;background:0 0;font-weight:600}.swal2-progress-steps li{display:inline-block;position:relative}.swal2-progress-steps .swal2-progress-step{z-index:20;flex-shrink:0;width:2em;height:2em;border-radius:2em;background:#2778c4;color:#fff;line-height:2em;text-align:center}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step{background:#2778c4}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step{background:#add8e6;color:#fff}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step-line{background:#add8e6}.swal2-progress-steps .swal2-progress-step-line{z-index:10;flex-shrink:0;width:2.5em;height:.4em;margin:0 -1px;background:#2778c4}[class^=swal2]{-webkit-tap-highlight-color:transparent}.swal2-show{-webkit-animation:swal2-show .3s;animation:swal2-show .3s}.swal2-hide{-webkit-animation:swal2-hide .15s forwards;animation:swal2-hide .15s forwards}.swal2-noanimation{transition:none}.swal2-scrollbar-measure{position:absolute;top:-9999px;width:50px;height:50px;overflow:scroll}.swal2-rtl .swal2-close{margin-right:initial;margin-left:0}.swal2-rtl .swal2-timer-progress-bar{right:0;left:auto}.swal2-no-war{display:flex;position:fixed;z-index:1061;top:0;left:0;align-items:center;justify-content:center;width:100%;height:3.375em;background:#20232a;color:#fff;text-align:center}.swal2-no-war a{color:#61dafb;text-decoration:none}.swal2-no-war a:hover{text-decoration:underline}@-webkit-keyframes swal2-toast-show{0%{transform:translateY(-.625em) rotateZ(2deg)}33%{transform:translateY(0) rotateZ(-2deg)}66%{transform:translateY(.3125em) rotateZ(2deg)}100%{transform:translateY(0) rotateZ(0)}}@keyframes swal2-toast-show{0%{transform:translateY(-.625em) rotateZ(2deg)}33%{transform:translateY(0) rotateZ(-2deg)}66%{transform:translateY(.3125em) rotateZ(2deg)}100%{transform:translateY(0) rotateZ(0)}}@-webkit-keyframes swal2-toast-hide{100%{transform:rotateZ(1deg);opacity:0}}@keyframes swal2-toast-hide{100%{transform:rotateZ(1deg);opacity:0}}@-webkit-keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@-webkit-keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}@keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}@-webkit-keyframes swal2-show{0%{transform:scale(.7)}45%{transform:scale(1.05)}80%{transform:scale(.95)}100%{transform:scale(1)}}@keyframes swal2-show{0%{transform:scale(.7)}45%{transform:scale(1.05)}80%{transform:scale(.95)}100%{transform:scale(1)}}@-webkit-keyframes swal2-hide{0%{transform:scale(1);opacity:1}100%{transform:scale(.5);opacity:0}}@keyframes swal2-hide{0%{transform:scale(1);opacity:1}100%{transform:scale(.5);opacity:0}}@-webkit-keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.8125em;width:1.5625em}}@keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.8125em;width:1.5625em}}@-webkit-keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@-webkit-keyframes swal2-rotate-success-circular-line{0%{transform:rotate(-45deg)}5%{transform:rotate(-45deg)}12%{transform:rotate(-405deg)}100%{transform:rotate(-405deg)}}@keyframes swal2-rotate-success-circular-line{0%{transform:rotate(-45deg)}5%{transform:rotate(-45deg)}12%{transform:rotate(-405deg)}100%{transform:rotate(-405deg)}}@-webkit-keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;transform:scale(.4);opacity:0}50%{margin-top:1.625em;transform:scale(.4);opacity:0}80%{margin-top:-.375em;transform:scale(1.15)}100%{margin-top:0;transform:scale(1);opacity:1}}@keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;transform:scale(.4);opacity:0}50%{margin-top:1.625em;transform:scale(.4);opacity:0}80%{margin-top:-.375em;transform:scale(1.15)}100%{margin-top:0;transform:scale(1);opacity:1}}@-webkit-keyframes swal2-animate-error-icon{0%{transform:rotateX(100deg);opacity:0}100%{transform:rotateX(0);opacity:1}}@keyframes swal2-animate-error-icon{0%{transform:rotateX(100deg);opacity:0}100%{transform:rotateX(0);opacity:1}}@-webkit-keyframes swal2-rotate-loading{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}@keyframes swal2-rotate-loading{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}@-webkit-keyframes swal2-animate-question-mark{0%{transform:rotateY(-360deg)}100%{transform:rotateY(0)}}@keyframes swal2-animate-question-mark{0%{transform:rotateY(-360deg)}100%{transform:rotateY(0)}}@-webkit-keyframes swal2-animate-i-mark{0%{transform:rotateZ(45deg);opacity:0}25%{transform:rotateZ(-25deg);opacity:.4}50%{transform:rotateZ(15deg);opacity:.8}75%{transform:rotateZ(-5deg);opacity:1}100%{transform:rotateX(0);opacity:1}}@keyframes swal2-animate-i-mark{0%{transform:rotateZ(45deg);opacity:0}25%{transform:rotateZ(-25deg);opacity:.4}50%{transform:rotateZ(15deg);opacity:.8}75%{transform:rotateZ(-5deg);opacity:1}100%{transform:rotateX(0);opacity:1}}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow:hidden}body.swal2-height-auto{height:auto!important}body.swal2-no-backdrop .swal2-container{background-color:transparent!important;pointer-events:none}body.swal2-no-backdrop .swal2-container .swal2-popup{pointer-events:all}body.swal2-no-backdrop .swal2-container .swal2-modal{box-shadow:0 0 10px rgba(0,0,0,.4)}@media print{body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow-y:scroll!important}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown)>[aria-hidden=true]{display:none}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container{position:static!important}}body.swal2-toast-shown .swal2-container{box-sizing:border-box;width:360px;max-width:100%;background-color:transparent;pointer-events:none}body.swal2-toast-shown .swal2-container.swal2-top{top:0;right:auto;bottom:auto;left:50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-top-end,body.swal2-toast-shown .swal2-container.swal2-top-right{top:0;right:0;bottom:auto;left:auto}body.swal2-toast-shown .swal2-container.swal2-top-left,body.swal2-toast-shown .swal2-container.swal2-top-start{top:0;right:auto;bottom:auto;left:0}body.swal2-toast-shown .swal2-container.swal2-center-left,body.swal2-toast-shown .swal2-container.swal2-center-start{top:50%;right:auto;bottom:auto;left:0;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-center{top:50%;right:auto;bottom:auto;left:50%;transform:translate(-50%,-50%)}body.swal2-toast-shown .swal2-container.swal2-center-end,body.swal2-toast-shown .swal2-container.swal2-center-right{top:50%;right:0;bottom:auto;left:auto;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-left,body.swal2-toast-shown .swal2-container.swal2-bottom-start{top:auto;right:auto;bottom:0;left:0}body.swal2-toast-shown .swal2-container.swal2-bottom{top:auto;right:auto;bottom:0;left:50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-end,body.swal2-toast-shown .swal2-container.swal2-bottom-right{top:auto;right:0;bottom:0;left:auto}");
+
+/***/ }),
+
+/***/ "./node_modules/tslib/tslib.es6.js":
+/*!*****************************************!*\
+  !*** ./node_modules/tslib/tslib.es6.js ***!
+  \*****************************************/
+/*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __createBinding, __exportStar, __values, __read, __spread, __spreadArrays, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault, __classPrivateFieldGet, __classPrivateFieldSet */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__extends", function() { return __extends; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__assign", function() { return __assign; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__rest", function() { return __rest; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__decorate", function() { return __decorate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__param", function() { return __param; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__metadata", function() { return __metadata; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__awaiter", function() { return __awaiter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__generator", function() { return __generator; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__createBinding", function() { return __createBinding; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__exportStar", function() { return __exportStar; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__values", function() { return __values; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__read", function() { return __read; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__spread", function() { return __spread; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__spreadArrays", function() { return __spreadArrays; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__await", function() { return __await; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__asyncGenerator", function() { return __asyncGenerator; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__asyncDelegator", function() { return __asyncDelegator; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__asyncValues", function() { return __asyncValues; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__makeTemplateObject", function() { return __makeTemplateObject; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__importStar", function() { return __importStar; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__importDefault", function() { return __importDefault; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__classPrivateFieldGet", function() { return __classPrivateFieldGet; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__classPrivateFieldSet", function() { return __classPrivateFieldSet; });
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+/* global Reflect, Promise */
+
+var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return extendStatics(d, b);
+};
+
+function __extends(d, b) {
+    extendStatics(d, b);
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+}
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    }
+    return __assign.apply(this, arguments);
+}
+
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+}
+
+function __decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+
+function __param(paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+}
+
+function __metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+}
+
+function __awaiter(thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+}
+
+function __generator(thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+}
+
+function __createBinding(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}
+
+function __exportStar(m, exports) {
+    for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+
+function __values(o) {
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+    if (m) return m.call(o);
+    if (o && typeof o.length === "number") return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+}
+
+function __read(o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+}
+
+function __spread() {
+    for (var ar = [], i = 0; i < arguments.length; i++)
+        ar = ar.concat(__read(arguments[i]));
+    return ar;
+}
+
+function __spreadArrays() {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
+
+function __await(v) {
+    return this instanceof __await ? (this.v = v, this) : new __await(v);
+}
+
+function __asyncGenerator(thisArg, _arguments, generator) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var g = generator.apply(thisArg, _arguments || []), i, q = [];
+    return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
+    function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+    function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
+    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r); }
+    function fulfill(value) { resume("next", value); }
+    function reject(value) { resume("throw", value); }
+    function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
+}
+
+function __asyncDelegator(o) {
+    var i, p;
+    return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
+    function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
+}
+
+function __asyncValues(o) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var m = o[Symbol.asyncIterator], i;
+    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+}
+
+function __makeTemplateObject(cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+
+function __importStar(mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result.default = mod;
+    return result;
+}
+
+function __importDefault(mod) {
+    return (mod && mod.__esModule) ? mod : { default: mod };
+}
+
+function __classPrivateFieldGet(receiver, privateMap) {
+    if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to get private field on non-instance");
+    }
+    return privateMap.get(receiver);
+}
+
+function __classPrivateFieldSet(receiver, privateMap, value) {
+    if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to set private field on non-instance");
+    }
+    privateMap.set(receiver, value);
+    return value;
+}
+
 
 /***/ })
 

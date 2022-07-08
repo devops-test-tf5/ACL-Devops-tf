@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "workflow_mgmt")
-public class WorkflowMgmtEntity implements Serializable{
+public class WorkflowMgmtEntity implements Serializable {
 
 	private static final long serialVersionUID = 704298539793776374L;
 
@@ -26,7 +26,7 @@ public class WorkflowMgmtEntity implements Serializable{
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "project_id", referencedColumnName = "project_id")
 	private ProjectsEntity projectEntity;
-	
+
 	@Column(name = "workflow_from")
 	private String workflowFrom;
 
@@ -35,9 +35,9 @@ public class WorkflowMgmtEntity implements Serializable{
 
 	@Column(name = "comments_or_message")
 	private String commentsOrMessage;
-	
+
 	public WorkflowMgmtEntity() {
-		
+
 	}
 
 	public WorkflowMgmtEntity(Long workflowId, ProjectsEntity projectEntity, String workflowFrom, String workflowTo,
@@ -96,7 +96,4 @@ public class WorkflowMgmtEntity implements Serializable{
 				+ workflowFrom + ", workflowTo=" + workflowTo + ", commentsOrMessage=" + commentsOrMessage + "]";
 	}
 
-	
-	
-	
 }

@@ -1,32 +1,26 @@
 package com.acldigital.unaito.service.user.dto;
 
+import java.util.List;
+
+import com.acldigital.unaito.service.project.dto.TeamMember;
+
 public class ProjectTeam {
 
 	private Long onboardingId;
 
 	private Long projectId;
 
-	private String teamMemberName;
-
-	private Long userId;
-
-	private Long roleId;
-
-	private String email;
+	private List<TeamMember> teamMembersList;
 
 	public ProjectTeam() {
 
 	}
 
-	public ProjectTeam(Long onboardingId, Long projectId, String teamMemberName, Long userId, Long roleId,
-			String email) {
+	public ProjectTeam(Long onboardingId, Long projectId, List<TeamMember> teamMembersList) {
 		super();
 		this.onboardingId = onboardingId;
 		this.projectId = projectId;
-		this.teamMemberName = teamMemberName;
-		this.userId = userId;
-		this.roleId = roleId;
-		this.email = email;
+		this.teamMembersList = teamMembersList;
 	}
 
 	public Long getOnboardingId() {
@@ -45,42 +39,18 @@ public class ProjectTeam {
 		this.projectId = projectId;
 	}
 
-	public String getTeamMemberName() {
-		return teamMemberName;
+	public List<TeamMember> getTeamMembersList() {
+		return teamMembersList;
 	}
 
-	public void setTeamMemberName(String teamMemberName) {
-		this.teamMemberName = teamMemberName;
-	}
-
-	public Long getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
-
-	public Long getRoleId() {
-		return roleId;
-	}
-
-	public void setRoleId(Long roleId) {
-		this.roleId = roleId;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
+	public void setTeamMembersList(List<TeamMember> teamMembersList) {
+		this.teamMembersList = teamMembersList;
 	}
 
 	@Override
 	public String toString() {
-		return "ProjectTeam [onboardingId=" + onboardingId + ", projectId=" + projectId + ", teamMemberName="
-				+ teamMemberName + ", userId=" + userId + ", roleId=" + roleId + ", email=" + email + "]";
+		return "ProjectTeam [onboardingId=" + onboardingId + ", projectId=" + projectId + ", teamMembersList="
+				+ teamMembersList + "]";
 	}
 
 }

@@ -54,19 +54,12 @@ public class UserLoggedInEntity implements Serializable {
 	@Column(name = "logged_out_time")
 	private Instant loggedOutTime;
 
-	@Column(name = "max_wrong_password_count")
-	private Integer maxWrongPasswordCount;
-
-	@Column(name = "wrong_password_count")
-	private Integer wrongPasswordCount;
-
 	public UserLoggedInEntity() {
 
 	}
 
 	public UserLoggedInEntity(Long userId, String sessionId, String jwtType, String previousJwt, String jwt,
-			Instant jwtCreatedTime, Instant jwtExpiryTime, char loggedIn, Instant loggedInTime, char loggedOut,
-			Instant loggedOutTime, Integer maxWrongPasswordCount, Integer wrongPasswordCount) {
+			Instant jwtCreatedTime, Instant jwtExpiryTime, char loggedIn, Instant loggedInTime) {
 		super();
 		this.userId = userId;
 		this.sessionId = sessionId;
@@ -77,12 +70,21 @@ public class UserLoggedInEntity implements Serializable {
 		this.jwtExpiryTime = jwtExpiryTime;
 		this.loggedIn = loggedIn;
 		this.loggedInTime = loggedInTime;
-		this.loggedOut = loggedOut;
-		this.loggedOutTime = loggedOutTime;
-		this.maxWrongPasswordCount = maxWrongPasswordCount;
-		this.wrongPasswordCount = wrongPasswordCount;
 	}
 
+	public UserLoggedInEntity(Long loginId, Long userId, String jwtType, String previousJwt, 
+			char loggedIn, char loggedOut,Instant loggedOutTime) {
+		super();
+		this.loginId=loginId;
+		this.userId = userId;
+		this.jwtType = jwtType;
+		this.previousJwt = previousJwt;
+		this.loggedIn = loggedIn;
+		this.loggedOut=loggedOut;
+		this.loggedOutTime=loggedOutTime;
+	}
+	
+	
 	public Long getLoginId() {
 		return loginId;
 	}
@@ -179,30 +181,12 @@ public class UserLoggedInEntity implements Serializable {
 		this.loggedOutTime = loggedOutTime;
 	}
 
-	public Integer getMaxWrongPasswordCount() {
-		return maxWrongPasswordCount;
-	}
-
-	public void setMaxWrongPasswordCount(Integer maxWrongPasswordCount) {
-		this.maxWrongPasswordCount = maxWrongPasswordCount;
-	}
-
-	public Integer getWrongPasswordCount() {
-		return wrongPasswordCount;
-	}
-
-	public void setWrongPasswordCount(Integer wrongPasswordCount) {
-		this.wrongPasswordCount = wrongPasswordCount;
-	}
-
 	@Override
 	public String toString() {
 		return "UserLoggedInEntity [loginId=" + loginId + ", userId=" + userId + ", sessionId=" + sessionId
 				+ ", jwtType=" + jwtType + ", previousJwt=" + previousJwt + ", jwt=" + jwt + ", jwtCreatedTime="
 				+ jwtCreatedTime + ", jwtExpiryTime=" + jwtExpiryTime + ", loggedIn=" + loggedIn + ", loggedInTime="
-				+ loggedInTime + ", loggedOut=" + loggedOut + ", loggedOutTime=" + loggedOutTime
-				+ ", maxWrongPasswordCount=" + maxWrongPasswordCount + ", wrongPasswordCount=" + wrongPasswordCount
-				+ "]";
+				+ loggedInTime + ", loggedOut=" + loggedOut + ", loggedOutTime=" + loggedOutTime + "]";
 	}
 
 }

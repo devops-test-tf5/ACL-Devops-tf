@@ -43,7 +43,7 @@ public class Applications {
 	private List<SecurityCompliance> securityComplianceList;
 
 	public Applications() {
-		
+
 	}
 
 	public Applications(Long applicationId, Long projectId, String applicationName, String description,

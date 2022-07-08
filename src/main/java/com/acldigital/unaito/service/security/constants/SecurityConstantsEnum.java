@@ -2,7 +2,7 @@ package com.acldigital.unaito.service.security.constants;
 
 public enum SecurityConstantsEnum {
 
-	JSESSIONID("jsessionid"), PLAYERTYPE("playertype"), NEW("new"), REFRESH("REFRESH");
+	JSESSIONID("JSESSIONID"), PLAYERTYPE("PLAYERTYPE"), NEW("NEW"), REFRESH("REFRESH"), INVALID("INVALID");
 
 	private String value;
 

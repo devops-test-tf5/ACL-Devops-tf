@@ -83,6 +83,5 @@ public class SecurityCompliance {
 				+ ", vpn=" + vpn + ", encryption=" + encryption + ", proxyServer=" + proxyServer + ", dataPrivacy="
 				+ dataPrivacy + "]";
 	}
-	
-	
+
 }

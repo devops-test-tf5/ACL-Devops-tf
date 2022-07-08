@@ -4,9 +4,9 @@ public class ErrorResponse {
 
 	private Integer errorCode;
 	private String errorMessage;
-	
+
 	public ErrorResponse() {
-		
+
 	}
 
 	public ErrorResponse(Integer errorCode, String errorMessage) {
@@ -35,6 +35,5 @@ public class ErrorResponse {
 	public String toString() {
 		return "ErrorResponse [errorCode=" + errorCode + ", errorMessage=" + errorMessage + "]";
 	}
-	
-	
+
 }

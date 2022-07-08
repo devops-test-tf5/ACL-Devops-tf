@@ -9,12 +9,9 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -29,9 +26,8 @@ public class ProjectsEntity implements Serializable {
 	@Column(name = "project_id")
 	private Long projectId;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
-	private CustomersEntity customersEntity;
+	@Column(name = "customer_id")
+	private Long customerId;
 
 	@Column(name = "status_id")
 	private Long statusId;
@@ -51,51 +47,66 @@ public class ProjectsEntity implements Serializable {
 	@Column(name = "duration")
 	private String duration;
 
+	@Column(name = "drivers")
+	private String drivers;
+
+	@Column(name = "scope")
+	private String scope;
+
 	/*
-	 * @Column(name = "drivers") private Json drivers;
-	 * 
-	 * @Column(name = "scope") private JsonNode scope;
+	 * @OneToMany(mappedBy = "applicationId", cascade = CascadeType.ALL) private
+	 * List<ApplicationOverviewEntity> applicationsList;
 	 */
 
-	@OneToMany(mappedBy = "applicationId", cascade = CascadeType.ALL)
-	private List<ApplicationOverviewEntity> applicationsList;
-
-	@Column(name = "user_id")
-	private Long userId;
-
+	/*
+	 * @OneToOne(mappedBy = "",cascade = CascadeType.ALL)
+	 * 
+	 * @Column(name = "drivers") private DriverEntity drivers;
+	 * 
+	 * @OneToOne(mappedBy = "",cascade = CascadeType.ALL)
+	 * 
+	 * @Column(name = "scope") private ScopeEntity scope;
+	 */
 	@OneToMany(mappedBy = "activityId", cascade = CascadeType.ALL)
 	private List<ActivityPlanEntity> activityPlanEntities = new ArrayList<>();
-
-	@OneToMany(mappedBy = "resourceId", cascade = CascadeType.ALL)
-	private List<ResourceLoadingEntity> resourceLoadingEntities = new ArrayList<>();
 
 	@OneToMany(mappedBy = "onboardingId", cascade = CascadeType.ALL)
 	private List<ProjectTeamEntity> projectTeamEntities = new ArrayList<>();
 
-	@OneToMany(mappedBy = "workflowId", cascade = CascadeType.ALL)
-	private List<WorkflowMgmtEntity> workflowMgmtEntities = new ArrayList<>();
+	@OneToMany(mappedBy = "resourceId", cascade = CascadeType.ALL)
+	private List<ResourceOnboardingEntity> resourceOnboardingEntities = new ArrayList<>();
 
-	@OneToMany(mappedBy = "notificationId", cascade = CascadeType.ALL)
-	private List<NotificationsEntity> notificationEntities = new ArrayList<>();
-
+	/*
+	 * @OneToMany(mappedBy = "resourceId", cascade = CascadeType.ALL) private
+	 * List<ResourceLoadingEntity> resourceLoadingEntities = new ArrayList<>();
+	 * 
+	 * @OneToMany(mappedBy = "onboardingId", cascade = CascadeType.ALL) private
+	 * List<ProjectTeamEntity> projectTeamEntities = new ArrayList<>();
+	 * 
+	 * @OneToMany(mappedBy = "workflowId", cascade = CascadeType.ALL) private
+	 * List<WorkflowMgmtEntity> workflowMgmtEntities = new ArrayList<>();
+	 * 
+	 * @OneToMany(mappedBy = "notificationId", cascade = CascadeType.ALL) private
+	 * List<NotificationsEntity> notificationEntities = new ArrayList<>();
+	 */
 	public ProjectsEntity() {
 
 	}
+	
+	public ProjectsEntity(Long projectId) {
+		this.projectId=projectId;
+	}
 
-	public ProjectsEntity(Long projectId, CustomersEntity customersEntity, Long statusId, String projectName,
-			String description, Date startDate, Date endDate, String duration, Long userId,
-			List<ActivityPlanEntity> activityPlanEntities) {
+	public ProjectsEntity(Long customerId, Long statusId, String projectName, String description, Date startDate,
+			Date endDate, String duration) {
 		super();
-		this.projectId = projectId;
-		this.customersEntity = customersEntity;
+		this.customerId = customerId;
 		this.statusId = statusId;
 		this.projectName = projectName;
 		this.description = description;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.duration = duration;
-		this.userId = userId;
-		this.activityPlanEntities = activityPlanEntities;
 	}
 
 	public Long getProjectId() {
@@ -106,12 +117,12 @@ public class ProjectsEntity implements Serializable {
 		this.projectId = projectId;
 	}
 
-	public CustomersEntity getCustomersEntity() {
-		return customersEntity;
+	public Long getCustomerId() {
+		return customerId;
 	}
 
-	public void setCustomersEntity(CustomersEntity customersEntity) {
-		this.customersEntity = customersEntity;
+	public void setCustomerId(Long customerId) {
+		this.customerId = customerId;
 	}
 
 	public Long getStatusId() {
@@ -162,14 +173,6 @@ public class ProjectsEntity implements Serializable {
 		this.duration = duration;
 	}
 
-	public Long getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
-
 	public List<ActivityPlanEntity> getActivityPlanEntities() {
 		return activityPlanEntities;
 	}
@@ -178,12 +181,45 @@ public class ProjectsEntity implements Serializable {
 		this.activityPlanEntities = activityPlanEntities;
 	}
 
+	public String getDrivers() {
+		return drivers;
+	}
+
+	public void setDrivers(String drivers) {
+		this.drivers = drivers;
+	}
+
+	public String getScope() {
+		return scope;
+	}
+
+	public void setScope(String scope) {
+		this.scope = scope;
+	}
+
+	public List<ProjectTeamEntity> getProjectTeamEntities() {
+		return projectTeamEntities;
+	}
+
+	public void setProjectTeamEntities(List<ProjectTeamEntity> projectTeamEntities) {
+		this.projectTeamEntities = projectTeamEntities;
+	}
+
+	public List<ResourceOnboardingEntity> getResourceOnboardingEntities() {
+		return resourceOnboardingEntities;
+	}
+
+	public void setResourceOnboardingEntities(List<ResourceOnboardingEntity> resourceOnboardingEntities) {
+		this.resourceOnboardingEntities = resourceOnboardingEntities;
+	}
+
 	@Override
 	public String toString() {
-		return "ProjectsEntity [projectId=" + projectId + ", customersEntity=" + customersEntity + ", statusId="
-				+ statusId + ", projectName=" + projectName + ", description=" + description + ", startDate="
-				+ startDate + ", endDate=" + endDate + ", duration=" + duration + ", userId=" + userId
-				+ ", activityPlanEntities=" + activityPlanEntities + "]";
+		return "ProjectsEntity [projectId=" + projectId + ", customerId=" + customerId + ", statusId=" + statusId
+				+ ", projectName=" + projectName + ", description=" + description + ", startDate=" + startDate
+				+ ", endDate=" + endDate + ", duration=" + duration + ", drivers=" + drivers + ", scope=" + scope
+				+ ", activityPlanEntities=" + activityPlanEntities + ", projectTeamEntities=" + projectTeamEntities
+				+ "]";
 	}
 
 }

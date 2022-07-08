@@ -53,11 +53,11 @@ public class RoleEntity implements Serializable {
 		this.roleName = roleName;
 	}
 
-	public Integer isActive() {
+	public Integer getIsActive() {
 		return isActive;
 	}
 
-	public void setActive(Integer isActive) {
+	public void setIsActive(Integer isActive) {
 		this.isActive = isActive;
 	}
 

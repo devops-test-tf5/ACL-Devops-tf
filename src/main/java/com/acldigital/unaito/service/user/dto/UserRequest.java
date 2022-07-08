@@ -10,19 +10,19 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 public class UserRequest {
 
 	@JsonInclude(Include.NON_NULL)
-	@Size(min = 8,max = 50,message = "User name is mandatory.")
+	@Size(min = 8, max = 50, message = "User name is mandatory.")
 	private String userName;
 
 	@JsonInclude(Include.NON_NULL)
-	@Size(min = 8,max = 50,message = "Password is mandatory.")
+	@Size(min = 8, max = 50, message = "Password is mandatory.")
 	private String password;
 
 	@JsonInclude(Include.NON_NULL)
-	@Size(max = 50,message = "First name is mandatory.")
+	@Size(max = 50, message = "First name is mandatory.")
 	private String firstName;
 
 	@JsonInclude(Include.NON_NULL)
-	@Size(max = 50,message = "Last name is mandatory.")
+	@Size(max = 50, message = "Last name is mandatory.")
 	private String lastName;
 
 	@JsonInclude(Include.NON_NULL)
@@ -34,7 +34,7 @@ public class UserRequest {
 	private Long contactNumber;
 
 	@JsonInclude(Include.NON_NULL)
-	@Size(max = 50,message = "Location is mandatory.")
+	@Size(max = 50, message = "Location is mandatory.")
 	private String location;
 
 	@JsonInclude(Include.NON_NULL)

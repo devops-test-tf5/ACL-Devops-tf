@@ -1,6 +1,6 @@
 package com.acldigital.unaito.service.user.exception;
 
-public class EmptyInputException extends RuntimeException{
+public class EmptyInputException extends RuntimeException {
 
 	private static final long serialVersionUID = 226665306869370441L;
 

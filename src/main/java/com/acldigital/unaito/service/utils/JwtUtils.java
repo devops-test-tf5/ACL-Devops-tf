@@ -87,11 +87,25 @@ public class JwtUtils {
 		return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
 	}
 
-	private Boolean isTokenExpired(String token) {
+	public Boolean isTokenExpired(String token) {
 		return extractExpiration(token).before(new Date());
 	}
 
-	public Date extractExpiration(String token) {
+	private Date extractExpiration(String token) {
 		return extractClaim(token, Claims::getExpiration);
+	}
+	
+	public JwtLoggedInDetails refreshToken(String username) {
+		String sessionId = httpSession.getId();
+		String jwtType = SecurityConstantsEnum.REFRESH.getValue();
+		Date issuedAt = new Date(System.currentTimeMillis());
+		Date expiration = new Date(System.currentTimeMillis() - 1000 * 60 * 60 * 24);
+
+		Map<String, Object> claims = new HashMap<>();
+		claims.put(SecurityConstantsEnum.JSESSIONID.getValue(), sessionId);
+
+		String jwt = createToken(claims, username, issuedAt, expiration);
+
+		return new JwtLoggedInDetails(sessionId, jwtType, jwt, issuedAt.toInstant(), expiration.toInstant());
 	}
 }
