@@ -16,7 +16,7 @@ import com.acldigital.unaito.db.IUserEmailVerificationDataService;
 import com.acldigital.unaito.db.mapper.MapperUtils;
 import com.acldigital.unaito.service.entity.CommunicationTemplateMasterEntity;
 import com.acldigital.unaito.service.entity.EmailServerConfigEntity;
-import com.acldigital.unaito.service.repository.ICommunicationTemplateMasterRepository;
+import com.acldigital.unaito.service.repository.ICommunicationTemplateRepository;
 import com.acldigital.unaito.service.repository.IEmailServerConfigRepository;
 import com.acldigital.unaito.service.repository.IUserEmailVerificationRepository;
 import com.acldigital.unaito.service.security.constants.CommunicationTemplateTypeEnum;
@@ -36,7 +36,7 @@ public class MailServiceImpl implements IMailService {
 	private IUserEmailVerificationRepository userEmailVerificationRepository;
 
 	@Autowired
-	private ICommunicationTemplateMasterRepository communicationTemplateMasterRepository;
+	private ICommunicationTemplateRepository communicationTemplateMasterRepository;
 
 	@Autowired
 	private MapperUtils mapperUtils;

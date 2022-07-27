@@ -10,16 +10,20 @@ public class ResourceOnboardingPlan {
 
 	private Integer numberOfResources;
 
+	private String week;
+
 	public ResourceOnboardingPlan() {
 
 	}
 
-	public ResourceOnboardingPlan(Long resourceId, Long projectId, String resourceName, Integer numberOfResources) {
+	public ResourceOnboardingPlan(Long resourceId, Long projectId, String resourceName, Integer numberOfResources,
+			String week) {
 		super();
 		this.resourceId = resourceId;
 		this.projectId = projectId;
 		this.resourceName = resourceName;
 		this.numberOfResources = numberOfResources;
+		this.week = week;
 	}
 
 	public Long getResourceId() {
@@ -54,10 +58,18 @@ public class ResourceOnboardingPlan {
 		this.numberOfResources = numberOfResources;
 	}
 
+	public String getWeek() {
+		return week;
+	}
+
+	public void setWeek(String week) {
+		this.week = week;
+	}
+
 	@Override
 	public String toString() {
-		return "ResourceLoading [resourceId=" + resourceId + ", projectId=" + projectId + ", resourceName="
-				+ resourceName + ", numberOfResources=" + numberOfResources + "]";
+		return "ResourceOnboardingPlan [resourceId=" + resourceId + ", projectId=" + projectId + ", resourceName="
+				+ resourceName + ", numberOfResources=" + numberOfResources + ", week=" + week + "]";
 	}
 
 }

@@ -16,6 +16,7 @@ public class UserDto {
 	private Long contactNumber;
 	private Integer isActive;
 	private String location;
+	private boolean isFirstTimeLogin;
 
 	@NotNull
 	private String passwordExpiry;
@@ -34,7 +35,7 @@ public class UserDto {
 	}
 
 	public UserDto(Long userId, String userName, String firstName, String lastName, String email, String roleName,
-			Long contactNumber, Integer isActive, String location) {
+			Long contactNumber, Integer isActive, String location, boolean isFirstTimeLogin) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
@@ -45,10 +46,11 @@ public class UserDto {
 		this.contactNumber = contactNumber;
 		this.isActive = isActive;
 		this.location = location;
+		this.isFirstTimeLogin = isFirstTimeLogin;
 	}
 
 	public UserDto(Long userId, String userName, String password, String firstName, String lastName, String email,
-			String roleName, Long contactNumber, Integer isActive, String location) {
+			String roleName, Long contactNumber, Integer isActive, String location, boolean isFirstTimeLogin) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
@@ -60,6 +62,7 @@ public class UserDto {
 		this.contactNumber = contactNumber;
 		this.isActive = isActive;
 		this.location = location;
+		this.isFirstTimeLogin = isFirstTimeLogin;
 	}
 
 	public UserDto(Long userId, String userName, String password, String firstName, String lastName, String email,
@@ -192,13 +195,21 @@ public class UserDto {
 		this.cryptoAlgoName = cryptoAlgoName;
 	}
 
+	public boolean isFirstTimeLogin() {
+		return isFirstTimeLogin;
+	}
+
+	public void setFirstTimeLogin(boolean isFirstTimeLogin) {
+		this.isFirstTimeLogin = isFirstTimeLogin;
+	}
+
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", userName=" + userName + ", password=" + password + ", firstName="
+		return "UserDto [userId=" + userId + ", userName=" + userName + ", password=" + password + ", firstName="
 				+ firstName + ", lastName=" + lastName + ", email=" + email + ", roleName=" + roleName
 				+ ", contactNumber=" + contactNumber + ", isActive=" + isActive + ", location=" + location
-				+ ", passwordExpiry=" + passwordExpiry + ", lastLoggedIn=" + lastLoggedIn + ", saltKey=" + saltKey
-				+ ", cryptoAlgoName=" + cryptoAlgoName + "]";
+				+ ", isFirstTimeLogin=" + isFirstTimeLogin + ", passwordExpiry=" + passwordExpiry + ", lastLoggedIn="
+				+ lastLoggedIn + ", saltKey=" + saltKey + ", cryptoAlgoName=" + cryptoAlgoName + "]";
 	}
 
 }

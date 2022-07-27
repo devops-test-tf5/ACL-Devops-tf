@@ -27,6 +27,12 @@ public class IntegrationLayerEntity implements Serializable {
 	@JoinColumn(name = "application_id", referencedColumnName = "application_id")
 	private ApplicationOverviewEntity applicationOverviewEntity;
 
+	/*
+	 * @ManyToOne(fetch = FetchType.LAZY)
+	 * 
+	 * @JoinColumn(name = "project_id", referencedColumnName = "project_id") private
+	 * ProjectsEntity projectsEntity;
+	 */
 	@Column(name = "target_application")
 	private String targetApplication;
 
@@ -44,14 +50,21 @@ public class IntegrationLayerEntity implements Serializable {
 	}
 
 	public IntegrationLayerEntity(Long integrationLayerId, ApplicationOverviewEntity applicationOverviewEntity,
+			//ProjectsEntity projectsEntity, 
 			String targetApplication, String bandwidth, String vpn, String encryption) {
 		super();
 		this.integrationLayerId = integrationLayerId;
 		this.applicationOverviewEntity = applicationOverviewEntity;
+		//this.projectsEntity = projectsEntity;
 		this.targetApplication = targetApplication;
 		this.bandwidth = bandwidth;
 		this.vpn = vpn;
 		this.encryption = encryption;
+	}
+
+	public IntegrationLayerEntity(ApplicationOverviewEntity applicationOverviewEntity) {
+		this.applicationOverviewEntity = applicationOverviewEntity;
+
 	}
 
 	public Long getIntegrationLayerId() {
@@ -102,11 +115,20 @@ public class IntegrationLayerEntity implements Serializable {
 		this.encryption = encryption;
 	}
 
+	/*
+	 * public ProjectsEntity getProjectsEntity() { return projectsEntity; }
+	 * 
+	 * public void setProjectsEntity(ProjectsEntity projectsEntity) {
+	 * this.projectsEntity = projectsEntity; }
+	 */
+
 	@Override
 	public String toString() {
 		return "IntegrationLayerEntity [integrationLayerId=" + integrationLayerId + ", applicationOverviewEntity="
-				+ applicationOverviewEntity + ", targetApplication=" + targetApplication + ", bandwidth=" + bandwidth
-				+ ", vpn=" + vpn + ", encryption=" + encryption + "]";
+				+ applicationOverviewEntity + ", "
+					//	+ "projectsEntity=" + projectsEntity + ","
+								+ " targetApplication="
+				+ targetApplication + ", bandwidth=" + bandwidth + ", vpn=" + vpn + ", encryption=" + encryption + "]";
 	}
 
 }

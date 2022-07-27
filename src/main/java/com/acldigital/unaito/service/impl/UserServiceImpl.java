@@ -7,22 +7,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
+import com.acldigital.unaito.db.ICommunicationTemplateDataService;
 import com.acldigital.unaito.db.ILoggedInDetailsDataService;
 import com.acldigital.unaito.db.IUserDataService;
 import com.acldigital.unaito.db.IUserEmailVerificationDataService;
 import com.acldigital.unaito.service.encoder.UnaitoPasswordEncoder;
 import com.acldigital.unaito.service.event.OnUserRegistrationCompleteEvent;
 import com.acldigital.unaito.service.mail.IMailService;
+import com.acldigital.unaito.service.security.constants.CommunicationTemplateTypeEnum;
 import com.acldigital.unaito.service.security.constants.SecurityConstantsEnum;
 import com.acldigital.unaito.service.service.IUserService;
-import com.acldigital.unaito.service.service.UnaitoUserDetailsService;
 import com.acldigital.unaito.service.user.constants.ConfigProperties;
 import com.acldigital.unaito.service.user.constants.UserConstants;
 import com.acldigital.unaito.service.user.dto.AuthorizationRequest;
+import com.acldigital.unaito.service.user.dto.CommunicationTemplateDetails;
 import com.acldigital.unaito.service.user.dto.JwtLoggedInDetails;
 import com.acldigital.unaito.service.user.dto.JwtToken;
 import com.acldigital.unaito.service.user.dto.UserCryptoDetails;
@@ -42,9 +43,6 @@ import com.acldigital.unaito.service.utils.UserUtils;
 
 @Service
 public class UserServiceImpl implements IUserService {
-
-	@Autowired
-	private AuthenticationManager authenticationManager;
 
 	@Autowired
 	private UserUtils userUtils;
@@ -74,10 +72,10 @@ public class UserServiceImpl implements IUserService {
 	private IUserEmailVerificationDataService emailVerificationDataService;
 
 	@Autowired
-	private UnaitoUserDetailsService userDetails;
+	private ILoggedInDetailsDataService loggedInDetailsDataService;
 
 	@Autowired
-	private ILoggedInDetailsDataService loggedInDetailsDataService;
+	private ICommunicationTemplateDataService commTemplateDataService;
 
 	@Override
 	public ResponseEntity<Object> createUser(String apiKey, UserRegistrationDetails userRegistrationRequest) {
@@ -172,12 +170,12 @@ public class UserServiceImpl implements IUserService {
 	public ResponseEntity<Object> editUser(String apiKey, String jwtToken, UserRequest request) {
 		UserDto userProfileDetails = null;
 		securityUtils.validateApiKey(apiKey);
-		boolean isValidToken = checkIfValidToken("Bearer "+jwtToken, request.getUserName());
+		boolean isValidToken = checkIfValidToken("Bearer " + jwtToken, request.getUserName());
 		if (isValidToken) {
 			validateJwtToken(jwtToken, request.getUserName());
 			userProfileDetails = userDataService.getProfileDetailsByUserName(request.getUserName());
 			if (!ObjectUtils.isEmpty(userProfileDetails)) {
-				//validate the user entered data, especially duplicate mail id 
+				// validate the user entered data, especially duplicate mail id
 				userDataService.updateUserDetails(request, userProfileDetails);
 				return userUtils.successResponse();
 			} else {
@@ -195,12 +193,12 @@ public class UserServiceImpl implements IUserService {
 		UserDto userProfileDetails = null;
 		securityUtils.validateApiKey(apiKey);
 		// write code to check if user is admin and then allow him to delete the user
-		boolean isValidToken = checkIfValidToken("Bearer "+jwtToken, userName);
+		boolean isValidToken = checkIfValidToken("Bearer " + jwtToken, userName);
 		if (isValidToken) {
 			validateJwtToken(jwtToken, userName);
 			userProfileDetails = userDataService.getProfileDetailsByUserName(userName);
 			userUtils.checkIfValidUserByUserName(userName, userProfileDetails);
-			//after inactivating the user, add is_deleted flag as true.
+			// after inactivating the user, add is_deleted flag as true.
 			userDataService.inActivateUser(userProfileDetails.getUserId());
 			return userUtils.successResponse();
 		} else {
@@ -242,7 +240,9 @@ public class UserServiceImpl implements IUserService {
 		int verifyCount = emailVerificationDataService.verifyCode(userId, verifyCode);
 		if (verifyCount > 0) {
 			userDataService.activateUser(userId);
-			return new ResponseEntity<>(UserConstants.ACTIVATION_SUCCESSFUL, HttpStatus.OK);
+			CommunicationTemplateDetails templateDetails = commTemplateDataService
+					.getEmailTemplateDetails(CommunicationTemplateTypeEnum.VERIFICATION_RESPONSE);
+			return new ResponseEntity<>(templateDetails.getTemplateBody(), HttpStatus.OK);
 		} else {
 			throw new InvalidOrExpiredVerificationLinkException("invalid", HttpStatus.FORBIDDEN.value());
 		}
@@ -302,6 +302,19 @@ public class UserServiceImpl implements IUserService {
 		UserDto profileDetails = userDataService.getProfileDetailsByUserName(userName);
 		return loggedInDetailsDataService.checkIfValidToken(profileDetails.getUserId(), token);
 
+	}
+
+	@Override
+	public int passwordReset(String apiKey, UserDto userDto) {
+		securityUtils.validateApiKey(apiKey);
+		UserCryptoDetails userCryptoDetails = new UserCryptoDetails(
+				unaitoPasswordEncoder.encoderPassword(userDto.getPassword()), unaitoPasswordEncoder.getSalt(),
+				unaitoPasswordEncoder.getEncoder().getValue());
+		UserDto userProfile = userDataService.getProfileDetailsByUserName(userDto.getUserName());
+		userDto.setPassword(userCryptoDetails.getEncodedPassword());
+		userDto.setFirstTimeLogin(false);
+		userDataService.updateUserCryptoDetails(userCryptoDetails, userProfile.getUserId());
+		return userDataService.updateUserPassword(userDto);
 	}
 
 }

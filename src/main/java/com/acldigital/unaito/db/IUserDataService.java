@@ -47,4 +47,6 @@ public interface IUserDataService {
 	public void updateUserLoggedInDetails(UserLoggedInDetails userLoggedInDetails) throws Exception;
 
 	public Long fetchUserDetails(String customerFirstName, String customerLastName, String email, Long roleId);
+
+	public int updateUserPassword(UserDto userDto);
 }

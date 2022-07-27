@@ -36,11 +36,11 @@ public class RecommendationsEntity implements Serializable {
 	@Column(name = "os_version")
 	private String osVersion;
 
-	@Column(name = "web_server_name")
-	private String webServerName;
+	@Column(name = "server_name")
+	private String serverName;
 
-	@Column(name = "web_server_version")
-	private String webServerVersion;
+	@Column(name = "server_version")
+	private String serverVersion;
 
 	@Column(name = "migration_approach_type")
 	private String migrationApproachType;
@@ -65,7 +65,7 @@ public class RecommendationsEntity implements Serializable {
 	}
 
 	public RecommendationsEntity(Long recommendationId, ApplicationOverviewEntity applicationEntity,
-			String cloudInstance, String osName, String osVersion, String webServerName, String webServerVersion,
+			String cloudInstance, String osName, String osVersion, String serverName, String serverVersion,
 			String migrationApproachType, String storageType, String targetCapacity, String comments,
 			String cloudProxyService, String complianceAction) {
 		super();
@@ -74,8 +74,8 @@ public class RecommendationsEntity implements Serializable {
 		this.cloudInstance = cloudInstance;
 		this.osName = osName;
 		this.osVersion = osVersion;
-		this.webServerName = webServerName;
-		this.webServerVersion = webServerVersion;
+		this.serverName = serverName;
+		this.serverVersion = serverVersion;
 		this.migrationApproachType = migrationApproachType;
 		this.storageType = storageType;
 		this.targetCapacity = targetCapacity;
@@ -124,20 +124,20 @@ public class RecommendationsEntity implements Serializable {
 		this.osVersion = osVersion;
 	}
 
-	public String getWebServerName() {
-		return webServerName;
+	public String getServerName() {
+		return serverName;
 	}
 
-	public void setWebServerName(String webServerName) {
-		this.webServerName = webServerName;
+	public void setServerName(String serverName) {
+		this.serverName = serverName;
 	}
 
-	public String getWebServerVersion() {
-		return webServerVersion;
+	public String getServerVersion() {
+		return serverVersion;
 	}
 
-	public void setWebServerVersion(String webServerVersion) {
-		this.webServerVersion = webServerVersion;
+	public void setServerVersion(String serverVersion) {
+		this.serverVersion = serverVersion;
 	}
 
 	public String getMigrationApproachType() {
@@ -192,7 +192,7 @@ public class RecommendationsEntity implements Serializable {
 	public String toString() {
 		return "RecommendationsEntity [recommendationId=" + recommendationId + ", applicationEntity="
 				+ applicationEntity + ", cloudInstance=" + cloudInstance + ", osName=" + osName + ", osVersion="
-				+ osVersion + ", webServerName=" + webServerName + ", webServerVersion=" + webServerVersion
+				+ osVersion + ", serverName=" + serverName + ", serverVersion=" + serverVersion
 				+ ", migrationApproachType=" + migrationApproachType + ", storageType=" + storageType
 				+ ", targetCapacity=" + targetCapacity + ", comments=" + comments + ", cloudProxyService="
 				+ cloudProxyService + ", complianceAction=" + complianceAction + "]";

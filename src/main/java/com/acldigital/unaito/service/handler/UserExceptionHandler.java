@@ -13,6 +13,7 @@ import com.acldigital.unaito.service.user.exception.EmptyInputException;
 import com.acldigital.unaito.service.user.exception.InvalidJwtTokenException;
 import com.acldigital.unaito.service.user.exception.InvalidOrExpiredVerificationLinkException;
 import com.acldigital.unaito.service.user.exception.InvalidUserException;
+import com.acldigital.unaito.service.user.exception.JWTExpiredException;
 import com.acldigital.unaito.service.user.exception.MoreRetryCountException;
 import com.acldigital.unaito.service.user.exception.TokenExpiredException;
 import com.acldigital.unaito.service.user.exception.TokenMissingException;
@@ -156,6 +157,13 @@ public class UserExceptionHandler {
 	public ResponseEntity<ErrorResponse> handleCustomerCreationException(CustomerCreationException cce) {
 		ErrorResponse errorResponse = new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(),
 				"Exception occured while creation of new customer.");
+		return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	@ExceptionHandler(value = { JWTExpiredException.class })
+	public ResponseEntity<ErrorResponse> handleJWTExpiredException(JWTExpiredException cce) {
+		ErrorResponse errorResponse = new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+				"JWT token expired.");
 		return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 }

@@ -11,6 +11,10 @@ public interface ICustomerDataService {
 	public CustomerDto getCustomerDetails(String customerName);
 
 	public CustomerDto getCustomerDetails(Long customerId);
-	
+
 	public List<CustomerDto> getAllCustomers();
+
+	public CustomerDto editCustomer(CustomerDto request, Long customerId);
+
+	public int deleteCustomer(Long customerId);
 }

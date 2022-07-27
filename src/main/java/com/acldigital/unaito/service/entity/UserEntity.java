@@ -59,6 +59,9 @@ public class UserEntity implements Serializable {
 	@Column(name = "wrong_password_count")
 	private Integer wrongPasswordCount;
 
+	@Column(name = "is_first_time_login")
+	private boolean isFirstTimeLogin;
+
 	@Column(name = "created_by")
 	private String createdBy;
 
@@ -100,7 +103,7 @@ public class UserEntity implements Serializable {
 		this.maxWrongPasswordCount = maxWrongPasswordCount;
 		this.wrongPasswordCount = wrongPasswordCount;
 	}
-	
+
 	public UserEntity(String userName, String firstName, String lastName, String password, String email,
 			Integer isActive, Long contactNumber, String location) {
 		super();
@@ -274,14 +277,22 @@ public class UserEntity implements Serializable {
 		this.wrongPasswordCount = wrongPasswordCount;
 	}
 
+	public boolean isFirstTimeLogin() {
+		return isFirstTimeLogin;
+	}
+
+	public void setFirstTimeLogin(boolean isFirstTimeLogin) {
+		this.isFirstTimeLogin = isFirstTimeLogin;
+	}
+
 	@Override
 	public String toString() {
 		return "UserEntity [userId=" + userId + ", roleId=" + roleId + ", userName=" + userName + ", firstName="
 				+ firstName + ", lastName=" + lastName + ", password=" + password + ", email=" + email + ", isActive="
 				+ isActive + ", contactNumber=" + contactNumber + ", location=" + location + ", userCryptoEntity="
 				+ userCryptoEntity + ", maxWrongPasswordCount=" + maxWrongPasswordCount + ", wrongPasswordCount="
-				+ wrongPasswordCount + ", createdBy=" + createdBy + ", createdDate=" + createdDate + ", updatedBy="
-				+ updatedBy + ", updatedDate=" + updatedDate + "]";
+				+ wrongPasswordCount + ", isFirstTimeLogin=" + isFirstTimeLogin + ", createdBy=" + createdBy
+				+ ", createdDate=" + createdDate + ", updatedBy=" + updatedBy + ", updatedDate=" + updatedDate + "]";
 	}
 
 }

@@ -7,6 +7,7 @@ public class UserConstants {
 	public static final String INVALID_USER = "Invalid user";
 	public static final String CHECK_INPUT = "Please check your input";
 	public static final String NOT_FOUND = "User not found";
+	public static final String CUSTOMER_NOT_FOUND = "Customer not found";
 	public static final String USER_NOT_ACTIVE = "User profile not active";
 	public static final Integer ACTIVE_STATUS = 1;
 	public static final Integer INACTIVE_STATUS = 0;
@@ -17,7 +18,7 @@ public class UserConstants {
 	public static final String NO_EMAIL_ID = "Email is not registered.";
 	public static final String LOGIN_PASSWORD = "Login password for Unaito application";
 	public static final String INACTIVE_USER = "User status not activated.";
-	public static final String ACTIVATION_SUCCESSFUL = "Account activation successful";
+	public static final String ACTIVATION_SUCCESSFUL = "VERIFICATION_RESPONSE";
 	public static final String NEWLY_GENERATED_PASSWORD = "Newly generated password :";
 	public static final Integer MAX_WRONG_PASSWORD_COUNT = 3;
 	public static final Integer DEFAULT_WRONG_PASSWORD_COUNT = 0;

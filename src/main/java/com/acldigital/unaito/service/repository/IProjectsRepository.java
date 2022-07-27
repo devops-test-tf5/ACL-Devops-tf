@@ -11,7 +11,7 @@ import com.acldigital.unaito.service.user.dto.Drivers;
 @Repository
 public interface IProjectsRepository extends CrudRepository<ProjectsEntity, Long> {
 
-	@Query(value = "update projects p set p.drivers=:drivers where p.project_id=:projectId",nativeQuery = true)
-	public ProjectsEntity saveDrivers(@Param("drivers") Drivers drivers, 
-			@Param("projectId") Long projectId);
+	@Query(value = "update projects p set p.drivers=:drivers where p.project_id=:projectId", nativeQuery = true)
+	public ProjectsEntity saveDrivers(@Param("drivers") Drivers drivers, @Param("projectId") Long projectId);
+
 }

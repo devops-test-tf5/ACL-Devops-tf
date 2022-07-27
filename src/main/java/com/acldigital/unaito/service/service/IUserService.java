@@ -4,6 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import com.acldigital.unaito.service.user.dto.AuthorizationRequest;
+import com.acldigital.unaito.service.user.dto.UserDto;
 import com.acldigital.unaito.service.user.dto.UserRegistrationDetails;
 import com.acldigital.unaito.service.user.dto.UserRequest;
 
@@ -27,4 +28,6 @@ public interface IUserService {
 	public ResponseEntity<Object> getUserDetails(String apiKey, String userName);
 
 	public ResponseEntity<Object> logout(String apiKey, String token, String userName);
+
+	public int passwordReset(String apiKey, UserDto userDto);
 }

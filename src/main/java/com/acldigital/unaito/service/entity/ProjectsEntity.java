@@ -53,48 +53,44 @@ public class ProjectsEntity implements Serializable {
 	@Column(name = "scope")
 	private String scope;
 
-	/*
-	 * @OneToMany(mappedBy = "applicationId", cascade = CascadeType.ALL) private
-	 * List<ApplicationOverviewEntity> applicationsList;
-	 */
+	@Column(name = "activity_plans")
+	private String activityPlans;
 
-	/*
-	 * @OneToOne(mappedBy = "",cascade = CascadeType.ALL)
-	 * 
-	 * @Column(name = "drivers") private DriverEntity drivers;
-	 * 
-	 * @OneToOne(mappedBy = "",cascade = CascadeType.ALL)
-	 * 
-	 * @Column(name = "scope") private ScopeEntity scope;
-	 */
-	@OneToMany(mappedBy = "activityId", cascade = CascadeType.ALL)
-	private List<ActivityPlanEntity> activityPlanEntities = new ArrayList<>();
+	@Column(name = "resource_plans")
+	private String resourcePlans;
 
-	@OneToMany(mappedBy = "onboardingId", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL)
+	private List<ApplicationOverviewEntity> applicationOverviewEntities = new ArrayList<>();
+	
+	/*
+	 * @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL) private
+	 * List<IntegrationLayerEntity> integrationLayerEntities = new ArrayList<>();
+	 */
+	
+	/*
+	 * @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL) private
+	 * List<ActivityPlanEntity> activityPlanEntities = new ArrayList<>();
+	 */
+	@OneToMany(mappedBy = "projectsEntity", cascade = CascadeType.ALL)
 	private List<ProjectTeamEntity> projectTeamEntities = new ArrayList<>();
 
-	@OneToMany(mappedBy = "resourceId", cascade = CascadeType.ALL)
-	private List<ResourceOnboardingEntity> resourceOnboardingEntities = new ArrayList<>();
-
 	/*
-	 * @OneToMany(mappedBy = "resourceId", cascade = CascadeType.ALL) private
-	 * List<ResourceLoadingEntity> resourceLoadingEntities = new ArrayList<>();
-	 * 
-	 * @OneToMany(mappedBy = "onboardingId", cascade = CascadeType.ALL) private
-	 * List<ProjectTeamEntity> projectTeamEntities = new ArrayList<>();
-	 * 
-	 * @OneToMany(mappedBy = "workflowId", cascade = CascadeType.ALL) private
-	 * List<WorkflowMgmtEntity> workflowMgmtEntities = new ArrayList<>();
-	 * 
-	 * @OneToMany(mappedBy = "notificationId", cascade = CascadeType.ALL) private
-	 * List<NotificationsEntity> notificationEntities = new ArrayList<>();
+	 * @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL) private
+	 * List<ResourceOnboardingEntity> resourceOnboardingEntities = new
+	 * ArrayList<>();
 	 */
+	@OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL)
+	private List<WorkflowMgmtEntity> workflowMgmtEntities = new ArrayList<>();
+
+	@OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL)
+	private List<NotificationsEntity> notificationEntities = new ArrayList<>();
+
 	public ProjectsEntity() {
 
 	}
-	
+
 	public ProjectsEntity(Long projectId) {
-		this.projectId=projectId;
+		this.projectId = projectId;
 	}
 
 	public ProjectsEntity(Long customerId, Long statusId, String projectName, String description, Date startDate,
@@ -107,6 +103,33 @@ public class ProjectsEntity implements Serializable {
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.duration = duration;
+	}
+
+	public ProjectsEntity(Long projectId, Long customerId, Long statusId, String projectName, String description,
+			Date startDate, Date endDate, String duration, String drivers, String scope, String activityPlans,
+			String resourcePlans, List<ApplicationOverviewEntity> applicationOverviewEntities,
+			List<ActivityPlanEntity> activityPlanEntities, List<ProjectTeamEntity> projectTeamEntities,
+			List<ResourceOnboardingEntity> resourceOnboardingEntities, List<WorkflowMgmtEntity> workflowMgmtEntities,
+			List<NotificationsEntity> notificationEntities) {
+		super();
+		this.projectId = projectId;
+		this.customerId = customerId;
+		this.statusId = statusId;
+		this.projectName = projectName;
+		this.description = description;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.duration = duration;
+		this.drivers = drivers;
+		this.scope = scope;
+		this.activityPlans = activityPlans;
+		this.resourcePlans = resourcePlans;
+		this.applicationOverviewEntities = applicationOverviewEntities;
+		//this.activityPlanEntities = activityPlanEntities;
+		this.projectTeamEntities = projectTeamEntities;
+		//this.resourceOnboardingEntities = resourceOnboardingEntities;
+		this.workflowMgmtEntities = workflowMgmtEntities;
+		this.notificationEntities = notificationEntities;
 	}
 
 	public Long getProjectId() {
@@ -173,14 +196,13 @@ public class ProjectsEntity implements Serializable {
 		this.duration = duration;
 	}
 
-	public List<ActivityPlanEntity> getActivityPlanEntities() {
-		return activityPlanEntities;
-	}
-
-	public void setActivityPlanEntities(List<ActivityPlanEntity> activityPlanEntities) {
-		this.activityPlanEntities = activityPlanEntities;
-	}
-
+	/*
+	 * public List<ActivityPlanEntity> getActivityPlanEntities() { return
+	 * activityPlanEntities; }
+	 * 
+	 * public void setActivityPlanEntities(List<ActivityPlanEntity>
+	 * activityPlanEntities) { this.activityPlanEntities = activityPlanEntities; }
+	 */
 	public String getDrivers() {
 		return drivers;
 	}
@@ -205,12 +227,52 @@ public class ProjectsEntity implements Serializable {
 		this.projectTeamEntities = projectTeamEntities;
 	}
 
-	public List<ResourceOnboardingEntity> getResourceOnboardingEntities() {
-		return resourceOnboardingEntities;
+	/*
+	 * public List<ResourceOnboardingEntity> getResourceOnboardingEntities() {
+	 * return resourceOnboardingEntities; }
+	 * 
+	 * public void setResourceOnboardingEntities(List<ResourceOnboardingEntity>
+	 * resourceOnboardingEntities) { this.resourceOnboardingEntities =
+	 * resourceOnboardingEntities; }
+	 */
+	public List<WorkflowMgmtEntity> getWorkflowMgmtEntities() {
+		return workflowMgmtEntities;
 	}
 
-	public void setResourceOnboardingEntities(List<ResourceOnboardingEntity> resourceOnboardingEntities) {
-		this.resourceOnboardingEntities = resourceOnboardingEntities;
+	public void setWorkflowMgmtEntities(List<WorkflowMgmtEntity> workflowMgmtEntities) {
+		this.workflowMgmtEntities = workflowMgmtEntities;
+	}
+
+	public List<NotificationsEntity> getNotificationEntities() {
+		return notificationEntities;
+	}
+
+	public void setNotificationEntities(List<NotificationsEntity> notificationEntities) {
+		this.notificationEntities = notificationEntities;
+	}
+
+	public List<ApplicationOverviewEntity> getApplicationOverviewEntities() {
+		return applicationOverviewEntities;
+	}
+
+	public void setApplicationOverviewEntities(List<ApplicationOverviewEntity> applicationOverviewEntities) {
+		this.applicationOverviewEntities = applicationOverviewEntities;
+	}
+
+	public String getActivityPlans() {
+		return activityPlans;
+	}
+
+	public void setActivityPlans(String activityPlans) {
+		this.activityPlans = activityPlans;
+	}
+
+	public String getResourcePlans() {
+		return resourcePlans;
+	}
+
+	public void setResourcePlans(String resourcePlans) {
+		this.resourcePlans = resourcePlans;
 	}
 
 	@Override
@@ -218,8 +280,11 @@ public class ProjectsEntity implements Serializable {
 		return "ProjectsEntity [projectId=" + projectId + ", customerId=" + customerId + ", statusId=" + statusId
 				+ ", projectName=" + projectName + ", description=" + description + ", startDate=" + startDate
 				+ ", endDate=" + endDate + ", duration=" + duration + ", drivers=" + drivers + ", scope=" + scope
-				+ ", activityPlanEntities=" + activityPlanEntities + ", projectTeamEntities=" + projectTeamEntities
-				+ "]";
+				+ ", activityPlans=" + activityPlans + ", resourcePlans=" + resourcePlans
+				+ ", applicationOverviewEntities=" + applicationOverviewEntities + ", projectTeamEntities="
+				+ projectTeamEntities + ", workflowMgmtEntities=" + workflowMgmtEntities + ", notificationEntities="
+				+ notificationEntities + "]";
 	}
+
 
 }

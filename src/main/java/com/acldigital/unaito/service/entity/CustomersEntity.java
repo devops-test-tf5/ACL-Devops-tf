@@ -56,15 +56,18 @@ public class CustomersEntity implements Serializable {
 
 	}
 
-	/*
-	 * public CustomersEntity(String customerName, Long userId, String location,
-	 * String spocFirstName, String spocLastName, String emailId, int isActive,Long
-	 * contactNumber) { super(); this.customerName = customerName; this.userId =
-	 * userId; this.location = location; this.spocFirstName = spocFirstName;
-	 * this.spocLastName = spocLastName; this.emailId = emailId; this.isActive =
-	 * isActive; this.contactNumber=contactNumber; }
-	 */
-	
+	public CustomersEntity(String customerName, Long userId, String location, String spocFirstName, String spocLastName,
+			String emailId, int isActive, Long contactNumber) {
+		super();
+		this.customerName = customerName;
+		this.userId = userId;
+		this.location = location;
+		this.spocFirstName = spocFirstName;
+		this.spocLastName = spocLastName;
+		this.emailId = emailId;
+		this.isActive = isActive;
+		this.contactNumber = contactNumber;
+	}
 
 	public CustomersEntity(Long customerId, String customerName, Long userId, String location, String spocFirstName,
 			String spocLastName, String emailId, Long contactNumber, int isActive,

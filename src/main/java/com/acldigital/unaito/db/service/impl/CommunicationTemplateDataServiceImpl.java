@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.acldigital.unaito.db.ICommunicationTemplateDataService;
 import com.acldigital.unaito.db.mapper.MapperUtils;
 import com.acldigital.unaito.service.entity.CommunicationTemplateMasterEntity;
-import com.acldigital.unaito.service.repository.ICommunicationTemplateMasterRepository;
+import com.acldigital.unaito.service.repository.ICommunicationTemplateRepository;
 import com.acldigital.unaito.service.security.constants.CommunicationTemplateTypeEnum;
 import com.acldigital.unaito.service.user.dto.CommunicationTemplateDetails;
 
@@ -14,14 +14,14 @@ import com.acldigital.unaito.service.user.dto.CommunicationTemplateDetails;
 public class CommunicationTemplateDataServiceImpl implements ICommunicationTemplateDataService {
 
 	@Autowired
-	private ICommunicationTemplateMasterRepository communicationTemplateMasterRepository;
+	private ICommunicationTemplateRepository communicationTemplateRepository;
 
 	@Autowired
 	private MapperUtils mapperUtils;
 
 	@Override
 	public CommunicationTemplateDetails getEmailTemplateDetails(CommunicationTemplateTypeEnum templateTypeEnum) {
-		CommunicationTemplateMasterEntity entity = communicationTemplateMasterRepository
+		CommunicationTemplateMasterEntity entity = communicationTemplateRepository
 				.findByCommunicationTemplateType(templateTypeEnum.getValue());
 		return mapperUtils.convertToCommunicationTemplateDetails(entity);
 	}

@@ -85,4 +85,13 @@ public interface IUserRepository extends CrudRepository<UserEntity, Long> {
 	public Long fetchUserDetails(@Param("customerFirstName") String customerFirstName,
 			@Param("customerLastName") String customerLastName, @Param("email") String email,
 			@Param("roleId") Long roleId);
+
+	@Modifying
+	@Transactional
+	@Query(value = "update users u set u.password=:password,u.is_first_time_login=:isFirstTimeLogin where u.user_name=:userName", nativeQuery = true)
+	public int updateUserPassword(@Param("userName") String userName, @Param("password") String password,
+			@Param("isFirstTimeLogin") boolean isFirstTimeLogin);
+
+	@Query(value = "select u.is_first_time_login from users u where u.user_id=:userId", nativeQuery = true)
+	public boolean checkIfFirstTimeLogin(@Param("userId") Long userId);
 }

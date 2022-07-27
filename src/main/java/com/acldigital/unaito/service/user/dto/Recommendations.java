@@ -12,9 +12,9 @@ public class Recommendations {
 
 	private String osVersion;
 
-	private String webServerName;
+	private String serverName;
 
-	private String webServerVersion;
+	private String serverVersion;
 
 	private String migrationApproachType;
 
@@ -33,17 +33,16 @@ public class Recommendations {
 	}
 
 	public Recommendations(Long recommendationId, Long applicationId, String cloudInstance, String osName,
-			String osVersion, String webServerName, String webServerVersion, String migrationApproachType,
-			String storageType, String targetCapacity, String comments, String cloudProxyService,
-			String complianceAction) {
+			String osVersion, String serverName, String serverVersion, String migrationApproachType, String storageType,
+			String targetCapacity, String comments, String cloudProxyService, String complianceAction) {
 		super();
 		this.recommendationId = recommendationId;
 		this.applicationId = applicationId;
 		this.cloudInstance = cloudInstance;
 		this.osName = osName;
 		this.osVersion = osVersion;
-		this.webServerName = webServerName;
-		this.webServerVersion = webServerVersion;
+		this.serverName = serverName;
+		this.serverVersion = serverVersion;
 		this.migrationApproachType = migrationApproachType;
 		this.storageType = storageType;
 		this.targetCapacity = targetCapacity;
@@ -92,20 +91,20 @@ public class Recommendations {
 		this.osVersion = osVersion;
 	}
 
-	public String getWebServerName() {
-		return webServerName;
+	public String getServerName() {
+		return serverName;
 	}
 
-	public void setWebServerName(String webServerName) {
-		this.webServerName = webServerName;
+	public void setServerName(String serverName) {
+		this.serverName = serverName;
 	}
 
-	public String getWebServerVersion() {
-		return webServerVersion;
+	public String getServerVersion() {
+		return serverVersion;
 	}
 
-	public void setWebServerVersion(String webServerVersion) {
-		this.webServerVersion = webServerVersion;
+	public void setServerVersion(String serverVersion) {
+		this.serverVersion = serverVersion;
 	}
 
 	public String getMigrationApproachType() {
@@ -160,10 +159,11 @@ public class Recommendations {
 	public String toString() {
 		return "Recommendations [recommendationId=" + recommendationId + ", applicationId=" + applicationId
 				+ ", cloudInstance=" + cloudInstance + ", osName=" + osName + ", osVersion=" + osVersion
-				+ ", webServerName=" + webServerName + ", webServerVersion=" + webServerVersion
-				+ ", migrationApproachType=" + migrationApproachType + ", storageType=" + storageType
-				+ ", targetCapacity=" + targetCapacity + ", comments=" + comments + ", cloudProxyService="
-				+ cloudProxyService + ", complianceAction=" + complianceAction + "]";
+				+ ", serverName=" + serverName + ", serverVersion=" + serverVersion + ", migrationApproachType="
+				+ migrationApproachType + ", storageType=" + storageType + ", targetCapacity=" + targetCapacity
+				+ ", comments=" + comments + ", cloudProxyService=" + cloudProxyService + ", complianceAction="
+				+ complianceAction + "]";
 	}
 
+	
 }

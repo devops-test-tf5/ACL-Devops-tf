@@ -2,6 +2,7 @@ package com.acldigital.unaito.service.user.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.jboss.logging.Logger;
@@ -59,6 +60,7 @@ public class UserController {
 	public ResponseEntity<Object> registerUser(@RequestHeader("API-KEY") String apiKey,
 			@Valid @RequestBody @NotNull UserRegistrationDetails userRegistrationRequest,
 			HttpServletRequest servRequest) throws UserConstraintValidationException {
+		logger.info(String.format("BEGIN::/create POST %s", userRegistrationRequest.getUserName()));
 		ResponseEntity<Object> registeredUser = userService.createUser(apiKey, userRegistrationRequest);
 		UserResponse response = (UserResponse) registeredUser.getBody();
 		UserDto user = (UserDto) response.getResponseObject();
@@ -101,11 +103,11 @@ public class UserController {
 		return userService.forgotPassword(apiKey, email);
 	}
 
-	@GetMapping("/email-verify/userId/{userId}/verifyId/{verifyId}")
+	@GetMapping(value = "/email-verify/userId/{userId}/verifyId/{verifyId}", produces = org.springframework.http.MediaType.TEXT_HTML_VALUE)
 	public ResponseEntity<Object> verifyCodeAndActivateUser(@PathVariable("userId") Long userId,
 			@PathVariable("verifyId") String verifyId) {
-		userService.verifyCode(userId, verifyId);
-		return null;
+		return userService.verifyCode(userId, verifyId);
+
 	}
 
 	@GetMapping("/all-users")
@@ -121,9 +123,19 @@ public class UserController {
 
 	@GetMapping("/logout/{userName}")
 	public ResponseEntity<Object> userLogout(@RequestHeader("API-KEY") String apiKey,
-			@RequestHeader("Authorization") String jwtToken, @PathVariable String userName) {
+			@RequestHeader("Authorization") String jwtToken, @PathVariable("userName") String userName) {
 
 		return userService.logout(apiKey, jwtToken, userName);
+	}
+
+	@PostMapping(value = "/password-reset")
+	public ResponseEntity<Object> passwordReset(@RequestHeader("API-KEY") String apiKey,
+			@RequestBody @NotNull UserDto userDto) {
+		int updateStatus = userService.passwordReset(apiKey, userDto);
+		if (updateStatus > 0) {
+			return userUtils.successResponse();
+		}
+		return userUtils.badResponse();
 	}
 
 }

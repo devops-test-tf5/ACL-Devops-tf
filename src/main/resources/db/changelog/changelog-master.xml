@@ -19,11 +19,11 @@
 			<column name="created_by" type="VARCHAR(50)"
 				defaultValue="ADMIN" />
 			<column name="created_date" type="TIMESTAMP"
-				defaultValue="NULL" />
+				defaultValueComputed="CURRENT_TIMESTAMP" />
 			<column name="updated_by" type="VARCHAR(50)"
 				defaultValue="ADMIN" />
 			<column name="updated_date" type="TIMESTAMP"
-				defaultValue="NULL" />
+				defaultValueComputed="CURRENT_TIMESTAMP" />
 		</createTable>
 
 		<createTable tableName="roles">
@@ -38,11 +38,11 @@
 			<column name="created_by" type="VARCHAR(50)"
 				defaultValue="ADMIN" />
 			<column name="created_date" type="TIMESTAMP"
-				defaultValue="NULL" />
+				defaultValueComputed="CURRENT_TIMESTAMP" />
 			<column name="updated_by" type="VARCHAR(50)"
 				defaultValue="ADMIN" />
 			<column name="updated_date" type="TIMESTAMP"
-				defaultValue="NULL" />
+				defaultValueComputed="CURRENT_TIMESTAMP" />
 		</createTable>
 		<createTable tableName="users">
 			<column name="user_id" type="INTEGER" autoIncrement="true">
@@ -69,14 +69,15 @@
 				defaultValue="0" />
 			<column name="wrong_password_count" type="INTEGER"
 				defaultValue="0" />
+			<column name="is_first_time_login" type="BOOLEAN"/>	
 			<column name="created_by" type="VARCHAR(50)"
 				defaultValue="ADMIN" />
 			<column name="created_date" type="TIMESTAMP"
-				defaultValue="NULL" />
+				defaultValueComputed="CURRENT_TIMESTAMP" />
 			<column name="updated_by" type="VARCHAR(50)"
 				defaultValue="ADMIN" />
 			<column name="updated_date" type="TIMESTAMP"
-				defaultValue="NULL" />
+				defaultValueComputed="CURRENT_TIMESTAMP" />
 		</createTable>
 		<addForeignKeyConstraint
 			constraintName="USERS_ROLES" referencedTableName="roles"
@@ -100,11 +101,11 @@
 			<column name="created_by" type="VARCHAR(50)"
 				defaultValue="ADMIN" />
 			<column name="created_date" type="TIMESTAMP"
-				defaultValue="NULL" />
+				defaultValueComputed="CURRENT_TIMESTAMP" />
 			<column name="updated_by" type="VARCHAR(50)"
 				defaultValue="ADMIN" />
 			<column name="updated_date" type="TIMESTAMP"
-				defaultValue="NULL" />
+				defaultValueComputed="CURRENT_TIMESTAMP" />
 		</createTable>
 		<addForeignKeyConstraint
 			constraintName="CUSTOMER_USER" referencedTableName="users"
@@ -129,14 +130,16 @@
 			<column name="duration" type="VARCHAR(50)" />
 			<column name="drivers" type="JSON" />
 			<column name="scope" type="JSON" />
+			<column name="activity_plans" type="JSON" />
+			<column name="resource_plans" type="JSON" />
 			<column name="created_by" type="VARCHAR(50)"
 				defaultValue="ADMIN" />
 			<column name="created_date" type="TIMESTAMP"
-				defaultValue="NULL" />
+				defaultValueComputed="CURRENT_TIMESTAMP" />
 			<column name="updated_by" type="VARCHAR(50)"
 				defaultValue="ADMIN" />
 			<column name="updated_date" type="TIMESTAMP"
-				defaultValue="NULL" />
+				defaultValueComputed="CURRENT_TIMESTAMP" />
 		</createTable>
 		<addForeignKeyConstraint
 			constraintName="PROJECT_CUSTOMER" referencedTableName="customers"
@@ -158,11 +161,11 @@
 			<column name="created_by" type="VARCHAR(50)"
 				defaultValue="ADMIN" />
 			<column name="created_date" type="TIMESTAMP"
-				defaultValue="NULL" />
+				defaultValueComputed="CURRENT_TIMESTAMP" />
 			<column name="updated_by" type="VARCHAR(50)"
 				defaultValue="ADMIN" />
 			<column name="updated_date" type="TIMESTAMP"
-				defaultValue="NULL" />
+				defaultValueComputed="CURRENT_TIMESTAMP" />
 		</createTable>
 		<addForeignKeyConstraint
 			constraintName="PROJTEAM_PROJECT" referencedTableName="projects"
@@ -183,11 +186,11 @@
 			<column name="created_by" type="VARCHAR(50)"
 				defaultValue="ADMIN" />
 			<column name="created_date" type="TIMESTAMP"
-				defaultValue="NULL" />
+				defaultValueComputed="CURRENT_TIMESTAMP" />
 			<column name="updated_by" type="VARCHAR(50)"
 				defaultValue="ADMIN" />
 			<column name="updated_date" type="TIMESTAMP"
-				defaultValue="NULL" />
+				defaultValueComputed="CURRENT_TIMESTAMP" />
 		</createTable>
 		<addForeignKeyConstraint
 			constraintName="WORKFLOW_PROJECT" referencedTableName="projects"
@@ -207,11 +210,11 @@
 			<column name="created_by" type="VARCHAR(50)"
 				defaultValue="ADMIN" />
 			<column name="created_date" type="TIMESTAMP"
-				defaultValue="NULL" />
+				defaultValueComputed="CURRENT_TIMESTAMP" />
 			<column name="updated_by" type="VARCHAR(50)"
 				defaultValue="ADMIN" />
 			<column name="updated_date" type="TIMESTAMP"
-				defaultValue="NULL" />
+				defaultValueComputed="CURRENT_TIMESTAMP" />
 		</createTable>
 		<addForeignKeyConstraint
 			constraintName="ACTIVITY_PROJECT" referencedTableName="projects"
@@ -229,15 +232,20 @@
 			<column name="resource_name" type="VARCHAR(100)" />
 			<column name="number_of_resources" type="INTEGER"
 				defaultValue="0" />
+			<column name="week" type="VARCHAR(100)" defaultValue="null" />
 			<column name="created_by" type="VARCHAR(50)"
 				defaultValue="ADMIN" />
 			<column name="created_date" type="TIMESTAMP"
-				defaultValue="NULL" />
+				defaultValueComputed="CURRENT_TIMESTAMP" />
 			<column name="updated_by" type="VARCHAR(50)"
 				defaultValue="ADMIN" />
 			<column name="updated_date" type="TIMESTAMP"
-				defaultValue="NULL" />
+				defaultValueComputed="CURRENT_TIMESTAMP" />
 		</createTable>
+		<addForeignKeyConstraint
+			constraintName="RES_PROJECT" referencedTableName="projects"
+			baseColumnNames="project_id" baseTableName="resource_plan"
+			referencedColumnNames="project_id" />
 
 		<createTable tableName="email_server_config">
 			<column name="email_config_id" type="INTEGER"
@@ -251,13 +259,12 @@
 			<column name="created_by" type="VARCHAR(50)"
 				defaultValue="ADMIN" />
 			<column name="created_date" type="TIMESTAMP"
-				defaultValue="NULL" />
+				defaultValueComputed="CURRENT_TIMESTAMP" />
 			<column name="updated_by" type="VARCHAR(50)"
 				defaultValue="ADMIN" />
 			<column name="updated_date" type="TIMESTAMP"
-				defaultValue="NULL" />
+				defaultValueComputed="CURRENT_TIMESTAMP" />
 		</createTable>
-
 
 		<createTable tableName="communication_template_master">
 			<column name="comm_template_id" type="INTEGER"
@@ -273,14 +280,426 @@
 			<column name="created_by" type="VARCHAR(50)"
 				defaultValue="ADMIN" />
 			<column name="created_date" type="TIMESTAMP"
-				defaultValue="NULL" />
+				defaultValueComputed="CURRENT_TIMESTAMP" />
 			<column name="updated_by" type="VARCHAR(50)"
 				defaultValue="ADMIN" />
 			<column name="updated_date" type="TIMESTAMP"
-				defaultValue="NULL" />
-
-
+				defaultValueComputed="CURRENT_TIMESTAMP" />
 		</createTable>
+
+		<createTable tableName="user_crypto_details">
+			<column name="crypto_id" type="INTEGER" autoIncrement="true">
+				<constraints nullable="false" primaryKey="true"
+					unique="true" />
+			</column>
+			<column name="user_id" type="INTEGER">
+				<constraints nullable="false" />
+			</column>
+			<column name="salt_key" type="VARCHAR(50)" />
+			<column name="crypto_algo_name" type="VARCHAR(50)" />
+			<column name="created_by" type="VARCHAR(50)"
+				defaultValue="ADMIN" />
+			<column name="created_date" type="TIMESTAMP"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+			<column name="updated_by" type="VARCHAR(50)"
+				defaultValue="ADMIN" />
+			<column name="updated_date" type="TIMESTAMP"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+		</createTable>
+		<addForeignKeyConstraint
+			constraintName="CRYPTO_USER" referencedTableName="users"
+			baseColumnNames="user_id" baseTableName="user_crypto_details"
+			referencedColumnNames="user_id" />
+
+		<createTable tableName="user_email_verification">
+			<column name="verification_id" type="INTEGER"
+				autoIncrement="true">
+				<constraints nullable="false" primaryKey="true"
+					unique="true" />
+			</column>
+			<column name="user_id" type="INTEGER">
+				<constraints nullable="false" />
+			</column>
+			<column name="status_id" type="INTEGER">
+				<constraints nullable="false" />
+			</column>
+			<column name="comm_template_id" type="INTEGER">
+				<constraints nullable="false" />
+			</column>
+			<column name="sent_from_email_address" type="VARCHAR(50)" />
+			<column name="sent_to_email_address" type="VARCHAR(50)" />
+			<column name="verification_code" type="VARCHAR(64)" />
+			<column name="verification_url" type="TEXT" />
+			<column name="verification_url_expiry" type="TIMESTAMP"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+			<column name="retry_count" type="INTEGER" defaultValue="0" />
+			<column name="verification_url_sent" type="TIMESTAMP"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+			<column name="verified_time" type="TIMESTAMP"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+			<column name="created_by" type="VARCHAR(50)"
+				defaultValue="ADMIN" />
+			<column name="created_date" type="TIMESTAMP"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+			<column name="updated_by" type="VARCHAR(50)"
+				defaultValue="ADMIN" />
+			<column name="updated_date" type="TIMESTAMP"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+		</createTable>
+		<addForeignKeyConstraint
+			constraintName="EMAIL_USER" referencedTableName="users"
+			baseColumnNames="user_id" baseTableName="user_email_verification"
+			referencedColumnNames="user_id" />
+		<addForeignKeyConstraint
+			constraintName="EMAIL_STATUS" referencedTableName="status_master"
+			baseColumnNames="status_id" baseTableName="user_email_verification"
+			referencedColumnNames="status_id" />
+		<addForeignKeyConstraint
+			constraintName="EMAIL_COMMTEMPL"
+			referencedTableName="communication_template_master"
+			baseColumnNames="comm_template_id"
+			baseTableName="user_email_verification"
+			referencedColumnNames="comm_template_id" />
+
+		<createTable tableName="user_login_details">
+			<column name="login_id" type="INTEGER" autoIncrement="true">
+				<constraints nullable="false" primaryKey="true"
+					unique="true" />
+			</column>
+			<column name="user_id" type="INTEGER">
+				<constraints nullable="false" />
+			</column>
+			<column name="session_id" type="VARCHAR(100)" />
+			<column name="jwt_type" type="VARCHAR(20)" />
+			<column name="previous_jwt" type="TEXT" />
+			<column name="jwt" type="TEXT" />
+			<column name="jwt_created_time" type="TIMESTAMP"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+			<column name="jwt_expiry_time" type="TIMESTAMP"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+			<column name="is_logged_in" type="CHAR(1)" defaultValue="N" />
+			<column name="logged_in_time" type="TIMESTAMP"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+			<column name="is_logged_out" type="CHAR(1)" defaultValue="N" />
+			<column name="logged_out_time" type="TIMESTAMP"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+			<column name="max_wrong_password_count" type="INTEGER"
+				defaultValue="0" />
+			<column name="wrong_password_count" type="INTEGER"
+				defaultValue="0" />
+			<column name="created_by" type="VARCHAR(50)"
+				defaultValue="ADMIN" />
+			<column name="created_date" type="TIMESTAMP"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+			<column name="updated_by" type="VARCHAR(50)"
+				defaultValue="ADMIN" />
+			<column name="updated_date" type="TIMESTAMP"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+		</createTable>
+		<addForeignKeyConstraint
+			constraintName="LOGIN_USER" referencedTableName="users"
+			baseColumnNames="user_id" baseTableName="user_login_details"
+			referencedColumnNames="user_id" />
+
+		<createTable tableName="application_details">
+			<column name="application_id" type="INTEGER"
+				autoIncrement="true">
+				<constraints nullable="false" primaryKey="true"
+					unique="true" />
+			</column>
+			<column name="project_id" type="INTEGER">
+				<constraints nullable="false" />
+			</column>
+			<column name="application_name" type="VARCHAR(100)" />
+			<column name="description" type="TEXT" />
+			<column name="business_unit" type="VARCHAR(100)" />
+			<column name="business_critical" type="VARCHAR(100)" />
+			<column name="high_availability" type="VARCHAR(100)" />
+			<column name="response_time" type="VARCHAR(100)" />
+			<column name="no_of_interactions" type="VARCHAR(100)" />
+			<column name="contact_first_name" type="VARCHAR(100)" />
+			<column name="contact_last_name" type="VARCHAR(100)" />
+			<column name="email" type="VARCHAR(100)" />
+			<column name="contact_number" type="VARCHAR(100)" />
+			<column name="created_by" type="VARCHAR(50)"
+				defaultValue="ADMIN" />
+			<column name="created_date" type="TIMESTAMP"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+			<column name="updated_by" type="VARCHAR(50)"
+				defaultValue="ADMIN" />
+			<column name="updated_date" type="TIMESTAMP"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+		</createTable>
+		<addForeignKeyConstraint
+			constraintName="APPLICATION_PROJECT" referencedTableName="projects"
+			baseColumnNames="project_id" baseTableName="application_details"
+			referencedColumnNames="project_id" />
+
+		<createTable tableName="integration_layer_details">
+			<column name="integration_layer_id" type="INTEGER"
+				autoIncrement="true">
+				<constraints nullable="false" primaryKey="true"
+					unique="true" />
+			</column>
+			<!-- <column name="project_id" type="INTEGER">
+				<constraints nullable="false" />
+			</column> -->
+			<column name="application_id" type="INTEGER">
+				<constraints nullable="false" />
+			</column>
+			<column name="target_application" type="VARCHAR(100)"
+				defaultValue="NULL" />
+			<column name="bandwidth" type="VARCHAR(100)"
+				defaultValue="NULL" />
+			<column name="vpn" type="VARCHAR(20)" defaultValue="NULL" />
+			<column name="encryption" type="VARCHAR(100)"
+				defaultValue="NULL" />
+			<column name="created_by" type="VARCHAR(50)"
+				defaultValue="ADMIN" />
+			<column name="created_date" type="TIMESTAMP"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+			<column name="updated_by" type="VARCHAR(50)"
+				defaultValue="ADMIN" />
+			<column name="updated_date" type="TIMESTAMP"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+		</createTable>
+		<addForeignKeyConstraint
+			constraintName="INTEGRATION_APPLICATION"
+			referencedTableName="application_details"
+			baseColumnNames="application_id"
+			baseTableName="integration_layer_details"
+			referencedColumnNames="application_id" />
+		<!-- <addForeignKeyConstraint
+			constraintName="INTEGRATION_PROJECTS"
+			referencedTableName="projects"
+			baseColumnNames="project_id"
+			baseTableName="integration_layer_details"
+			referencedColumnNames="project_id" /> -->
+			
+
+		<createTable tableName="application_layer_details">
+			<column name="application_layer_id" type="INTEGER"
+				autoIncrement="true">
+				<constraints nullable="false" primaryKey="true"
+					unique="true" />
+			</column>
+			<column name="application_id" type="INTEGER">
+				<constraints nullable="false" />
+			</column>
+			<column name="current_application_technology"
+				type="VARCHAR(100)" defaultValue="NULL" />
+			<column name="technology_used" type="VARCHAR(100)"
+				defaultValue="NULL" />
+			<column name="architecture" type="VARCHAR(20)"
+				defaultValue="NULL" />
+			<column name="functionalities" type="VARCHAR(100)"
+				defaultValue="NULL" />
+			<column name="re_architecture" type="VARCHAR(100)"
+				defaultValue="NULL" />
+			<column name="future_reArchitectures" type="VARCHAR(100)"
+				defaultValue="NULL" />
+			<column name="new_functionality" type="VARCHAR(100)"
+				defaultValue="NULL" />
+			<column name="future_functionality" type="VARCHAR(100)"
+				defaultValue="NULL" />
+			<column name="created_by" type="VARCHAR(50)"
+				defaultValue="ADMIN" />
+			<column name="created_date" type="TIMESTAMP"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+			<column name="updated_by" type="VARCHAR(50)"
+				defaultValue="ADMIN" />
+			<column name="updated_date" type="TIMESTAMP"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+		</createTable>
+		<addForeignKeyConstraint
+			constraintName="APPL_LAYER_APPLICATION"
+			referencedTableName="application_details"
+			baseColumnNames="application_id"
+			baseTableName="application_layer_details"
+			referencedColumnNames="application_id" />
+
+
+
+		<createTable tableName="storage_details">
+			<column name="storage_id" type="INTEGER" autoIncrement="true">
+				<constraints nullable="false" primaryKey="true"
+					unique="true" />
+			</column>
+			<column name="application_id" type="INTEGER">
+				<constraints nullable="false" />
+			</column>
+			<column name="total_storage" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="storage_used" type="VARCHAR(30)"
+				defaultValue="NULL" />
+			<column name="storage_available" type="VARCHAR(30)"
+				defaultValue="NULL" />
+			<column name="storage_type" type="VARCHAR(100)"
+				defaultValue="NULL" />
+			<column name="storage_device_name" type="VARCHAR(100)"
+				defaultValue="NULL" />
+			<column name="ip_address" type="VARCHAR(30)"
+				defaultValue="NULL" />
+			<column name="created_by" type="VARCHAR(50)"
+				defaultValue="ADMIN" />
+			<column name="created_date" type="TIMESTAMP"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+			<column name="updated_by" type="VARCHAR(50)"
+				defaultValue="ADMIN" />
+			<column name="updated_date" type="TIMESTAMP"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+		</createTable>
+		<addForeignKeyConstraint
+			constraintName="STORAGE_APPLICATION"
+			referencedTableName="application_details"
+			baseColumnNames="application_id" baseTableName="storage_details"
+			referencedColumnNames="application_id" />
+
+		<createTable tableName="security_compliance">
+			<column name="security_compliance_id" type="INTEGER"
+				autoIncrement="true">
+				<constraints nullable="false" primaryKey="true"
+					unique="true" />
+			</column>
+			<column name="application_id" type="INTEGER">
+				<constraints nullable="false" />
+			</column>
+			<column name="vpn" type="VARCHAR(20)" defaultValue="NULL" />
+			<column name="encryption" type="VARCHAR(20)"
+				defaultValue="NULL" />
+			<column name="proxy_server" type="VARCHAR(20)"
+				defaultValue="NULL" />
+			<column name="data_privacy" type="VARCHAR(30)" />
+			<column name="created_by" type="VARCHAR(50)"
+				defaultValue="ADMIN" />
+			<column name="created_date" type="TIMESTAMP"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+			<column name="updated_by" type="VARCHAR(50)"
+				defaultValue="ADMIN" />
+			<column name="updated_date" type="TIMESTAMP"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+		</createTable>
+		<addForeignKeyConstraint
+			constraintName="SECURITY_APPLICATION"
+			referencedTableName="application_details"
+			baseColumnNames="application_id" baseTableName="security_compliance"
+			referencedColumnNames="application_id" />
+
+		<createTable tableName="recommendations">
+			<column name="recommendation_id" type="INTEGER"
+				autoIncrement="true">
+				<constraints nullable="false" primaryKey="true"
+					unique="true" />
+			</column>
+			<column name="application_id" type="INTEGER">
+				<constraints nullable="false" />
+			</column>
+			<column name="cloud_instance" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="os_name" type="VARCHAR(50)" defaultValue="NULL" />
+			<column name="os_version" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="server_name" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="server_version" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="migration_approach_type" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="storage_type" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="target_capacity" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="comments" type="VARCHAR(100)"
+				defaultValue="NULL" />
+			<column name="cloud_proxy_service" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="compliance_action" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="created_by" type="VARCHAR(50)"
+				defaultValue="ADMIN" />
+			<column name="created_date" type="TIMESTAMP"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+			<column name="updated_by" type="VARCHAR(50)"
+				defaultValue="ADMIN" />
+			<column name="updated_date" type="TIMESTAMP"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+		</createTable>
+		<addForeignKeyConstraint
+			constraintName="RECOMMENDATION_APPLICATION"
+			referencedTableName="application_details"
+			baseColumnNames="application_id" baseTableName="recommendations"
+			referencedColumnNames="application_id" />
+
+		<createTable tableName="server_details">
+			<column name="server_id" type="INTEGER" autoIncrement="true">
+				<constraints nullable="false" primaryKey="true"
+					unique="true" />
+			</column>
+			<column name="application_id" type="INTEGER">
+				<constraints nullable="false" />
+			</column>
+			<column name="server_name" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="server_type" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="make_or_oem" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="configuration" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="server_category" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="server_sub_category" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="region" type="VARCHAR(50)" defaultValue="NULL" />
+			<column name="cpu_gpu" type="VARCHAR(50)" defaultValue="NULL" />
+			<column name="ram" type="VARCHAR(50)" defaultValue="NULL" />
+			<column name="ip_address" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="dedicated_total" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="dedicated_available" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="shared_total" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="shared_available" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="virtualized" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="virtualization_software" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="load_balancer" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="load_balancer_details" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="os_name" type="VARCHAR(50)" defaultValue="NULL" />
+			<column name="os_version" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="server_compatibility" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="os_compatibility" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="db_name" type="VARCHAR(50)" defaultValue="NULL" />
+			<column name="db_version" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="model" type="VARCHAR(50)" defaultValue="NULL" />
+			<column name="db_tech_compatibility" type="VARCHAR(50)"
+				defaultValue="NULL" />
+			<column name="created_by" type="VARCHAR(50)"
+				defaultValue="ADMIN" />
+			<column name="created_date" type="TIMESTAMP"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+			<column name="updated_by" type="VARCHAR(50)"
+				defaultValue="ADMIN" />
+			<column name="updated_date" type="TIMESTAMP"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+		</createTable>
+		<addForeignKeyConstraint
+			constraintName="SERVER_APPLICATION"
+			referencedTableName="application_details"
+			baseColumnNames="application_id" baseTableName="server_details"
+			referencedColumnNames="application_id" />
+
+
 		<sqlFile path="classpath*:/data.sql" />
 	</changeSet>
 

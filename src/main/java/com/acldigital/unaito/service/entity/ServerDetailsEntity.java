@@ -20,7 +20,7 @@ public class ServerDetailsEntity implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "server_details_id")
+	@Column(name = "server_id")
 	private Long serverDetailsId;
 
 	@ManyToOne(fetch = FetchType.LAZY)

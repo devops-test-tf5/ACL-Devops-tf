@@ -3,6 +3,7 @@ package com.acldigital.unaito.service.user.dto;
 import java.util.Date;
 import java.util.List;
 
+import com.acldigital.unaito.service.project.dto.ApplicationOverview;
 import com.fasterxml.jackson.databind.JsonNode;
 
 public class ProjectsDto {
@@ -11,13 +12,13 @@ public class ProjectsDto {
 
 	private Long customerId;
 
-	private String customerName;
+	private Long statusId;
 
 	private String projectName;
 
 	private String description;
 
-	private List<Applications> applicationsList;
+	private String customerName;
 
 	private Date startDate;
 
@@ -25,29 +26,28 @@ public class ProjectsDto {
 
 	private String duration;
 
-	private Long statusId;
-
 	private JsonNode drivers;
 
 	private JsonNode scope;
 
-	private List<ActivityPlan> activityPlanList;
+	private JsonNode activityPlans;
 
-	private List<ResourceOnboardingPlan> resourceLoadingList;
+	private List<ProjectTeam> projectTeamList;
 
-	private ProjectTeam projectTeam;
-
-	private WorkflowMgmt workFlowMgmt;
+	private JsonNode resourcePlans;
 
 	private List<Notifications> notificationsList;
+
+	private List<WorkflowMgmt> workflowMgmtList;
+
+	private List<ApplicationOverview> applicationOverviewList;
 
 	public ProjectsDto() {
 
 	}
 
-	public ProjectsDto(Long projectId, Long customerId, String projectName, 
-			String customerName, String description, Date startDate, 
-			Date endDate, String duration, Long statusId) {
+	public ProjectsDto(Long projectId, Long customerId, String projectName, String customerName, String description,
+			Date startDate, Date endDate, String duration, Long statusId) {
 		super();
 		this.projectId = projectId;
 		this.customerId = customerId;
@@ -60,29 +60,49 @@ public class ProjectsDto {
 		this.statusId = statusId;
 	}
 
-	public ProjectsDto(Long projectId, Long customerId, String projectName, String customerName, String description,
-			List<Applications> applicationsList, Date startDate, Date endDate, String duration, Long statusId,
-			JsonNode drivers, JsonNode scope, List<ActivityPlan> activityPlanList,
-			List<ResourceOnboardingPlan> resourceLoadingList, ProjectTeam projectTeam, WorkflowMgmt workFlowMgmt,
-			List<Notifications> notificationsList) {
+	public ProjectsDto(Long projectId, Long customerId, Long statusId, String projectName, String description,
+			String customerName, Date startDate, Date endDate, String duration, JsonNode drivers, JsonNode scope,
+			JsonNode activityPlanList, List<ProjectTeam> projectTeamList, JsonNode resourceLoadingList) {
 		super();
 		this.projectId = projectId;
 		this.customerId = customerId;
+		this.statusId = statusId;
 		this.projectName = projectName;
-		this.customerName = customerName;
 		this.description = description;
-		this.applicationsList = applicationsList;
+		this.customerName = customerName;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.duration = duration;
-		this.statusId = statusId;
 		this.drivers = drivers;
 		this.scope = scope;
-		this.activityPlanList = activityPlanList;
-		this.resourceLoadingList = resourceLoadingList;
-		this.projectTeam = projectTeam;
-		this.workFlowMgmt = workFlowMgmt;
+		this.activityPlans = activityPlanList;
+		this.projectTeamList = projectTeamList;
+		this.resourcePlans = resourceLoadingList;
+	}
+
+	public ProjectsDto(Long projectId, Long customerId, Long statusId, String projectName, String description,
+			String customerName, Date startDate, Date endDate, String duration, JsonNode drivers, JsonNode scope,
+			JsonNode activityPlanList, List<ProjectTeam> projectTeamList, JsonNode resourceLoadingList,
+			List<Notifications> notificationsList, List<WorkflowMgmt> workflowMgmtList,
+			List<ApplicationOverview> applicationOverviewList) {
+		super();
+		this.projectId = projectId;
+		this.customerId = customerId;
+		this.statusId = statusId;
+		this.projectName = projectName;
+		this.description = description;
+		this.customerName = customerName;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.duration = duration;
+		this.drivers = drivers;
+		this.scope = scope;
+		this.activityPlans = activityPlanList;
+		this.projectTeamList = projectTeamList;
+		this.resourcePlans = resourceLoadingList;
 		this.notificationsList = notificationsList;
+		this.workflowMgmtList = workflowMgmtList;
+		this.applicationOverviewList = applicationOverviewList;
 	}
 
 	public Long getProjectId() {
@@ -115,14 +135,6 @@ public class ProjectsDto {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public List<Applications> getApplicationsList() {
-		return applicationsList;
-	}
-
-	public void setApplicationsList(List<Applications> applicationsList) {
-		this.applicationsList = applicationsList;
 	}
 
 	public Date getStartDate() {
@@ -173,44 +185,28 @@ public class ProjectsDto {
 		this.scope = scope;
 	}
 
-	public List<ActivityPlan> getActivityPlanList() {
-		return activityPlanList;
+	public JsonNode getActivityPlanList() {
+		return activityPlans;
 	}
 
-	public void setActivityPlanList(List<ActivityPlan> activityPlanList) {
-		this.activityPlanList = activityPlanList;
+	public void setActivityPlanList(JsonNode activityPlanList) {
+		this.activityPlans = activityPlanList;
 	}
 
-	public List<ResourceOnboardingPlan> getResourceLoadingList() {
-		return resourceLoadingList;
+	public JsonNode getResourceLoadingList() {
+		return resourcePlans;
 	}
 
-	public void setResourceLoadingList(List<ResourceOnboardingPlan> resourceLoadingList) {
-		this.resourceLoadingList = resourceLoadingList;
+	public void setResourceLoadingList(JsonNode resourceLoadingList) {
+		this.resourcePlans = resourceLoadingList;
 	}
 
-	public ProjectTeam getProjectTeam() {
-		return projectTeam;
+	public List<ProjectTeam> getProjectTeam() {
+		return projectTeamList;
 	}
 
-	public void setProjectTeam(ProjectTeam projectTeam) {
-		this.projectTeam = projectTeam;
-	}
-
-	public WorkflowMgmt getWorkFlowMgmt() {
-		return workFlowMgmt;
-	}
-
-	public void setWorkFlowMgmt(WorkflowMgmt workFlowMgmt) {
-		this.workFlowMgmt = workFlowMgmt;
-	}
-
-	public List<Notifications> getNotificationsList() {
-		return notificationsList;
-	}
-
-	public void setNotificationsList(List<Notifications> notificationsList) {
-		this.notificationsList = notificationsList;
+	public void setProjectTeam(List<ProjectTeam> projectTeamList) {
+		this.projectTeamList = projectTeamList;
 	}
 
 	public String getProjectName() {
@@ -221,14 +217,47 @@ public class ProjectsDto {
 		this.projectName = projectName;
 	}
 
+	public List<Notifications> getNotificationsList() {
+		return notificationsList;
+	}
+
+	public void setNotificationsList(List<Notifications> notificationsList) {
+		this.notificationsList = notificationsList;
+	}
+
+	public List<WorkflowMgmt> getWorkflowMgmtList() {
+		return workflowMgmtList;
+	}
+
+	public void setWorkflowMgmtList(List<WorkflowMgmt> workflowMgmtList) {
+		this.workflowMgmtList = workflowMgmtList;
+	}
+
+	public List<ProjectTeam> getProjectTeamList() {
+		return projectTeamList;
+	}
+
+	public void setProjectTeamList(List<ProjectTeam> projectTeamList) {
+		this.projectTeamList = projectTeamList;
+	}
+
+	public List<ApplicationOverview> getApplicationOverviewList() {
+		return applicationOverviewList;
+	}
+
+	public void setApplicationOverviewList(List<ApplicationOverview> applicationOverviewList) {
+		this.applicationOverviewList = applicationOverviewList;
+	}
+
 	@Override
 	public String toString() {
-		return "ProjectsDto [projectId=" + projectId + ", customerId=" + customerId + ", customerName=" + customerName
-				+ ", projectName=" + projectName + ", description=" + description + ", applicationsList="
-				+ applicationsList + ", startDate=" + startDate + ", endDate=" + endDate + ", duration=" + duration
-				+ ", statusId=" + statusId + ", drivers=" + drivers + ", scope=" + scope + ", activityPlanList="
-				+ activityPlanList + ", resourceLoadingList=" + resourceLoadingList + ", projectTeam=" + projectTeam
-				+ ", workFlowMgmt=" + workFlowMgmt + ", notificationsList=" + notificationsList + "]";
+		return "ProjectsDto [projectId=" + projectId + ", customerId=" + customerId + ", statusId=" + statusId
+				+ ", projectName=" + projectName + ", description=" + description + ", customerName=" + customerName
+				+ ", startDate=" + startDate + ", endDate=" + endDate + ", duration=" + duration + ", drivers="
+				+ drivers + ", scope=" + scope + ", activityPlanList=" + activityPlans + ", projectTeamList="
+				+ projectTeamList + ", resourceLoadingList=" + resourcePlans + ", notificationsList="
+				+ notificationsList + ", workflowMgmtList=" + workflowMgmtList + ", applicationOverviewList="
+				+ applicationOverviewList + "]";
 	}
 
 }

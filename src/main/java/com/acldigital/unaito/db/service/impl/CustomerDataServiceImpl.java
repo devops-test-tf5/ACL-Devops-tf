@@ -1,6 +1,8 @@
 package com.acldigital.unaito.db.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -50,7 +52,7 @@ public class CustomerDataServiceImpl implements ICustomerDataService {
 
 	@Override
 	public CustomerDto getCustomerDetails(Long customerId) {
-		CustomersEntity custEntity = customerRepository.fetchCustomerDetails(customerId);
+		CustomersEntity custEntity = customerRepository.fetchCustomerDetails(customerId, UserConstants.ACTIVE_STATUS);
 		if (!ObjectUtils.isEmpty(custEntity)) {
 			return mapperUtils.convertToCustomerDto(custEntity);
 		} else {
@@ -61,15 +63,36 @@ public class CustomerDataServiceImpl implements ICustomerDataService {
 
 	@Override
 	public List<CustomerDto> getAllCustomers() {
-		Iterable<CustomersEntity> customersList= customerRepository.getAllCustomers(UserConstants.ACTIVE_STATUS);
-		if(!ObjectUtils.isEmpty(customersList)) {
-			return mapperUtils.convertToCustomerDtoList(customersList);
-		}else {
-			throw new CustomerNotFoundException("Customers not found.", HttpStatus.NOT_FOUND.value());
+		List<CustomerDto> customersDtoList = new ArrayList<>();
+		Iterable<CustomersEntity> customersEntityList = customerRepository.getAllCustomers(UserConstants.ACTIVE_STATUS);
+		if (!ObjectUtils.isEmpty(customersEntityList)) {
+			return mapperUtils.convertToCustomerDtoList(customersEntityList);
 		}
-		
-		
-		
+		return customersDtoList;
+	}
+
+	@Override
+	public CustomerDto editCustomer(CustomerDto request,Long customerId) {
+		Optional<CustomersEntity> entity = customerRepository.findById(customerId);
+		if (entity.isPresent()) {
+			CustomersEntity saveEntity = mapperUtils.updateCustomerDetails(request, entity.get());
+			CustomersEntity responseEntity = customerRepository.save(saveEntity);
+			return mapperUtils.convertToCustomerDto(responseEntity);
+		} else {
+			throw new CustomerNotFoundException("Customer not found.", HttpStatus.NOT_FOUND.value());
+		}
+
+	}
+
+	@Override
+	public int deleteCustomer(Long customerId) {
+		Optional<CustomersEntity> entity = customerRepository.findById(customerId);
+		if(entity.isPresent()) {
+			customerRepository.deleteById(customerId);
+			return UserConstants.ACTIVE_STATUS;
+		}
+		//return customer not found exception instead of bad response
+		return UserConstants.INACTIVE_STATUS;
 	}
 
 }

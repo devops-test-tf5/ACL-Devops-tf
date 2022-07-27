@@ -59,7 +59,8 @@ public class UserLoggedInEntity implements Serializable {
 	}
 
 	public UserLoggedInEntity(Long userId, String sessionId, String jwtType, String previousJwt, String jwt,
-			Instant jwtCreatedTime, Instant jwtExpiryTime, char loggedIn, Instant loggedInTime) {
+			Instant jwtCreatedTime, Instant jwtExpiryTime, char loggedIn, Instant loggedInTime,
+			char loggedOut) {
 		super();
 		this.userId = userId;
 		this.sessionId = sessionId;
@@ -70,6 +71,7 @@ public class UserLoggedInEntity implements Serializable {
 		this.jwtExpiryTime = jwtExpiryTime;
 		this.loggedIn = loggedIn;
 		this.loggedInTime = loggedInTime;
+		this.loggedOut=loggedOut;
 	}
 
 	public UserLoggedInEntity(Long loginId, Long userId, String jwtType, String previousJwt, 

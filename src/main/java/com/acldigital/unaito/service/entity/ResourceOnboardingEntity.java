@@ -33,6 +33,9 @@ public class ResourceOnboardingEntity implements Serializable {
 	@Column(name = "number_of_resources")
 	private Integer numberOfResources;
 
+	@Column(name = "week")
+	private String week;
+
 	public ResourceOnboardingEntity() {
 
 	}
@@ -45,12 +48,13 @@ public class ResourceOnboardingEntity implements Serializable {
 	}
 
 	public ResourceOnboardingEntity(Long resourceId, ProjectsEntity projectEntity, String resourceName,
-			Integer numberOfResources) {
+			Integer numberOfResources, String week) {
 		super();
 		this.resourceId = resourceId;
 		this.projectEntity = projectEntity;
 		this.resourceName = resourceName;
 		this.numberOfResources = numberOfResources;
+		this.week = week;
 	}
 
 	public Long getResourceId() {
@@ -85,10 +89,19 @@ public class ResourceOnboardingEntity implements Serializable {
 		this.numberOfResources = numberOfResources;
 	}
 
+	public String getWeek() {
+		return week;
+	}
+
+	public void setWeek(String week) {
+		this.week = week;
+	}
+
 	@Override
 	public String toString() {
 		return "ResourceOnboardingEntity [resourceId=" + resourceId + ", projectEntity=" + projectEntity
-				+ ", resourceName=" + resourceName + ", numberOfResources=" + numberOfResources + "]";
+				+ ", resourceName=" + resourceName + ", numberOfResources=" + numberOfResources + ", week=" + week
+				+ "]";
 	}
 
 }

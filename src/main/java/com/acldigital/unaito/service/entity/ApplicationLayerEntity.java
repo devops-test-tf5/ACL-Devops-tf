@@ -43,6 +43,9 @@ public class ApplicationLayerEntity implements Serializable {
 	@Column(name = "re_architectures")
 	private String reArchitectures;
 
+	@Column(name = "future_reArchitectures")
+	private String futureStateReArchitecture;
+
 	@Column(name = "new_functionality")
 	private String newFunctionality;
 
@@ -55,7 +58,8 @@ public class ApplicationLayerEntity implements Serializable {
 
 	public ApplicationLayerEntity(Long applicationLayerId, ApplicationOverviewEntity applicationOverviewEntity,
 			String currentApplicationTechnology, String technologyUsed, String architecture, String functionalities,
-			String reArchitectures, String newFunctionality, String futureFunctionality) {
+			String reArchitectures, String futureStateReArchitecture, String newFunctionality,
+			String futureFunctionality) {
 		super();
 		this.applicationLayerId = applicationLayerId;
 		this.applicationOverviewEntity = applicationOverviewEntity;
@@ -64,6 +68,7 @@ public class ApplicationLayerEntity implements Serializable {
 		this.architecture = architecture;
 		this.functionalities = functionalities;
 		this.reArchitectures = reArchitectures;
+		this.futureStateReArchitecture = futureStateReArchitecture;
 		this.newFunctionality = newFunctionality;
 		this.futureFunctionality = futureFunctionality;
 	}
@@ -140,13 +145,22 @@ public class ApplicationLayerEntity implements Serializable {
 		this.futureFunctionality = futureFunctionality;
 	}
 
+	public String getFutureStateReArchitecture() {
+		return futureStateReArchitecture;
+	}
+
+	public void setFutureStateReArchitecture(String futureStateReArchitecture) {
+		this.futureStateReArchitecture = futureStateReArchitecture;
+	}
+
 	@Override
 	public String toString() {
 		return "ApplicationLayerEntity [applicationLayerId=" + applicationLayerId + ", applicationOverviewEntity="
 				+ applicationOverviewEntity + ", currentApplicationTechnology=" + currentApplicationTechnology
 				+ ", technologyUsed=" + technologyUsed + ", architecture=" + architecture + ", functionalities="
-				+ functionalities + ", reArchitectures=" + reArchitectures + ", newFunctionality=" + newFunctionality
-				+ ", futureFunctionality=" + futureFunctionality + "]";
+				+ functionalities + ", reArchitectures=" + reArchitectures + ", futureStateReArchitecture="
+				+ futureStateReArchitecture + ", newFunctionality=" + newFunctionality + ", futureFunctionality="
+				+ futureFunctionality + "]";
 	}
 
 }

@@ -16,6 +16,8 @@ public class ApplicationLayerDetails {
 
 	private String reArchitectures;
 
+	private String futureStateReArchitecture;
+
 	private String newFunctionality;
 
 	private String futureFunctionality;
@@ -26,7 +28,7 @@ public class ApplicationLayerDetails {
 
 	public ApplicationLayerDetails(Long applicationLayerId, Long applicationId, String currentApplicationTechnology,
 			String technologyUsed, String architecture, String functionalities, String reArchitectures,
-			String newFunctionality, String futureFunctionality) {
+			String futureStateReArchitecture, String newFunctionality, String futureFunctionality) {
 		super();
 		this.applicationLayerId = applicationLayerId;
 		this.applicationId = applicationId;
@@ -35,6 +37,7 @@ public class ApplicationLayerDetails {
 		this.architecture = architecture;
 		this.functionalities = functionalities;
 		this.reArchitectures = reArchitectures;
+		this.futureStateReArchitecture = futureStateReArchitecture;
 		this.newFunctionality = newFunctionality;
 		this.futureFunctionality = futureFunctionality;
 	}
@@ -111,13 +114,21 @@ public class ApplicationLayerDetails {
 		this.futureFunctionality = futureFunctionality;
 	}
 
+	public String getFutureStateReArchitecture() {
+		return futureStateReArchitecture;
+	}
+
+	public void setFutureStateReArchitecture(String futureStateReArchitecture) {
+		this.futureStateReArchitecture = futureStateReArchitecture;
+	}
+
 	@Override
 	public String toString() {
 		return "ApplicationLayerDetails [applicationLayerId=" + applicationLayerId + ", applicationId=" + applicationId
 				+ ", currentApplicationTechnology=" + currentApplicationTechnology + ", technologyUsed="
 				+ technologyUsed + ", architecture=" + architecture + ", functionalities=" + functionalities
-				+ ", reArchitectures=" + reArchitectures + ", newFunctionality=" + newFunctionality
-				+ ", futureFunctionality=" + futureFunctionality + "]";
+				+ ", reArchitectures=" + reArchitectures + ", futureStateReArchitecture=" + futureStateReArchitecture
+				+ ", newFunctionality=" + newFunctionality + ", futureFunctionality=" + futureFunctionality + "]";
 	}
 
 }

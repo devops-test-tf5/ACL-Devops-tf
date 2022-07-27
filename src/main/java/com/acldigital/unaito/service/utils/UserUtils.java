@@ -97,6 +97,13 @@ public class UserUtils {
 		resp.setResponseObject(UserConstants.BAD_REQUEST);
 		return new ResponseEntity<>(resp, org.springframework.http.HttpStatus.BAD_REQUEST);
 	}
+	
+	public ResponseEntity<Object> customerNotFoundResponse() {
+		UserResponse resp = new UserResponse();
+		resp.setResponseCode(HttpStatus.NOT_FOUND.value());
+		resp.setResponseObject(UserConstants.CUSTOMER_NOT_FOUND);
+		return new ResponseEntity<>(resp, org.springframework.http.HttpStatus.NOT_FOUND);
+	}
 
 	public ResponseEntity<Object> duplicateUserNameResponse() {
 		// UserConstants.DUPLICATE_USERNAME, HttpStatus.CONFLICT
@@ -125,10 +132,16 @@ public class UserUtils {
 		return password;
 	}
 
+	/*
+	 * public boolean checkIfFirstTimeLogin(Long userId) { return
+	 * userDataService.checkIfFirstTimeLogin(userId); }
+	 */
+
 	public boolean checkIfFirstTimeLogin(Long userId) {
 		return userDataService.checkIfFirstTimeLogin(userId);
 	}
-
+	
+	
 	public void validateUserRegistrationDetails(UserRegistrationDetails userRegistrationRequest) {
 	}
 

@@ -19,8 +19,8 @@ import com.acldigital.unaito.service.repository.IUserCryptoRepository;
 import com.acldigital.unaito.service.repository.IUserLoginDetailsRepository;
 import com.acldigital.unaito.service.repository.IUserRepository;
 import com.acldigital.unaito.service.user.constants.UserConstants;
-import com.acldigital.unaito.service.user.dto.UserDto;
 import com.acldigital.unaito.service.user.dto.UserCryptoDetails;
+import com.acldigital.unaito.service.user.dto.UserDto;
 import com.acldigital.unaito.service.user.dto.UserLoggedInDetails;
 import com.acldigital.unaito.service.user.dto.UserRegistrationDetails;
 import com.acldigital.unaito.service.user.dto.UserRequest;
@@ -54,6 +54,7 @@ public class UserDataServiceImpl implements IUserDataService {
 		UserCryptoEntity userCryptoEntity = null;
 		UserEntity responseEntity = null;
 		userEntity = mapperUtils.convertToUserEntity(userRegistrationDetails);
+		userEntity.setFirstTimeLogin(true);
 		for (RoleEntity entity : roleEntities) {
 			if (entity.getRoleName().equalsIgnoreCase(userRegistrationDetails.getRoleName())) {
 				userEntity.setRoleId(entity.getRoleId());
@@ -151,13 +152,14 @@ public class UserDataServiceImpl implements IUserDataService {
 		return userRepository.verifyCode(code);
 	}
 
+	/*
+	 * @Override public boolean checkIfFirstTimeLogin(Long userId) { Integer
+	 * loginCount = userLoginDetailsRepository.checkIfFirstTimeLogin(userId); if
+	 * (loginCount == 1) { return true; } return false; }
+	 */
 	@Override
 	public boolean checkIfFirstTimeLogin(Long userId) {
-		Integer loginCount = userLoginDetailsRepository.checkIfFirstTimeLogin(userId);
-		if (loginCount == 1) {
-			return true;
-		}
-		return false;
+		return userRepository.checkIfFirstTimeLogin(userId);
 	}
 
 	@Override
@@ -213,7 +215,7 @@ public class UserDataServiceImpl implements IUserDataService {
 				userLoginDetailsRepository.updateUserLoggedOutDetails(userLoggedInEntity.getJwtType(),
 						userLoggedInEntity.getLoggedIn(), userLoggedInEntity.getLoggedOut(),
 						userLoggedInEntity.getLoggedOutTime(), userLoggedInEntity.getUserId(),
-						userLoggedInEntity.getPreviousJwt(),userLoggedInEntity.getLoginId());
+						userLoggedInEntity.getPreviousJwt(), userLoggedInEntity.getLoginId());
 			}
 		}
 
@@ -221,8 +223,12 @@ public class UserDataServiceImpl implements IUserDataService {
 
 	@Override
 	public Long fetchUserDetails(String customerFirstName, String customerLastName, String email, Long roleId) {
-		return userRepository.fetchUserDetails(customerFirstName,customerLastName,
-				email,roleId);
+		return userRepository.fetchUserDetails(customerFirstName, customerLastName, email, roleId);
+	}
+
+	@Override
+	public int updateUserPassword(UserDto userDto) {
+		return userRepository.updateUserPassword(userDto.getUserName(), userDto.getPassword(),userDto.isFirstTimeLogin());
 	}
 
 }

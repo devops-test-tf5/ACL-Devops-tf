@@ -13,8 +13,9 @@ public interface ICustomerRepository extends CrudRepository<CustomersEntity, Lon
 	@Query(value = "select * from customers c where c.customer_name=:customerName", nativeQuery = true)
 	public CustomersEntity getCustomerDetails(@Param("customerName") String customerName);
 
-	@Query(value = "select * from customers c where c.customer_id=:customerId", nativeQuery = true)
-	public CustomersEntity fetchCustomerDetails(@Param("customerId") Long customerId);
+	@Query(value = "select * from customers c where c.customer_id=:customerId and c.is_active=:isActive", nativeQuery = true)
+	public CustomersEntity fetchCustomerDetails(@Param("customerId") Long customerId,
+			@Param("isActive") Integer isActive);
 
 	@Query(value = "select * from customers c where c.is_active=:isActive", nativeQuery = true)
 	public Iterable<CustomersEntity> getAllCustomers(@Param("isActive") Integer isActive);
